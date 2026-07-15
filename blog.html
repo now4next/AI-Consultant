@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>회의록에 밤을 새우는 PM에게 — 서울대 AI4PM 추진단이 제안하는 'AI와 함께 일하는 프로젝트 관리'</title>
+  <meta name="description" content="AI는 PM을 대체하지 않습니다. 서울대 EPM AI4PM 추진단이 제안하는 AI 특강·AI Agent 개발·PM 역량 고도화·진단/솔루션, 그리고 니즈 서베이 참여 안내.">
+  <style>
+    :root {
+      --epm-blue: #173f8f;
+      --epm-navy: #102a5c;
+      --epm-gold: #b98a2f;
+      --epm-text: #1f2937;
+      --epm-muted: #667085;
+      --epm-line: #e4e9f2;
+      --epm-bg: #f5f7fb;
+      --epm-soft: #eef4ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--epm-bg);
+      color: var(--epm-text);
+      font-family: "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+      line-height: 1.85;
+      letter-spacing: -0.01em;
+      word-break: keep-all;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      background: var(--epm-navy);
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .topbar .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--epm-gold);
+    }
+
+    .post {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 40px;
+      background: #fff;
+      border-left: 1px solid var(--epm-line);
+      border-right: 1px solid var(--epm-line);
+      min-height: 100vh;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--epm-blue);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .post-title {
+      margin: 0 0 18px;
+      color: #111827;
+      font-size: clamp(27px, 4.4vw, 38px);
+      line-height: 1.32;
+      font-weight: 850;
+    }
+
+    .post-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      color: #9aa4b2;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .post-meta .author { color: var(--epm-muted); }
+
+    .lead {
+      margin: 26px 0 0;
+      color: #344054;
+      font-size: 19px;
+      line-height: 1.75;
+      font-weight: 600;
+    }
+
+    .divider {
+      height: 1px;
+      margin: 30px 0;
+      background: var(--epm-line);
+    }
+
+    .post-body p {
+      margin: 0 0 20px;
+      font-size: 17px;
+    }
+
+    .post-body h2 {
+      margin: 40px 0 14px;
+      color: #111827;
+      font-size: 23px;
+      font-weight: 850;
+      line-height: 1.4;
+    }
+
+    .post-body h3 {
+      margin: 28px 0 8px;
+      color: var(--epm-navy);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .post-body strong { color: #111827; }
+
+    blockquote {
+      margin: 30px 0;
+      padding: 6px 0 6px 22px;
+      border-left: 4px solid var(--epm-gold);
+      color: var(--epm-navy);
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.6;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 22px 0 8px;
+    }
+
+    .pillar {
+      padding: 18px 16px;
+      border: 1px solid var(--epm-line);
+      border-radius: 10px;
+      background: #fafcff;
+    }
+
+    .pillar .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      margin-bottom: 10px;
+      border-radius: 7px;
+      background: var(--epm-soft);
+      color: var(--epm-blue);
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .pillar strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+      color: var(--epm-navy);
+    }
+
+    .pillar span {
+      display: block;
+      color: var(--epm-muted);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    .cta-card {
+      margin: 40px 0 8px;
+      padding: 30px 26px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--epm-navy), var(--epm-blue));
+      color: #fff;
+      text-align: center;
+    }
+
+    .cta-card h3 {
+      margin: 0 0 8px;
+      color: #fff;
+      font-size: 21px;
+      font-weight: 850;
+    }
+
+    .cta-card p {
+      margin: 0 0 20px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 15.5px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 14px 26px;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--epm-navy);
+      font-size: 16px;
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .cta-button:hover { background: #f0f4ff; }
+
+    .cta-url {
+      margin: 14px 0 0 !important;
+      color: rgba(255, 255, 255, 0.75) !important;
+      font-size: 13px !important;
+      word-break: break-all;
+    }
+
+    .post-footer {
+      margin-top: 40px;
+      padding-top: 22px;
+      border-top: 1px solid var(--epm-line);
+      color: var(--epm-muted);
+      font-size: 13.5px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 640px) {
+      .post { padding: 40px 20px 32px; }
+      .pillars { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <span>서울대 EPM AI4PM 추진단</span>
+    <span class="dot" aria-hidden="true"></span>
+    <span>AI4PM Insight</span>
+  </div>
+
+  <main class="post">
+    <p class="eyebrow">AI4PM Insight</p>
+    <h1 class="post-title">회의록에 밤을 새우는 PM에게 — 서울대 AI4PM 추진단이 제안하는 'AI와 함께 일하는 프로젝트 관리'</h1>
+    <div class="post-meta">
+      <span class="author">서울대 EPM AI4PM 추진단</span>
+      <span aria-hidden="true">·</span>
+      <time datetime="2026-07-15">2026. 7. 15</time>
+    </div>
+
+    <p class="lead">
+      프로젝트가 커질수록, 정작 프로젝트를 들여다볼 시간은 줄어듭니다. 회의가 끝나면 회의록을 정리하고,
+      여러 팀에 흩어진 진척을 취합하고, 어제 나온 리스크를 다시 보고서로 옮깁니다. PM의 하루는
+      '관리를 위한 관리'로 채워지고, 정작 판단과 소통에 써야 할 시간은 뒷순위로 밀립니다.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="post-body">
+      <p>
+        그런데 지난 2~3년, 이 익숙한 풍경을 바꾸는 기술이 현장에 들어왔습니다.
+        <strong>생성형 AI와 AI Agent</strong>입니다. 문제는 기술의 존재가 아니라
+        '우리 조직의 프로젝트 관리에 어떻게 녹여낼 것인가'입니다. 서울대학교
+        <strong>EPM AI4PM 추진단</strong>은 바로 그 질문에 답하기 위해 움직입니다.
+      </p>
+
+      <h2>왜 지금 'AI4PM'인가</h2>
+      <p>
+        AI는 이미 PM의 반복 업무를 대신할 수 있는 수준에 이르렀습니다. 회의록과 보고서 초안 작성,
+        일정·마일스톤 점검, 리스크의 조기 감지, 방대한 계약·기술 문서에서 필요한 조항 찾기 —
+        과거에는 사람의 시간을 통째로 쓰던 일들입니다.
+      </p>
+
+      <blockquote>AI는 PM을 대체하지 않습니다. PM이 더 중요한 일에 집중하도록 도울 뿐입니다.</blockquote>
+
+      <p>
+        핵심은 반복은 AI에게 넘기고, 사람은 판단·조율·의사결정에 집중하는 것.
+        이것이 'AI4PM(AI for Project Management)'이 지향하는 방향입니다. 그리고 이 전환은
+        도구 도입만으로 완성되지 않습니다. 조직의 PM 역량 체계 자체가 'AI를 활용하는 역량'까지
+        포함하도록 함께 진화해야 합니다.
+      </p>
+
+      <h2>서울대 EPM AI4PM 추진단이 하는 일</h2>
+      <p>
+        추진단은 산업 현장의 프로젝트 관리 역량을 고도화하고 AI 기반 업무 혁신을 지원하기 위해,
+        세 개의 축으로 활동합니다.
+      </p>
+
+      <div class="pillars">
+        <div class="pillar">
+          <span class="num">1</span>
+          <strong>AI 기술 변화 특강</strong>
+          <span>생성형 AI·AI Agent 최신 흐름과 프로젝트 관리 현장의 활용을 다루는 맞춤형 특강</span>
+        </div>
+        <div class="pillar">
+          <span class="num">2</span>
+          <strong>PM 역량 고도화 컨설팅</strong>
+          <span>현재 PM 역량에 AI 활용 역량을 더해 조직 맞춤형 역량 모델을 재정립·고도화</span>
+        </div>
+        <div class="pillar">
+          <span class="num">3</span>
+          <strong>진단·분석·솔루션 도출</strong>
+          <span>역량 진단 후 결과 분석, 맞춤 교육·컨설팅, PM/AI 자격 연계까지 연결</span>
+        </div>
+      </div>
+
+      <h3>AI 기술 변화 특강</h3>
+      <p>
+        생성형 AI와 AI Agent의 최신 흐름, 프로젝트 관리 현장의 실제 활용 사례, 산업별 적용 트렌드를
+        다룹니다. 실무자를 위한 AI 리터러시부터 경영진 대상 트렌드 브리핑까지, 조직의 눈높이에 맞춘
+        특강·워크숍으로 설계됩니다.
+      </p>
+
+      <h3>PM을 위한 AI Agent 개발</h3>
+      <p>
+        보고서·회의록 자동화, 일정·리스크 관리, 계약·문서 검색, RFP·제안서 작성 지원 등
+        <strong>PM 업무에 특화된 AI Agent</strong>를 조직의 문제 상황에 맞춰 발굴하고 구현합니다.
+      </p>
+
+      <h3>PM 역량 고도화 컨설팅과 진단·분석·솔루션</h3>
+      <p>
+        현재의 PM 역량 모델에 AI 활용 역량을 더해 조직 맞춤형으로 재정립하고,
+        <strong>역량 진단 → 결과 분석 → 맞춤 교육·컨설팅</strong>으로 이어지는 솔루션을 도출합니다.
+        PM/AI 자격 연계까지 하나의 흐름으로 연결됩니다.
+      </p>
+
+      <h2>진단에서 솔루션까지, 하나로 연결됩니다</h2>
+      <p>
+        좋은 프로그램은 '무엇이 필요한지'를 아는 데서 출발합니다. 추진단은 정해진 커리큘럼을 파는 대신,
+        <strong>현재 수준을 진단하고 → 조직·직급별로 분석하고 → 그 결과에 맞는 특강·Agent·컨설팅을 설계</strong>하는
+        순서로 접근합니다. 그래서 같은 'AI4PM'이라도 건설·플랜트·ICT·공공기관에 따라, 그리고 PM·PMO·임원에 따라
+        전혀 다른 처방이 나옵니다.
+      </p>
+
+      <h2>첫걸음은 '우리 조직의 니즈'를 듣는 것입니다</h2>
+      <p>
+        그래서 추진단은 프로그램 설계에 앞서, 현장의 실제 니즈부터 듣고 있습니다. AI 특강, AI Agent 개발,
+        PM 역량 고도화, 올해의 역량 진단·솔루션 — 네 가지 영역 중 <strong>관심 있는 부분만 골라</strong>
+        응답하실 수 있으며, 약 3~5분이면 충분합니다. 응답 내용은 향후 특강 기획, Agent 과제 발굴,
+        역량 모델 재정립, 진단·컨설팅 프로그램 설계에 활용됩니다.
+      </p>
+
+      <div class="cta-card">
+        <h3>우리 조직의 니즈를 들려주세요</h3>
+        <p>AI 특강 · PM 역량 고도화 니즈 서베이 &nbsp;|&nbsp; 소요 시간 약 3~5분</p>
+        <a class="cta-button" href="https://now4next.github.io/AI-Consultant/">니즈 서베이 참여하기 →</a>
+        <p class="cta-url">https://now4next.github.io/AI-Consultant/</p>
+      </div>
+
+      <p>
+        AI는 이미 프로젝트 관리의 판을 바꾸고 있습니다. 그 변화를 우리 조직의 언어로 번역하는 일,
+        서울대 EPM AI4PM 추진단이 함께하겠습니다. 지금, 여러분의 니즈를 들려주세요.
+      </p>
+    </div>
+
+    <footer class="post-footer">
+      서울대 EPM AI4PM 추진단 · AI4PM Insight<br>
+      본 글의 니즈 서베이 응답은 특강·AI Agent 개발·PM 역량 고도화·진단/솔루션 프로그램 설계를 위한 참고 자료로만 활용됩니다.
+    </footer>
+  </main>
+</body>
+</html>
