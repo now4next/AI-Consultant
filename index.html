@@ -342,22 +342,6 @@
       font-weight: 800;
     }
 
-    .summary-output {
-      display: none;
-      width: 100%;
-      min-height: 220px;
-      margin-top: 16px;
-      border: 1px solid var(--epm-line);
-      border-radius: 8px;
-      padding: 14px;
-      background: #0f172a;
-      color: #dbeafe;
-      font-family: Consolas, "Courier New", monospace;
-      font-size: 13px;
-      white-space: pre-wrap;
-      overflow: auto;
-    }
-
     @media (max-width: 820px) {
       .survey-header,
       .notice,
@@ -736,36 +720,26 @@
       <section class="actions">
         <div class="button-row">
           <button type="submit" class="primary" id="submitButton">제출하기</button>
-          <button type="button" class="secondary" id="copyButton">응답 내용 복사</button>
-          <button type="button" class="secondary" id="downloadButton">JSON 파일 다운로드</button>
-          <button type="reset" class="secondary">초기화</button>
         </div>
-        <div id="status" class="status">필수 문항 입력 후 제출하면 응답이 자동으로 수집됩니다. 필요 시 응답 내용을 복사하거나 JSON 파일로 저장할 수도 있습니다.</div>
-        <pre id="summaryOutput" class="summary-output" aria-live="polite"></pre>
+        <div id="status" class="status">필수 문항을 모두 입력하신 뒤 제출해 주세요.</div>
       </section>
     </form>
   </main>
 
   <script>
     /* =========================================================================
-       [설정] 응답 자동 수집용 Google Apps Script 웹앱 URL
+       [설정] 응답 기록용 Google Apps Script 웹앱 URL
        -------------------------------------------------------------------------
        아래 따옴표 사이에 Apps Script 배포 URL(.../exec)을 붙여넣으세요.
        예: const ENDPOINT_URL = "https://script.google.com/macros/s/AKfy.../exec";
-       비워 두면 서버 전송 없이 JSON 생성/복사/다운로드만 동작합니다.
+       제출 시 이 주소로 응답이 전송되어 Google 시트에 한 행씩 기록됩니다.
        설정 방법은 저장소의 README.md > "응답 자동 수집 설정"을 참고하세요.
        ========================================================================= */
     const ENDPOINT_URL = "";
 
     const form = document.getElementById("needsSurvey");
-    const output = document.getElementById("summaryOutput");
     const statusEl = document.getElementById("status");
     const submitButton = document.getElementById("submitButton");
-    const copyButton = document.getElementById("copyButton");
-    const downloadButton = document.getElementById("downloadButton");
-
-    const DEFAULT_STATUS =
-      "필수 문항 입력 후 제출하면 응답이 자동으로 수집됩니다. 필요 시 응답 내용을 복사하거나 JSON 파일로 저장할 수도 있습니다.";
 
     function collectFormData() {
       const data = {};
@@ -787,13 +761,6 @@
       return data;
     }
 
-    function renderSummary(data) {
-      const json = JSON.stringify(data, null, 2);
-      output.textContent = json;
-      output.style.display = "block";
-      return json;
-    }
-
     function setStatus(message, type) {
       statusEl.textContent = message;
       statusEl.className = "status" + (type ? " " + type : "");
@@ -801,7 +768,7 @@
 
     async function sendToServer(data) {
       // text/plain 으로 보내 CORS 사전요청(preflight)을 피하고,
-      // Apps Script 웹앱은 e.postData.contents 에서 JSON 을 읽습니다.
+      // Apps Script 웹앱은 e.postData.contents 에서 JSON 을 읽어 시트에 기록합니다.
       const res = await fetch(ENDPOINT_URL, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
@@ -830,18 +797,12 @@
         setStatus("필수 문항을 확인해 주세요.", "error");
         return;
       }
-
-      const data = collectFormData();
-      renderSummary(data);
-
       if (!ENDPOINT_URL) {
-        setStatus(
-          "서버 연결이 설정되지 않아 응답을 생성만 했습니다. 아래 내용을 복사하거나 JSON으로 저장해 담당자에게 전달해 주세요.",
-          "ok"
-        );
+        setStatus("제출 기능이 아직 설정되지 않았습니다. 담당자에게 문의해 주세요.", "error");
         return;
       }
 
+      const data = collectFormData();
       const originalLabel = submitButton.textContent;
       submitButton.disabled = true;
       submitButton.textContent = "전송 중...";
@@ -849,55 +810,16 @@
 
       try {
         await sendToServer(data);
-        setStatus("제출이 완료되었습니다. 소중한 응답 감사합니다.", "ok");
+        setStatus("제출이 완료되었습니다. 소중한 응답에 감사드립니다.", "ok");
         submitButton.textContent = "제출 완료";
       } catch (error) {
         setStatus(
-          "전송에 실패했습니다. 네트워크 확인 후 다시 시도하시거나, 아래 응답 내용을 복사/다운로드해 담당자에게 전달해 주세요. (" +
-            error.message +
-            ")",
+          "전송에 실패했습니다. 잠시 후 다시 제출해 주세요. (" + error.message + ")",
           "error"
         );
         submitButton.disabled = false;
         submitButton.textContent = originalLabel;
       }
-    });
-
-    copyButton.addEventListener("click", async function () {
-      if (!output.textContent.trim()) {
-        renderSummary(collectFormData());
-      }
-      try {
-        await navigator.clipboard.writeText(output.textContent);
-        setStatus("응답 내용이 클립보드에 복사되었습니다.", "ok");
-      } catch (error) {
-        setStatus("복사가 제한되었습니다. 생성된 응답 내용을 직접 선택해 복사해 주세요.", "error");
-      }
-    });
-
-    downloadButton.addEventListener("click", function () {
-      if (!output.textContent.trim()) {
-        renderSummary(collectFormData());
-      }
-      const blob = new Blob([output.textContent], { type: "application/json;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      const org = document.getElementById("orgName").value.trim() || "organization";
-      a.href = url;
-      a.download = "ai4pm_needs_survey_" + org.replace(/[\\/:*?\"<>|\\s]+/g, "_") + ".json";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-      setStatus("JSON 파일이 다운로드되었습니다.", "ok");
-    });
-
-    form.addEventListener("reset", function () {
-      output.style.display = "none";
-      output.textContent = "";
-      submitButton.disabled = false;
-      submitButton.textContent = "제출하기";
-      setStatus(DEFAULT_STATUS, "");
     });
   </script>
 </body>
