@@ -91,9 +91,19 @@
     .nav-links a.active:not(.btn){color:var(--green)}
     .nav-links .btn{margin-left:8px}
     .menu-btn{
-      display:none;background:rgba(255,255,255,.03);border:1px solid var(--line);color:white;
-      padding:9px 12px;border-radius:10px;cursor:pointer;font:inherit
+      display:none;align-items:center;justify-content:center;
+      width:44px;height:44px;padding:0;
+      background:rgba(255,255,255,.03);border:1px solid var(--line);
+      border-radius:12px;cursor:pointer
     }
+    .menu-icon{position:relative;display:block;width:20px;height:14px}
+    .menu-icon span{position:absolute;left:0;width:100%;height:2px;background:#fff;border-radius:2px;transition:transform .25s ease,opacity .2s ease,top .25s ease}
+    .menu-icon span:nth-child(1){top:0}
+    .menu-icon span:nth-child(2){top:6px}
+    .menu-icon span:nth-child(3){top:12px}
+    .menu-btn[aria-expanded="true"] .menu-icon span:nth-child(1){top:6px;transform:rotate(45deg)}
+    .menu-btn[aria-expanded="true"] .menu-icon span:nth-child(2){opacity:0}
+    .menu-btn[aria-expanded="true"] .menu-icon span:nth-child(3){top:6px;transform:rotate(-45deg)}
 
     /* Buttons */
     .btn{
@@ -299,7 +309,7 @@
       .nav-links{display:none;position:absolute;top:78px;left:20px;right:20px;padding:14px;flex-direction:column;align-items:stretch;background:#0b1815;border:1px solid var(--line);border-radius:18px;gap:4px}
       .nav-links.open{display:flex}
       .nav-links .btn{margin:6px 0 0}
-      .menu-btn{display:block}
+      .menu-btn{display:inline-flex}
       .projects{grid-template-columns:1fr}
       .cta{align-items:flex-start;flex-direction:column}
     }
@@ -334,7 +344,9 @@
           <small>STRATEGY · TECHNOLOGY · IMPACT</small>
         </div>
       </a>
-      <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="navLinks">메뉴</button>
+      <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="navLinks">
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
       <div class="nav-links" id="navLinks">
         <a href="#about">회사 소개</a>
         <a href="#capabilities">핵심 역량</a>
