@@ -196,6 +196,22 @@
       box-shadow: 0 0 0 3px rgba(23, 63, 143, 0.12);
     }
 
+    /* 날짜 입력창의 달력 아이콘을 왼쪽 앞으로 이동 */
+    input[type="date"] {
+      position: relative;
+      padding-left: 44px;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      margin: 0;
+      padding: 0;
+      cursor: pointer;
+    }
+
     .choice-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
