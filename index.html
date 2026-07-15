@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>서울대 EPM AI4PM 추진단 니즈 조사</title>
+  <style>
+    :root {
+      --epm-blue: #173f8f;
+      --epm-navy: #102a5c;
+      --epm-gold: #b98a2f;
+      --epm-text: #1f2937;
+      --epm-muted: #667085;
+      --epm-line: #dde3ec;
+      --epm-bg: #f5f7fb;
+      --epm-soft: #eef4ff;
+      --epm-danger: #b42318;
+      --epm-ok: #067647;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--epm-bg);
+      color: var(--epm-text);
+      font-family: "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+      line-height: 1.65;
+      letter-spacing: -0.01em;
+      word-break: keep-all;
+    }
+
+    .survey-shell {
+      max-width: 1080px;
+      margin: 0 auto;
+      background: #fff;
+      min-height: 100vh;
+      box-shadow: 0 0 0 1px rgba(16, 42, 92, 0.06);
+    }
+
+    .survey-header {
+      padding: 44px 38px 34px;
+      background: var(--epm-navy);
+      color: #fff;
+    }
+
+    .survey-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 12px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .survey-header h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(28px, 4.8vw, 44px);
+      line-height: 1.24;
+      font-weight: 850;
+    }
+
+    .survey-header p {
+      max-width: 850px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 17px;
+    }
+
+    .notice {
+      padding: 34px 38px;
+      border-bottom: 1px solid var(--epm-line);
+      background: linear-gradient(180deg, #ffffff, #fafcff);
+    }
+
+    .notice h2,
+    .section h2 {
+      margin: 0 0 14px;
+      color: #111827;
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.35;
+      font-weight: 850;
+    }
+
+    .notice p {
+      margin: 0 0 14px;
+      font-size: 16px;
+    }
+
+    .notice-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .notice-item {
+      min-height: 116px;
+      padding: 18px;
+      border: 1px solid var(--epm-line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .notice-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--epm-blue);
+      font-size: 16px;
+    }
+
+    .notice-item span {
+      display: block;
+      color: var(--epm-muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    form {
+      padding: 0;
+    }
+
+    .section {
+      padding: 34px 38px;
+      border-bottom: 1px solid var(--epm-line);
+    }
+
+    .section-intro {
+      max-width: 850px;
+      margin: -4px 0 24px;
+      color: var(--epm-muted);
+      font-size: 15px;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label,
+    .group-label {
+      color: #111827;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .required::after {
+      content: " *";
+      color: var(--epm-danger);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid #cfd7e3;
+      border-radius: 6px;
+      padding: 11px 12px;
+      background: #fff;
+      color: var(--epm-text);
+      font: inherit;
+      font-size: 15px;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 112px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--epm-blue);
+      box-shadow: 0 0 0 3px rgba(23, 63, 143, 0.12);
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .choice-grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .choice {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      min-height: 46px;
+      padding: 12px;
+      border: 1px solid #d7dee8;
+      border-radius: 6px;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .choice input {
+      margin-top: 4px;
+      flex: 0 0 auto;
+    }
+
+    .choice span {
+      color: #344054;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .subfield {
+      margin-top: 14px;
+      padding: 16px;
+      border-left: 4px solid var(--epm-blue);
+      background: var(--epm-soft);
+    }
+
+    .scale {
+      display: grid;
+      grid-template-columns: 220px repeat(5, minmax(58px, 1fr));
+      border: 1px solid var(--epm-line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .scale > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 10px;
+      border-right: 1px solid var(--epm-line);
+      border-bottom: 1px solid var(--epm-line);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .scale > div:nth-child(6n) {
+      border-right: 0;
+    }
+
+    .scale .head {
+      background: #f8fafc;
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .scale .row-label {
+      justify-content: flex-start;
+      text-align: left;
+      font-weight: 800;
+      color: #344054;
+    }
+
+    .scale label {
+      width: 100%;
+      min-height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .privacy-box {
+      padding: 18px;
+      border: 1px solid var(--epm-line);
+      border-radius: 8px;
+      background: #f8fafc;
+      color: #475467;
+      font-size: 14px;
+    }
+
+    .actions {
+      padding: 30px 38px 40px;
+      background: #fff;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    button {
+      min-height: 48px;
+      border: 0;
+      border-radius: 6px;
+      padding: 0 18px;
+      font: inherit;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: var(--epm-blue);
+      color: #fff;
+    }
+
+    .secondary {
+      border: 1px solid var(--epm-line);
+      background: #fff;
+      color: var(--epm-blue);
+    }
+
+    .status {
+      min-height: 24px;
+      color: var(--epm-muted);
+      font-size: 14px;
+    }
+
+    .status.ok {
+      color: var(--epm-ok);
+      font-weight: 800;
+    }
+
+    .status.error {
+      color: var(--epm-danger);
+      font-weight: 800;
+    }
+
+    .summary-output {
+      display: none;
+      width: 100%;
+      min-height: 220px;
+      margin-top: 16px;
+      border: 1px solid var(--epm-line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #0f172a;
+      color: #dbeafe;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 13px;
+      white-space: pre-wrap;
+      overflow: auto;
+    }
+
+    @media (max-width: 820px) {
+      .survey-header,
+      .notice,
+      .section,
+      .actions {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .notice-list,
+      .field-grid,
+      .choice-grid,
+      .choice-grid.three {
+        grid-template-columns: 1fr;
+      }
+
+      .scale {
+        grid-template-columns: 1fr;
+        border-radius: 8px;
+      }
+
+      .scale > div {
+        border-right: 0;
+      }
+
+      .scale .head {
+        display: none;
+      }
+
+      .scale .row-label {
+        background: #f8fafc;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="survey-shell">
+    <header class="survey-header">
+      <span class="survey-eyebrow">서울대 EPM AI4PM 추진단</span>
+      <h1>기업 프로젝트 관리 및 PM 역량 고도화 니즈 조사</h1>
+      <p>
+        본 설문은 기업 내 프로젝트 관리와 업무 효율화를 위한 AI Agent 개발, AI 강의/교육,
+        그리고 조직 맞춤형 PM 역량 모델링 및 진단 수요를 파악하기 위한 사전 조사입니다.
+      </p>
+    </header>
+
+    <section class="notice" aria-label="설문 안내문">
+      <h2>설문 안내</h2>
+      <p>
+        서울대학교 EPM AI4PM 추진단은 산업 현장의 프로젝트 관리 역량을 고도화하고,
+        AI 기반 업무 혁신을 지원하기 위해 기업 및 기관의 실제 니즈를 조사하고 있습니다.
+      </p>
+      <p>
+        응답 내용은 향후 AI Agent 개발 과제 발굴, AI4PM 강의 및 워크숍 설계,
+        PM 역량 모델 재정립, 역량 진단 및 맞춤형 교육·컨설팅 프로그램 기획에 활용됩니다.
+      </p>
+      <div class="notice-list">
+        <div class="notice-item">
+          <strong>AI Agent 개발 니즈</strong>
+          <span>프로젝트 관리, 보고 자동화, 일정·리스크 관리, 문서 요약 등 AI 기반 업무 효율화 수요 확인</span>
+        </div>
+        <div class="notice-item">
+          <strong>PM 역량 모델링 니즈</strong>
+          <span>기존 PM 역량에 AI 활용 역량을 더해 조직 맞춤형 역량 정의와 수준 체계 재정립</span>
+        </div>
+        <div class="notice-item">
+          <strong>진단·교육·컨설팅 연계</strong>
+          <span>역량 진단 후 분석 보고서, 맞춤 교육, 역량 개발 컨설팅, PM/AI 자격 연계 필요성 파악</span>
+        </div>
+      </div>
+    </section>
+
+    <form id="needsSurvey">
+      <section class="section">
+        <h2>1. 응답자 기본정보</h2>
+        <p class="section-intro">후속 연락 및 조직별 니즈 분석을 위해 필요한 최소 정보를 입력해 주세요.</p>
+        <div class="field-grid">
+          <div class="field">
+            <label class="required" for="orgName">소속 조직명</label>
+            <input type="text" id="orgName" name="소속 조직명" required placeholder="예: 00건설, 00공사, 00연구원">
+          </div>
+          <div class="field">
+            <label for="department">부서/팀</label>
+            <input type="text" id="department" name="부서/팀" placeholder="예: PMO, 기술기획팀, 인재개발팀">
+          </div>
+          <div class="field">
+            <label class="required" for="name">이름</label>
+            <input type="text" id="name" name="이름" required>
+          </div>
+          <div class="field">
+            <label for="position">직급/직책</label>
+            <input type="text" id="position" name="직급/직책" placeholder="예: 팀장, 책임, 본부장, PM">
+          </div>
+          <div class="field">
+            <label class="required" for="phone">핸드폰 번호</label>
+            <input type="tel" id="phone" name="핸드폰 번호" required placeholder="010-0000-0000">
+          </div>
+          <div class="field">
+            <label class="required" for="email">이메일</label>
+            <input type="email" id="email" name="이메일" required placeholder="name@company.com">
+          </div>
+          <div class="field">
+            <label for="industry">산업/업종</label>
+            <select id="industry" name="산업/업종">
+              <option value="">선택해 주세요</option>
+              <option>건설/인프라</option>
+              <option>플랜트/에너지</option>
+              <option>조선/해양</option>
+              <option>항공우주/방산</option>
+              <option>ICT/소프트웨어</option>
+              <option>제조/엔지니어링</option>
+              <option>연구개발/R&D</option>
+              <option>공공기관/공기업</option>
+              <option>기타</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="orgSize">조직 규모</label>
+            <select id="orgSize" name="조직 규모">
+              <option value="">선택해 주세요</option>
+              <option>100명 미만</option>
+              <option>100~499명</option>
+              <option>500~999명</option>
+              <option>1,000~4,999명</option>
+              <option>5,000명 이상</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>2. AI 강의 및 AI Agent 개발 니즈</h2>
+        <p class="section-intro">기업 내 프로젝트 관리 및 업무 효율화를 위해 AI 교육 또는 AI Agent 개발 필요성이 있는지 확인합니다.</p>
+        <div class="field-grid">
+          <div class="field full">
+            <div class="group-label required">AI 강의/워크숍 또는 AI Agent 개발 니즈가 있습니까?</div>
+            <div class="choice-grid three">
+              <label class="choice"><input type="radio" name="AI 강의 및 개발 니즈 여부" value="있음" required><span>있음</span></label>
+              <label class="choice"><input type="radio" name="AI 강의 및 개발 니즈 여부" value="검토 중"><span>검토 중</span></label>
+              <label class="choice"><input type="radio" name="AI 강의 및 개발 니즈 여부" value="현재 없음"><span>현재 없음</span></label>
+            </div>
+          </div>
+
+          <div class="field full">
+            <div class="group-label">관심 있는 AI 활용 영역을 선택해 주세요. 복수 선택 가능</div>
+            <div class="choice-grid">
+              <label class="choice"><input type="checkbox" name="AI 관심 영역" value="프로젝트 보고서/회의록 자동화"><span>프로젝트 보고서/회의록 자동화</span></label>
+              <label class="choice"><input type="checkbox" name="AI 관심 영역" value="일정·진도·마일스톤 관리"><span>일정·진도·마일스톤 관리</span></label>
+              <label class="choice"><input type="checkbox" name="AI 관심 영역" value="리스크·이슈 조기 감지"><span>리스크·이슈 조기 감지</span></label>
+              <label class="choice"><input type="checkbox" name="AI 관심 영역" value="계약/클레임/문서 검색"><span>계약/클레임/문서 검색</span></label>
+              <label class="choice"><input type="checkbox" name="AI 관심 영역" value="RFP/제안서/입찰 문서 작성 지원"><span>RFP/제안서/입찰 문서 작성 지원</span></label>
+              <label class="choice"><input type="checkbox" name="AI 관심 영역" value="PM 지식관리/RAG 검색"><span>PM 지식관리/RAG 검색</span></label>
+              <label class="choice"><input type="checkbox" name="AI 관심 영역" value="PM 교육용 AI 튜터"><span>PM 교육용 AI 튜터</span></label>
+              <label class="choice"><input type="checkbox" name="AI 관심 영역" value="사내 업무 자동화 Agent"><span>사내 업무 자동화 Agent</span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="aiMaturity">현재 조직의 AI 활용 수준</label>
+            <select id="aiMaturity" name="현재 AI 활용 수준">
+              <option value="">선택해 주세요</option>
+              <option>아직 활용 전</option>
+              <option>개인 단위 실험 중</option>
+              <option>부서 단위 PoC 진행 중</option>
+              <option>일부 업무에 도입 완료</option>
+              <option>전사 확산 단계</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="aiTimeline">희망 추진 시점</label>
+            <select id="aiTimeline" name="AI 관련 희망 추진 시점">
+              <option value="">선택해 주세요</option>
+              <option>1개월 이내</option>
+              <option>3개월 이내</option>
+              <option>6개월 이내</option>
+              <option>올해 안 검토</option>
+              <option>장기 검토</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="aiNeedDetail">AI 강의 또는 AI Agent 개발 관련 구체적 니즈/문제 상황</label>
+            <textarea id="aiNeedDetail" name="AI 니즈 상세" placeholder="예: 프로젝트 회의록 정리 시간이 오래 걸림, 리스크 보고 자동화 필요, PM 문서 검색 Agent 필요 등"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>3. PM 역량 모델링 재정립 니즈</h2>
+        <p class="section-intro">우리 조직의 프로젝트 환경에 맞춰 PM 역량 정의, 수준 체계, AI 역량 포함 여부를 재정립할 필요가 있는지 확인합니다.</p>
+        <div class="field-grid">
+          <div class="field full">
+            <div class="group-label required">PM 역량 모델링 재정립이 필요하다고 보십니까?</div>
+            <div class="choice-grid three">
+              <label class="choice"><input type="radio" name="PM 역량 모델링 재정립 필요 여부" value="필요" required><span>필요</span></label>
+              <label class="choice"><input type="radio" name="PM 역량 모델링 재정립 필요 여부" value="검토 필요"><span>검토 필요</span></label>
+              <label class="choice"><input type="radio" name="PM 역량 모델링 재정립 필요 여부" value="현재 필요 없음"><span>현재 필요 없음</span></label>
+            </div>
+          </div>
+
+          <div class="field full">
+            <div class="group-label">재정립이 필요한 역량 영역을 선택해 주세요. 복수 선택 가능</div>
+            <div class="choice-grid">
+              <label class="choice"><input type="checkbox" name="PM 역량 재정립 영역" value="프로젝트 기획/착수"><span>프로젝트 기획/착수</span></label>
+              <label class="choice"><input type="checkbox" name="PM 역량 재정립 영역" value="일정/원가/품질 관리"><span>일정/원가/품질 관리</span></label>
+              <label class="choice"><input type="checkbox" name="PM 역량 재정립 영역" value="리스크/이슈 관리"><span>리스크/이슈 관리</span></label>
+              <label class="choice"><input type="checkbox" name="PM 역량 재정립 영역" value="계약/구매/클레임 관리"><span>계약/구매/클레임 관리</span></label>
+              <label class="choice"><input type="checkbox" name="PM 역량 재정립 영역" value="이해관계자/커뮤니케이션"><span>이해관계자/커뮤니케이션</span></label>
+              <label class="choice"><input type="checkbox" name="PM 역량 재정립 영역" value="리더십/조직관리"><span>리더십/조직관리</span></label>
+              <label class="choice"><input type="checkbox" name="PM 역량 재정립 영역" value="AI 활용 역량"><span>AI 활용 역량</span></label>
+              <label class="choice"><input type="checkbox" name="PM 역량 재정립 영역" value="데이터 기반 의사결정"><span>데이터 기반 의사결정</span></label>
+            </div>
+          </div>
+
+          <div class="field full">
+            <div class="group-label">현재 PM 역량 모델의 적합도를 평가해 주세요.</div>
+            <div class="scale" role="group" aria-label="PM 역량 모델 적합도 평가">
+              <div class="head">항목</div>
+              <div class="head">1 낮음</div>
+              <div class="head">2</div>
+              <div class="head">3 보통</div>
+              <div class="head">4</div>
+              <div class="head">5 높음</div>
+
+              <div class="row-label">조직 업무 특성 반영</div>
+              <div><label><input type="radio" name="조직 업무 특성 반영" value="1"></label></div>
+              <div><label><input type="radio" name="조직 업무 특성 반영" value="2"></label></div>
+              <div><label><input type="radio" name="조직 업무 특성 반영" value="3"></label></div>
+              <div><label><input type="radio" name="조직 업무 특성 반영" value="4"></label></div>
+              <div><label><input type="radio" name="조직 업무 특성 반영" value="5"></label></div>
+
+              <div class="row-label">직급/역할별 수준 정의</div>
+              <div><label><input type="radio" name="직급 역할별 수준 정의" value="1"></label></div>
+              <div><label><input type="radio" name="직급 역할별 수준 정의" value="2"></label></div>
+              <div><label><input type="radio" name="직급 역할별 수준 정의" value="3"></label></div>
+              <div><label><input type="radio" name="직급 역할별 수준 정의" value="4"></label></div>
+              <div><label><input type="radio" name="직급 역할별 수준 정의" value="5"></label></div>
+
+              <div class="row-label">AI/데이터 역량 반영</div>
+              <div><label><input type="radio" name="AI 데이터 역량 반영" value="1"></label></div>
+              <div><label><input type="radio" name="AI 데이터 역량 반영" value="2"></label></div>
+              <div><label><input type="radio" name="AI 데이터 역량 반영" value="3"></label></div>
+              <div><label><input type="radio" name="AI 데이터 역량 반영" value="4"></label></div>
+              <div><label><input type="radio" name="AI 데이터 역량 반영" value="5"></label></div>
+
+              <div class="row-label">교육/평가 연계성</div>
+              <div><label><input type="radio" name="교육 평가 연계성" value="1"></label></div>
+              <div><label><input type="radio" name="교육 평가 연계성" value="2"></label></div>
+              <div><label><input type="radio" name="교육 평가 연계성" value="3"></label></div>
+              <div><label><input type="radio" name="교육 평가 연계성" value="4"></label></div>
+              <div><label><input type="radio" name="교육 평가 연계성" value="5"></label></div>
+            </div>
+          </div>
+
+          <div class="field full">
+            <label for="pmModelDetail">PM 역량 모델링 관련 구체적 니즈</label>
+            <textarea id="pmModelDetail" name="PM 역량 모델링 상세 니즈" placeholder="예: 직무별 PM 역량 정의 필요, AI 역량 추가 필요, PM/리더/실무자 수준 구분 필요 등"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>4. PM 역량 진단 및 후속 지원 니즈</h2>
+        <p class="section-intro">PM 역량 진단 후 결과 분석, 맞춤형 교육, 컨설팅, 자격 연계 필요성을 확인합니다.</p>
+        <div class="field-grid">
+          <div class="field full">
+            <div class="group-label">필요한 후속 지원을 선택해 주세요. 복수 선택 가능</div>
+            <div class="choice-grid">
+              <label class="choice"><input type="checkbox" name="후속 지원 니즈" value="PM 역량 진단"><span>PM 역량 진단</span></label>
+              <label class="choice"><input type="checkbox" name="후속 지원 니즈" value="진단 결과 분석 보고서"><span>진단 결과 분석 보고서</span></label>
+              <label class="choice"><input type="checkbox" name="후속 지원 니즈" value="조직/직급별 PM 역량 분석"><span>조직/직급별 PM 역량 분석</span></label>
+              <label class="choice"><input type="checkbox" name="후속 지원 니즈" value="PM 역량 맞춤형 교육"><span>PM 역량 맞춤형 교육</span></label>
+              <label class="choice"><input type="checkbox" name="후속 지원 니즈" value="PM 역량 개발 컨설팅"><span>PM 역량 개발 컨설팅</span></label>
+              <label class="choice"><input type="checkbox" name="후속 지원 니즈" value="AI4PM 교육/워크숍"><span>AI4PM 교육/워크숍</span></label>
+              <label class="choice"><input type="checkbox" name="후속 지원 니즈" value="PM 자격 연계"><span>PM 자격 연계</span></label>
+              <label class="choice"><input type="checkbox" name="후속 지원 니즈" value="AI 자격 연계"><span>AI 자격 연계</span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="diagnosisTarget">예상 진단 대상 규모</label>
+            <select id="diagnosisTarget" name="예상 진단 대상 규모">
+              <option value="">선택해 주세요</option>
+              <option>10명 미만</option>
+              <option>10~49명</option>
+              <option>50~99명</option>
+              <option>100~299명</option>
+              <option>300명 이상</option>
+              <option>미정</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="targetRoles">주요 대상 직군/역할</label>
+            <select id="targetRoles" name="주요 대상 직군 역할">
+              <option value="">선택해 주세요</option>
+              <option>PM/프로젝트 리더</option>
+              <option>PMO/사업관리 조직</option>
+              <option>기술/엔지니어링 리더</option>
+              <option>신임 PM/예비 PM</option>
+              <option>임원/사업책임자</option>
+              <option>전사 공통</option>
+              <option>기타</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="educationNeeds">맞춤형 교육 또는 컨설팅에서 다루고 싶은 주제</label>
+            <textarea id="educationNeeds" name="맞춤형 교육 컨설팅 희망 주제" placeholder="예: 리스크 관리, 원가관리, PM 리더십, AI를 활용한 프로젝트 관리, PMO 체계 구축 등"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>5. 추진 조건 및 상담 요청</h2>
+        <p class="section-intro">향후 상세 상담과 제안 범위 산정을 위한 참고 정보입니다.</p>
+        <div class="field-grid">
+          <div class="field">
+            <label for="budgetRange">예상 예산 범위</label>
+            <select id="budgetRange" name="예상 예산 범위">
+              <option value="">선택해 주세요</option>
+              <option>예산 미정</option>
+              <option>1천만원 미만</option>
+              <option>1천만원~3천만원</option>
+              <option>3천만원~5천만원</option>
+              <option>5천만원~1억원</option>
+              <option>1억원 이상</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="meetingRequest">후속 상담 희망 여부</label>
+            <select id="meetingRequest" name="후속 상담 희망 여부">
+              <option value="">선택해 주세요</option>
+              <option>상담 희망</option>
+              <option>자료 수신 후 검토</option>
+              <option>아직 미정</option>
+              <option>상담 불필요</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="preferredDate">희망 상담일</label>
+            <input type="date" id="preferredDate" name="희망 상담일">
+          </div>
+          <div class="field">
+            <label for="contactMethod">선호 연락 방식</label>
+            <select id="contactMethod" name="선호 연락 방식">
+              <option value="">선택해 주세요</option>
+              <option>전화</option>
+              <option>이메일</option>
+              <option>온라인 미팅</option>
+              <option>방문 미팅</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="additionalComment">기타 의견</label>
+            <textarea id="additionalComment" name="기타 의견" placeholder="추가로 전달하고 싶은 내용이 있으면 입력해 주세요."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>6. 개인정보 수집 및 활용 동의</h2>
+        <div class="privacy-box">
+          수집 항목: 소속 조직, 부서, 이름, 직급/직책, 연락처, 이메일, 설문 응답 내용<br>
+          활용 목적: AI Agent 개발 니즈 파악, PM 역량 모델링 및 진단 수요 분석, 후속 상담 및 자료 안내<br>
+          보유 기간: 조사 목적 달성 후 내부 관리 기준에 따라 보관 및 파기
+        </div>
+        <div class="subfield">
+          <label class="choice">
+            <input type="checkbox" name="개인정보 수집 및 활용 동의" value="동의" required>
+            <span>위 개인정보 수집 및 활용에 동의합니다.</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="actions">
+        <div class="button-row">
+          <button type="submit" class="primary">응답 내용 생성</button>
+          <button type="button" class="secondary" id="copyButton">응답 내용 복사</button>
+          <button type="button" class="secondary" id="downloadButton">JSON 파일 다운로드</button>
+          <button type="reset" class="secondary">초기화</button>
+        </div>
+        <div id="status" class="status">응답 후 생성된 내용을 복사하거나 JSON 파일로 저장해 담당자에게 전달할 수 있습니다.</div>
+        <pre id="summaryOutput" class="summary-output" aria-live="polite"></pre>
+      </section>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById("needsSurvey");
+    const output = document.getElementById("summaryOutput");
+    const statusEl = document.getElementById("status");
+    const copyButton = document.getElementById("copyButton");
+    const downloadButton = document.getElementById("downloadButton");
+
+    function collectFormData() {
+      const data = {};
+      const fd = new FormData(form);
+
+      for (const [key, value] of fd.entries()) {
+        if (data[key]) {
+          if (Array.isArray(data[key])) {
+            data[key].push(value);
+          } else {
+            data[key] = [data[key], value];
+          }
+        } else {
+          data[key] = value;
+        }
+      }
+
+      data["응답 생성 시각"] = new Date().toLocaleString("ko-KR");
+      return data;
+    }
+
+    function renderSummary(data) {
+      const json = JSON.stringify(data, null, 2);
+      output.textContent = json;
+      output.style.display = "block";
+      statusEl.textContent = "응답 내용이 생성되었습니다. 복사 또는 JSON 다운로드를 사용할 수 있습니다.";
+      statusEl.className = "status ok";
+      return json;
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (!form.reportValidity()) {
+        statusEl.textContent = "필수 문항을 확인해 주세요.";
+        statusEl.className = "status error";
+        return;
+      }
+      renderSummary(collectFormData());
+    });
+
+    copyButton.addEventListener("click", async function () {
+      if (!output.textContent.trim()) {
+        renderSummary(collectFormData());
+      }
+      try {
+        await navigator.clipboard.writeText(output.textContent);
+        statusEl.textContent = "응답 내용이 클립보드에 복사되었습니다.";
+        statusEl.className = "status ok";
+      } catch (error) {
+        statusEl.textContent = "복사가 제한되었습니다. 생성된 응답 내용을 직접 선택해 복사해 주세요.";
+        statusEl.className = "status error";
+      }
+    });
+
+    downloadButton.addEventListener("click", function () {
+      if (!output.textContent.trim()) {
+        renderSummary(collectFormData());
+      }
+      const blob = new Blob([output.textContent], { type: "application/json;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      const org = document.getElementById("orgName").value.trim() || "organization";
+      a.href = url;
+      a.download = "ai4pm_needs_survey_" + org.replace(/[\\/:*?\"<>|\\s]+/g, "_") + ".json";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      statusEl.textContent = "JSON 파일이 다운로드되었습니다.";
+      statusEl.className = "status ok";
+    });
+  </script>
+</body>
+</html>
