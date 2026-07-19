@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fbf7f0">
+<title>질문의 주권 · Leadership Insight Vol. 03</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400&family=Noto+Serif+KR:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c1a17;
+    --ink-2:#2a2620;
+    --paper:#fbf7f0;
+    --paper-2:#f0eadc;
+    --paper-3:#e8dfcc;
+    --rule:#1c1a17;
+    --accent:#1a3e6b;
+    --accent-2:#2a5fa8;
+    --muted:#7d756a;
+    --muted-2:#a89e8f;
+    --serif:'Gowun Batang','Noto Serif KR','Playfair Display',serif;
+    --serif-display:'Playfair Display','Noto Serif KR',serif;
+    --sans:'Inter Tight','Noto Serif KR',sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-size:18px}
+  body{overflow-x:hidden;padding-bottom:80px}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:100;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.11  0 0 0 0 0.10  0 0 0 0 0.09  0 0 0 .06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode:multiply;opacity:.5;
+  }
+
+  /* ---- masthead ---- */
+  .mast{
+    border-bottom:3px double var(--ink);
+    padding:14px 22px;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    position:sticky;top:0;background:var(--paper);z-index:50;
+  }
+  .mast .C{
+    justify-self:center;
+    font-family:var(--serif-display);
+    font-weight:900;
+    font-size:17px;
+    letter-spacing:0;
+    text-transform:none;
+    font-style:italic;
+  }
+  .mast .R{justify-self:end;color:var(--muted);font-size:10px}
+  .mast .L{color:var(--muted);font-size:10px}
+  .mast .L a{color:inherit}
+  .mast .L a:hover{color:var(--accent)}
+
+  /* ---- hero ---- */
+  .hero{border-bottom:1px solid var(--ink)}
+  .hero .eyebrow-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:20px 22px 0;
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  }
+  .hero .eyebrow-row .k{color:var(--accent)}
+  .hero .eyebrow-row .r{color:var(--muted)}
+  .hero .text-block{padding:28px 22px 28px}
+  .hero .kicker{
+    display:flex;align-items:center;gap:12px;
+    margin-bottom:28px;
+  }
+  .hero .kicker .k-line{flex:1;height:1px;background:var(--ink);opacity:.35}
+  .hero .kicker .k-text{
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:13px;color:var(--accent);letter-spacing:.01em;white-space:nowrap;
+  }
+  .hero h1{margin:0 0 28px;color:var(--ink);font-weight:400}
+  .hero h1 .ko-lead{
+    display:block;
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(40px,11vw,54px);
+    line-height:1.02;
+    letter-spacing:-.045em;
+    color:var(--ink);
+    word-break:keep-all;
+  }
+  .hero h1 .ko-lead em{
+    font-style:normal;color:var(--accent);font-weight:700;position:relative;
+  }
+  .hero h1 .ko-lead em::after{
+    content:"";position:absolute;left:0;right:0;bottom:.04em;height:.32em;
+    background:rgba(26,62,107,.13);z-index:-1;
+  }
+  .hero h1 .ko-sub{
+    display:block;
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(19px,5.4vw,24px);
+    line-height:1.35;
+    letter-spacing:-.025em;
+    color:var(--ink-2);
+    margin-top:16px;
+    word-break:keep-all;
+  }
+  .hero .deck{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:17px;
+    line-height:1.75;
+    color:var(--ink-2);
+    text-wrap:pretty;
+    word-break:keep-all;
+    padding-top:24px;
+    border-top:1px solid var(--ink);
+    margin-top:4px;
+  }
+  .hero .deck em{color:var(--accent);font-style:italic;font-weight:500}
+  .hero .pillars{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;
+    margin-top:26px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  }
+  .hero .pillar{
+    padding:14px 6px 14px 0;
+    display:flex;flex-direction:column;gap:6px;
+    border-right:1px solid rgba(28,26,23,.25);
+  }
+  .hero .pillar:last-child{border-right:none;padding-right:0}
+  .hero .pillar:not(:first-child){padding-left:12px}
+  .hero .pillar .n{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--accent)}
+  .hero .pillar .t{
+    font-family:var(--serif);font-weight:600;font-size:13px;
+    color:var(--ink);letter-spacing:-.02em;line-height:1.25;
+    word-break:keep-all;
+  }
+
+  .hero-img{
+    position:relative;
+    aspect-ratio:3/4;
+    background:#1a1613;
+    overflow:hidden;
+    border-top:1px solid var(--ink);
+    border-bottom:1px solid var(--ink);
+  }
+  .hero-img img{
+    width:100%;height:100%;object-fit:cover;
+    filter:contrast(1.02) saturate(.9);
+  }
+  .hero-img .cap{
+    position:absolute;left:16px;right:16px;bottom:16px;
+    color:#f3eee3;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:12px;
+    line-height:1.4;
+    text-shadow:0 1px 12px rgba(0,0,0,.6);
+    max-width:32ch;
+  }
+  .hero-img .frame-tag{
+    position:absolute;top:14px;left:14px;
+    font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:#e8dfcc;
+    padding:5px 9px;background:rgba(28,26,23,.6);backdrop-filter:blur(4px);
+    text-transform:uppercase;
+  }
+
+  .source-row{
+    display:grid;grid-template-columns:auto 1fr;gap:16px;
+    padding:18px 22px 24px;align-items:start;
+    border-bottom:1px solid var(--ink);
+  }
+  .source-row .src-lab{
+    font-family:var(--mono);font-size:9px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--muted);
+    padding-top:3px;white-space:nowrap;
+  }
+  .source-row .src-body{display:flex;flex-direction:column;gap:4px}
+  .source-row .src-body b{
+    font-family:var(--serif-display);font-style:italic;font-weight:500;
+    font-size:15px;color:var(--ink);letter-spacing:0;line-height:1.35;
+  }
+  .source-row .src-body span{
+    font-family:var(--serif);font-size:12px;color:var(--muted);
+    letter-spacing:-.01em;
+  }
+
+  /* ---- series callout ---- */
+  .series{
+    padding:18px 22px;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+    background:var(--paper-2);
+    border-bottom:1px solid var(--ink);
+  }
+  .series .lab{
+    font-family:var(--mono);font-size:9px;letter-spacing:.2em;
+    color:var(--accent);text-transform:uppercase;margin-bottom:4px;
+  }
+  .series .ti{
+    font-family:var(--serif);font-weight:600;font-size:14px;
+    color:var(--ink);letter-spacing:-.02em;line-height:1.3;
+    word-break:keep-all;
+  }
+  .series a.arr{
+    flex:0 0 auto;
+    font-family:var(--serif-display);font-style:italic;
+    font-size:22px;color:var(--accent);
+  }
+
+  /* ---- article ---- */
+  .article{padding:44px 24px 0}
+  .prose{
+    font-family:var(--serif);
+    font-weight:400;font-size:18px;line-height:1.9;
+    color:var(--ink-2);letter-spacing:-.01em;
+  }
+  .prose p{margin-bottom:1.15em;text-wrap:pretty;word-break:keep-all}
+  .prose p.lede{
+    font-family:var(--serif);font-size:19px;line-height:1.75;
+    color:var(--ink);font-weight:500;margin-bottom:1.5em;
+  }
+  .prose .dropcap::first-letter{
+    font-family:var(--serif-display);font-size:82px;float:left;
+    line-height:.82;padding:10px 12px 0 0;font-weight:900;
+    color:var(--accent);font-style:italic;
+  }
+  .prose h2{
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:14px;letter-spacing:.02em;color:var(--accent);
+    margin:48px 0 6px;text-transform:none;
+  }
+  .prose h2 .num{
+    font-family:var(--mono);font-style:normal;font-size:10px;
+    letter-spacing:.2em;color:var(--muted);display:block;margin-bottom:8px;
+    text-transform:uppercase;
+  }
+  .prose h3{
+    font-family:var(--serif);font-weight:700;font-size:26px;line-height:1.25;
+    margin:4px 0 22px;color:var(--ink);letter-spacing:-.03em;
+    word-break:keep-all;text-wrap:balance;
+  }
+  .prose em{font-style:italic;color:var(--accent-2)}
+  .prose strong{font-weight:700;color:var(--ink);background:linear-gradient(transparent 60%,rgba(26,62,107,.13) 60%)}
+
+  .prose blockquote{
+    margin:44px -6px;padding:26px 0;
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:24px;line-height:1.35;color:var(--ink);
+    text-wrap:balance;word-break:keep-all;
+  }
+  .prose blockquote .ko{
+    font-family:var(--serif);font-style:normal;font-weight:500;
+    font-size:20px;line-height:1.55;display:block;margin-top:12px;
+    color:var(--ink);letter-spacing:-.02em;
+  }
+  .prose blockquote cite{
+    display:block;font-style:normal;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--muted);margin-top:16px;
+  }
+
+  /* ---- stat strip (Question Burst 전용) ---- */
+  .stat-strip{
+    margin:44px -24px;padding:32px 24px;
+    background:var(--ink);color:var(--paper);
+    display:grid;grid-template-columns:1fr 1fr;gap:24px 20px;
+  }
+  .stat-strip .stat .lab{
+    font-family:var(--mono);font-size:9px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--muted-2);margin-bottom:8px;
+  }
+  .stat-strip .stat .num{
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:44px;line-height:1;color:var(--paper);letter-spacing:-.02em;
+  }
+  .stat-strip .stat .num .sm{font-size:20px;color:var(--accent-2)}
+  .stat-strip .stat .cap{
+    font-family:var(--serif);font-size:13px;line-height:1.55;
+    color:var(--paper-3);margin-top:8px;word-break:keep-all;
+  }
+  .stat-strip .stat .cap em{color:var(--accent-2);font-style:italic}
+
+  /* ---- burst rules (paradox 재활용) ---- */
+  .paradox{
+    margin:44px -24px;padding:36px 24px;
+    background:var(--paper-2);
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  }
+  .paradox .p-hd{
+    font-family:var(--mono);font-size:10px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:6px;
+  }
+  .paradox .p-ti{
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:26px;line-height:1.15;color:var(--ink);margin-bottom:4px;
+  }
+  .paradox .p-ti-ko{
+    font-family:var(--serif);font-weight:700;font-size:22px;line-height:1.25;
+    color:var(--ink);letter-spacing:-.03em;margin-bottom:26px;
+    word-break:keep-all;text-wrap:balance;
+  }
+  .pair{
+    background:var(--paper);
+    border:1px solid var(--ink);
+    padding:20px 18px 22px;
+    margin-bottom:12px;
+    position:relative;
+  }
+  .pair .p-idx{
+    position:absolute;top:-1px;right:-1px;
+    background:var(--ink);color:var(--paper);
+    padding:5px 9px;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
+  }
+  .pair .p-flow{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:10px;
+    align-items:center;
+    margin-bottom:12px;
+    padding-right:34px;
+  }
+  .pair .p-flow .side{display:flex;flex-direction:column;gap:2px}
+  .pair .p-flow .side .en{
+    font-family:var(--serif-display);font-style:italic;
+    font-size:11px;color:var(--muted);letter-spacing:0;line-height:1.2;
+  }
+  .pair .p-flow .side .ko{
+    font-family:var(--serif);font-weight:700;font-size:17px;
+    color:var(--ink);letter-spacing:-.03em;line-height:1.15;
+    word-break:keep-all;
+  }
+  .pair .p-flow .side.dark .ko{color:var(--accent)}
+  .pair .p-flow .arr{
+    font-family:var(--serif-display);font-style:italic;
+    font-size:22px;color:var(--accent);
+    padding:0 4px;
+  }
+  .pair .p-body{
+    font-family:var(--serif);font-size:14.5px;line-height:1.75;
+    color:var(--ink-2);word-break:keep-all;
+    padding-top:14px;
+    border-top:1px dashed var(--muted-2);
+  }
+  .pair .p-body em{color:var(--accent-2);font-style:italic;font-weight:500}
+
+  /* ---- ladder (CEO 4대 질문) ---- */
+  .ladder{margin:44px 0}
+  .ladder .ld-hd{
+    font-family:var(--mono);font-size:10px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:6px;
+  }
+  .ladder .ld-ti{
+    font-family:var(--serif);font-weight:700;font-size:24px;color:var(--ink);
+    letter-spacing:-.03em;margin-bottom:20px;line-height:1.25;
+    word-break:keep-all;text-wrap:balance;
+  }
+  .ladder .step{
+    display:grid;grid-template-columns:44px 1fr;gap:14px;
+    padding:16px 0;border-top:1px solid var(--ink);
+    align-items:start;
+  }
+  .ladder .step:last-child{border-bottom:1px solid var(--ink)}
+  .ladder .step .st-n{
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:36px;line-height:1;color:var(--accent);
+  }
+  .ladder .step .st-title{
+    font-family:var(--serif);font-weight:700;font-size:17px;
+    color:var(--ink);letter-spacing:-.02em;line-height:1.3;margin-bottom:4px;
+    word-break:keep-all;
+  }
+  .ladder .step .st-en{
+    font-family:var(--serif-display);font-style:italic;
+    font-size:12px;color:var(--muted);margin-bottom:8px;
+  }
+  .ladder .step .st-body{
+    font-family:var(--serif);font-size:14px;line-height:1.7;
+    color:var(--ink-2);word-break:keep-all;
+  }
+  .ladder .step .st-body em{color:var(--accent-2);font-style:italic}
+  .ladder .step .st-body strong{font-weight:700;color:var(--ink)}
+
+  /* ---- bleed figure ---- */
+  .bleed{
+    margin:56px -24px;
+    aspect-ratio:16/10;
+    background:#2a2620;
+    overflow:hidden;position:relative;
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  }
+  .bleed img{width:100%;height:100%;object-fit:cover}
+  .bleed figcaption{
+    position:absolute;bottom:14px;left:16px;right:16px;
+    color:#f3eee3;
+    font-family:var(--serif);font-style:italic;
+    font-size:12px;line-height:1.45;
+    text-shadow:0 1px 8px rgba(0,0,0,.6);
+    max-width:42ch;
+  }
+  .bleed .fig-num{
+    position:absolute;top:14px;left:16px;
+    font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:#e8dfcc;
+  }
+
+  /* ---- checklist (Talmi 5문항) ---- */
+  .checklist{
+    margin:44px -24px;padding:36px 24px;
+    background:var(--paper-3);
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  }
+  .checklist .ck-hd{
+    font-family:var(--mono);font-size:10px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:6px;
+  }
+  .checklist .ck-ti{
+    font-family:var(--serif);font-weight:700;font-size:22px;line-height:1.25;
+    color:var(--ink);letter-spacing:-.03em;margin-bottom:22px;
+    word-break:keep-all;text-wrap:balance;
+  }
+  .checklist .item{
+    display:grid;grid-template-columns:28px 1fr;gap:12px;
+    padding:14px 0;border-top:1px solid rgba(28,26,23,.4);
+    align-items:baseline;
+  }
+  .checklist .item:last-child{border-bottom:1px solid rgba(28,26,23,.4)}
+  .checklist .item .q{
+    font-family:var(--serif-display);font-style:italic;
+    font-size:20px;color:var(--accent);font-weight:400;line-height:1;
+  }
+  .checklist .item .txt{
+    font-family:var(--serif);font-size:15.5px;line-height:1.6;
+    color:var(--ink);letter-spacing:-.02em;word-break:keep-all;
+    font-weight:500;
+  }
+  .checklist .item .sub{
+    font-family:var(--serif);font-size:13px;line-height:1.6;
+    color:var(--ink-2);word-break:keep-all;
+    font-weight:400;margin-top:6px;
+  }
+  .checklist .item .txt em{color:var(--accent-2);font-style:italic;font-weight:600}
+
+  /* ---- takeaway (dark) ---- */
+  .takeaway{
+    margin:48px -24px 0;padding:44px 24px 40px;
+    background:var(--ink);color:var(--paper);
+    text-align:left;border-top:1px solid var(--ink);
+  }
+  .takeaway .lab{
+    font-family:var(--mono);font-size:10px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--accent-2);margin-bottom:14px;
+  }
+  .takeaway h3{
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:32px;line-height:1.2;letter-spacing:-.01em;
+    margin-bottom:18px;color:var(--paper);text-wrap:balance;
+  }
+  .takeaway h3 em{color:var(--accent-2);font-style:italic}
+  .takeaway .ko{
+    font-family:var(--serif);font-weight:500;font-size:17px;line-height:1.75;
+    color:var(--paper-3);word-break:keep-all;text-wrap:pretty;
+  }
+  .takeaway .ko em{color:var(--accent-2);font-style:italic}
+  .takeaway .sig{
+    margin-top:28px;padding-top:20px;border-top:1px solid #3a3630;
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--muted-2);
+  }
+  .takeaway .sig b{
+    font-family:var(--serif-display);font-style:italic;
+    font-size:16px;font-weight:400;letter-spacing:0;
+    text-transform:none;color:var(--paper);
+  }
+
+  /* ---- next teaser ---- */
+  .next-teaser{
+    padding:36px 24px;
+    border-top:1px solid var(--ink);
+    display:flex;flex-direction:column;gap:14px;
+    background:var(--paper);
+  }
+  .next-teaser .lab{
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .next-teaser .prev{
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+    padding:16px 18px;
+    background:var(--paper-2);
+    border:1px solid var(--ink);
+  }
+  .next-teaser .prev .body{display:flex;flex-direction:column;gap:4px}
+  .next-teaser .prev .no{
+    font-family:var(--mono);font-size:9px;letter-spacing:.2em;
+    color:var(--accent);text-transform:uppercase;
+  }
+  .next-teaser .prev .ti{
+    font-family:var(--serif);font-weight:600;font-size:15px;
+    color:var(--ink);letter-spacing:-.02em;line-height:1.3;
+    word-break:keep-all;
+  }
+  .next-teaser .prev .arr{
+    font-family:var(--serif-display);font-style:italic;font-size:22px;
+    color:var(--accent);flex:0 0 auto;
+  }
+
+  /* ---- share row ---- */
+  .share{padding:28px 24px 24px;display:flex;flex-direction:column;gap:12px}
+  .share .btn{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 18px;border:1px solid var(--ink);background:var(--paper);
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink);cursor:pointer;
+    transition:background .15s;-webkit-user-select:none;user-select:none;
+  }
+  .share .btn:active{background:var(--paper-2)}
+  .share .btn.dark{background:var(--ink);color:var(--paper)}
+  .share .btn .arr{font-family:var(--serif-display);font-style:italic;font-size:18px;letter-spacing:0}
+
+  /* ---- footer ---- */
+  footer{
+    padding:48px 24px 24px;text-align:center;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted);
+    border-top:1px solid var(--ink);margin-top:12px;
+  }
+  footer .big{
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:26px;color:var(--ink);text-transform:none;letter-spacing:-.01em;
+    margin-bottom:16px;line-height:1.2;
+  }
+  footer .lnks{margin-top:14px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+  footer .lnks a{color:var(--muted)}
+
+  .prog{position:fixed;top:0;left:0;right:0;height:2px;background:transparent;z-index:200;pointer-events:none}
+  .prog .bar{height:100%;background:var(--accent);width:0%}
+
+  @media (min-width:640px){
+    body{background:#e6dfd0}
+    .app{
+      max-width:440px;margin:24px auto;
+      box-shadow:0 20px 60px rgba(28,26,23,.18),0 0 0 1px rgba(28,26,23,.08);
+      background:var(--paper);
+    }
+  }
+</style>
+</head>
+<body id="top">
+<div class="prog"><div class="bar" id="progBar3"></div></div>
+
+<div class="app">
+
+<header class="mast">
+  <div class="L"><a href="insight-vol-02.html">← Vol. 02</a></div>
+  <div class="C">Leadership Insight</div>
+  <div class="R">Vol. 03</div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow-row">
+    <span class="k">Vol. 03 · The Sovereignty</span>
+    <span class="r">Deep read</span>
+  </div>
+
+  <div class="text-block">
+    <div class="kicker">
+      <span class="k-line"></span>
+      <span class="k-text">Hal Gregersen · MIT Leadership Center</span>
+      <span class="k-line"></span>
+    </div>
+
+    <h1>
+      <span class="ko-lead">질문의 <em>주권</em>,<br>묻는 자만이<br>이끈다.</span>
+      <span class="ko-sub">가장 큰 질문을 가진 리더가, 가장 큰 변화를 만든다</span>
+    </h1>
+
+    <p class="deck">
+      기계가 모든 <em>정답</em>을 쏟아내는 시대에, 인간 리더에게 남겨진 유일한 무기는 <em>아무도 던지지 않은 질문</em>이다. Hal Gregersen이 MIT에서 발견한 역설 — 위대한 리더는 답을 아는 자가 아니라 위대한 질문을 던지는 자다.
+    </p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <span class="n">Source 01</span>
+        <span class="t">Hal Gregersen MIT</span>
+      </div>
+      <div class="pillar">
+        <span class="n">Source 02</span>
+        <span class="t">Itai Talmi 인간잠재력</span>
+      </div>
+      <div class="pillar">
+        <span class="n">Source 03</span>
+        <span class="t">Fahri Karakas 40Q</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-img">
+    <img src="assets/vol03-hero-portrait.jpg" alt="스포트라이트 속 고독한 인물" loading="eager">
+    <span class="frame-tag">Vol. 03</span>
+    <p class="cap">묻는 자의 고독 — 모두가 답을 말할 때, 혼자 질문한다</p>
+  </div>
+
+  <div class="source-row">
+    <span class="src-lab">원전</span>
+    <div class="src-body">
+      <b>Asking Great Questions — Hal Gregersen</b>
+      <span>McKinsey Quarterly, 2019 · MIT Leadership Center · 한국 피터드러커소사이어티 2025</span>
+    </div>
+  </div>
+</section>
+
+<!-- Previously on Vol.02 -->
+<div class="series">
+  <div>
+    <div class="lab">Previously on Vol. 02</div>
+    <div class="ti">리더십의 역설 — 강점이 맹점이 되는 순간, Bansal의 8가지 역설</div>
+  </div>
+  <a href="insight-vol-02.html" class="arr">←</a>
+</div>
+
+<article class="article">
+<div class="prose">
+
+<!-- Section I -->
+<h2><span class="num">Section Ⅰ · The Mirror Room</span>리더를 가두는 거울 방</h2>
+<h3>인지적 거품 —<br>완벽한 데이터가 만드는 함정</h3>
+
+<p class="lede dropcap">인류 역사상 '정답'이 이토록 저렴하고 흔해진 시대는 없었다. 그러나 역설적으로, 현대의 리더들은 그 정답의 홍수 속에서 길을 잃고 있다.</p>
+
+<p>MIT 리더십 센터의 전임 디렉터 Hal Gregersen은 이를 리더십의 실존적 위기로 진단한다. 그가 지적하는 현대 리더들의 가장 치명적인 약점은 <strong>'인지적 거품(Cognitive Bubble)'</strong>이다.</p>
+
+<blockquote>
+  "조직의 직위가 상승할수록 리더는 자신을 기쁘게 하는 보고서, 정제된 데이터 대시보드, 그리고 예스맨들에게 둘러싸이게 된다."
+  <cite>— Hal Gregersen, MIT Sloan · McKinsey Quarterly 2019</cite>
+</blockquote>
+
+<p>데이터가 완벽해 보일수록 리더는 자신이 모든 것을 통제하고 있다는 착각에 빠진다. 정작 시장의 거대한 균열이나 보이지 않는 위기(Mystery)는 감지하지 못한 채. <strong>위대한 질문은 바로 이 견고하고 안락한 인지적 거품을 깨뜨리는 유일한 망치이다.</strong></p>
+
+<!-- Section II -->
+<h2><span class="num">Section Ⅱ · Catalytic Questions</span>촉매적 질문의 조건</h2>
+<h3>모든 질문이<br>같은 가치를 갖지 않는다</h3>
+
+<p>Gregersen은 단호히 말한다 — 전략적 현실을 뒤흔들 수 있는 <em>'촉매적 질문(Catalytic Question)'</em>은 세 가지 조건을 충족해야 한다.</p>
+
+</div>
+
+<div class="ladder">
+  <div class="ld-hd">Three Conditions</div>
+  <div class="ld-ti">촉매적 질문의 3가지 조건</div>
+
+  <div class="step">
+    <div class="st-n">01</div>
+    <div>
+      <div class="st-title">프레임을 재구성하는가?</div>
+      <div class="st-en">Reframing</div>
+      <div class="st-body">현재의 문제 정의 자체에 의문을 제기하고, 완전히 다른 시각에서 문제를 바라보게 만드는 질문. <em>"우리가 틀린 문제를 풀고 있는 건 아닐까?"</em>라는 불편한 도전.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="st-n">02</div>
+    <div>
+      <div class="st-title">전제를 깨뜨리는가?</div>
+      <div class="st-en">Assumption-breaking</div>
+      <div class="st-body">조직이 오랫동안 자명하다고 믿어온 전제 자체에 도전한다. <em>"우리가 반드시 그래야 한다고 믿는 이유는 무엇인가?"</em> — 수십 년간 굳어진 비즈니스 모델을 해체한다.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="st-n">03</div>
+    <div>
+      <div class="st-title">행동을 촉발하는가?</div>
+      <div class="st-en">Action-generating</div>
+      <div class="st-body">단순한 지적 호기심에 머무르지 않고, 즉각적인 탐색과 실험 행동으로 이어지는 에너지를 갖는다. 좋은 질문은 답을 기다리는 것이 아니라 <em>스스로 답을 향해 걸어가게 만든다.</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="prose">
+
+<!-- Section III -->
+<h2><span class="num">Section Ⅲ · Question Burst</span>퀘스천 버스트</h2>
+<h3>4분의 혁명 —<br>회의를 멈추고 질문하라</h3>
+
+<p>Gregersen이 제시하는 가장 강력한 실천적 해법은 <em>'퀘스천 버스트(Question Burst)'</em> 프레임워크다. 조직이 해결할 수 없는 난제에 빠졌을 때, 리더는 해결책을 강구하는 회의를 멈추고 오직 <strong>'질문만'을 생산하는 세션을 소집한다.</strong></p>
+
+</div>
+
+<!-- Question Burst 4분 규칙 — stat-strip 활용 -->
+<div class="stat-strip">
+  <div class="stat">
+    <div class="lab">Duration</div>
+    <div class="num">4<span class="sm">min</span></div>
+    <div class="cap">오직 질문만 — 설명도, 변명도, 정답도 없이. 문제에 대한 질문을 연속해서 쏟아낸다.</div>
+  </div>
+  <div class="stat">
+    <div class="lab">Reframing Rate</div>
+    <div class="num">80<span class="sm">%</span></div>
+    <div class="cap">4분 후 참가자 80% 이상이 <em>가짜 프레임</em>에서 벗어나 문제를 완전히 재정의하게 된다.</div>
+  </div>
+  <div class="stat">
+    <div class="lab">Rule 01</div>
+    <div class="num" style="font-size:28px;line-height:1.2">No<br>Answers</div>
+    <div class="cap">비판의 절대 금지 — 타인의 질문을 평가하거나 분석하지 않는다. 어떤 질문도 나쁜 질문이 없다.</div>
+  </div>
+  <div class="stat">
+    <div class="lab">Rule 02</div>
+    <div class="num" style="font-size:28px;line-height:1.2">No<br>Critic</div>
+    <div class="cap">올바른 질문이 도출되는 순간, 해결책은 자연스럽게 모습을 드러낸다.</div>
+  </div>
+</div>
+
+<!-- bleed image -->
+<figure class="bleed">
+  <img src="assets/vol03-bleed-still-life.jpg" alt="사유의 공간" loading="lazy">
+  <span class="fig-num">Fig. 03</span>
+  <figcaption>질문이 태어나는 공간 — <em>침묵 속에서 가장 날카로운 질문이 나온다</em></figcaption>
+</figure>
+
+<div class="prose">
+
+<!-- Section IV -->
+<h2><span class="num">Section Ⅳ · CEO Strategic Questions</span>CEO를 위한 4대 전략 질문</h2>
+<h3>인텔리전스 아키텍트 —<br>AI 시대 CEO의 의무</h3>
+
+<p>에이전틱 AI 시대의 CEO는 기술 도입 매뉴얼이 아닌, 조직의 운영 모델 자체를 재조정하는 <strong>'인텔리전스 아키텍트'</strong>가 되어야 한다. 그가 반드시 답해야 할 4가지 전략적 질문이 있다.</p>
+
+</div>
+
+<!-- CEO 4대 질문 — paradox 컴포넌트 활용 -->
+<div class="paradox">
+  <div class="p-hd">4 Strategic Questions for CEO</div>
+  <div class="p-ti">The Intelligence Architect</div>
+  <div class="p-ti-ko">AI 시대 CEO가 던져야 할 4대 질문</div>
+
+  <div class="pair">
+    <span class="p-idx">Q 01</span>
+    <div class="p-flow">
+      <div class="side">
+        <span class="en">Autonomy</span>
+        <span class="ko">자율성의 범위</span>
+      </div>
+      <span class="arr">→</span>
+      <div class="side dark">
+        <span class="en">Execution Authority</span>
+        <span class="ko">집행 권한의 경계</span>
+      </div>
+    </div>
+    <div class="p-body">"우리 AI 에이전트에게 어디까지 집행 권한을 위임할 것인가?" AI는 이제 예산을 집행하고 가격 변동에 선제 대응하는 <em>실행자</em>로 진화했다. CEO는 자산 규모·브랜드 목소리·법적 책임 기준으로 경계를 명문화해야 한다.</div>
+  </div>
+
+  <div class="pair">
+    <span class="p-idx">Q 02</span>
+    <div class="p-flow">
+      <div class="side">
+        <span class="en">Shadow AI</span>
+        <span class="ko">파편화된 도입</span>
+      </div>
+      <span class="arr">→</span>
+      <div class="side dark">
+        <span class="en">Intelligence OS</span>
+        <span class="ko">중앙 지능 운영체제</span>
+      </div>
+    </div>
+    <div class="p-body">"파편화된 AI 도입을 어떻게 중앙 집중형 지능 OS로 통합할 것인가?" 부서별 섀도우 AI는 데이터 사일로를 낳는다. CEO는 CTO에게 "<em>현재 구동 중인 에이전트 워크플로우가 정확히 몇 개인가</em>"를 심문해야 한다.</div>
+  </div>
+
+  <div class="pair">
+    <span class="p-idx">Q 03</span>
+    <div class="p-flow">
+      <div class="side">
+        <span class="en">Short-term ROI</span>
+        <span class="ko">단기 비용 절감</span>
+      </div>
+      <span class="arr">→</span>
+      <div class="side dark">
+        <span class="en">Compound Reinvest</span>
+        <span class="ko">복리형 재투자</span>
+      </div>
+    </div>
+    <div class="p-body">"AI 가치 실현의 지표를 단기 인건비 절감에 둘 것인가, 복리형 재투자에 둘 것인가?" AI가 흡수한 루틴 업무의 생산성 잉여를 <em>구조조정이 아닌 업스킬링과 인프라 고도화</em>에 재투자하는 자본 배치 아키텍처가 핵심이다.</div>
+  </div>
+
+  <div class="pair">
+    <span class="p-idx">Q 04</span>
+    <div class="p-flow">
+      <div class="side">
+        <span class="en">Lazy Thinking</span>
+        <span class="ko">인지적 태만</span>
+      </div>
+      <span class="arr">→</span>
+      <div class="side dark">
+        <span class="en">Critical Friction</span>
+        <span class="ko">비판적 마찰</span>
+      </div>
+    </div>
+    <div class="p-body">"AI의 완벽함 속에서 인간의 비판적 사고력과 법적 책임을 어떻게 보존할 것인가?" 시스템이 매끄러울수록 구성원은 AI 판단을 무비판적으로 수용하게 된다. 의도적으로 <em>결재 단계에 인간의 비판적 마찰을 심어두는 것</em>이 리더의 의무다.</div>
+  </div>
+</div>
+
+<div class="prose">
+
+<!-- Section V -->
+<h2><span class="num">Section Ⅴ · Human Potential · Itai Talmi</span>인간 잠재력의 재정의</h2>
+<h3>기계가 모든 것을 잘 할 때,<br>인간은 무엇으로 승부하는가</h3>
+
+<p>Itai Talmi는 경고한다 — "모두가 AI의 역량에 집착할 때, 정작 인류는 더 거대한 혁명인 <strong>'인간 잠재력의 재정의'를 놓치고 있다</strong>." 지능의 외주화 시대를 살아갈 리더들이 던져야 할 5가지 도발적 질문이다.</p>
+
+</div>
+
+<!-- Talmi 5 questions — checklist 컴포넌트 -->
+<div class="checklist">
+  <div class="ck-hd">5 Critical Questions · Itai Talmi</div>
+  <div class="ck-ti">인간 잠재력에 관한 5가지 핵심 질문</div>
+
+  <div class="item">
+    <span class="q">Q1</span>
+    <div>
+      <div class="txt">우리가 '상상력'과 '창의성'을 혼동함으로써 잃어버린 대가는?</div>
+      <div class="sub">AI가 기존 데이터를 조합해 창의적 결과물을 만들 때, 인간이 보호해야 할 것은 <em>아직 존재하지 않는 미래를 그려내는 원초적 상상력</em>이다.</div>
+    </div>
+  </div>
+  <div class="item">
+    <span class="q">Q2</span>
+    <div>
+      <div class="txt">기술의 한계비용이 제로(0)가 될 때, 인간 능력의 가치는 어떻게 재정립되는가?</div>
+      <div class="sub">법률·코딩·재무 분석 비용이 제로에 수렴하는 시대. 인간의 진정한 경쟁 우위는 <em>질문의 깊이와 맥락적 리더십</em>으로 이동한다.</div>
+    </div>
+  </div>
+  <div class="item">
+    <span class="q">Q3</span>
+    <div>
+      <div class="txt">주니어 인재들의 직무가 사라진 진공 상태에서, 어떻게 미래의 리더를 육성할 것인가?</div>
+      <div class="sub">기초 리서치·서류 초안 등 주니어 직무를 AI에 위임하면서 <em>리더십 파이프라인이 조용히 단절</em>되고 있다.</div>
+    </div>
+  </div>
+  <div class="item">
+    <span class="q">Q4</span>
+    <div>
+      <div class="txt">AI가 모든 것을 더 잘 할 때, 구성원의 심리적 안전감을 어떻게 보호할 것인가?</div>
+      <div class="sub">기계와의 경쟁에서 패배를 감지하는 순간 심리적 안전감은 무너진다. 이는 조직 전체의 비판적 사고력을 마비시키고 <em>AI에 대한 맹목적 과신(Overreliance)</em>을 낳는다.</div>
+    </div>
+  </div>
+  <div class="item">
+    <span class="q">Q5</span>
+    <div>
+      <div class="txt">인류의 진화적 가치보다 시스템의 ROI를 우선시할 때, 우리는 어떤 문명을 마주하게 되는가?</div>
+      <div class="sub">효율성 극대화라는 도구주의에 눈이 멀어 인간의 인지적 능력과 철학적 사유를 퇴화시킨다면 — <em>기술은 발달했으나 인간성은 증발한 디스토피아</em>가 기다린다.</div>
+    </div>
+  </div>
+</div>
+
+</article>
+
+<!-- Takeaway (dark section) -->
+<div class="takeaway">
+  <div class="lab">Synthesis · Vol. 03</div>
+  <h3>질문의 주권을<br><em>선언하라</em></h3>
+  <p class="ko">
+    세 사상가 — Gregersen, Talmi, Karakas — 가 서로 다른 각도에서 같은 진실을 가리키고 있다. <em>기계가 모든 정답을 쏟아내는 시대일수록</em>, 인간 리더에게 요구되는 절대적 책무는 '아직 아무도 던지지 않은 질문'을 발굴하는 일이다.
+  </p>
+  <p class="ko" style="margin-top:16px">
+    위대한 질문을 던지는 능력은 타고난 천재성이 아니다. 리더 스스로 <em>'자신이 틀릴 수 있는 불편한 환경'</em>에 뛰어들고 매일 자신의 편향을 의심하는 강력한 자기 절제의 결과물이다. 기술의 정점에서 인간을 구원하는 것은 결국 질문하는 능력이다.
+  </p>
+  <p class="ko" style="margin-top:16px">
+    Fahri Karakas의 말처럼, <em>"당신이 던지는 질문의 크기가 곧 당신이 만들어낼 혁명의 크기"</em>다. 가장 큰 질문을 가진 리더가, 가장 큰 변화를 만든다.
+  </p>
+  <div class="sig">
+    <span>Leadership Insight · Vol. 03 · 2026</span>
+    <b>한국 피터드러커소사이어티</b>
+  </div>
+</div>
+
+<!-- Next teaser -->
+<div class="next-teaser">
+  <div class="lab">More from Leadership Insight</div>
+  <a href="insight-vol-02.html" style="text-decoration:none">
+    <div class="prev">
+      <div class="body">
+        <span class="no">Vol. 02 · The Paradox</span>
+        <span class="ti">리더십의 역설 — 강점이 만든 그림자</span>
+      </div>
+      <span class="arr">←</span>
+    </div>
+  </a>
+  <a href="insight.html" style="text-decoration:none">
+    <div class="prev">
+      <div class="body">
+        <span class="no">Vol. 01 · The Blind Spot</span>
+        <span class="ti">AI 시대 리더십의 사각지대</span>
+      </div>
+      <span class="arr">←</span>
+    </div>
+  </a>
+</div>
+
+<!-- Share -->
+<div class="share">
+  <button class="btn dark" onclick="doShare3()" id="shareBtn3">
+    <span id="shareLabel3">이 글을 공유하기</span>
+    <span class="arr">↗</span>
+  </button>
+  <button class="btn" onclick="copyLink3()" id="copyBtn3">
+    <span id="copyLabel3">링크 복사</span>
+    <span class="arr">→</span>
+  </button>
+</div>
+
+<footer>
+  <div class="big">Leadership Insight</div>
+  <div>Vol. 03 · 질문의 주권 · 2026</div>
+  <div class="lnks">
+    <a href="insight.html">Vol. 01</a>
+    <a href="insight-vol-02.html">Vol. 02</a>
+    <a href="insight-vol-03.html">Vol. 03</a>
+  </div>
+</footer>
+
+</div><!-- .app -->
+
+<script>
+  // progress bar
+  const bar3 = document.getElementById('progBar3');
+  function updProg3(){
+    const h = document.documentElement;
+    const s = h.scrollTop || document.body.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    bar3.style.width = (max > 0 ? (s/max)*100 : 0) + '%';
+  }
+  window.addEventListener('scroll', updProg3, {passive:true});
+  window.addEventListener('resize', updProg3);
+  updProg3();
+
+  // share
+  function doShare3(){
+    const d = { title: document.title, url: location.href };
+    if (navigator.share) {
+      navigator.share(d).catch(()=>{});
+    } else {
+      const lbl = document.getElementById('shareLabel3');
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(location.href).then(()=>{
+          lbl.textContent='링크가 복사되었습니다 ✓';
+          setTimeout(()=>{ lbl.textContent='이 글을 공유하기'; }, 2500);
+        }).catch(()=>{ window.prompt('아래 링크를 복사하세요', location.href); });
+      } else { window.prompt('아래 링크를 복사하세요', location.href); }
+    }
+  }
+
+  // copy link
+  function copyLink3(){
+    const lbl = document.getElementById('copyLabel3');
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(location.href).then(()=>{
+        lbl.textContent='링크가 복사되었습니다 ✓';
+        setTimeout(()=>{ lbl.textContent='링크 복사'; }, 2500);
+      }).catch(()=>{ window.prompt('아래 링크를 복사하세요', location.href); });
+    } else { window.prompt('아래 링크를 복사하세요', location.href); }
+  }
+</script>
+</body>
+</html>
