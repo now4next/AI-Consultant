@@ -1,0 +1,1059 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fbf7f0">
+<title>AI 시대 리더십의 사각지대 · Leadership Insight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400&family=Noto+Serif+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1815;       /* 살짝 더 진하게 → 대비 향상 */
+    --ink-2:#2a2620;
+    --paper:#faf6ef;
+    --paper-2:#f0eadc;
+    --paper-3:#e8dfcc;
+    --rule:#1a1815;
+    --accent:#7a3a1a;
+    --accent-2:#a85528;
+    --muted:#5c554c;     /* 기존 #7d756a → 더 진하게 → 작은 글씨 대비↑ */
+    --muted-2:#a89e8f;
+    --serif:'Noto Serif KR','Gowun Batang','Playfair Display',serif;  /* Noto 우선 → 모바일 렌더링 최적화 */
+    --serif-display:'Playfair Display','Noto Serif KR',serif;
+    --sans:'Inter Tight','Noto Sans KR',sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-size:18px} /* 기본 베이스 18px */
+  body{overflow-x:hidden;padding-bottom:80px}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+
+  /* subtle paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:100;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.11  0 0 0 0 0.10  0 0 0 0 0.09  0 0 0 .06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode:multiply;opacity:.5;
+  }
+
+  /* ---- masthead ---- */
+  .mast{
+    border-bottom:3px double var(--ink);
+    padding:14px 20px;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    font-family:var(--mono);
+    font-size:11px;      /* 9→11px: 모바일 터치 가독성 */
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    position:sticky;top:0;background:var(--paper);z-index:50;
+  }
+  .mast .C{
+    justify-self:center;
+    font-family:var(--serif-display);
+    font-weight:900;
+    font-size:18px;      /* 17→18px */
+    letter-spacing:0;
+    text-transform:none;
+    font-style:italic;
+  }
+  .mast .R{justify-self:end;color:var(--muted);font-size:11px}
+  .mast .L{color:var(--muted);font-size:11px}
+  .mast .L a{color:inherit}
+  .mast .L a:hover{color:var(--accent)}
+
+  /* ---- hero ---- */
+  .hero{
+    border-bottom:1px solid var(--ink);
+  }
+  .hero .eyebrow-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 24px 0;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase; /* 10→11.5px */
+  }
+  .hero .eyebrow-row .k{color:var(--accent)}
+  .hero .eyebrow-row .r{color:var(--muted)}
+  .hero .text-block{
+    padding:28px 24px 28px;  /* 좌우 22→24px */
+  }
+  .hero .kicker{
+    display:flex;align-items:center;gap:12px;
+    margin-bottom:28px;
+  }
+  .hero .kicker .k-line{
+    flex:1;height:1px;background:var(--ink);opacity:.35;
+  }
+  .hero .kicker .k-text{
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:14px;color:var(--accent);letter-spacing:.01em;white-space:nowrap; /* 13→14px */
+  }
+  .hero h1{
+    margin:0 0 28px;
+    color:var(--ink);
+    font-weight:400;
+  }
+  .hero h1 .ko-lead{
+    display:block;
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(36px,10vw,52px);  /* 살짝 줄여 한 줄에 안정적으로 */
+    line-height:1.08;                  /* 1.02→1.08: 자간 여유 */
+    letter-spacing:-.035em;            /* -.045→-.035em: 모바일 가독성 */
+    color:var(--ink);
+    word-break:keep-all;
+  }
+  .hero h1 .ko-lead em{
+    font-style:normal;
+    color:var(--accent);
+    font-weight:700;
+    position:relative;
+  }
+  .hero h1 .ko-lead em::after{
+    content:"";position:absolute;left:0;right:0;bottom:.04em;height:.32em;
+    background:rgba(122,58,26,.15);z-index:-1;
+  }
+  .hero h1 .ko-sub{
+    display:block;
+    font-family:var(--serif);
+    font-weight:500;                   /* 400→500: 서브타이틀 강조 */
+    font-size:clamp(19px,5.4vw,24px);
+    line-height:1.45;                  /* 1.35→1.45 */
+    letter-spacing:-.02em;
+    color:var(--ink);                  /* ink-2→ink: 대비 강화 */
+    margin-top:18px;
+    word-break:keep-all;
+  }
+  .hero .deck{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:17px;        /* 16→17px */
+    line-height:1.75;
+    color:var(--ink-2);
+    text-wrap:pretty;
+    word-break:keep-all;
+    padding-top:24px;
+    border-top:1px solid var(--ink);
+    margin-top:8px;
+  }
+  .hero .deck em{color:var(--accent);font-style:italic;font-weight:500}
+  .hero .pillars{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:0;
+    margin-top:26px;
+    border-top:1px solid var(--ink);
+    border-bottom:1px solid var(--ink);
+  }
+  .hero .pillar{
+    padding:14px 6px 14px 0;
+    display:flex;flex-direction:column;gap:6px;
+    border-right:1px solid rgba(28,26,23,.25);
+  }
+  .hero .pillar:last-child{border-right:none;padding-right:0}
+  .hero .pillar:not(:first-child){padding-left:12px}
+  .hero .pillar .n{
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--accent); /* 9.5→11px */
+  }
+  .hero .pillar .t{
+    font-family:var(--serif);font-weight:700;font-size:14px; /* 13→14px, 600→700 */
+    color:var(--ink);letter-spacing:-.02em;line-height:1.3;
+    word-break:keep-all;
+  }
+  .source-row{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:16px;
+    padding:18px 22px 24px;
+    align-items:start;
+    border-bottom:1px solid var(--ink);
+  }
+  .source-row .src-lab{
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em; /* 9→11px */
+    text-transform:uppercase;color:var(--muted);
+    padding-top:3px;white-space:nowrap;
+  }
+  .source-row .src-body{display:flex;flex-direction:column;gap:4px}
+  .source-row .src-body b{
+    font-family:var(--serif-display);font-style:italic;font-weight:500;
+    font-size:16px;color:var(--ink);letter-spacing:0;line-height:1.4; /* 15→16px */
+  }
+  .source-row .src-body span{
+    font-family:var(--serif);font-size:13px;color:var(--muted); /* 12→13px */
+    letter-spacing:-.01em;
+  }
+  .hero-img{
+    position:relative;
+    aspect-ratio:3/4;
+    background:#1a1613;
+    overflow:hidden;
+    border-top:1px solid var(--ink);
+    border-bottom:1px solid var(--ink);
+  }
+  .hero-img img{
+    width:100%;height:100%;object-fit:cover;
+    filter:contrast(1.02) saturate(.92);
+  }
+  .hero-img .cap{
+    position:absolute;left:16px;right:16px;bottom:16px;
+    color:#f3eee3;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:13px;    /* 12→13px */
+    line-height:1.5;
+    text-shadow:0 1px 14px rgba(0,0,0,.75);  /* 그림자 강화 */
+    max-width:32ch;
+  }
+  .hero-img .frame-tag{
+    position:absolute;top:14px;left:14px;
+    font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:#e8dfcc;
+    padding:5px 9px;background:rgba(28,26,23,.6);backdrop-filter:blur(4px);
+    text-transform:uppercase;
+  }
+  .byline{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px 22px;
+    padding:24px 22px 32px;
+    font-family:var(--mono);
+    font-size:9.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .byline b{
+    display:block;color:var(--ink);
+    font-weight:500;
+    font-family:var(--serif-display);
+    font-size:15px;
+    letter-spacing:-.005em;
+    text-transform:none;
+    margin-top:3px;
+    font-style:italic;
+  }
+  .byline b.ko{font-family:var(--serif);font-style:normal;font-weight:600;font-size:14px;letter-spacing:-.02em}
+
+  /* ---- meta rail ---- */
+  .meta-rail{
+    display:flex;gap:8px;overflow-x:auto;
+    padding:16px 22px;
+    border-bottom:1px solid var(--ink);
+    background:var(--paper-2);
+    scrollbar-width:none;
+  }
+  .meta-rail::-webkit-scrollbar{display:none}
+  .meta-rail .chip{
+    flex:0 0 auto;
+    background:var(--paper);
+    border:1px solid var(--ink);
+    padding:8px 12px;
+    font-family:var(--mono);
+    font-size:9px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    white-space:nowrap;
+  }
+  .meta-rail .chip b{
+    color:var(--ink);font-family:var(--serif);font-size:12px;font-weight:600;
+    letter-spacing:-.01em;text-transform:none;margin-left:6px;
+  }
+  .meta-rail .chip.hi{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .meta-rail .chip.hi b{color:var(--paper)}
+
+  /* ---- prose ---- */
+  .article{padding:44px 24px 0}   /* 22→24px 좌우 패딩 */
+  .prose{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:18px;    /* 17→18px: 모바일 최적 본문 크기 */
+    line-height:1.9;   /* 한국어 세리프 적정 행간 */
+    color:var(--ink);  /* ink-2→ink: 배경 대비 강화 */
+    letter-spacing:-.008em;
+  }
+  .prose p{margin-bottom:1.4em;text-wrap:pretty;word-break:keep-all}  /* 단락 간격 확대 */
+  .prose p.lede{
+    font-family:var(--serif);
+    font-size:20px;    /* 19→20px */
+    line-height:1.75;
+    color:var(--ink);
+    font-weight:600;   /* 500→600 */
+    margin-bottom:1.6em;
+  }
+  .prose .dropcap::first-letter{
+    font-family:var(--serif-display);
+    font-size:80px;
+    float:left;
+    line-height:.84;
+    padding:8px 12px 0 0;
+    font-weight:900;
+    color:var(--accent);
+    font-style:italic;
+  }
+  .prose h2{
+    font-family:var(--serif-display);
+    font-style:italic;
+    font-weight:400;
+    font-size:13px;    /* 섹션 레이블은 작게 유지 — 장식용 */
+    letter-spacing:.06em;
+    color:var(--accent);
+    margin:56px 0 6px; /* 위 여백 더 넓게 → 섹션 구분 명확 */
+    text-transform:none;
+    opacity:.85;
+  }
+  .prose h2 .num{
+    font-family:var(--mono);font-style:normal;font-size:11px; /* 10→11px */
+    letter-spacing:.18em;color:var(--muted);display:block;margin-bottom:10px;
+    text-transform:uppercase;
+  }
+  .prose h3{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:24px;    /* 26→24px: 모바일에서 줄바꿈 최소화 */
+    line-height:1.35;
+    margin:6px 0 24px;
+    color:var(--ink);
+    letter-spacing:-.025em;
+    word-break:keep-all;
+    text-wrap:balance;
+  }
+  .prose em{font-style:italic;color:var(--accent-2)}
+  .prose strong{font-weight:700;color:var(--ink);background:linear-gradient(transparent 60%,rgba(122,58,26,.14) 60%)}
+
+  .prose blockquote{
+    margin:44px 0;       /* -6px → 0: 좌우 튀어나옴 제거, 모바일 안정 */
+    padding:28px 0;
+    border-top:2px solid var(--ink);   /* 1→2px: 더 명확한 구분 */
+    border-bottom:2px solid var(--ink);
+    font-family:var(--serif-display);
+    font-style:italic;
+    font-weight:400;
+    font-size:22px;      /* 24→22px: 모바일 줄바꿈 방지 */
+    line-height:1.45;
+    color:var(--ink);
+    text-wrap:balance;
+    word-break:keep-all;
+  }
+  .prose blockquote .ko{
+    font-family:var(--serif);
+    font-style:normal;
+    font-weight:600;     /* 500→600 */
+    font-size:19px;      /* 20→19px */
+    line-height:1.7;     /* 1.55→1.7: 한국어 행간 */
+    display:block;
+    margin-top:14px;
+    color:var(--ink);
+    letter-spacing:-.018em;
+  }
+  .prose blockquote cite{
+    display:block;
+    font-style:normal;
+    font-family:var(--mono);
+    font-size:11px;      /* 9.5→11px */
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:18px;
+  }
+
+  /* ---- stat strip ---- */
+  .stat-strip{
+    margin:44px -24px;   /* 패딩과 동일하게 */
+    padding:36px 24px;
+    background:var(--ink);
+    color:var(--paper);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px 20px;
+  }
+  .stat-strip .stat .lab{
+    font-family:var(--mono);
+    font-size:11px;      /* 9→11px */
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted-2);
+    margin-bottom:10px;
+  }
+  .stat-strip .stat .num{
+    font-family:var(--serif-display);
+    font-style:italic;
+    font-weight:400;
+    font-size:46px;      /* 44→46px */
+    line-height:1;
+    color:var(--paper);
+    letter-spacing:-.02em;
+  }
+  .stat-strip .stat .num .sm{font-size:22px;color:var(--accent-2)}
+  .stat-strip .stat .cap{
+    font-family:var(--serif);
+    font-size:13px;      /* 12→13px */
+    line-height:1.65;
+    color:var(--paper-3);
+    margin-top:10px;
+    word-break:keep-all;
+  }
+
+  /* ---- three intelligences card set ---- */
+  .cards{
+    margin:44px -24px;
+    padding:36px 24px;
+    background:var(--paper-2);
+    border-top:1px solid var(--ink);
+    border-bottom:1px solid var(--ink);
+  }
+  .cards .cards-hd{
+    font-family:var(--mono);
+    font-size:11.5px;    /* 10→11.5px */
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:8px;
+  }
+  .cards .cards-ti{
+    font-family:var(--serif-display);
+    font-style:italic;
+    font-weight:400;
+    font-size:25px;      /* 26→25px */
+    line-height:1.2;
+    color:var(--ink);
+    margin-bottom:6px;
+  }
+  .cards .cards-ti-ko{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:21px;      /* 22→21px */
+    line-height:1.4;
+    color:var(--ink);
+    letter-spacing:-.025em;
+    margin-bottom:28px;
+    word-break:keep-all;
+    text-wrap:balance;
+  }
+  .card{
+    background:var(--paper);
+    border:1px solid var(--ink);
+    padding:22px 20px;
+    margin-bottom:14px;
+    position:relative;
+  }
+  .card .card-idx{
+    position:absolute;top:-1px;right:-1px;
+    background:var(--ink);color:var(--paper);
+    padding:6px 10px;
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  }
+  .card .card-code{
+    font-family:var(--mono);
+    font-size:11px;      /* 10→11px */
+    letter-spacing:.18em;
+    color:var(--accent);
+    margin-bottom:10px;
+  }
+  .card .card-name{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:22px;
+    color:var(--ink);
+    letter-spacing:-.025em;
+    line-height:1.2;
+    margin-bottom:4px;
+  }
+  .card .card-en{
+    font-family:var(--serif-display);
+    font-style:italic;
+    font-size:15px;      /* 14→15px */
+    color:var(--muted);
+    margin-bottom:14px;
+    font-weight:400;
+  }
+  .card .card-body{
+    font-family:var(--serif);
+    font-size:16px;      /* 15→16px */
+    line-height:1.8;
+    color:var(--ink);    /* ink-2→ink */
+    word-break:keep-all;
+    text-wrap:pretty;
+  }
+  .card .card-body em{color:var(--accent-2);font-style:italic;font-weight:600}
+  .card .card-verb{
+    margin-top:18px;padding-top:14px;
+    border-top:1px dashed var(--muted-2);
+    font-family:var(--mono);
+    font-size:11px;      /* 10→11px */
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .card .card-verb b{color:var(--ink);font-weight:600;margin-left:6px}
+
+  /* ---- ladder (four stages) ---- */
+  .ladder{
+    margin:44px 0;
+  }
+  .ladder .ld-hd{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.18em; /* 10→11.5px */
+    text-transform:uppercase;color:var(--accent);margin-bottom:8px;
+  }
+  .ladder .ld-ti{
+    font-family:var(--serif);font-weight:700;font-size:22px;color:var(--ink); /* 24→22px */
+    letter-spacing:-.025em;margin-bottom:20px;line-height:1.35;
+    word-break:keep-all;text-wrap:balance;
+  }
+  .ladder .step{
+    display:grid;
+    grid-template-columns:44px 1fr;
+    gap:14px;
+    padding:16px 0;
+    border-top:1px solid var(--ink);
+    align-items:start;
+  }
+  .ladder .step:last-child{border-bottom:1px solid var(--ink)}
+  .ladder .step .st-n{
+    font-family:var(--serif-display);
+    font-style:italic;font-weight:400;
+    font-size:36px;line-height:1;
+    color:var(--accent);
+  }
+  .ladder .step .st-title{
+    font-family:var(--serif);font-weight:700;font-size:18px; /* 17→18px */
+    color:var(--ink);letter-spacing:-.02em;
+    line-height:1.35;margin-bottom:6px;
+    word-break:keep-all;
+  }
+  .ladder .step .st-en{
+    font-family:var(--serif-display);font-style:italic;
+    font-size:13px;color:var(--muted);margin-bottom:10px; /* 12→13px */
+  }
+  .ladder .step .st-body{
+    font-family:var(--serif);font-size:15px;line-height:1.75; /* 14→15px */
+    color:var(--ink);word-break:keep-all;  /* ink-2→ink */
+  }
+
+  /* ---- full-bleed figure ---- */
+  .bleed{
+    margin:56px -24px;
+    aspect-ratio:16/10;
+    background:#2a2620;
+    overflow:hidden;
+    position:relative;
+    border-top:1px solid var(--ink);
+    border-bottom:1px solid var(--ink);
+  }
+  .bleed img{width:100%;height:100%;object-fit:cover}
+  .bleed figcaption{
+    position:absolute;bottom:16px;left:18px;right:18px;
+    color:#f3eee3;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:13px;    /* 12→13px */
+    line-height:1.55;
+    text-shadow:0 1px 12px rgba(0,0,0,.8);  /* 그림자 강화 */
+    max-width:42ch;
+  }
+  .bleed .fig-num{
+    position:absolute;top:14px;left:18px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:#e8dfcc; /* 9→11px */
+  }
+
+  /* ---- sidebar note ---- */
+  .sidebar{
+    background:var(--paper-2);
+    padding:28px 22px;
+    margin:36px 0;       /* -6px → 0: 모바일 정렬 통일 */
+    border-left:4px solid var(--accent);  /* 3→4px */
+    font-family:var(--sans);
+    font-size:15px;      /* 14→15px */
+    line-height:1.75;
+  }
+  .sidebar .lab{
+    font-family:var(--mono);
+    font-size:11px;      /* 9.5→11px */
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:12px;
+  }
+  .sidebar h4{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:19px;
+    line-height:1.4;
+    margin-bottom:14px;
+    letter-spacing:-.02em;
+    color:var(--ink);
+    word-break:keep-all;
+  }
+  .sidebar p{margin-bottom:.85em;color:var(--ink);word-break:keep-all}  /* ink-2→ink */
+  .sidebar p:last-child{margin-bottom:0}
+
+  /* ---- takeaway ---- */
+  .takeaway{
+    margin:48px -22px 0;
+    padding:44px 22px 40px;
+    background:var(--ink);
+    color:var(--paper);
+    text-align:left;
+    border-top:1px solid var(--ink);
+  }
+  .takeaway .lab{
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em; /* 10→11px */
+    text-transform:uppercase;color:var(--accent-2);margin-bottom:16px;
+  }
+  .takeaway h3{
+    font-family:var(--serif-display);
+    font-style:italic;font-weight:400;
+    font-size:28px;line-height:1.3; /* 32→28px: 모바일 줄바꿈 방지 */
+    letter-spacing:-.01em;margin-bottom:20px;
+    color:var(--paper);
+    text-wrap:balance;
+  }
+  .takeaway .ko{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:17px;
+    line-height:1.85;  /* 1.7→1.85: 한국어 행간 */
+    color:#e8dfcc;     /* 살짝 더 밝게 → 다크 배경 대비 */
+    word-break:keep-all;
+    text-wrap:pretty;
+  }
+  .takeaway .sig{
+    margin-top:28px;
+    padding-top:20px;
+    border-top:1px solid #3a3630;
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em; /* 9.5→11px */
+    text-transform:uppercase;color:var(--muted-2);
+  }
+  .takeaway .sig b{
+    font-family:var(--serif-display);font-style:italic;
+    font-size:16px;font-weight:400;letter-spacing:0;
+    text-transform:none;color:var(--paper);
+  }
+
+  /* ---- share row ---- */
+  .share{
+    padding:32px 22px;
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .share .btn{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 20px;   /* 16→18px 상하, 18→20px 좌우: 터치 영역 확대 */
+    border:1px solid var(--ink);
+    background:var(--paper);
+    font-family:var(--mono);
+    font-size:12px;      /* 10→12px */
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink);
+    cursor:pointer;
+    transition:background .15s;
+    width:100%;
+    text-align:left;
+  }
+  .share .btn:active{background:var(--paper-2)}
+  .share .btn.dark{background:var(--ink);color:var(--paper)}
+  .share .btn .arr{font-family:var(--serif-display);font-style:italic;font-size:18px;letter-spacing:0}
+
+  /* ---- footer ---- */
+  footer{
+    padding:48px 24px 32px;
+    text-align:center;
+    font-family:var(--mono);
+    font-size:11px;      /* 9.5→11px */
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    border-top:1px solid var(--ink);
+    margin-top:12px;
+  }
+  footer .big{
+    font-family:var(--serif-display);
+    font-style:italic;font-weight:400;
+    font-size:26px;color:var(--ink);
+    text-transform:none;letter-spacing:-.01em;
+    margin-bottom:18px;line-height:1.3;
+  }
+  footer .lnks{margin-top:14px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+  footer .lnks a{color:var(--muted)}
+
+  /* progress bar */
+  .prog{
+    position:fixed;top:0;left:0;right:0;height:2px;
+    background:transparent;z-index:200;pointer-events:none;
+  }
+  .prog .bar{height:100%;background:var(--accent);width:0%;transition:width .1s linear}
+
+  /* desktop tuning */
+  @media (min-width:640px){
+    body{background:#e6dfd0;font-size:16px}  /* 데스크톱은 16px 기준 */
+    .app{
+      max-width:440px;margin:24px auto;
+      box-shadow:0 20px 60px rgba(28,26,23,.18),0 0 0 1px rgba(28,26,23,.08);
+      background:var(--paper);
+    }
+    .mast{position:sticky}
+    /* 데스크톱에서 마진 보정 */
+    .stat-strip{margin-left:-22px;margin-right:-22px}
+    .cards{margin-left:-22px;margin-right:-22px}
+    .bleed{margin-left:-22px;margin-right:-22px}
+    .article{padding-left:22px;padding-right:22px}
+  }
+</style>
+</head>
+<body id="top">
+<div class="prog"><div class="bar" id="progBar"></div></div>
+
+<div class="app">
+
+<header class="mast">
+  <div class="L"><a href="/vol-02">Vol. 02 →</a></div>
+  <div class="C">Leadership Insight</div>
+  <div class="R">Vol. 01</div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow-row">
+    <span class="k">Vol. 01 · The Blind Spot</span>
+    <span class="r">Long read</span>
+  </div>
+
+  <div class="text-block">
+    <div class="kicker">
+      <span class="k-line"></span>
+      <span class="k-text">A Reading of Otto Scharmer</span>
+      <span class="k-line"></span>
+    </div>
+
+    <h1>
+      <span class="ko-lead">AI 시대<br>리더십의 <em>사각지대</em>.</span>
+      <span class="ko-sub">인간은 무엇을 잃어가고 있는가?</span>
+    </h1>
+
+    <p class="deck">
+      기업은 AI에 막대한 자금을 쏟는다. 그러나 대부분의 리더는 가장 근본적인 질문 하나를 놓치고 있다 — <em>지능이란 무엇인가.</em> Otto Scharmer가 MIT Sloan Management Review에 남긴 경고를, 우리는 다시 읽어야 한다.
+    </p>
+
+    <div class="pillars">
+      <div class="pillar"><span class="n">01</span><span class="t">지능의 획일화</span></div>
+      <div class="pillar"><span class="n">02</span><span class="t">세 개의 지능</span></div>
+      <div class="pillar"><span class="n">03</span><span class="t">정원사의 은유</span></div>
+    </div>
+  </div>
+
+  <figure class="hero-img">
+    <div class="frame-tag">Fig. 001 — Reaching</div>
+    <img src="assets/hero-portrait.jpg" alt="빛으로 만들어진 격자를 향해 뻗은 손">
+    <figcaption class="cap">계산은 손 안에 있다. 그러나 그 손이 어디에서 뻗어 나오는지는, 여전히 어둠 속이다.</figcaption>
+  </figure>
+
+  <div class="source-row">
+    <div class="src-lab">출처 원문</div>
+    <div class="src-body">
+      <b>Leadership's Blind Spot in the Age of AI</b>
+      <span>Otto Scharmer · MIT Sloan Management Review · 2026</span>
+    </div>
+  </div>
+</section>
+
+<article class="article">
+  <div class="prose">
+
+    <p class="lede">
+      오늘날 우리는 인공지능이 인간의 사고와 의사결정을 빠르게 대체해 가는 시대를 살고 있다. 그러나 Otto Scharmer는 말한다 — 대부분의 리더가 <em>가장 중요한 질문 하나</em>를 놓치고 있다고.
+    </p>
+
+    <p class="dropcap">
+      기업들은 생성형 AI와 AI 에이전트에 막대한 투자를 쏟아붓고, 경영자들은 이 기술이 생산성과 경쟁력을 획기적으로 끌어올릴 것이라 기대한다. 지금 이 순간에도, 어느 회의실에선가 <strong>"AI로 무엇을 자동화할 것인가"</strong>가 논의되고 있을 것이다. 그러나 Scharmer는 이 흐름 속에서 리더들이 진짜 물어야 할 질문은 따로 있다고 지적한다.
+    </p>
+
+    <blockquote>
+      "Intelligence — what is it, really?"
+      <span class="ko">"지능이란 과연 무엇인가?"</span>
+      <cite>Otto Scharmer · MIT SMR, 2026</cite>
+    </blockquote>
+
+    <p>
+      우리는 흔히 AI가 계산을 잘하고, 방대한 데이터를 분석하며, 복잡한 패턴을 찾아낼 수 있다는 이유로 <em>AI를 지능의 최고 형태처럼</em> 받아들이기 시작했다. 그러나 만약 지능을 계산과 패턴 인식으로만 정의한다면, 인간은 결국 자신의 사고를 기계에 위임하는 존재로 전락할 위험이 있다.
+    </p>
+
+    <p>
+      Scharmer는 이 현상을 <strong>지능의 획일화(Intelligence Monoculture)</strong>라고 부른다. 농업에서 한 가지 작물만 재배하면 토양이 황폐해지듯이, 조직이 AI의 계산 능력만을 지능으로 간주하면 인간 고유의 사고력·창의성·공동체적 판단은 서서히 시든다. 이것이 그가 말하는 <em>리더십의 사각지대(Blind Spot)</em>이다.
+    </p>
+
+    <div class="stat-strip">
+      <div class="stat">
+        <div class="lab">Global AI capex ⟶ 2026</div>
+        <div class="num">$300<span class="sm">B+</span></div>
+        <div class="cap">기업들이 올 한 해 AI에 투입할 자본. 대부분은 '무엇을' 자동화할지에 쓰인다.</div>
+      </div>
+      <div class="stat">
+        <div class="lab">On inner state</div>
+        <div class="num">4<span class="sm">%</span></div>
+        <div class="cap">그중 리더의 '내면 상태(inner condition)'에 투자되는 비율은 통계에 잡히지도 않는다.</div>
+      </div>
+    </div>
+
+    <h2><span class="num">Ⅰ / Three Intelligences</span>세 개의 지능</h2>
+    <h3>AI 시대, 우리는 세 가지 지능을 동시에 다루어야 한다.</h3>
+
+    <p>
+      Scharmer는 지능을 하나의 축이 아니라 <em>세 개의 축</em>으로 재정의한다. 이것은 위계가 아니라 <strong>생태계</strong>다. 하나가 강해질 때 나머지가 약해지면, 조직은 결국 균형을 잃는다.
+    </p>
+
+  </div>
+
+  <section class="cards">
+    <div class="cards-hd">Three Intelligences · 세 개의 지능</div>
+    <div class="cards-ti">A model, not a hierarchy.</div>
+    <div class="cards-ti-ko">계산은 관계를, 관계는 직관을 필요로 한다.</div>
+
+    <div class="card">
+      <div class="card-idx">01</div>
+      <div class="card-code">AI · Artificial Intelligence</div>
+      <div class="card-name">인공지능</div>
+      <div class="card-en">Pattern from the past.</div>
+      <div class="card-body">
+        과거 데이터를 분석하고, 반복되는 패턴을 인식하며, 계산을 수행한다. <em>이미 존재하는 것</em>을 빠르게 재조합하는 능력이다. 강력하지만, 새로운 미래를 <em>발명</em>할 수는 없다.
+      </div>
+      <div class="card-verb">역할<b>계산 · 최적화</b></div>
+    </div>
+
+    <div class="card">
+      <div class="card-idx">02</div>
+      <div class="card-code">OI · Organic Intelligence</div>
+      <div class="card-name">유기적 지능</div>
+      <div class="card-en">Between people, alive.</div>
+      <div class="card-body">
+        관계, 공감, 신뢰. 사람과 사람 사이에서만 자라는 지능이다. <em>회의 시작 30초</em>에 감지되는 방의 온도, 침묵의 결, 눈빛의 흔들림 — AI는 이것을 '변수'로 만들 수 없다.
+      </div>
+      <div class="card-verb">역할<b>연결 · 신뢰</b></div>
+    </div>
+
+    <div class="card">
+      <div class="card-idx">03</div>
+      <div class="card-code">SI · Source Intelligence</div>
+      <div class="card-name">근원적 지능</div>
+      <div class="card-en">The future, not yet seen.</div>
+      <div class="card-body">
+        <em>아직 존재하지 않는 미래</em>를 감지하는 능력. 데이터에는 잡히지 않는 방향성, 예술가의 첫 획, 창업자의 확신 — Scharmer가 <strong>Presencing</strong>이라 부르는 그 상태에서만 열린다.
+      </div>
+      <div class="card-verb">역할<b>창조 · 방향</b></div>
+    </div>
+  </section>
+
+  <div class="prose">
+    <p>
+      문제는 대부분의 조직이 <strong>AI에는 예산을, OI와 SI에는 슬로건만</strong> 쏟는다는 점이다. 그래서 회의는 데이터로 넘치고, 결정은 예리해 보이지만, 방을 나설 때 아무도 확신하지 못한다 — <em>우리가 정말 우리 자신의 판단을 하고 있는가.</em>
+    </p>
+
+    <h2><span class="num">Ⅱ / The Cave and the Sun</span>동굴과 태양</h2>
+    <h3>플라톤은 2,400년 전에 이미 이 경고를 했다.</h3>
+
+    <p>
+      Scharmer는 플라톤의 <em>동굴의 비유</em>를 21세기로 옮겨온다. 현대의 리더들은 벽에 비친 그림자 대신, <strong>대시보드와 알고리즘이 만들어내는 새로운 그림자</strong>에 갇혀 있다. 데이터는 정교하지만, 그것은 여전히 <em>과거의 그림자</em>다.
+    </p>
+
+    <p>
+      동굴 밖으로 나가려면, 리더는 자기 자신의 <em>내면 상태(inner condition)</em>를 볼 수 있어야 한다. Scharmer가 반복해서 인용하는 문장이 있다.
+    </p>
+
+    <blockquote>
+      "The success of an intervention depends on the interior condition of the intervenor."
+      <span class="ko">"어떤 개입의 성공은, 개입하는 사람의 <em>내면 상태</em>에 달려 있다."</span>
+      <cite>Bill O'Brien · 인용 · Scharmer</cite>
+    </blockquote>
+
+    <p>
+      리더는 무엇(What)과 어떻게(How)는 잘 안다. 그러나 <strong>어떤 의식 상태에서 판단을 내리고 있는가</strong>라는 질문에는 거의 시간을 쓰지 않는다. 이것이 사각지대다 — <em>가장 결정적인 지점이, 가장 조명받지 않는 지점</em>이라는 아이러니.
+    </p>
+
+    <h2><span class="num">Ⅲ / Four Stages</span>혁신의 네 단계</h2>
+    <h3>조직은 어디에서 사고하고 있는가.</h3>
+
+    <p>
+      Scharmer는 집단 행동과 전략 혁신을 네 개의 단계로 구분한다. 대부분의 조직은 1–2단계에 머무른다. 3–4단계로 갈수록 <em>AI만으로는 도달할 수 없는 지대</em>가 열린다.
+    </p>
+
+    <div class="ladder">
+      <div class="ld-hd">Four Stages of Innovation</div>
+      <div class="ld-ti">과거의 반복에서, 미래의 공동 창조로.</div>
+
+      <div class="step">
+        <div class="st-n">1</div>
+        <div>
+          <div class="st-title">과거의 반복</div>
+          <div class="st-en">Reacting from habit.</div>
+          <div class="st-body">해오던 방식을 반복. 새로운 상황에서도 이전의 문법을 꺼내 쓴다. 안전하지만 창발이 없다.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="st-n">2</div>
+        <div>
+          <div class="st-title">데이터에 기반한 개선</div>
+          <div class="st-en">Redesigning with data.</div>
+          <div class="st-body">여기가 AI의 홈그라운드. 대시보드가 빛나는 구간. 최적화는 되지만, 방향은 여전히 과거에서 온다.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="st-n">3</div>
+        <div>
+          <div class="st-title">공감과 협력</div>
+          <div class="st-en">Reframing with others.</div>
+          <div class="st-body">경계를 넘는 대화. 이해관계자들이 서로의 관점을 <em>몸으로</em> 이해할 때, 문제 자체가 재정의된다.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="st-n">4</div>
+        <div>
+          <div class="st-title">미래의 공동 창조</div>
+          <div class="st-en">Regenerating from source.</div>
+          <div class="st-body">아직 없는 것을 함께 감지하고, 함께 시제(prototype)로 옮긴다. Presencing이 일어나는 층위.</div>
+        </div>
+      </div>
+    </div>
+
+    <h2><span class="num">Ⅳ / Machine → Garden</span>기계에서 정원으로</h2>
+    <h3>리더의 은유가 바뀌어야 한다.</h3>
+
+    <p>
+      산업화 시대의 리더는 <em>기계의 관리자(Manager)</em>였다. 부품을 정확히 배치하고, 오작동을 제거하고, 처리량을 높이는 사람. 그러나 AI가 그 역할의 상당 부분을 대체하기 시작한 지금, 인간 리더에게 남는 것은 무엇인가.
+    </p>
+
+    <figure class="bleed">
+      <div class="fig-num">Fig. 002 — Compass / Seed / Circuit</div>
+      <img src="assets/bleed-still-life.jpg" alt="나침반, 새싹, 회로 기판이 놓인 정물">
+      <figcaption>기계는 회로에 있다. 그러나 방향은 나침반에, 그리고 생명은 흙 속의 작은 새싹에 있다.</figcaption>
+    </figure>
+
+    <blockquote>
+      <span class="ko" style="font-family:var(--serif);font-style:normal;font-weight:600;font-size:22px;line-height:1.4;margin:0">리더의 역할은 기계를 관리하는 관리자에서, <em>살아있는 시스템이 건강하게 성장하도록 돕는 정원사(Gardener)</em>로 변화한다.</span>
+      <cite>Otto Scharmer</cite>
+    </blockquote>
+
+    <p>
+      정원사는 식물을 <em>만들지</em> 않는다. 그는 <strong>토양의 조건</strong>을 돌본다. 무엇을 심을지 결정하지만, 자라는 방식은 식물의 것이다. 조직도 마찬가지다. 리더는 문화, 관계, 주의(attention)의 질 — 그 <em>토양</em>을 돌보는 사람이다.
+    </p>
+
+    <aside class="sidebar">
+      <div class="lab">A note on measurement</div>
+      <h4>측정할 수 없는 것에 투자하는 용기.</h4>
+      <p>AI 예산은 ROI가 명확하다. 반면 경청, 신뢰, 상상력, 깊은 감지(deep sensing)는 분기 실적표에 잡히지 않는다.</p>
+      <p>그래서 대부분의 리더가 이 항목을 뒤로 미룬다. 그리고 <em>정확히 그 이유로</em>, 조직은 3–4단계로 넘어가지 못한다.</p>
+      <p>측정할 수 없는 것에 자원을 배분하는 능력. Scharmer는 그것이야말로 <strong>AI 시대 리더의 진짜 시험</strong>이라 말한다.</p>
+    </aside>
+
+    <h2><span class="num">Ⅴ / Coda</span>결론</h2>
+    <h3>기술 혁신이 아니라, 인간 혁신이다.</h3>
+
+    <p>
+      AI 시대의 리더십은 더 빠른 계산에 있지 않다. 더 많은 대시보드에 있지도 않다. Scharmer가 마지막에 놓아둔 문장은 짧고, 흔들리지 않는다.
+    </p>
+
+    <div class="takeaway">
+      <div class="lab">The Line</div>
+      <h3>"AI 시대 조직혁신은 기술혁신이 아니라 <em>인간혁신</em>이다."</h3>
+      <div class="ko">
+        진정한 리더십은 기술을 관리하는 능력이 아니라, 인간의 주의(attention)·의도(intention)·창의성(creativity)이 <em>어디에서 비롯되는지</em>를 이해하는 능력에서 시작된다.
+      </div>
+      <div class="sig">
+        <span>Scharmer · MIT SMR '26</span>
+        <b>— Leadership Insight</b>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+<div class="share">
+  <button class="btn dark" id="shareBtn" onclick="doShare()">
+    <span id="shareLabel">이 글을 공유하기</span><span class="arr">→</span>
+  </button>
+  <button class="btn" id="copyBtn" onclick="copyLink()">
+    <span id="copyLabel">링크 복사</span><span class="arr">⌘</span>
+  </button>
+  <button class="btn" onclick="location.href='#top'">
+    <span>처음으로 돌아가기</span><span class="arr">↑</span>
+  </button>
+</div>
+
+<footer>
+  <div class="big">— 사각지대는, 늘<br>가장 결정적인 곳에 있다.</div>
+  Set in Playfair Display · Gowun Batang · Inter Tight<br>
+  Leadership Insight · Vol. 01 · 2026
+  <div class="lnks">
+    <a href="#top">↑ Top</a>
+    <span>·</span>
+    <a href="#">Index</a>
+    <span>·</span>
+    <a href="#">Subscribe</a>
+  </div>
+</footer>
+
+</div><!-- /.app -->
+
+<script>
+  // reading progress
+  const bar = document.getElementById('progBar');
+  function updProg(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop || document.body.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    const p = max > 0 ? (scrolled / max) * 100 : 0;
+    bar.style.width = p + '%';
+  }
+  window.addEventListener('scroll', updProg, {passive:true});
+  window.addEventListener('resize', updProg);
+  updProg();
+
+  // share — Web Share API 지원 시 네이티브 공유, 미지원 시 클립보드 복사 fallback
+  function doShare(){
+    const shareData = { title: document.title, url: location.href };
+    if (navigator.share) {
+      navigator.share(shareData).catch(() => {});
+    } else {
+      // fallback: 클립보드 복사 후 버튼 텍스트 변경
+      const lbl = document.getElementById('shareLabel');
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(location.href).then(() => {
+          lbl.textContent = '링크가 복사되었습니다';
+          setTimeout(() => { lbl.textContent = '이 글을 공유하기'; }, 2500);
+        }).catch(() => {
+          lbl.textContent = 'URL: ' + location.href.slice(0, 30) + '…';
+        });
+      } else {
+        // 최후 fallback: prompt로 URL 노출
+        window.prompt('아래 링크를 복사하세요', location.href);
+      }
+    }
+  }
+
+  // copy link
+  function copyLink(){
+    const lbl = document.getElementById('copyLabel');
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(location.href).then(() => {
+        lbl.textContent = '링크가 복사되었습니다 ✓';
+        setTimeout(() => { lbl.textContent = '링크 복사'; }, 2500);
+      }).catch(() => {
+        window.prompt('아래 링크를 복사하세요', location.href);
+      });
+    } else {
+      window.prompt('아래 링크를 복사하세요', location.href);
+    }
+  }
+
+  // 공유 버튼: 데스크톱(Web Share 미지원)에서 텍스트 힌트 표시
+  (function(){
+    if (!navigator.share) {
+      const btn = document.getElementById('shareBtn');
+      if (btn) btn.title = '링크를 클립보드에 복사합니다';
+    }
+  })();
+</script>
+</body>
+</html>
