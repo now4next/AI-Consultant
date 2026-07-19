@@ -10,7 +10,8 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [index.html](index.html) — 니즈 조사 설문 (단일 HTML, 별도 서버 불필요)
 - [blog.html](blog.html) — 추진 내용 홍보 블로그 글 (설문 참여 CTA 포함) · <https://now4next.github.io/AI-Consultant/blog.html>
 - [city/index.html](city/index.html) — Smart Sustainable City Partners 소개 사이트 (UI/UX 업그레이드) · <https://now4next.github.io/AI-Consultant/city/>
-- [insight.html](insight.html) — "AI 시대 리더십의 사각지대" 리더십 인사이트 아티클 · <https://now4next.github.io/AI-Consultant/insight.html>
+- [insight.html](insight.html) — "AI 시대 리더십의 사각지대" 리더십 인사이트 Vol. 01 · <https://now4next.github.io/AI-Consultant/insight.html>
+- [insight-vol-02.html](insight-vol-02.html) — "리더십의 역설" 리더십 인사이트 Vol. 02 · <https://now4next.github.io/AI-Consultant/insight-vol-02.html>
 
 ## 주요 내용
 

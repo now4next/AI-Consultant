@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fbf7f0">
+<title>리더십의 역설 · Leadership Insight Vol. 02</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400&family=Noto+Serif+KR:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c1a17;
+    --ink-2:#2a2620;
+    --paper:#fbf7f0;
+    --paper-2:#f0eadc;
+    --paper-3:#e8dfcc;
+    --rule:#1c1a17;
+    --accent:#7a3a1a;
+    --accent-2:#a85528;
+    --muted:#7d756a;
+    --muted-2:#a89e8f;
+    --serif:'Gowun Batang','Noto Serif KR','Playfair Display',serif;
+    --serif-display:'Playfair Display','Noto Serif KR',serif;
+    --sans:'Inter Tight','Noto Serif KR',sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-size:18px}
+  body{overflow-x:hidden;padding-bottom:80px}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:100;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.11  0 0 0 0 0.10  0 0 0 0 0.09  0 0 0 .06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode:multiply;opacity:.5;
+  }
+
+  /* ---- masthead ---- */
+  .mast{
+    border-bottom:3px double var(--ink);
+    padding:14px 22px;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    position:sticky;top:0;background:var(--paper);z-index:50;
+  }
+  .mast .C{
+    justify-self:center;
+    font-family:var(--serif-display);
+    font-weight:900;
+    font-size:17px;
+    letter-spacing:0;
+    text-transform:none;
+    font-style:italic;
+  }
+  .mast .R{justify-self:end;color:var(--muted);font-size:10px}
+  .mast .L{color:var(--muted);font-size:10px}
+  .mast .L a{color:inherit}
+  .mast .L a:hover{color:var(--accent)}
+
+  /* ---- hero ---- */
+  .hero{border-bottom:1px solid var(--ink)}
+  .hero .eyebrow-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:20px 22px 0;
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  }
+  .hero .eyebrow-row .k{color:var(--accent)}
+  .hero .eyebrow-row .r{color:var(--muted)}
+  .hero .text-block{padding:28px 22px 28px}
+  .hero .kicker{
+    display:flex;align-items:center;gap:12px;
+    margin-bottom:28px;
+  }
+  .hero .kicker .k-line{flex:1;height:1px;background:var(--ink);opacity:.35}
+  .hero .kicker .k-text{
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:13px;color:var(--accent);letter-spacing:.01em;white-space:nowrap;
+  }
+  .hero h1{margin:0 0 28px;color:var(--ink);font-weight:400}
+  .hero h1 .ko-lead{
+    display:block;
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(40px,11vw,54px);
+    line-height:1.02;
+    letter-spacing:-.045em;
+    color:var(--ink);
+    word-break:keep-all;
+  }
+  .hero h1 .ko-lead em{
+    font-style:normal;color:var(--accent);font-weight:700;position:relative;
+  }
+  .hero h1 .ko-lead em::after{
+    content:"";position:absolute;left:0;right:0;bottom:.04em;height:.32em;
+    background:rgba(122,58,26,.15);z-index:-1;
+  }
+  .hero h1 .ko-sub{
+    display:block;
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(19px,5.4vw,24px);
+    line-height:1.35;
+    letter-spacing:-.025em;
+    color:var(--ink-2);
+    margin-top:16px;
+    word-break:keep-all;
+  }
+  .hero .deck{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:17px;
+    line-height:1.75;
+    color:var(--ink-2);
+    text-wrap:pretty;
+    word-break:keep-all;
+    padding-top:24px;
+    border-top:1px solid var(--ink);
+    margin-top:4px;
+  }
+  .hero .deck em{color:var(--accent);font-style:italic;font-weight:500}
+  .hero .pillars{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;
+    margin-top:26px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  }
+  .hero .pillar{
+    padding:14px 6px 14px 0;
+    display:flex;flex-direction:column;gap:6px;
+    border-right:1px solid rgba(28,26,23,.25);
+  }
+  .hero .pillar:last-child{border-right:none;padding-right:0}
+  .hero .pillar:not(:first-child){padding-left:12px}
+  .hero .pillar .n{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--accent)}
+  .hero .pillar .t{
+    font-family:var(--serif);font-weight:600;font-size:13px;
+    color:var(--ink);letter-spacing:-.02em;line-height:1.25;
+    word-break:keep-all;
+  }
+
+  .hero-img{
+    position:relative;
+    aspect-ratio:3/4;
+    background:#1a1613;
+    overflow:hidden;
+    border-top:1px solid var(--ink);
+    border-bottom:1px solid var(--ink);
+  }
+  .hero-img img{
+    width:100%;height:100%;object-fit:cover;
+    filter:contrast(1.02) saturate(.92);
+  }
+  .hero-img .cap{
+    position:absolute;left:16px;right:16px;bottom:16px;
+    color:#f3eee3;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:12px;
+    line-height:1.4;
+    text-shadow:0 1px 12px rgba(0,0,0,.6);
+    max-width:32ch;
+  }
+  .hero-img .frame-tag{
+    position:absolute;top:14px;left:14px;
+    font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:#e8dfcc;
+    padding:5px 9px;background:rgba(28,26,23,.6);backdrop-filter:blur(4px);
+    text-transform:uppercase;
+  }
+
+  .source-row{
+    display:grid;grid-template-columns:auto 1fr;gap:16px;
+    padding:18px 22px 24px;align-items:start;
+    border-bottom:1px solid var(--ink);
+  }
+  .source-row .src-lab{
+    font-family:var(--mono);font-size:9px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--muted);
+    padding-top:3px;white-space:nowrap;
+  }
+  .source-row .src-body{display:flex;flex-direction:column;gap:4px}
+  .source-row .src-body b{
+    font-family:var(--serif-display);font-style:italic;font-weight:500;
+    font-size:15px;color:var(--ink);letter-spacing:0;line-height:1.35;
+  }
+  .source-row .src-body span{
+    font-family:var(--serif);font-size:12px;color:var(--muted);
+    letter-spacing:-.01em;
+  }
+
+  /* ---- series callout ---- */
+  .series{
+    padding:18px 22px;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+    background:var(--paper-2);
+    border-bottom:1px solid var(--ink);
+  }
+  .series .lab{
+    font-family:var(--mono);font-size:9px;letter-spacing:.2em;
+    color:var(--accent);text-transform:uppercase;margin-bottom:4px;
+  }
+  .series .ti{
+    font-family:var(--serif);font-weight:600;font-size:14px;
+    color:var(--ink);letter-spacing:-.02em;line-height:1.3;
+    word-break:keep-all;
+  }
+  .series a.arr{
+    flex:0 0 auto;
+    font-family:var(--serif-display);font-style:italic;
+    font-size:22px;color:var(--accent);
+  }
+
+  /* ---- article ---- */
+  .article{padding:44px 24px 0}
+  .prose{
+    font-family:var(--serif);
+    font-weight:400;font-size:18px;line-height:1.9;
+    color:var(--ink-2);letter-spacing:-.01em;
+  }
+  .prose p{margin-bottom:1.15em;text-wrap:pretty;word-break:keep-all}
+  .prose p.lede{
+    font-family:var(--serif);font-size:19px;line-height:1.75;
+    color:var(--ink);font-weight:500;margin-bottom:1.5em;
+  }
+  .prose .dropcap::first-letter{
+    font-family:var(--serif-display);font-size:82px;float:left;
+    line-height:.82;padding:10px 12px 0 0;font-weight:900;
+    color:var(--accent);font-style:italic;
+  }
+  .prose h2{
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:14px;letter-spacing:.02em;color:var(--accent);
+    margin:48px 0 6px;text-transform:none;
+  }
+  .prose h2 .num{
+    font-family:var(--mono);font-style:normal;font-size:10px;
+    letter-spacing:.2em;color:var(--muted);display:block;margin-bottom:8px;
+    text-transform:uppercase;
+  }
+  .prose h3{
+    font-family:var(--serif);font-weight:700;font-size:26px;line-height:1.25;
+    margin:4px 0 22px;color:var(--ink);letter-spacing:-.03em;
+    word-break:keep-all;text-wrap:balance;
+  }
+  .prose em{font-style:italic;color:var(--accent-2)}
+  .prose strong{font-weight:700;color:var(--ink);background:linear-gradient(transparent 60%,rgba(122,58,26,.14) 60%)}
+
+  .prose blockquote{
+    margin:44px -6px;padding:26px 0;
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:24px;line-height:1.35;color:var(--ink);
+    text-wrap:balance;word-break:keep-all;
+  }
+  .prose blockquote .ko{
+    font-family:var(--serif);font-style:normal;font-weight:500;
+    font-size:20px;line-height:1.55;display:block;margin-top:12px;
+    color:var(--ink);letter-spacing:-.02em;
+  }
+  .prose blockquote cite{
+    display:block;font-style:normal;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--muted);margin-top:16px;
+  }
+
+  /* ---- stat strip ---- */
+  .stat-strip{
+    margin:44px -24px;padding:32px 24px;
+    background:var(--ink);color:var(--paper);
+    display:grid;grid-template-columns:1fr 1fr;gap:24px 20px;
+  }
+  .stat-strip .stat .lab{
+    font-family:var(--mono);font-size:9px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--muted-2);margin-bottom:8px;
+  }
+  .stat-strip .stat .num{
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:44px;line-height:1;color:var(--paper);letter-spacing:-.02em;
+  }
+  .stat-strip .stat .num .sm{font-size:20px;color:var(--accent-2)}
+  .stat-strip .stat .cap{
+    font-family:var(--serif);font-size:13px;line-height:1.55;
+    color:var(--paper-3);margin-top:8px;word-break:keep-all;
+  }
+  .stat-strip .stat .cap em{color:var(--accent-2);font-style:italic}
+
+  /* ---- paradox pairs (신규) ---- */
+  .paradox{
+    margin:44px -24px;padding:36px 24px;
+    background:var(--paper-2);
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  }
+  .paradox .p-hd{
+    font-family:var(--mono);font-size:10px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:6px;
+  }
+  .paradox .p-ti{
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:26px;line-height:1.15;color:var(--ink);margin-bottom:4px;
+  }
+  .paradox .p-ti-ko{
+    font-family:var(--serif);font-weight:700;font-size:22px;line-height:1.25;
+    color:var(--ink);letter-spacing:-.03em;margin-bottom:26px;
+    word-break:keep-all;text-wrap:balance;
+  }
+  .pair{
+    background:var(--paper);
+    border:1px solid var(--ink);
+    padding:20px 18px 22px;
+    margin-bottom:12px;
+    position:relative;
+  }
+  .pair .p-idx{
+    position:absolute;top:-1px;right:-1px;
+    background:var(--ink);color:var(--paper);
+    padding:5px 9px;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
+  }
+  .pair .p-flow{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:10px;
+    align-items:center;
+    margin-bottom:12px;
+    padding-right:34px;
+  }
+  .pair .p-flow .side{display:flex;flex-direction:column;gap:2px}
+  .pair .p-flow .side .en{
+    font-family:var(--serif-display);font-style:italic;
+    font-size:11px;color:var(--muted);letter-spacing:0;line-height:1.2;
+  }
+  .pair .p-flow .side .ko{
+    font-family:var(--serif);font-weight:700;font-size:17px;
+    color:var(--ink);letter-spacing:-.03em;line-height:1.15;
+    word-break:keep-all;
+  }
+  .pair .p-flow .side.dark .ko{color:var(--accent)}
+  .pair .p-flow .arr{
+    font-family:var(--serif-display);font-style:italic;
+    font-size:22px;color:var(--accent);
+    padding:0 4px;
+  }
+  .pair .p-body{
+    font-family:var(--serif);font-size:14.5px;line-height:1.75;
+    color:var(--ink-2);word-break:keep-all;
+    padding-top:14px;
+    border-top:1px dashed var(--muted-2);
+  }
+  .pair .p-body em{color:var(--accent-2);font-style:italic;font-weight:500}
+
+  /* ---- mechanism ladder ---- */
+  .ladder{margin:44px 0}
+  .ladder .ld-hd{
+    font-family:var(--mono);font-size:10px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:6px;
+  }
+  .ladder .ld-ti{
+    font-family:var(--serif);font-weight:700;font-size:24px;color:var(--ink);
+    letter-spacing:-.03em;margin-bottom:20px;line-height:1.25;
+    word-break:keep-all;text-wrap:balance;
+  }
+  .ladder .step{
+    display:grid;grid-template-columns:44px 1fr;gap:14px;
+    padding:16px 0;border-top:1px solid var(--ink);
+    align-items:start;
+  }
+  .ladder .step:last-child{border-bottom:1px solid var(--ink)}
+  .ladder .step .st-n{
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:36px;line-height:1;color:var(--accent);
+  }
+  .ladder .step .st-title{
+    font-family:var(--serif);font-weight:700;font-size:17px;
+    color:var(--ink);letter-spacing:-.02em;line-height:1.3;margin-bottom:4px;
+    word-break:keep-all;
+  }
+  .ladder .step .st-en{
+    font-family:var(--serif-display);font-style:italic;
+    font-size:12px;color:var(--muted);margin-bottom:8px;
+  }
+  .ladder .step .st-body{
+    font-family:var(--serif);font-size:14px;line-height:1.7;
+    color:var(--ink-2);word-break:keep-all;
+  }
+  .ladder .step .st-body em{color:var(--accent-2);font-style:italic}
+
+  /* ---- bleed figure ---- */
+  .bleed{
+    margin:56px -24px;
+    aspect-ratio:16/10;
+    background:#2a2620;
+    overflow:hidden;position:relative;
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  }
+  .bleed img{width:100%;height:100%;object-fit:cover}
+  .bleed figcaption{
+    position:absolute;bottom:14px;left:16px;right:16px;
+    color:#f3eee3;
+    font-family:var(--serif);font-style:italic;
+    font-size:12px;line-height:1.45;
+    text-shadow:0 1px 8px rgba(0,0,0,.6);
+    max-width:42ch;
+  }
+  .bleed figcaption em{font-style:italic;color:#e8dfcc}
+  .bleed .fig-num{
+    position:absolute;top:14px;left:16px;
+    font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:#e8dfcc;
+  }
+
+  /* ---- sidebar ---- */
+  .sidebar{
+    background:var(--paper-2);padding:26px 22px;margin:36px -6px;
+    border-left:3px solid var(--accent);
+    font-family:var(--sans);font-size:14px;line-height:1.65;
+  }
+  .sidebar .lab{
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:10px;
+  }
+  .sidebar h4{
+    font-family:var(--serif);font-weight:700;font-size:19px;line-height:1.3;
+    margin-bottom:12px;letter-spacing:-.02em;color:var(--ink);word-break:keep-all;
+  }
+  .sidebar p{margin-bottom:.7em;color:var(--ink-2);word-break:keep-all}
+  .sidebar p:last-child{margin-bottom:0}
+  .sidebar strong{font-weight:700;color:var(--ink)}
+
+  /* ---- checklist (신규) ---- */
+  .checklist{
+    margin:44px -24px;padding:36px 24px;
+    background:var(--paper-3);
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  }
+  .checklist .ck-hd{
+    font-family:var(--mono);font-size:10px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:6px;
+  }
+  .checklist .ck-ti{
+    font-family:var(--serif);font-weight:700;font-size:22px;line-height:1.25;
+    color:var(--ink);letter-spacing:-.03em;margin-bottom:22px;
+    word-break:keep-all;text-wrap:balance;
+  }
+  .checklist .item{
+    display:grid;grid-template-columns:28px 1fr;gap:12px;
+    padding:14px 0;border-top:1px solid rgba(28,26,23,.4);
+    align-items:baseline;
+  }
+  .checklist .item:last-child{border-bottom:1px solid rgba(28,26,23,.4)}
+  .checklist .item .q{
+    font-family:var(--serif-display);font-style:italic;
+    font-size:20px;color:var(--accent);font-weight:400;line-height:1;
+  }
+  .checklist .item .txt{
+    font-family:var(--serif);font-size:15.5px;line-height:1.6;
+    color:var(--ink);letter-spacing:-.02em;word-break:keep-all;
+    font-weight:500;
+  }
+  .checklist .item .txt em{color:var(--accent-2);font-style:italic;font-weight:600}
+
+  /* ---- takeaway ---- */
+  .takeaway{
+    margin:48px -24px 0;padding:44px 24px 40px;
+    background:var(--ink);color:var(--paper);
+    text-align:left;border-top:1px solid var(--ink);
+  }
+  .takeaway .lab{
+    font-family:var(--mono);font-size:10px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--accent-2);margin-bottom:14px;
+  }
+  .takeaway h3{
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:32px;line-height:1.2;letter-spacing:-.01em;
+    margin-bottom:18px;color:var(--paper);text-wrap:balance;
+  }
+  .takeaway h3 em{color:var(--accent-2);font-style:italic}
+  .takeaway .ko{
+    font-family:var(--serif);font-weight:500;font-size:17px;line-height:1.75;
+    color:var(--paper-3);word-break:keep-all;text-wrap:pretty;
+  }
+  .takeaway .ko em{color:var(--accent-2);font-style:italic}
+  .takeaway .sig{
+    margin-top:28px;padding-top:20px;border-top:1px solid #3a3630;
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--muted-2);
+  }
+  .takeaway .sig b{
+    font-family:var(--serif-display);font-style:italic;
+    font-size:16px;font-weight:400;letter-spacing:0;
+    text-transform:none;color:var(--paper);
+  }
+
+  /* ---- next issue teaser ---- */
+  .next-teaser{
+    padding:36px 24px;
+    border-top:1px solid var(--ink);
+    display:flex;flex-direction:column;gap:14px;
+    background:var(--paper);
+  }
+  .next-teaser .lab{
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .next-teaser .prev{
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+    padding:16px 18px;
+    background:var(--paper-2);
+    border:1px solid var(--ink);
+  }
+  .next-teaser .prev .body{display:flex;flex-direction:column;gap:4px}
+  .next-teaser .prev .no{
+    font-family:var(--mono);font-size:9px;letter-spacing:.2em;
+    color:var(--accent);text-transform:uppercase;
+  }
+  .next-teaser .prev .ti{
+    font-family:var(--serif);font-weight:600;font-size:15px;
+    color:var(--ink);letter-spacing:-.02em;line-height:1.3;
+    word-break:keep-all;
+  }
+  .next-teaser .prev .arr{
+    font-family:var(--serif-display);font-style:italic;font-size:22px;
+    color:var(--accent);flex:0 0 auto;
+  }
+
+  /* ---- share row ---- */
+  .share{padding:28px 24px 24px;display:flex;flex-direction:column;gap:12px}
+  .share .btn{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 18px;border:1px solid var(--ink);background:var(--paper);
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink);cursor:pointer;
+    transition:background .15s;-webkit-user-select:none;user-select:none;
+  }
+  .share .btn:active{background:var(--paper-2)}
+  .share .btn.dark{background:var(--ink);color:var(--paper)}
+  .share .btn .arr{font-family:var(--serif-display);font-style:italic;font-size:18px;letter-spacing:0}
+
+  /* ---- footer ---- */
+  footer{
+    padding:48px 24px 24px;text-align:center;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted);
+    border-top:1px solid var(--ink);margin-top:12px;
+  }
+  footer .big{
+    font-family:var(--serif-display);font-style:italic;font-weight:400;
+    font-size:26px;color:var(--ink);text-transform:none;letter-spacing:-.01em;
+    margin-bottom:16px;line-height:1.2;
+  }
+  footer .lnks{margin-top:14px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+  footer .lnks a{color:var(--muted)}
+
+  .prog{position:fixed;top:0;left:0;right:0;height:2px;background:transparent;z-index:200;pointer-events:none}
+  .prog .bar{height:100%;background:var(--accent);width:0%}
+
+  @media (min-width:640px){
+    body{background:#e6dfd0}
+    .app{
+      max-width:440px;margin:24px auto;
+      box-shadow:0 20px 60px rgba(28,26,23,.18),0 0 0 1px rgba(28,26,23,.08);
+      background:var(--paper);
+    }
+  }
+</style>
+</head>
+<body id="top">
+<div class="prog"><div class="bar" id="progBar"></div></div>
+
+<div class="app">
+
+<header class="mast">
+  <div class="L"><a href="/">← Vol. 01</a></div>
+  <div class="C">Leadership Insight</div>
+  <div class="R"><a href="/vol-03" style="color:inherit">Vol. 03 →</a></div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow-row">
+    <span class="k">Vol. 02 · The Paradox</span>
+    <span class="r">Long read</span>
+  </div>
+
+  <div class="text-block">
+    <div class="kicker">
+      <span class="k-line"></span>
+      <span class="k-text">A Reading of Vinita Bansal</span>
+      <span class="k-line"></span>
+    </div>
+
+    <h1>
+      <span class="ko-lead">리더십의 <em>역설</em>,<br>강점이 만든<br>그림자.</span>
+      <span class="ko-sub">가장 큰 강점이, 가장 큰 약점이라면?</span>
+    </h1>
+
+    <p class="deck">
+      성공한 리더의 실패는 <em>약점</em>이 아니라 <em>과도하게 사용된 강점</em>에서 시작된다. Vinita Bansal이 던진 이 역설적 질문 앞에서, AI 시대의 리더는 자신의 확신을 다시 의심할 준비가 되어 있는가.
+    </p>
+
+    <div class="pillars">
+      <div class="pillar"><span class="n">01</span><span class="t">강점의 과잉</span></div>
+      <div class="pillar"><span class="n">02</span><span class="t">여덟 개의 그림자</span></div>
+      <div class="pillar"><span class="n">03</span><span class="t">질문의 문화</span></div>
+    </div>
+  </div>
+
+  <figure class="hero-img">
+    <div class="frame-tag">Fig. 001 — The Blade &amp; The Shadow</div>
+    <img src="assets/vol02-hero-portrait.jpg" alt="칼과 그 뒤에 드리운 왜곡된 그림자">
+    <figcaption class="cap">날은 하나다. 그러나 벽에 드리운 그림자는, 종종 리더 자신이 본 적 없는 형상을 하고 있다.</figcaption>
+  </figure>
+
+  <div class="source-row">
+    <div class="src-lab">출처 원문</div>
+    <div class="src-body">
+      <b>When Leadership Strengths Become Leadership Blind Spots</b>
+      <span>Vinita Bansal · Medium · 2026</span>
+    </div>
+  </div>
+</section>
+
+<a href="/" class="series" style="text-decoration:none;color:inherit">
+  <div>
+    <div class="lab">Previously on Leadership Insight</div>
+    <div class="ti">Vol. 01 — AI 시대 리더십의 사각지대: 인간은 무엇을 잃어가고 있는가?</div>
+  </div>
+  <span class="arr">↗</span>
+</a>
+
+<article class="article">
+  <div class="prose">
+
+    <p class="lede">
+      우리는 흔히 훌륭한 리더는 자신의 강점을 극대화해야 한다고 믿는다. 강력한 추진력, 빠른 결단, 높은 성취 지향. 그러나 Vinita Bansal은 <em>매우 역설적인 질문</em>을 던진다.
+    </p>
+
+    <blockquote>
+      "What if your greatest strength is also your greatest weakness?"
+      <span class="ko">"만약 당신의 가장 큰 강점이, 동시에 가장 큰 약점이라면?"</span>
+      <cite>Vinita Bansal · Medium, 2026</cite>
+    </blockquote>
+
+    <p class="dropcap">
+      전통적인 리더십 개발론은 개인의 약점(Weakness)을 보완하는 데 초점을 맞춰왔다. 그러나 현대 조직에서 목격되는 수많은 리더십의 실패는 <em>도덕적 결함</em>이나 <em>역량의 부재</em>가 아니다. 아이러니하게도, 과거의 성공을 견인했던 <strong>가장 강력한 무기</strong> 그 자체다.
+    </p>
+
+    <p>
+      Bansal은 새로운 리더십 패러다임을 제시한다 —
+      <strong>Strengths → Overused Strengths → Leadership Blind Spots.</strong>
+      리더의 실패는 강점의 부재에서 오지 않는다. 강점이 <em>맥락을 잃고</em> 반복될 때, 그것은 스스로 볼 수 없는 사각지대로 굳어진다.
+    </p>
+
+    <h2><span class="num">Ⅰ / Definition</span>블라인드 스팟이란</h2>
+    <h3>자신은 못 보지만, 다른 이들에겐 선명한 것.</h3>
+
+    <p>
+      Bansal이 인용하는 정의는 단호하다.
+    </p>
+
+    <blockquote>
+      "A pattern of behavior a leader cannot see in themselves — but which is clearly visible to others."
+      <span class="ko">"리더가 스스로는 인식하지 못하지만, 타인에게는 명확하게 드러나는 행동 패턴."</span>
+    </blockquote>
+
+    <p>
+      회의실 안에서 모두가 알지만 아무도 말하지 않는 것. 리더의 반복되는 <em>어떤 순간</em>. 그 리더는 그것을 자신의 강점이라 확신한다 — 왜냐하면 <strong>그것으로 여기까지 왔기</strong> 때문이다.
+    </p>
+
+    <div class="stat-strip">
+      <div class="stat">
+        <div class="lab">Executive derailment</div>
+        <div class="num">50<span class="sm">%+</span></div>
+        <div class="cap">고위 리더의 실패 원인 중 절반 이상이 '역량 부족'이 아닌 '강점의 과잉'이라는 조사가 반복적으로 확인된다.</div>
+      </div>
+      <div class="stat">
+        <div class="lab">Feedback vacuum</div>
+        <div class="num">↑<span class="sm">rank</span></div>
+        <div class="cap">직급이 올라갈수록 솔직한 피드백은 급격히 줄어든다. 사각지대는 <em>권력의 함수</em>다.</div>
+      </div>
+    </div>
+
+    <h2><span class="num">Ⅱ / The Mechanism</span>강점이 그림자로 변하는 세 개의 경로</h2>
+    <h3>맥락은 바뀌었는데, 문법은 그대로였다.</h3>
+
+    <p>
+      강점이 저절로 맹점이 되는 것은 아니다. Bansal은 세 개의 메커니즘을 지목한다.
+    </p>
+
+    <div class="ladder">
+      <div class="ld-hd">Three Mechanisms</div>
+      <div class="ld-ti">과잉 · 진공 · 편식.</div>
+
+      <div class="step">
+        <div class="st-n">1</div>
+        <div>
+          <div class="st-title">과도한 사용 (Overuse)</div>
+          <div class="st-en">The right tool, the wrong dose.</div>
+          <div class="st-body">과거 성공을 안겨준 강점을 <em>모든 상황</em>에 반복 적용한다. 위기 때 빛나던 결단력이 평시엔 독단이 되고, 성장기의 추진력이 성숙기엔 조직의 번아웃이 된다.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="st-n">2</div>
+        <div>
+          <div class="st-title">피드백 진공 (Feedback Vacuum)</div>
+          <div class="st-en">The higher you climb, the quieter it gets.</div>
+          <div class="st-body">직급이 올라갈수록 아무도 <em>진짜 말</em>을 하지 않는다. 리더의 강점은 교정될 기회를 잃고, 자기 확신은 부풀어 오른다.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="st-n">3</div>
+        <div>
+          <div class="st-title">상호 보완 실패 (Homogeneous Team)</div>
+          <div class="st-en">Surrounded by mirrors, not windows.</div>
+          <div class="st-body">비슷한 스타일의 사람들로 팀을 채운다. 반박 대신 <em>거울</em>이 놓인다. 조직 전체가 리더의 사각지대를 함께 공유하게 된다.</div>
+        </div>
+      </div>
+    </div>
+
+    <h2><span class="num">Ⅲ / Eight Shadows</span>여덟 개의 그림자</h2>
+    <h3>강점의 이름은, 맹점의 이름과 같다.</h3>
+
+    <p>
+      Bansal이 정리한 여덟 개의 강점–맹점 쌍은 리더가 자신을 비춰볼 수 있는 가장 실용적인 거울이다. 왼쪽은 이력서에 자랑스럽게 적힌 단어다. 오른쪽은 <em>그 리더 밑에서 일하는 사람들이 조용히 부르는 이름</em>이다.
+    </p>
+
+  </div>
+
+  <section class="paradox">
+    <div class="p-hd">Strength → Blind Spot · 8 Paradoxes</div>
+    <div class="p-ti">The same name, in two rooms.</div>
+    <div class="p-ti-ko">회의실에서 부르는 이름과, 복도에서 부르는 이름.</div>
+
+    <div class="pair">
+      <div class="p-idx">01</div>
+      <div class="p-flow">
+        <div class="side"><span class="en">Decisiveness</span><span class="ko">과단성</span></div>
+        <span class="arr">→</span>
+        <div class="side dark"><span class="en">Domination</span><span class="ko">독단성</span></div>
+      </div>
+      <div class="p-body">위기의 순간 빛을 발하던 신속한 판단력이, 평시의 회의실에선 <em>타인의 목소리를 봉쇄하는 압력</em>이 된다.</div>
+    </div>
+
+    <div class="pair">
+      <div class="p-idx">02</div>
+      <div class="p-flow">
+        <div class="side"><span class="en">Confidence</span><span class="ko">자신감</span></div>
+        <span class="arr">→</span>
+        <div class="side dark"><span class="en">Arrogance</span><span class="ko">오만함</span></div>
+      </div>
+      <div class="p-body">확신은 조직에 방향을 준다. 그러나 <em>자기 판단만이 옳다</em>는 확신은 반대 의견을 <em>비합리</em>로 재분류한다.</div>
+    </div>
+
+    <div class="pair">
+      <div class="p-idx">03</div>
+      <div class="p-flow">
+        <div class="side"><span class="en">Achievement</span><span class="ko">성취 지향</span></div>
+        <span class="arr">→</span>
+        <div class="side dark"><span class="en">Burnout Culture</span><span class="ko">과도한 압박</span></div>
+      </div>
+      <div class="p-body">더 높은 목표를 향한 열망이 조직을 끌어올린다. 그 열망이 <em>모든 사람에게 자기만큼</em>을 요구할 때, 팀은 조용히 무너진다.</div>
+    </div>
+
+    <div class="pair">
+      <div class="p-idx">04</div>
+      <div class="p-flow">
+        <div class="side"><span class="en">Empathy</span><span class="ko">공감능력</span></div>
+        <span class="arr">→</span>
+        <div class="side dark"><span class="en">Avoidance</span><span class="ko">책임 회피</span></div>
+      </div>
+      <div class="p-body">사람을 향한 따뜻함은 신뢰의 토대다. 그러나 그것이 <em>불편한 대화</em>를 미루는 알리바이가 되면, 책임 경영은 붕괴한다.</div>
+    </div>
+
+    <div class="pair">
+      <div class="p-idx">05</div>
+      <div class="p-flow">
+        <div class="side"><span class="en">Vision</span><span class="ko">비전</span></div>
+        <span class="arr">→</span>
+        <div class="side dark"><span class="en">Detachment</span><span class="ko">현실 감각 부족</span></div>
+      </div>
+      <div class="p-body">멀리 보는 능력은 리더의 특권이다. 그러나 <em>발밑의 실행</em>을 보지 못하는 비전은, 팀에게는 <em>공허한 슬로건</em>이다.</div>
+    </div>
+
+    <div class="pair">
+      <div class="p-idx">06</div>
+      <div class="p-flow">
+        <div class="side"><span class="en">Discipline</span><span class="ko">규율</span></div>
+        <span class="arr">→</span>
+        <div class="side dark"><span class="en">Rigidity</span><span class="ko">경직성</span></div>
+      </div>
+      <div class="p-body">일관된 원칙은 조직의 신뢰를 만든다. 원칙이 <em>맥락을 무시하는 규칙</em>이 되면, 변화의 순간에 조직은 얼어붙는다.</div>
+    </div>
+
+    <div class="pair">
+      <div class="p-idx">07</div>
+      <div class="p-flow">
+        <div class="side"><span class="en">Analytical</span><span class="ko">분석적 사고</span></div>
+        <span class="arr">→</span>
+        <div class="side dark"><span class="en">Paralysis</span><span class="ko">결정 지연</span></div>
+      </div>
+      <div class="p-body">데이터에 기반한 판단은 실패의 확률을 줄인다. 그러나 <em>모든 변수를 다 알기 전에는 움직이지 않는</em> 리더는, 이미 늦은 리더다.</div>
+    </div>
+
+    <div class="pair">
+      <div class="p-idx">08</div>
+      <div class="p-flow">
+        <div class="side"><span class="en">Passion</span><span class="ko">열정</span></div>
+        <span class="arr">→</span>
+        <div class="side dark"><span class="en">Volatility</span><span class="ko">감정적 과잉</span></div>
+      </div>
+      <div class="p-body">뜨거움은 사람을 움직인다. 그 뜨거움이 <em>이성의 문턱</em>을 넘으면, 조직은 매 회의마다 리더의 감정을 관리하느라 지친다.</div>
+    </div>
+  </section>
+
+  <div class="prose">
+
+    <h2><span class="num">Ⅳ / AI as Amplifier</span>AI, 강점의 확성기</h2>
+    <h3>결단은 빨라졌다. 독단도 그만큼.</h3>
+
+    <p>
+      여기서 Vol. 01의 문제의식과 다시 만난다. AI는 리더의 강점을 <em>증폭</em>한다. 결단력이 강한 리더는 AI를 통해 더 빠르게 결정한다. 분석적인 리더는 더 많은 데이터를 확보한다. 열정적인 리더는 더 많은 사람에게 자신의 메시지를 확산한다.
+    </p>
+
+    <p>
+      문제는 AI가 <strong>강점만 증폭하지 않는다</strong>는 점이다. AI는 리더의 <em>맹점도 함께 증폭</em>한다. 독단은 이제 초 단위로 조직을 뒤흔들고, 오만한 확신은 자동화된 근거로 무장한다. 편향된 질문에는 그럴듯한 대답이 즉시 돌아온다.
+    </p>
+
+    <figure class="bleed">
+      <div class="fig-num">Fig. 002 — Broken Mirror / Lens / Leaves</div>
+      <img src="assets/vol02-bleed-still-life.jpg" alt="깨진 손거울과 돋보기, 마른 잎이 놓인 정물">
+      <figcaption>거울은 깨졌지만, 돋보기는 남아 있다. 자기 얼굴을 통째로 보는 대신, <em>한 조각씩</em> 들여다보는 리더의 도구.</figcaption>
+    </figure>
+
+    <blockquote>
+      "AI amplifies not only what a leader is good at, but also what the leader cannot see."
+      <span class="ko">"AI는 리더가 잘하는 것뿐 아니라, 리더가 <em>보지 못하는 것</em>까지 증폭한다."</span>
+      <cite>Bansal · 재해석</cite>
+    </blockquote>
+
+    <p>
+      이것이 AI 시대 리더십의 새로운 리스크다. <strong>속도의 이점이 곧 확산의 위험이 된다.</strong> Vol. 01에서 Scharmer가 말한 '리더의 내면 상태(inner condition)'가 왜 그토록 중요한지, 이제 우리는 다른 각도에서 이해하게 된다 — <em>맹점을 가진 채로 가속되는 조직은, 방향이 아니라 속도만 얻는다.</em>
+    </p>
+
+    <h2><span class="num">Ⅴ / Inquiry Culture</span>답이 아니라 질문의 문화</h2>
+    <h3>정답을 아는 능력에서, 맹점을 발견하는 능력으로.</h3>
+
+    <p>
+      Bansal의 해법은 개인의 각성이 아니라 <strong>문화의 재설계</strong>다. 그녀는 그것을 <em>Inquiry Culture</em>, 즉 <strong>탐구 · 질문의 문화</strong>라 부른다.
+    </p>
+
+    <p>
+      Inquiry Culture는 조직이 자신의 가정과 편향을 지속적으로 검증하고 수정하는 <em>자기교정(self-correcting) 메커니즘</em>이며, AI 시대에 더욱 중요해지는 <strong>집단적 자기인식(Collective Self-awareness)</strong>의 문화적 기반이다.
+    </p>
+
+    <aside class="sidebar">
+      <div class="lab">A note on psychological safety</div>
+      <h4>질문이 오가려면, 먼저 안전해야 한다.</h4>
+      <p>Inquiry Culture는 슬로건이 아니라 <em>조건</em>이다. 반대 의견이 처벌받지 않는다는 확신 — 심리적 안전감(psychological safety) — 이 없다면, 리더의 사각지대는 아무리 정교한 프로세스를 갖춰도 드러나지 않는다.</p>
+      <p>가장 낮은 직급의 구성원이 <strong>가장 편하게</strong> 반박할 수 있는 조직이, 사각지대를 가장 먼저 발견한다.</p>
+    </aside>
+
+    <h2><span class="num">Ⅵ / The Mirror</span>리더를 위한 여섯 개의 질문</h2>
+    <h3>확신을 성찰하는 도구.</h3>
+
+    <p>
+      이 여섯 개의 질문은 답을 얻기 위한 것이 아니다. <em>답이 너무 빨리 떠오르는 질문</em>이 있다면, 바로 그 지점에 사각지대가 있을 확률이 높다.
+    </p>
+
+  </div>
+
+  <section class="checklist">
+    <div class="ck-hd">Self-Inquiry · Six Questions</div>
+    <div class="ck-ti">답보다, 답이 나오는 속도를 관찰하라.</div>
+
+    <div class="item">
+      <div class="q">Q1</div>
+      <div class="txt">최근 3개월간 내가 <em>틀렸다</em>고 인정한 결정이 있는가?</div>
+    </div>
+    <div class="item">
+      <div class="q">Q2</div>
+      <div class="txt">회의에서 내 의견에 <em>진짜로 반대</em>한 사람의 이름을 셋 이상 댈 수 있는가?</div>
+    </div>
+    <div class="item">
+      <div class="q">Q3</div>
+      <div class="txt">내 팀은 나와 <em>다른 스타일</em>의 사람들로 구성되어 있는가, 나의 확장판인가?</div>
+    </div>
+    <div class="item">
+      <div class="q">Q4</div>
+      <div class="txt">내가 자랑스러워하는 강점을, 팀원들은 어떤 <em>다른 이름</em>으로 부르고 있는가?</div>
+    </div>
+    <div class="item">
+      <div class="q">Q5</div>
+      <div class="txt">AI가 내 판단을 <em>더 빠르게</em> 만들었을 때, 나는 그 속도에 얼마나 취해 있는가?</div>
+    </div>
+    <div class="item">
+      <div class="q">Q6</div>
+      <div class="txt">내가 마지막으로 던진 좋은 질문은 무엇이었나 — <em>지시</em>가 아니라, 질문 말이다.</div>
+    </div>
+  </section>
+
+  <div class="prose">
+
+    <h2><span class="num">Ⅶ / Coda</span>결론</h2>
+    <h3>확신의 크기가 아니라, 확신을 성찰하는 능력.</h3>
+
+    <p>
+      Vol. 01에서 우리는 Scharmer의 말을 들었다 — <em>"AI 시대 조직혁신은 기술혁신이 아니라 인간혁신이다."</em> Bansal은 여기에 한 문장을 더한다.
+    </p>
+
+    <div class="takeaway">
+      <div class="lab">The Line</div>
+      <h3>"AI 시대 리더십의 본질은 <em>정답을 아는 능력</em>이 아니라 <em>맹점을 발견하는 능력</em>이다."</h3>
+      <div class="ko">
+        리더십의 핵심은 확신의 크기가 아니라, 자신의 확신을 성찰할 수 있는 능력 — <em>self-awareness</em> — 에서 비롯된다. 강점은 여전히 필요하다. 그러나 강점 옆에 <em>질문</em>이 나란히 놓일 때에만, 그것은 그림자가 되지 않는다.
+      </div>
+      <div class="sig">
+        <span>Bansal · Medium '26</span>
+        <b>— Leadership Insight</b>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+<section class="next-teaser">
+  <div class="lab">The series so far</div>
+  <a href="/" class="prev">
+    <div class="body">
+      <span class="no">Vol. 01 · Otto Scharmer</span>
+      <span class="ti">AI 시대 리더십의 사각지대<br>— 인간은 무엇을 잃어가고 있는가?</span>
+    </div>
+    <span class="arr">↗</span>
+  </a>
+</section>
+
+<div class="share">
+  <div class="btn dark" id="shareBtn2" onclick="doShare2()">
+    <span id="shareLabel2">이 글을 공유하기</span><span class="arr">→</span>
+  </div>
+  <div class="btn" onclick="copyLink2()">
+    <span id="copyLabel2">링크 복사</span><span class="arr">⌘</span>
+  </div>
+  <div class="btn" onclick="location.href='#top'">
+    <span>처음으로 돌아가기</span><span class="arr">↑</span>
+  </div>
+</div>
+
+<footer>
+  <div class="big">— 그림자는, 늘<br>가장 밝은 곳 뒤에 선다.</div>
+  Set in Playfair Display · Gowun Batang · Inter Tight<br>
+  Leadership Insight · Vol. 02 · 2026
+  <div class="lnks">
+    <a href="#top">↑ Top</a>
+    <span>·</span>
+    <a href="/">Vol. 01</a>
+    <span>·</span>
+    <a href="#">Subscribe</a>
+  </div>
+</footer>
+
+</div>
+
+<script>
+  // reading progress bar
+  const bar2 = document.getElementById('progBar');
+  function updProg2(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop || document.body.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    const p = max > 0 ? (scrolled / max) * 100 : 0;
+    bar2.style.width = p + '%';
+  }
+  window.addEventListener('scroll', updProg2, {passive:true});
+  window.addEventListener('resize', updProg2);
+  updProg2();
+
+  // share
+  function doShare2(){
+    const shareData = { title: document.title, url: location.href };
+    if (navigator.share) {
+      navigator.share(shareData).catch(() => {});
+    } else {
+      const lbl = document.getElementById('shareLabel2');
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(location.href).then(() => {
+          lbl.textContent = '링크가 복사되었습니다 ✓';
+          setTimeout(() => { lbl.textContent = '이 글을 공유하기'; }, 2500);
+        }).catch(() => { window.prompt('아래 링크를 복사하세요', location.href); });
+      } else {
+        window.prompt('아래 링크를 복사하세요', location.href);
+      }
+    }
+  }
+
+  // copy link
+  function copyLink2(){
+    const lbl = document.getElementById('copyLabel2');
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(location.href).then(() => {
+        lbl.textContent = '링크가 복사되었습니다 ✓';
+        setTimeout(() => { lbl.textContent = '링크 복사'; }, 2500);
+      }).catch(() => { window.prompt('아래 링크를 복사하세요', location.href); });
+    } else {
+      window.prompt('아래 링크를 복사하세요', location.href);
+    }
+  }
+</script>
+</body>
+</html>
