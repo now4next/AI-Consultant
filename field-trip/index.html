@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EPM 현장 견학 프로젝트 토크</title>
+  <meta name="description" content="EPM 30기와 총동문회가 함께하는 철도공사·진로 프로젝트 현장 견학 참가 신청">
+  <meta name="theme-color" content="#0b1f3a">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="EPM 현장 견학 프로젝트 토크">
+  <meta property="og:description" content="EPM 30기와 총동문회가 함께하는 철도공사·진로 프로젝트 현장 견학 참가 신청">
+  <meta property="og:locale" content="ko_KR">
+
+  <style>
+    :root {
+      --navy: #0b1f3a;
+      --blue: #0e4c92;
+      --orange: #f08b32;
+      --paper: #f3f0e9;
+      --ink: #142137;
+      --muted: #637083;
+    }
+
+    /* minimal reset (matches the Next.js starter's Tailwind preflight for margins) */
+    *, *::before, *::after { box-sizing: border-box; }
+    h1, h2, h3, h4, p, dl, dd, ol, ul, figure { margin: 0; }
+    ol, ul { padding: 0; list-style: none; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 5% 0%, rgba(240, 139, 50, 0.12), transparent 28rem),
+        #e7e9ed;
+      color: var(--ink);
+      font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+    }
+
+    button, input { font: inherit; }
+
+    main { min-height: 100vh; padding: 18px 12px; }
+
+    .page-shell {
+      width: min(100%, 480px);
+      margin: 0 auto;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 22px 70px rgba(9, 25, 47, 0.15);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 525px;
+      overflow: hidden;
+      padding: 42px 28px 30px;
+      background:
+        linear-gradient(165deg, rgba(4, 17, 37, 0.1), rgba(4, 17, 37, 0.92)),
+        linear-gradient(135deg, #0c4d90 0%, #0b1f3a 72%);
+      color: white;
+    }
+
+    .hero::before {
+      position: absolute;
+      inset: auto -12% 74px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.19);
+      content: "";
+      transform: rotate(-8deg);
+    }
+
+    .hero::after {
+      position: absolute;
+      right: -64px;
+      bottom: -92px;
+      width: 285px;
+      height: 285px;
+      border: 44px solid rgba(240, 139, 50, 0.85);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .hero-orbit {
+      position: absolute;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 50%;
+    }
+
+    .orbit-one { width: 330px; height: 330px; right: -125px; top: -120px; }
+    .orbit-two { width: 210px; height: 210px; right: -40px; top: -35px; }
+
+    .eyebrow, .section-label {
+      margin: 0;
+      color: var(--orange);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+    }
+
+    .hero h1 {
+      position: relative;
+      z-index: 1;
+      margin: 40px 0 18px;
+      font-size: clamp(2.75rem, 13vw, 4.25rem);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+    }
+
+    .hero-copy {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .hero-meta {
+      position: absolute;
+      z-index: 1;
+      left: 28px;
+      bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .content { padding: 0 22px 34px; }
+
+    .notice {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 16px;
+      margin: -26px 0 34px;
+      padding: 22px 20px;
+      background: var(--paper);
+      box-shadow: 0 12px 32px rgba(11, 31, 58, 0.12);
+    }
+
+    .notice-number {
+      align-self: center;
+      color: var(--orange);
+      font-family: Georgia, serif;
+      font-size: 3.9rem;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .notice-kicker {
+      margin: 0 0 5px;
+      color: var(--blue);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .notice h2 { margin: 0 0 8px; font-size: 1.15rem; letter-spacing: -0.04em; }
+    .notice p:last-child { margin: 0; color: var(--muted); font-size: 0.76rem; line-height: 1.55; }
+
+    .summary { margin-bottom: 40px; }
+    .summary dl { margin: 12px 0 0; border-top: 2px solid var(--navy); }
+    .summary dl div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 2px;
+      border-bottom: 1px solid #dfe3e8;
+    }
+    .summary dt { color: var(--muted); font-size: 0.78rem; }
+    .summary dd { margin: 0; font-size: 0.86rem; font-weight: 800; }
+
+    .section-heading h2, .application h2 {
+      margin: 7px 0 20px;
+      font-size: 1.75rem;
+      letter-spacing: -0.05em;
+    }
+
+    .schedule ol { margin: 0; padding: 0; list-style: none; }
+    .schedule li {
+      position: relative;
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 15px;
+      padding-bottom: 25px;
+    }
+    .schedule li:not(:last-child)::before {
+      position: absolute;
+      top: 31px;
+      bottom: -2px;
+      left: 20px;
+      width: 1px;
+      background: #cfd6df;
+      content: "";
+    }
+
+    .step {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border: 1px solid #cad3de;
+      border-radius: 50%;
+      background: white;
+      color: var(--blue);
+      font-family: Georgia, serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .schedule time {
+      display: block;
+      margin: 1px 0 4px;
+      color: var(--orange);
+      font-size: 0.69rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+    .schedule h3 { margin: 0 0 4px; font-size: 0.93rem; letter-spacing: -0.025em; }
+    .schedule-body p { margin: 0; color: var(--muted); font-size: 0.76rem; line-height: 1.55; }
+
+    .application {
+      margin: 24px -22px -34px;
+      padding: 38px 24px 40px;
+      background: var(--navy);
+      color: white;
+    }
+    .section-label.light { color: #ffad66; }
+    .application h2 { margin-bottom: 8px; }
+    .application-copy {
+      margin: 0 0 27px;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 0.77rem;
+      line-height: 1.6;
+    }
+
+    form { display: grid; gap: 17px; }
+    label > span {
+      display: block;
+      margin: 0 0 8px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      height: 52px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 0;
+      outline: none;
+      background: rgba(255, 255, 255, 0.07);
+      color: white;
+      padding: 0 15px;
+      transition: border-color 160ms ease, background 160ms ease;
+    }
+    input::placeholder { color: rgba(255, 255, 255, 0.38); }
+    input:focus { border-color: #ffad66; background: rgba(255, 255, 255, 0.11); }
+
+    .input-with-suffix { position: relative; }
+    .input-with-suffix input { padding-right: 48px; }
+    .input-with-suffix b {
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.85rem;
+      transform: translateY(-50%);
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      min-height: 56px;
+      margin-top: 7px;
+      border: 0;
+      background: var(--orange);
+      color: #172238;
+      padding: 0 18px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 900;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+    button:hover { background: #ff9d47; }
+    button:active { transform: translateY(1px); }
+    button:focus-visible { outline: 3px solid white; outline-offset: 3px; }
+    button span { font-size: 1.25rem; }
+
+    .submit-note {
+      margin: -3px 0 0;
+      color: #ffd0a6;
+      font-size: 0.73rem;
+      line-height: 1.5;
+    }
+
+    footer {
+      padding: 22px;
+      background: #071527;
+      color: rgba(255, 255, 255, 0.43);
+      text-align: center;
+    }
+    footer p { margin: 0 0 6px; font-size: 0.65rem; }
+    footer a { color: rgba(255, 255, 255, 0.58); font-size: 0.68rem; text-decoration: none; }
+
+    @media (min-width: 520px) {
+      main { padding: 42px 16px; }
+      .page-shell { border-radius: 4px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-orbit orbit-one"></div>
+        <div class="hero-orbit orbit-two"></div>
+        <p class="eyebrow">EPM 30기 × 총동문회</p>
+        <h1>현장 견학<br>프로젝트 토크</h1>
+        <p class="hero-copy">100년의 역사를 넘어,<br>프로젝트의 미래를 만나다</p>
+        <div class="hero-meta">
+          <span>2026. 09. 04 FRI</span>
+          <span>SEOUL → DAEJEON → CHEONGJU</span>
+        </div>
+      </header>
+
+      <section class="content">
+        <aside class="notice" aria-label="모집 안내">
+          <span class="notice-number">10</span>
+          <div>
+            <p class="notice-kicker">동문 PM 참가 신청</p>
+            <h2>선착순 10명을 모십니다</h2>
+            <p>45인승 이동 버스 여유 좌석으로 총동문회 PM분들을 초대합니다.</p>
+          </div>
+        </aside>
+
+        <section class="summary" aria-labelledby="summary-title">
+          <p class="section-label" id="summary-title">EVENT INFO</p>
+          <dl>
+            <div><dt>일시</dt><dd>2026. 09. 04 (금)</dd></div>
+            <div><dt>출발</dt><dd>서울대학교 13:00</dd></div>
+            <div><dt>이동</dt><dd>45인승 전용버스</dd></div>
+          </dl>
+        </section>
+
+        <section class="schedule" aria-labelledby="schedule-title">
+          <div class="section-heading">
+            <p class="section-label">PROGRAM</p>
+            <h2 id="schedule-title">하루 일정</h2>
+          </div>
+          <ol>
+            <li>
+              <div class="step"><span>01</span></div>
+              <div class="schedule-body">
+                <time>13:00</time>
+                <h3>서울대학교 출발</h3>
+                <p>45인승 전용버스 탑승 및 이동</p>
+              </div>
+            </li>
+            <li>
+              <div class="step"><span>02</span></div>
+              <div class="schedule-body">
+                <time>15:00 — 17:00</time>
+                <h3>신탄진 철도공사 프로젝트 견학</h3>
+                <p>철도공사 100년의 과거, 현재, 그리고 미래</p>
+              </div>
+            </li>
+            <li>
+              <div class="step"><span>03</span></div>
+              <div class="schedule-body">
+                <time>17:00 — 19:00</time>
+                <h3>진로 청주공장 프로젝트 견학</h3>
+                <p>현장 견학 프로그램 및 진로 100년의 역사 탐방</p>
+              </div>
+            </li>
+            <li>
+              <div class="step"><span>04</span></div>
+              <div class="schedule-body">
+                <time>19:00 — 21:00</time>
+                <h3>저녁 식사 및 네트워킹</h3>
+                <p>동문 간 친목 도모와 프로젝트 인사이트 공유</p>
+              </div>
+            </li>
+            <li>
+              <div class="step"><span>05</span></div>
+              <div class="schedule-body">
+                <time>21:00 —</time>
+                <h3>서울 귀가</h3>
+                <p>전용버스 탑승 후 복귀</p>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <section class="application" aria-labelledby="apply-title">
+          <p class="section-label light">APPLICATION</p>
+          <h2 id="apply-title">참가 신청</h2>
+          <p class="application-copy">아래 정보를 입력하고 신청하면 이메일 앱이 열립니다. 내용을 확인한 뒤 보내기를 눌러 신청을 완료해 주세요.</p>
+
+          <form id="applyForm" novalidate>
+            <label>
+              <span>EPM 기수</span>
+              <div class="input-with-suffix">
+                <input name="cohort" type="number" inputmode="numeric" min="1" placeholder="예: 30" required>
+                <b>기</b>
+              </div>
+            </label>
+            <label>
+              <span>이름</span>
+              <input name="name" type="text" autocomplete="name" placeholder="이름을 입력해 주세요" required>
+            </label>
+            <label>
+              <span>연락처</span>
+              <input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000" pattern="[0-9\- ]{9,14}" required>
+            </label>
+            <button type="submit">
+              신청 이메일 작성하기
+              <span aria-hidden="true">↗</span>
+            </button>
+            <p class="submit-note" role="status" id="submitNote" hidden>
+              이메일 앱이 열리지 않았다면 nowfornext@naver.com으로 직접 보내주세요.
+            </p>
+          </form>
+        </section>
+      </section>
+
+      <footer>
+        <p>서울대학교 EPM 총동문회 × EPM 30기 운영위원회</p>
+        <a href="mailto:nowfornext@naver.com">nowfornext@naver.com</a>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      const form = document.getElementById("applyForm");
+      const note = document.getElementById("submitNote");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        const data = new FormData(form);
+        const cohort = String(data.get("cohort") || "").trim();
+        const name = String(data.get("name") || "").trim();
+        const phone = String(data.get("phone") || "").trim();
+
+        const subject = encodeURIComponent("[EPM 현장 견학 신청] " + cohort + "기 " + name);
+        const body = encodeURIComponent([
+          "EPM 현장 견학 참가를 신청합니다.",
+          "",
+          "EPM 기수: " + cohort + "기",
+          "이름: " + name,
+          "연락처: " + phone,
+        ].join("\n"));
+
+        note.hidden = false;
+        window.location.href = "mailto:nowfornext@naver.com?subject=" + subject + "&body=" + body;
+      });
+    })();
+  </script>
+</body>
+</html>

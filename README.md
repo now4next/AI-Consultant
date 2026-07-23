@@ -14,6 +14,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-02.html](insight-vol-02.html) — "리더십의 역설" 리더십 인사이트 Vol. 02 · <https://now4next.github.io/AI-Consultant/insight-vol-02.html>
 - [insight-vol-03.html](insight-vol-03.html) — "질문의 주권" 리더십 인사이트 Vol. 03 · <https://now4next.github.io/AI-Consultant/insight-vol-03.html>
 - [insight-vol-04.html](insight-vol-04.html) — "결단력의 부재" 리더십 인사이트 Vol. 04 · <https://now4next.github.io/AI-Consultant/insight-vol-04.html>
+- [field-trip/index.html](field-trip/index.html) — EPM 30기 현장 견학 신청 페이지 (Next.js 스타터를 정적 변환) · <https://now4next.github.io/AI-Consultant/field-trip/>
 
 ## 주요 내용
 
