@@ -24,8 +24,13 @@ function doPost(e) {
   lock.tryLock(30000);
   try {
     var data = JSON.parse(e.postData.contents);
+
+    // 선택: 특정 탭으로 기록 (예: 현장견학 신청). 없으면 기본 시트 사용.
+    var sheetName = data['__sheet__'] || SHEET_NAME;
+    delete data['__sheet__'];
+
     var ss = SpreadsheetApp.getActiveSpreadsheet();
-    var sheet = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
+    var sheet = ss.getSheetByName(sheetName) || ss.insertSheet(sheetName);
 
     // 첫 행(헤더) 준비 — 1열은 서버 수신 시각
     if (sheet.getLastRow() === 0) {

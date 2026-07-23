@@ -428,13 +428,11 @@
               <span>연락처</span>
               <input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000" pattern="[0-9\- ]{9,14}" required>
             </label>
-            <button type="submit">
-              신청 이메일 작성하기
+            <button type="submit" id="applyBtn">
+              참가 신청하기
               <span aria-hidden="true">↗</span>
             </button>
-            <p class="submit-note" role="status" id="submitNote" hidden>
-              이메일 앱이 열리지 않았다면 nowfornext@naver.com으로 직접 보내주세요.
-            </p>
+            <p class="submit-note" role="status" id="submitNote" hidden></p>
           </form>
         </section>
       </section>
@@ -448,27 +446,69 @@
 
   <script>
     (function () {
+      /* 참가 신청 기록용 Google Apps Script 웹앱 URL (설문과 동일 엔드포인트).
+         payload의 __sheet__ 값으로 별도 탭('현장견학 신청')에 기록됩니다.
+         ※ 별도 탭 분리는 apps-script/Code.gs 최신본 배포가 필요하며,
+           미배포 시에도 기존 시트에 정상 기록됩니다(그레이스풀). */
+      const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbxWmwn531V2RO8UCCcI8JiMaQlNYQ77Oni6mEiBlcTXSaugsAkDpeUvN6UYfl8duA0O/exec";
+      const SHEET_TAB = "현장견학 신청";
+
       const form = document.getElementById("applyForm");
       const note = document.getElementById("submitNote");
-      form.addEventListener("submit", function (event) {
+      const btn = document.getElementById("applyBtn");
+
+      function setNote(message, ok) {
+        note.textContent = message;
+        note.hidden = false;
+        note.style.color = ok ? "#b8f5c9" : "#ffd0a6";
+      }
+
+      async function sendToSheet(payload) {
+        // text/plain 으로 보내 CORS 사전요청을 피하고, Apps Script가 시트에 기록합니다.
+        const res = await fetch(ENDPOINT_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload),
+          redirect: "follow",
+        });
+        let out = null;
+        try { out = await res.json(); } catch (e) { /* 본문 못 읽어도 전송은 성공 간주 */ }
+        if (out && out.result === "error") throw new Error(out.message || "server error");
+        if (!res.ok && !out) throw new Error("HTTP " + res.status);
+      }
+
+      form.addEventListener("submit", async function (event) {
         event.preventDefault();
         if (!form.reportValidity()) return;
+
         const data = new FormData(form);
         const cohort = String(data.get("cohort") || "").trim();
         const name = String(data.get("name") || "").trim();
         const phone = String(data.get("phone") || "").trim();
 
-        const subject = encodeURIComponent("[EPM 현장 견학 신청] " + cohort + "기 " + name);
-        const body = encodeURIComponent([
-          "EPM 현장 견학 참가를 신청합니다.",
-          "",
-          "EPM 기수: " + cohort + "기",
-          "이름: " + name,
-          "연락처: " + phone,
-        ].join("\n"));
+        const payload = {
+          "__sheet__": SHEET_TAB,
+          "신청 유형": "EPM 프로젝트 현장 견학 워크샵",
+          "EPM 기수": cohort + "기",
+          "이름": name,
+          "연락처": phone,
+          "신청 시각": new Date().toLocaleString("ko-KR"),
+        };
 
-        note.hidden = false;
-        window.location.href = "mailto:nowfornext@naver.com?subject=" + subject + "&body=" + body;
+        const originalLabel = btn.innerHTML;
+        btn.disabled = true;
+        btn.textContent = "신청 중...";
+        setNote("신청을 접수하고 있습니다...", true);
+
+        try {
+          await sendToSheet(payload);
+          btn.textContent = "신청 완료 ✓";
+          setNote("참가 신청이 접수되었습니다. 소중한 참여 감사합니다.", true);
+        } catch (err) {
+          btn.disabled = false;
+          btn.innerHTML = originalLabel;
+          setNote("신청 전송에 실패했습니다. 잠시 후 다시 시도하시거나 nowfornext@naver.com으로 문의해 주세요.", false);
+        }
       });
     })();
   </script>
