@@ -126,16 +126,15 @@
   }
   .hero .deck em{color:var(--accent);font-style:italic;font-weight:500}
   .hero .pillars{
-    display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
     margin-top:26px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
   }
   .hero .pillar{
-    padding:14px 6px 14px 0;
+    padding:14px 12px;
     display:flex;flex-direction:column;gap:6px;
-    border-right:1px solid rgba(28,26,23,.25);
   }
-  .hero .pillar:last-child{border-right:none;padding-right:0}
-  .hero .pillar:not(:first-child){padding-left:12px}
+  .hero .pillar:nth-child(odd){border-right:1px solid rgba(28,26,23,.25);padding-left:0}
+  .hero .pillar:nth-child(-n+2){border-bottom:1px solid rgba(28,26,23,.25)}
   .hero .pillar .n{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--accent)}
   .hero .pillar .t{
     font-family:var(--serif);font-weight:600;font-size:15px;
@@ -590,7 +589,8 @@
     <div class="pillars">
       <div class="pillar"><span class="n">Point 01</span><span class="t">수익 풀의 재편</span></div>
       <div class="pillar"><span class="n">Point 02</span><span class="t">동적 AI 해자</span></div>
-      <div class="pillar"><span class="n">Point 03</span><span class="t">조직 재구조화</span></div>
+      <div class="pillar"><span class="n">Point 03</span><span class="t">거래 비용의 소멸</span></div>
+      <div class="pillar"><span class="n">Point 04</span><span class="t">조직 재배선</span></div>
     </div>
   </div>
 
@@ -628,7 +628,7 @@
   <cite>— McKinsey, Where AI will create value</cite>
 </blockquote>
 
-<p>그렇다면 AI가 <em>실질적이고 지속 가능한</em> 경제적 가치를 만드는 곳은 어디인가. McKinsey는 네 개의 구조적 지점을 지목한다.</p>
+<p>그렇다면 AI가 <em>실질적이고 지속 가능한</em> 경제적 가치를 만드는 곳은 어디인가. McKinsey는 네 개의 구조적 지점을 지목한다 — <strong>① 수익 풀의 재편, ② 복제 불가능한 동적 해자, ③ 거래 비용의 소멸, ④ AI 백본 중심의 조직 재배선</strong>이다.</p>
 
 </div>
 
