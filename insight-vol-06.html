@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#fbf7f0">
-<title>가치가 사는 곳 · Leadership Insight Vol. 05</title>
+<title>AI 시대, 사람에 대한 더 깊은 이해 · Leadership Insight Vol. 06</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400&family=Noto+Serif+KR:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
@@ -126,15 +126,16 @@
   }
   .hero .deck em{color:var(--accent);font-style:italic;font-weight:500}
   .hero .pillars{
-    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;
     margin-top:26px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
   }
   .hero .pillar{
-    padding:14px 12px;
+    padding:14px 6px 14px 0;
     display:flex;flex-direction:column;gap:6px;
+    border-right:1px solid rgba(28,26,23,.25);
   }
-  .hero .pillar:nth-child(odd){border-right:1px solid rgba(28,26,23,.25);padding-left:0}
-  .hero .pillar:nth-child(-n+2){border-bottom:1px solid rgba(28,26,23,.25)}
+  .hero .pillar:last-child{border-right:none;padding-right:0}
+  .hero .pillar:not(:first-child){padding-left:12px}
   .hero .pillar .n{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--accent)}
   .hero .pillar .t{
     font-family:var(--serif);font-weight:600;font-size:15px;
@@ -554,253 +555,224 @@
 </style>
 </head>
 <body id="top">
-<div class="prog"><div class="bar" id="progBar5"></div></div>
+<div class="prog"><div class="bar" id="progBar6"></div></div>
 
 <div class="app">
 
 <header class="mast">
-  <div class="L"><a href="insight-vol-04.html">← Vol. 04</a></div>
+  <div class="L"><a href="insight-vol-05.html">← Vol. 05</a></div>
   <div class="C">Leadership Insight</div>
-  <div class="R"><a href="insight-vol-06.html">Vol. 06 →</a></div>
+  <div class="R">Vol. 06</div>
 </header>
 
 <section class="hero">
   <div class="eyebrow-row">
-    <span class="k">Vol. 05 · Where Value Lives</span>
+    <span class="k">Vol. 06 · Understanding People</span>
     <span class="r">Deep read</span>
   </div>
 
   <div class="text-block">
     <div class="kicker">
       <span class="k-line"></span>
-      <span class="k-text">McKinsey · Strategy &amp; Corporate Finance</span>
+      <span class="k-text">Daniel Kahneman · Thinking, Fast and Slow</span>
       <span class="k-line"></span>
     </div>
 
     <h1>
-      <span class="ko-lead">AI가 <em>가치</em>를<br>만드는 곳,<br>사라지는 곳.</span>
-      <span class="ko-sub">생산성 향상은 '기본 참가 자격'일 뿐이다</span>
+      <span class="ko-lead">사람은<br><em>합리적이지</em><br>않다.</span>
+      <span class="ko-sub">AI 시대, '사람에 대한 더 깊은 이해'의 중요성</span>
     </h1>
 
     <p class="deck">
-      McKinsey는 단언한다 — 경쟁사가 쉽게 복제하는 <em>단순 생산성 향상</em>은 가치가 창출되는 곳이 아니라, 살아남기 위한 <em>기본 참가 자격(Table Stakes)</em>일 뿐이다. 진짜 가치는 네 개의 구조적 지점에서 창출된다.
+      AI가 합리적 계산과 분석을 대신하는 시대. 그러나 기계가 결코 대신할 수 없는 것이 있다 — <em>비합리적인 인간</em>을 이해하고 이끄는 일이다. 노벨경제학상 수상자 다니엘 카너먼은 평생에 걸쳐 증명했다. 인간은 감정과 편향, 직관적 착각에 지배받는 존재라는 것을.
     </p>
 
     <div class="pillars">
-      <div class="pillar"><span class="n">Point 01</span><span class="t">수익 풀의 재편</span></div>
-      <div class="pillar"><span class="n">Point 02</span><span class="t">동적 AI 해자</span></div>
-      <div class="pillar"><span class="n">Point 03</span><span class="t">거래 비용의 소멸</span></div>
-      <div class="pillar"><span class="n">Point 04</span><span class="t">조직 재배선</span></div>
+      <div class="pillar"><span class="n">Model</span><span class="t">두 개의 사고 시스템</span></div>
+      <div class="pillar"><span class="n">Biases</span><span class="t">네 가지 인지 편향</span></div>
+      <div class="pillar"><span class="n">System</span><span class="t">시스템 리더십</span></div>
     </div>
   </div>
 
   <div class="source-row">
     <span class="src-lab">원전</span>
     <div class="src-body">
-      <b>Where AI will create value — and where it won't</b>
-      <span>McKinsey · Strategy &amp; Corporate Finance · 2026</span>
+      <b>Thinking, Fast and Slow (생각에 관한 생각)</b>
+      <span>Daniel Kahneman · Nobel Prize in Economics, 2002</span>
     </div>
   </div>
 </section>
 
-<!-- Previously on Vol.04 -->
+<!-- Previously on Vol.05 -->
 <div class="series">
   <div>
-    <div class="lab">Previously on Vol. 04</div>
-    <div class="ti">결단력의 부재 — AI가 지운 것은 정보가 아니라 변명이다</div>
+    <div class="lab">Previously on Vol. 05</div>
+    <div class="ti">가치가 사는 곳 — AI가 가치를 만드는 곳, 사라지는 곳</div>
   </div>
-  <a href="insight-vol-04.html" class="arr">←</a>
+  <a href="insight-vol-05.html" class="arr">←</a>
 </div>
 
 <article class="article">
 <div class="prose">
 
 <!-- Section I -->
-<h2><span class="num">Section Ⅰ · Table Stakes</span>가치가 사라지는 곳</h2>
-<h3>모두가 빨라지면,<br>누구도 앞서지 못한다</h3>
+<h2><span class="num">Section Ⅰ · Homo Economicus</span>합리성이라는 착각</h2>
+<h3>인간이 합리적이라는<br>거대한 전제가 무너지다</h3>
 
-<p class="lede dropcap">AI로 보고서를 수 초 만에 만들고, 반복 업무를 자동화하고, 비용을 절감한다. 놀라운 성취다. 그러나 McKinsey는 냉정하게 말한다 — 그곳은 가치가 창출되는 곳이 아니다.</p>
+<p class="lede dropcap">오랫동안 경제학과 경영학은 하나의 전제 위에 서 있었다 — '인간은 합리적인 의사결정자(Homo Economicus)'라는 믿음이다. 충분한 정보와 논리적 인센티브만 주면 완벽하게 합리적인 판단이 따라오리라 여겼다.</p>
 
-<p>범용 AI 툴은 누구나 살 수 있다. 그래서 단순한 생산성 향상은 곧 상향 평준화되고, 절감된 비용은 <strong>가격 경쟁을 통해 소비자와 경쟁사에게 이전</strong>된다. 결국 손에 남는 이익은 없다.</p>
+<p>그러나 2002년, 정식 경제학 수업을 한 번도 들은 적 없는 인지심리학자 다니엘 카너먼이 노벨경제학상을 받는다. 그는 동료 아모스 트버스키와 함께 인간의 판단을 실험으로 검증하고, 명확한 진실을 꺼내 놓았다.</p>
 
 <blockquote>
-  "단순 생산성 향상은 가치가 창출되는 곳이 아니라, 살아남기 위한 기본 참가 자격(Table Stakes)일 뿐이다."
-  <cite>— McKinsey, Where AI will create value</cite>
+  "우리는 명백한 것에도 눈멀 수 있고, 자신이 눈멀었다는 사실에도 눈먼다."<span class="ko">We can be blind to the obvious, and we are also blind to our blindness.</span>
+  <cite>— Daniel Kahneman, Thinking, Fast and Slow</cite>
 </blockquote>
 
-<p>그렇다면 AI가 <em>실질적이고 지속 가능한</em> 경제적 가치를 만드는 곳은 어디인가. McKinsey는 네 개의 구조적 지점을 지목한다 — <strong>① 수익 풀의 재편, ② 복제 불가능한 동적 해자, ③ 거래 비용의 소멸, ④ AI 백본 중심의 조직 재배선</strong>이다.</p>
+<p>이 발견은 학문에 그치지 않는다. <em>'사람을 다루고 조직을 이끄는'</em> 리더에게 인간을 바라보는 시각의 대전환을 요구한다. 그리고 AI가 합리적 분석을 대신하는 지금, 이 요구는 그 어느 때보다 절실하다 — 리더가 남은 자리에서 다뤄야 할 것은 결국 <strong>비합리적인 사람</strong>이기 때문이다.</p>
 
 </div>
 
-<!-- Section II — Profit Pools -->
-<div class="prose">
-<h2><span class="num">Section Ⅱ · Profit Pools</span>수익 풀의 재편</h2>
-<h3>파이를 나누지 말고,<br>파이를 키워라</h3>
+<div class="stat-strip">
+  <div class="stat"><div class="lab">Nobel</div><div class="num">2002</div><div class="cap">심리학자 카너먼이 노벨경제학상을 받은 해 — '합리적 인간'의 신화가 무너졌다</div></div>
+  <div class="stat"><div class="lab">System 1</div><div class="num">95<span class="sm">%</span></div><div class="cap">일상적 판단의 95% 이상을 지배하는 <em>직관적 사고</em></div></div>
+  <div class="stat"><div class="lab">Loss vs Gain</div><div class="num">2<span class="sm">×</span></div><div class="cap">잃는 고통은 얻는 기쁨보다 약 두 배 크게 느껴진다</div></div>
+  <div class="stat"><div class="lab">Principles</div><div class="num">4</div><div class="cap">리더가 반드시 새겨야 할 네 가지 행동경제학 원칙</div></div>
+</div>
 
-<p>첫 번째 지점은 기존 프로세스를 빠르게 만드는 것을 넘어, <strong>새로운 가치 제안(Value Proposition)으로 산업의 수익 파이 자체를 키우는 곳</strong>이다.</p>
+<!-- Section II -->
+<div class="prose">
+<h2><span class="num">Section Ⅱ · Two Systems</span>뇌를 지배하는 두 사고</h2>
+<h3>빠른 직관과<br>게으른 이성</h3>
+
+<p>카너먼은 인간의 의사결정 체계를 두 개의 시스템으로 나눈다. 문제는 둘의 힘이 대등하지 않다는 데 있다.</p>
 </div>
 
 <div class="paradox">
-  <div class="p-hd">Profit Pools</div>
-  <div class="p-ti">Cost-cutting → Value creation</div>
-  <div class="p-ti-ko">비용 절감이 아니라 가치 제안</div>
+  <div class="p-hd">Two Systems of Thinking</div>
+  <div class="p-ti">Fast vs Slow</div>
+  <div class="p-ti-ko">직관과 이성, 두 개의 사고</div>
 
   <div class="pair">
-    <span class="p-idx">01</span>
+    <span class="p-idx">Sys</span>
     <div class="p-flow">
-      <div class="side"><span class="en">Automation</span><span class="ko">단순 자동화</span></div>
-      <span class="arr">→</span>
-      <div class="side dark"><span class="en">Pricing Power</span><span class="ko">가격 결정력</span></div>
+      <div class="side"><span class="en">System 1 · Fast</span><span class="ko">직관적 사고</span></div>
+      <span class="arr">↔</span>
+      <div class="side dark"><span class="en">System 2 · Slow</span><span class="ko">이성적 사고</span></div>
     </div>
-    <div class="p-body">단순 자동화의 비용 절감분은 가격 경쟁을 통해 소비자에게 넘어간다. 그러나 AI로 <em>차별화된 고차원 제품·서비스</em>를 창출하면, 기업은 독점적 가격 결정력을 갖는다.</div>
-  </div>
-
-  <div class="pair">
-    <span class="p-idx">02</span>
-    <div class="p-flow">
-      <div class="side"><span class="en">Add-on Tool</span><span class="ko">기능 얹기</span></div>
-      <span class="arr">→</span>
-      <div class="side dark"><span class="en">New Solution</span><span class="ko">새로운 솔루션</span></div>
-    </div>
-    <div class="p-body">기존 제품에 AI 툴을 얹는 수준을 넘어, 고객이 당면한 문제를 근본적으로 해결하는 <em>완전히 새로운 서비스형 솔루션</em>을 설계할 때, 실질적 매출과 마진 상승이 일어난다.</div>
+    <div class="p-body">System 1은 빠르고 자동적이며 감정적이다 — 일상 판단의 95%를 지배하지만 체계적 편향에 취약하다. System 2는 느리고 논리적이지만 에너지를 크게 소모해 <em>본질적으로 게으르다.</em> 그래서 뇌는 가급적 System 2의 개입을 피하고, 대부분의 판단을 System 1에 맡긴다.</div>
   </div>
 </div>
 
-<!-- Section III — Dynamic Moats -->
 <div class="prose">
-<h2><span class="num">Section Ⅲ · Dynamic Moats</span>복제 불가능한 해자</h2>
-<h3>쓸수록 강해지는<br>시스템을 만들어라</h3>
+<p>여기서 리더가 놓치기 쉬운 진실이 나온다. 구성원과 고객이 늘 논리적으로 판단하리라 기대하는 것은 뇌의 생리학적 구조를 무시하는 착각이다. 카너먼의 통찰을 리더의 언어로 옮기면 이렇다 — 인간은 <strong>게으른 System 2 대신, 편향된 System 1의 직관으로 먼저 결정한 뒤, 그 결정을 논리로 정당화하는 존재</strong>다.</p>
+</div>
 
-<p>두 번째 지점은, 기술 스펙이 상향 평준화되는 시대에 <strong>사용량이 늘수록 자동으로 강화되는 진입 장벽</strong>을 쌓는 곳이다. AI는 이런 '동적 해자(Dynamic Moat)'를 형성할 때 폭발적 가치를 만든다. McKinsey가 지목하는 세 가지 메커니즘이다.</p>
+<!-- Section III -->
+<div class="prose">
+<h2><span class="num">Section Ⅲ · Four Biases</span>사람을 오판하게 하는 네 가지 편향</h2>
+<h3>조직의 오판과 갈등은<br>어디서 오는가</h3>
+
+<p>카너먼의 연구는 조직에서 왜 그토록 많은 오판과 갈등이 생기는지 설명한다. 리더가 사람을 이해하기 위해 가슴에 새겨야 할 네 가지 원칙이다.</p>
 </div>
 
 <div class="ladder">
-  <div class="ld-hd">Three Dynamic Moats</div>
-  <div class="ld-ti">쓸수록 깊어지는 세 개의 해자</div>
+  <div class="ld-hd">Four Principles</div>
+  <div class="ld-ti">리더가 새겨야 할 네 가지 편향</div>
 
   <div class="step">
     <div class="st-n">01</div>
     <div>
-      <div class="st-title">독점적 데이터 피드백 루프</div>
-      <div class="st-en">Proprietary Data Loops</div>
-      <div class="st-body">고객과의 상호작용에서 실시간 축적되는 고품질 독점 데이터로 AI 모델의 성능을 지속적으로 차별화한다. <em>데이터가 모델을, 모델이 다시 데이터를 부른다.</em></div>
+      <div class="st-title">보이는 것이 전부다</div>
+      <div class="st-en">WYSIATI · What You See Is All There Is</div>
+      <div class="st-body">System 1은 지금 가진 한정된 정보만으로 완벽한 스토리를 만들고, 숨은 변수는 없는 것처럼 처리한다. 그 결과 리더는 단편적 지표만 보고 <em>과잉 확신(Overconfidence)</em>에 빠진다. <strong>지침 —</strong> 확신이 강해질수록 "보이지 않는 정보는 무엇인가"를 묻고, 반대 데이터를 의도적으로 찾아라.</div>
     </div>
   </div>
   <div class="step">
     <div class="st-n">02</div>
     <div>
-      <div class="st-title">워크플로우 고착화</div>
-      <div class="st-en">Workflow Embedding</div>
-      <div class="st-body">고객의 핵심 의사결정과 B2B 운영 시스템, 업무 동선 깊숙이 AI를 이식하면, 타사 제품으로 갈아타는 <em>전환 비용(Switching Cost)</em>이 극대화된다.</div>
+      <div class="st-title">잃는 고통은 얻는 기쁨의 두 배</div>
+      <div class="st-en">Loss Aversion</div>
+      <div class="st-body">사람은 같은 크기라도 이익보다 손실을 약 두 배 크게 느낀다. 변화에 격렬히 저항하는 이유는 미래의 이익보다 <em>지금 가진 권한·익숙함·안전을 잃을 공포</em>가 크기 때문이다. <strong>지침 —</strong> "변화하지 않으면 잃을 것"을 프레이밍하고, 손실감을 완화할 심리적 안전지대를 먼저 만들어라.</div>
     </div>
   </div>
   <div class="step">
     <div class="st-n">03</div>
     <div>
-      <div class="st-title">네트워크 효과</div>
-      <div class="st-en">Network Effects</div>
-      <div class="st-body">사용자 축적이 데이터의 질을 높이고, 높아진 데이터의 질이 다시 서비스 가치를 증폭시키는 <em>선순환 고리</em>가 완성된다.</div>
+      <div class="st-title">뼛속까지 박히는 기준점</div>
+      <div class="st-en">Anchoring Effect</div>
+      <div class="st-body">처음 제시된 숫자가 잔상처럼 남아 이후의 모든 판단을 지배한다. 연봉 협상, 예산 산정, 목표 설정에서 첫 숫자가 논의 전체를 좌우한다. <strong>지침 —</strong> 주도권을 쥐려면 먼저 <em>전략적 앵커</em>를 던지고, 남이 던진 기준점엔 zero-base로 다시 검토하라.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="st-n">04</div>
+    <div>
+      <div class="st-title">결과로 과정을 평가하지 마라</div>
+      <div class="st-en">Outcome Bias</div>
+      <div class="st-body">과정이 아무리 훌륭해도 결과가 나쁘면 "잘못된 결정"이라 하고, 운으로 성공하면 "훌륭한 전략"이라 착각한다. 무모한 도박의 성공은 영웅이 되고, 철저한 분석의 실패는 책망받는다면 <em>조직의 도전 정신은 소멸한다.</em> <strong>지침 —</strong> '결과'와 '의사결정 과정'을 분리해 평가하라. 정당한 과정의 실패는 장려하고, 운의 성공엔 과도한 포상을 경계하라.</div>
     </div>
   </div>
 </div>
 
-<!-- Section IV — Friction Zero -->
+<!-- Section IV -->
 <div class="prose">
-<h2><span class="num">Section Ⅳ · Friction Zero</span>거래 비용의 소멸</h2>
-<h3>마찰이 사라진 자리에서<br>가치가 폭발한다</h3>
+<h2><span class="num">Section Ⅳ · System Leadership</span>비합리를 이기는 시스템</h2>
+<h3>의지가 아니라<br>설계로 다스려라</h3>
 
-<p>세 번째 지점은, 시장과 조직에 존재하던 <strong>마찰 비용(Friction)이 사라지는 곳</strong>이다. 가장 파괴적인 가치 창출이 바로 여기서 일어난다 — 검색·예측·계약·검증의 비용이 0에 수렴한다.</p>
+<p>사람이 본능적으로 비합리적이라면, 리더는 의지력이나 정신론에 기대서는 안 된다. 비합리적인 인간이 <strong>합리적인 결과를 내도록 돕는 '시스템'</strong>을 설계해야 한다. 카너먼의 통찰이 가리키는 세 가지 장치다.</p>
 </div>
 
-<div class="stat-strip">
-  <div class="stat"><div class="lab">Search</div><div class="num">→ 0</div><div class="cap">탐색 비용</div></div>
-  <div class="stat"><div class="lab">Prediction</div><div class="num">→ 0</div><div class="cap">예측 비용 — 대신 <em>독점 데이터의 가치</em>가 폭발한다</div></div>
-  <div class="stat"><div class="lab">Contract</div><div class="num">→ 0</div><div class="cap">계약 비용</div></div>
-  <div class="stat"><div class="lab">Verification</div><div class="num">→ 0</div><div class="cap">검증 비용</div></div>
+<div class="checklist">
+  <div class="ck-hd">Designing for Irrationality</div>
+  <div class="ck-ti">비합리를 보완하는 세 가지 장치</div>
+
+  <div class="item">
+    <span class="q">01</span>
+    <div>
+      <div class="txt">사전 부검제 (Pre-mortem)</div>
+      <div class="sub">프로젝트 시작 전 "1년 후 완전히 망했다"고 가정하고 그 원인을 적게 한다. System 1의 확신 편향을 눌러 <em>게으른 System 2를 강제로 가동</em>시키는 장치다.</div>
+    </div>
+  </div>
+  <div class="item">
+    <span class="q">02</span>
+    <div>
+      <div class="txt">레드팀과 악마의 변호인 (Devil's Advocate)</div>
+      <div class="sub">의도적으로 반대 의견만 내는 역할을 지정한다. 모두가 고개를 끄덕이는 <em>집단 동조와 확증 편향(Confirmation Bias)</em>을 구조적으로 차단한다.</div>
+    </div>
+  </div>
+  <div class="item">
+    <span class="q">03</span>
+    <div>
+      <div class="txt">디폴트 옵션과 넛지 (Nudge)</div>
+      <div class="sub">올바른 행동이 <em>기본값(Default)</em>이 되도록 환경을 설계한다. System 1의 게으름과 싸우는 대신, 그 게으름을 유익한 방향으로 활용한다.</div>
+    </div>
+  </div>
 </div>
 
+<!-- Section V -->
 <div class="prose">
-<p>중개자가 누리던 차익은 소멸한다. 대신 <strong>고객 접점을 선점해 전체 여정을 통합 관리하는 단일 에코시스템 보유자</strong>가 시장 제어점(Control Point)을 쥐고 산업 내 가치를 독식한다. 역설적으로, 예측 비용이 하락할수록 그 예측의 원천인 <em>독점 데이터의 값은 반대로 치솟는다.</em></p>
-</div>
+<h2><span class="num">Section Ⅴ · The Humble Leader</span>불완전함을 인정하는 데서</h2>
+<h3>사람을 바꾸려 하지 말고,<br>사람을 이해하고 설계하라</h3>
 
-<!-- Section V — Rewire -->
-<div class="prose">
-<h2><span class="num">Section Ⅴ · Rewire</span>조직의 재배선</h2>
-<h3>툴을 도입하지 말고,<br>조직을 다시 배선하라</h3>
+<p>카너먼이 남긴 가장 큰 유산은 역설적이게도 <strong>'인간에 대한 겸손'</strong>이다. 리더 자신조차 수많은 편향에서 자유롭지 않은 비합리적 존재임을 인정하는 것. 구성원이 이해할 수 없는 오판을 내리거나 변화에 저항할 때 "왜 저렇게 불합리할까"라고 비난하는 것은 무의미하다. 그것이 심리학이 증명한 인간의 본성이기 때문이다.</p>
 
-<p>네 번째 지점은, 파편화된 툴 도입이 아니라 조직의 체질을 <strong>AI 에이전트와 인간의 협업 구조로 완전히 재설계(Rewire)한 곳</strong>이다. AI 가치는 바로 여기에 축적된다.</p>
+<p>뛰어난 리더는 사람을 바꿀 수 있다고 믿지 않는다. 대신 인간의 비합리적 특성을 깊이 이해하고, 그 결함을 보완하는 의사결정 프로세스와 조직 문화를 설계한다. 그리고 <em>AI가 합리적 영역을 빠르게 흡수하는 지금</em>, 기계가 결코 대신할 수 없는 이 능력 — <strong>사람에 대한 더 깊은 이해</strong> — 이야말로 리더의 마지막이자 가장 강력한 경쟁력이 된다.</p>
 
-<p>AI로 빠른 시도와 피드백 반영이 가능해지면, <em>'실험의 속도(Organizational Velocity)'</em> 자체가 경쟁사가 따라올 수 없는 구조적 우위가 된다. 빠르게 시도하고 학습하는 조직은 데이터 축적 → 모델 고도화 → 서비스 질 향상의 선순환을 그리며, 가치가 <strong>기하급수적으로 복리(Compounding)</strong>로 증폭된다.</p>
-</div>
-
-<!-- Section VI — Won't vs Will -->
-<div class="prose">
-<h2><span class="num">Section Ⅵ · Won't vs Will</span>소실되는 곳 vs 집적되는 곳</h2>
-<h3>같은 AI,<br>갈리는 운명</h3>
-
-<p>McKinsey의 결론을 네 개의 축으로 요약하면, 같은 기술을 도입하고도 가치가 <em>사라지는</em> 조직과 <em>쌓이는</em> 조직이 갈리는 지점이 선명해진다.</p>
-</div>
-
-<div class="paradox">
-  <div class="p-hd">Where It Won't → Where It Will</div>
-  <div class="p-ti">Value Lost vs Value Compounded</div>
-  <div class="p-ti-ko">가치가 소실되는 곳과 집적되는 곳</div>
-
-  <div class="pair">
-    <span class="p-idx">동인</span>
-    <div class="p-flow">
-      <div class="side"><span class="en">Task Speed</span><span class="ko">과업 가속·비용 절감</span></div>
-      <span class="arr">→</span>
-      <div class="side dark"><span class="en">Innovation</span><span class="ko">제품·서비스 혁신</span></div>
-    </div>
-    <div class="p-body">핵심 동인이 '단발성 과업 가속'에 머물면 가치는 상쇄된다. '제품·서비스 혁신과 거래 마찰 소멸'로 옮겨갈 때 가치가 창출된다.</div>
-  </div>
-
-  <div class="pair">
-    <span class="p-idx">경쟁</span>
-    <div class="p-flow">
-      <div class="side"><span class="en">Price War</span><span class="ko">가격 경쟁</span></div>
-      <span class="arr">→</span>
-      <div class="side dark"><span class="en">Moat</span><span class="ko">해자 구축</span></div>
-    </div>
-    <div class="p-body">범용 AI 툴 사용은 가격 경쟁만 심화시키는 Table Stakes다. 독점 데이터와 워크플로우 고착화가 복제 불가능한 해자를 만든다.</div>
-  </div>
-
-  <div class="pair">
-    <span class="p-idx">조직</span>
-    <div class="p-flow">
-      <div class="side"><span class="en">Pilots</span><span class="ko">개별 파일럿</span></div>
-      <span class="arr">→</span>
-      <div class="side dark"><span class="en">Rewire</span><span class="ko">전사 재구조화</span></div>
-    </div>
-    <div class="p-body">개별 직원·부서 단위 파일럿에 그치면 흩어진다. 전사 프로세스를 AI 백본 중심으로 재구조화할 때 비로소 축적된다.</div>
-  </div>
-
-  <div class="pair">
-    <span class="p-idx">결과</span>
-    <div class="p-flow">
-      <div class="side"><span class="en">Value Leaks</span><span class="ko">가치 이전</span></div>
-      <span class="arr">→</span>
-      <div class="side dark"><span class="en">Value Captured</span><span class="ko">수익 풀 선점</span></div>
-    </div>
-    <div class="p-body">절감된 가치가 소비자·경쟁사로 새어 나가느냐, 산업의 수익 풀(Profit Pools)과 시장 제어점을 선점하느냐가 최종 결과를 가른다.</div>
-  </div>
 </div>
 
 </article>
 
 <!-- Takeaway (dark section) -->
 <div class="takeaway">
-  <div class="lab">Synthesis · Vol. 05</div>
-  <h3>가치는 <em>구조</em>에<br>쌓인다</h3>
+  <div class="lab">Synthesis · Vol. 06</div>
+  <h3>사람을 <em>이해</em>하는 것이<br>마지막 경쟁력이다</h3>
   <p class="ko">
-    AI의 가치는 '무엇을 자동화했는가'가 아니라 '어떤 <em>구조적 우위</em>를 쌓았는가'에서 나온다. 생산성 향상은 입장권일 뿐이다. 승부는 수익 풀의 재편, 복제 불가능한 해자, 거래 비용의 소멸, 그리고 조직의 재배선 — 그 네 지점에서 갈린다.
+    AI가 정답을 쏟아내는 시대에, 리더의 차별화는 '얼마나 빨리 계산하는가'가 아니라 <em>'얼마나 깊이 사람을 이해하는가'</em>에서 나온다. 카너먼이 리더에게 선물한 무기는, 인간의 불완전함을 읽어내는 능력이다.
   </p>
   <p class="ko" style="margin-top:16px">
-    그래서 리더가 던져야 할 질문은 "무엇을 더 빠르게 할 것인가"가 아니라, <em>"우리는 쓸수록 깊어지는 해자를 쌓고 있는가"</em>이다. 남들이 쉽게 복제할 수 있는 자리에는, 결국 가치가 남지 않는다.
+    그러니 사람을 바꾸려 하지 말라. 대신 그 비합리를 이해하고 — 사전 부검, 악마의 변호인, 넛지처럼 — <strong>결함을 보완하는 시스템</strong>을 설계하라. 완벽한 리더는 인간의 불완전함을 인정하는 데서 출발한다.
   </p>
   <div class="sig">
-    <span>Leadership Insight · Vol. 05 · 2026</span>
+    <span>Leadership Insight · Vol. 06 · 2026</span>
     <b>— Leadership Insight</b>
   </div>
 </div>
@@ -808,20 +780,20 @@
 <!-- Next teaser -->
 <div class="next-teaser">
   <div class="lab">More from Leadership Insight</div>
-  <a href="insight-vol-04.html" style="text-decoration:none">
+  <a href="insight-vol-05.html" style="text-decoration:none">
     <div class="prev">
       <div class="body">
-        <span class="no">Vol. 04 · The Commitment Gap</span>
-        <span class="ti">결단력의 부재 — AI가 지운 것은 변명이다</span>
+        <span class="no">Vol. 05 · Where Value Lives</span>
+        <span class="ti">가치가 사는 곳 — AI 가치의 네 지점</span>
       </div>
       <span class="arr">←</span>
     </div>
   </a>
-  <a href="insight-vol-03.html" style="text-decoration:none">
+  <a href="insight-vol-04.html" style="text-decoration:none">
     <div class="prev">
       <div class="body">
-        <span class="no">Vol. 03 · The Sovereignty</span>
-        <span class="ti">질문의 주권 — 묻는 자만이 이끈다</span>
+        <span class="no">Vol. 04 · The Commitment Gap</span>
+        <span class="ti">결단력의 부재 — AI가 지운 변명</span>
       </div>
       <span class="arr">←</span>
     </div>
@@ -830,19 +802,19 @@
 
 <!-- Share -->
 <div class="share">
-  <button class="btn dark" onclick="doShare5()" id="shareBtn5">
-    <span id="shareLabel5">이 글을 공유하기</span>
+  <button class="btn dark" onclick="doShare6()" id="shareBtn6">
+    <span id="shareLabel6">이 글을 공유하기</span>
     <span class="arr">↗</span>
   </button>
-  <button class="btn" onclick="copyLink5()" id="copyBtn5">
-    <span id="copyLabel5">링크 복사</span>
+  <button class="btn" onclick="copyLink6()" id="copyBtn6">
+    <span id="copyLabel6">링크 복사</span>
     <span class="arr">→</span>
   </button>
 </div>
 
 <footer>
   <div class="big">Leadership Insight</div>
-  <div>Vol. 05 · 가치가 사는 곳 · 2026</div>
+  <div>Vol. 06 · 사람에 대한 이해 · 2026</div>
   <div class="lnks">
     <a href="insight.html">Vol. 01</a>
     <a href="insight-vol-02.html">Vol. 02</a>
@@ -857,24 +829,24 @@
 
 <script>
   // progress bar
-  const bar5 = document.getElementById('progBar5');
-  function updProg5(){
+  const bar6 = document.getElementById('progBar6');
+  function updProg6(){
     const h = document.documentElement;
     const s = h.scrollTop || document.body.scrollTop;
     const max = h.scrollHeight - h.clientHeight;
-    bar5.style.width = (max > 0 ? (s/max)*100 : 0) + '%';
+    bar6.style.width = (max > 0 ? (s/max)*100 : 0) + '%';
   }
-  window.addEventListener('scroll', updProg5, {passive:true});
-  window.addEventListener('resize', updProg5);
-  updProg5();
+  window.addEventListener('scroll', updProg6, {passive:true});
+  window.addEventListener('resize', updProg6);
+  updProg6();
 
   // share
-  function doShare5(){
+  function doShare6(){
     const d = { title: document.title, url: location.href };
     if (navigator.share) {
       navigator.share(d).catch(()=>{});
     } else {
-      const lbl = document.getElementById('shareLabel5');
+      const lbl = document.getElementById('shareLabel6');
       if (navigator.clipboard) {
         navigator.clipboard.writeText(location.href).then(()=>{
           lbl.textContent='링크가 복사되었습니다 ✓';
@@ -885,8 +857,8 @@
   }
 
   // copy link
-  function copyLink5(){
-    const lbl = document.getElementById('copyLabel5');
+  function copyLink6(){
+    const lbl = document.getElementById('copyLabel6');
     if (navigator.clipboard) {
       navigator.clipboard.writeText(location.href).then(()=>{
         lbl.textContent='링크가 복사되었습니다 ✓';
