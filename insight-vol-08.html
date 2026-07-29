@@ -644,6 +644,56 @@
   <div class="stat"><div class="lab">Burnout</div><div class="num">22<span class="sm">%</span></div><div class="cap">번아웃 증상을 보고한 전 세계 직원 (2023, MHI)</div></div>
 </div>
 
+<div class="diagram">
+  <svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI 역량과 인간 인지 역량의 격차 그래프">
+    <text x="32" y="28" font-family="'JetBrains Mono',monospace" font-size="11.5" letter-spacing="2.2" fill="#7d756a">AI VALUE IS CONSTRAINED BY HUMAN CAPACITY — NOT TECHNOLOGY</text>
+
+    <!-- gridlines -->
+    <g stroke="#e8dfcc" stroke-width="1">
+      <line x1="100" y1="90" x2="500" y2="90"/>
+      <line x1="100" y1="140" x2="500" y2="140"/>
+      <line x1="100" y1="190" x2="500" y2="190"/>
+      <line x1="100" y1="240" x2="500" y2="240"/>
+      <line x1="100" y1="290" x2="500" y2="290"/>
+    </g>
+
+    <!-- gap fill: the bottleneck -->
+    <path d="M100 300 L500 78 L500 250 L100 312 Z" fill="#1a3e6b" opacity="0.10"/>
+
+    <defs>
+      <marker id="axA8" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#1c1a17"/></marker>
+    </defs>
+    <!-- axes -->
+    <line x1="100" y1="332" x2="100" y2="58" stroke="#1c1a17" stroke-width="1.6" marker-end="url(#axA8)"/>
+    <line x1="100" y1="332" x2="562" y2="332" stroke="#1c1a17" stroke-width="1.6" marker-end="url(#axA8)"/>
+
+    <!-- human cognitive capacity (gentle) -->
+    <path d="M100 312 L500 250" stroke="#1c1a17" stroke-width="3" fill="none"/>
+    <circle cx="100" cy="312" r="4.6" fill="#1c1a17"/><circle cx="500" cy="250" r="4.6" fill="#1c1a17"/>
+    <!-- AI capability (steep) -->
+    <path d="M100 300 L500 78" stroke="#2a5fa8" stroke-width="3" fill="none"/>
+    <circle cx="100" cy="300" r="4.6" fill="#2a5fa8"/><circle cx="500" cy="78" r="4.6" fill="#2a5fa8"/>
+
+    <!-- line labels -->
+    <text x="238" y="150" font-family="'Gowun Batang',serif" font-weight="700" font-size="15.5" fill="#2a5fa8">AI 역량</text>
+    <text x="228" y="308" font-family="'Gowun Batang',serif" font-weight="700" font-size="15.5" fill="#1c1a17">인간 인지 역량</text>
+
+    <!-- axis labels -->
+    <text x="42" y="200" text-anchor="middle" transform="rotate(-90 42 200)" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1.5" fill="#7d756a">성과 잠재력</text>
+    <text x="500" y="352" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1.5" fill="#7d756a">시간 →</text>
+
+    <!-- right bracket: closing the gap -->
+    <path d="M516 78 L524 78 L524 250 L516 250" stroke="#1a3e6b" stroke-width="1.6" fill="none"/>
+    <text x="534" y="150" font-family="'Gowun Batang',serif" font-weight="700" font-size="14" fill="#1a3e6b">격차</text>
+    <text x="534" y="171" font-family="'Gowun Batang',serif" font-size="12" fill="#7d756a">= 브레인</text>
+    <text x="534" y="188" font-family="'Gowun Batang',serif" font-size="12" fill="#7d756a">캐피탈</text>
+  </svg>
+  <div class="cap">
+    Fig. — AI 역량은 가파르게 오르지만 인간의 인지 역량은 완만하다. 그 격차가 곧 병목이며, 브레인 캐피탈이 이를 좁힌다. (McKinsey 자료를 재구성한 오리지널 도해)<br>
+    출처: McKinsey, <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-organization-blog/five-principles-for-designing-brain-powered-organizations" target="_blank" rel="noopener">Five principles for designing brain-powered organizations</a> (2026)
+  </div>
+</div>
+
 <!-- Section II — Five Principles -->
 <div class="prose">
 <h2><span class="num">Section Ⅱ · Five Principles</span>브레인 캐피탈을 설계하는 다섯 원칙</h2>
@@ -653,40 +703,63 @@
 </div>
 
 <div class="diagram">
-  <svg viewBox="0 0 620 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="사람이 운전대에, AI는 루프 안에 개념도">
+  <svg viewBox="0 0 640 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="브레인 캐피탈을 설계하는 다섯 원칙 원형도">
     <defs>
-      <marker id="ahA" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#1a3e6b"/></marker>
-      <marker id="ahI" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#1c1a17"/></marker>
+      <marker id="inA8" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#1a3e6b"/></marker>
     </defs>
-    <text x="310" y="28" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="12.5" letter-spacing="3" fill="#6b6459">HUMAN AT THE WHEEL · AI IN THE LOOP</text>
 
-    <!-- steering wheel (human) -->
-    <g stroke="#1c1a17" stroke-width="2.6" fill="none">
-      <circle cx="175" cy="190" r="76"/>
-      <circle cx="175" cy="190" r="20"/>
-      <line x1="175" y1="114" x2="175" y2="170"/>
-      <line x1="175" y1="207" x2="129" y2="252"/>
-      <line x1="175" y1="207" x2="221" y2="252"/>
+    <!-- arrows pointing inward to the brain -->
+    <g stroke="#1a3e6b" stroke-width="2" fill="none">
+      <path d="M320 103 L320 163" marker-end="url(#inA8)"/>
+      <path d="M460.8 204.3 L403.7 222.8" marker-end="url(#inA8)"/>
+      <path d="M407 369.7 L371.7 321.2" marker-end="url(#inA8)"/>
+      <path d="M233 369.7 L268.3 321.2" marker-end="url(#inA8)"/>
+      <path d="M179.2 204.3 L236.3 222.8" marker-end="url(#inA8)"/>
     </g>
-    <text x="175" y="196" text-anchor="middle" font-family="'Gowun Batang',serif" font-weight="700" font-size="19" fill="#1c1a17">사람</text>
-    <text x="175" y="298" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11.5" letter-spacing="2" fill="#6b6459">HUMAN · 운전대</text>
 
-    <!-- AI node -->
-    <rect x="432" y="150" width="122" height="80" rx="9" fill="#1a3e6b"/>
-    <text x="493" y="186" text-anchor="middle" font-family="'Playfair Display',serif" font-style="italic" font-weight="700" font-size="27" fill="#fbf7f0">AI</text>
-    <text x="493" y="209" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing="1.5" fill="#cfe0f5">IN THE LOOP</text>
+    <!-- central brain -->
+    <circle cx="320" cy="250" r="76" fill="#1a3e6b"/>
+    <g stroke="#fbf7f0" stroke-width="2" fill="none" stroke-linecap="round">
+      <path d="M320 202 C298 196 280 208 283 225 C267 229 265 250 281 256 C279 274 297 284 320 278"/>
+      <path d="M320 202 C342 196 360 208 357 225 C373 229 375 250 359 256 C361 274 343 284 320 278"/>
+      <line x1="320" y1="202" x2="320" y2="278"/>
+      <path d="M301 220 q11 6 2 15"/>
+      <path d="M339 220 q-11 6 -2 15"/>
+      <path d="M296 250 q12 5 5 14"/>
+      <path d="M344 250 q-12 5 -5 14"/>
+    </g>
+    <circle cx="300" cy="235" r="2.3" fill="#fbf7f0"/><circle cx="340" cy="235" r="2.3" fill="#fbf7f0"/>
+    <circle cx="296" cy="262" r="2.3" fill="#fbf7f0"/><circle cx="344" cy="262" r="2.3" fill="#fbf7f0"/>
+    <text x="320" y="313" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="2" fill="#cfe0f5">BRAIN CAPITAL</text>
 
-    <!-- top arrow: human directs AI -->
-    <path d="M256 148 Q350 104 428 150" stroke="#1a3e6b" stroke-width="2.2" fill="none" marker-end="url(#ahA)"/>
-    <text x="350" y="108" text-anchor="middle" font-family="'Gowun Batang',serif" font-size="14.5" fill="#1a3e6b">지시 · 판단</text>
+    <!-- Node 1 (top) -->
+    <circle cx="320" cy="85" r="17" fill="#1a3e6b"/><text x="320" y="91" text-anchor="middle" font-family="'Playfair Display',serif" font-weight="700" font-size="16" fill="#fbf7f0">1</text>
+    <text x="320" y="42" text-anchor="middle" font-family="'Gowun Batang',serif" font-weight="700" font-size="14.5" fill="#1c1a17">인지 부하 조율</text>
+    <text x="320" y="59" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#7d756a">Calibrate load</text>
 
-    <!-- bottom arrow: AI assists human -->
-    <path d="M430 226 Q345 268 258 228" stroke="#1c1a17" stroke-width="2.2" fill="none" marker-end="url(#ahI)"/>
-    <text x="345" y="290" text-anchor="middle" font-family="'Gowun Batang',serif" font-size="14.5" fill="#1c1a17">제안 · 보조</text>
+    <!-- Node 2 (upper-right) -->
+    <circle cx="476.9" cy="199" r="17" fill="#1a3e6b"/><text x="476.9" y="205" text-anchor="middle" font-family="'Playfair Display',serif" font-weight="700" font-size="16" fill="#fbf7f0">2</text>
+    <text x="500" y="196" font-family="'Gowun Batang',serif" font-weight="700" font-size="14.5" fill="#1c1a17">인지 역량 보호</text>
+    <text x="500" y="213" font-family="'JetBrains Mono',monospace" font-size="10" fill="#7d756a">Protect capacity</text>
+
+    <!-- Node 3 (lower-right) -->
+    <circle cx="417" cy="383.5" r="17" fill="#1a3e6b"/><text x="417" y="389.5" text-anchor="middle" font-family="'Playfair Display',serif" font-weight="700" font-size="16" fill="#fbf7f0">3</text>
+    <text x="417" y="424" text-anchor="middle" font-family="'Gowun Batang',serif" font-weight="700" font-size="14.5" fill="#1c1a17">집중 조건 형성</text>
+    <text x="417" y="441" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#7d756a">Enable focus</text>
+
+    <!-- Node 4 (lower-left) -->
+    <circle cx="223" cy="383.5" r="17" fill="#1a3e6b"/><text x="223" y="389.5" text-anchor="middle" font-family="'Playfair Display',serif" font-weight="700" font-size="16" fill="#fbf7f0">4</text>
+    <text x="223" y="424" text-anchor="middle" font-family="'Gowun Batang',serif" font-weight="700" font-size="14.5" fill="#1c1a17">적응형 두뇌 역량</text>
+    <text x="223" y="441" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#7d756a">Adaptive skills</text>
+
+    <!-- Node 5 (upper-left) -->
+    <circle cx="163.1" cy="199" r="17" fill="#1a3e6b"/><text x="163.1" y="205" text-anchor="middle" font-family="'Playfair Display',serif" font-weight="700" font-size="16" fill="#fbf7f0">5</text>
+    <text x="140" y="196" text-anchor="end" font-family="'Gowun Batang',serif" font-weight="700" font-size="13.5" fill="#1c1a17">브레인-포지티브 환경</text>
+    <text x="140" y="213" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#7d756a">Brain-positive env.</text>
   </svg>
   <div class="cap">
-    Fig. — 사람이 운전대를 쥐고, AI는 루프 안에서 돕는다. (오리지널 도해)<br>
-    프레임워크 출처: McKinsey, <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-organization-blog/five-principles-for-designing-brain-powered-organizations" target="_blank" rel="noopener">Five principles for designing brain-powered organizations</a> (2026)
+    Fig. — 브레인 캐피탈을 설계하는 다섯 원칙. 모든 원칙은 하나의 중심 — 사람의 두뇌 — 를 향한다. (McKinsey 프레임워크를 재구성한 오리지널 도해)<br>
+    출처: McKinsey, <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-organization-blog/five-principles-for-designing-brain-powered-organizations" target="_blank" rel="noopener">Five principles for designing brain-powered organizations</a> (2026)
   </div>
 </div>
 
@@ -745,6 +818,44 @@
 
 <p>AI가 인간의 인지 노동을 흡수하는 시대에, 조직의 다음 경쟁력은 더 많은 도구가 아니라 <em>그 도구를 쓰는 사람의 두뇌</em>다. 사람을 이해하고(Vol. 06), 인간다움을 지키며(Vol. 07), 이제 그 <strong>두뇌를 전략 자산으로 설계하는 것</strong> — 그것이 브레인 파워 조직을 만드는 리더의 일이다.</p>
 
+</div>
+
+<div class="diagram">
+  <svg viewBox="0 0 620 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="사람이 운전대에, AI는 루프 안에 개념도">
+    <defs>
+      <marker id="ahA" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#1a3e6b"/></marker>
+      <marker id="ahI" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#1c1a17"/></marker>
+    </defs>
+    <text x="310" y="28" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="12.5" letter-spacing="3" fill="#7d756a">HUMAN AT THE WHEEL · AI IN THE LOOP</text>
+
+    <!-- steering wheel (human) -->
+    <g stroke="#1c1a17" stroke-width="2.6" fill="none">
+      <circle cx="175" cy="190" r="76"/>
+      <circle cx="175" cy="190" r="20"/>
+      <line x1="175" y1="114" x2="175" y2="170"/>
+      <line x1="175" y1="207" x2="129" y2="252"/>
+      <line x1="175" y1="207" x2="221" y2="252"/>
+    </g>
+    <text x="175" y="196" text-anchor="middle" font-family="'Gowun Batang',serif" font-weight="700" font-size="19" fill="#1c1a17">사람</text>
+    <text x="175" y="298" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11.5" letter-spacing="2" fill="#7d756a">HUMAN · 운전대</text>
+
+    <!-- AI node -->
+    <rect x="432" y="150" width="122" height="80" rx="9" fill="#1a3e6b"/>
+    <text x="493" y="186" text-anchor="middle" font-family="'Playfair Display',serif" font-style="italic" font-weight="700" font-size="27" fill="#fbf7f0">AI</text>
+    <text x="493" y="209" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing="1.5" fill="#cfe0f5">IN THE LOOP</text>
+
+    <!-- top arrow: human directs AI -->
+    <path d="M256 148 Q350 104 428 150" stroke="#1a3e6b" stroke-width="2.2" fill="none" marker-end="url(#ahA)"/>
+    <text x="350" y="108" text-anchor="middle" font-family="'Gowun Batang',serif" font-size="14.5" fill="#1a3e6b">지시 · 판단</text>
+
+    <!-- bottom arrow: AI assists human -->
+    <path d="M430 226 Q345 268 258 228" stroke="#1c1a17" stroke-width="2.2" fill="none" marker-end="url(#ahI)"/>
+    <text x="345" y="290" text-anchor="middle" font-family="'Gowun Batang',serif" font-size="14.5" fill="#1c1a17">제안 · 보조</text>
+  </svg>
+  <div class="cap">
+    Fig. — 다섯 원칙을 관통하는 한 문장: 사람이 운전대를 쥐고, AI는 루프 안에서 돕는다. (오리지널 도해)<br>
+    프레임워크 출처: McKinsey, <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-organization-blog/five-principles-for-designing-brain-powered-organizations" target="_blank" rel="noopener">Five principles for designing brain-powered organizations</a> (2026)
+  </div>
 </div>
 
 </article>
