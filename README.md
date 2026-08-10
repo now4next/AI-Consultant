@@ -19,6 +19,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-06.html](insight-vol-06.html) — "사람에 대한 더 깊은 이해" 리더십 인사이트 Vol. 06 (Kahneman) · <https://now4next.github.io/AI-Consultant/insight-vol-06.html>
 - [insight-vol-07.html](insight-vol-07.html) — "인간의 자리" 리더십 인사이트 Vol. 07 (Stanford GSB · AI Effect) · <https://projectleadership.cc/insight-vol-07.html>
 - [insight-vol-08.html](insight-vol-08.html) — "브레인 캐피탈" 리더십 인사이트 Vol. 08 (McKinsey · 브레인 파워 조직) · <https://projectleadership.cc/insight-vol-08.html>
+- [insight-vol-09.html](insight-vol-09.html) — "분별의 값" 리더십 인사이트 Vol. 09 (MIT SMR · The Judgment Premium) · <https://projectleadership.cc/insight-vol-09.html>
 - [field-trip/index.html](field-trip/index.html) — EPM 30기 현장 견학 신청 페이지 (Next.js 스타터를 정적 변환) · <https://now4next.github.io/AI-Consultant/field-trip/>
   - "참가 신청하기" 클릭 시 Google 시트에 기록됩니다(설문과 동일 Apps Script 엔드포인트). `__sheet__` 값으로 별도 탭('현장견학 신청')에 분리 저장하려면 [apps-script/Code.gs](apps-script/Code.gs) 최신본을 재배포하세요(미배포 시에도 기본 시트에 정상 기록).
 
