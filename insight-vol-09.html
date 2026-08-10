@@ -565,6 +565,13 @@
   /* ---- full-bleed issue cover (edge-to-edge) ---- */
   .cover-bleed{margin:-44px -24px 30px;background:#0a0e18}
   .cover-bleed img{display:block;width:100%;height:auto}
+  /* ---- term definition callout ---- */
+  .termdef{margin:0 0 30px;padding:20px 20px 22px;border:1px solid var(--ink);border-left:4px solid var(--accent);background:var(--paper-2)}
+  .termdef .td-lab{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .termdef .td-word{font-family:var(--serif);font-weight:700;font-size:23px;color:var(--accent);margin:9px 0 11px;letter-spacing:-.01em}
+  .termdef .td-word .en{font-family:var(--sans);font-weight:300;font-size:15px;color:var(--muted);margin-left:7px}
+  .termdef .td-body{font-family:var(--serif);font-size:15.5px;line-height:1.78;color:var(--ink-2);word-break:keep-all}
+  .termdef .td-body em{font-style:normal;color:var(--accent);font-weight:700}
 </style>
 </head>
 <body id="top">
@@ -626,6 +633,13 @@
 </div>
 
 <article class="article">
+
+<div class="termdef">
+  <div class="td-lab">용어 · 이 글에서의 정의</div>
+  <div class="td-word">분별 <span class="en">Judgment</span></div>
+  <p class="td-body">이 글에서 '분별'은 단순한 '의사결정'이 아니다. 수많은 선택지 가운데 <em>무엇이 정말 할 가치가 있는지를 가려내고</em>, 정보가 불완전하고 결과가 불확실한 상황에서 그 결정의 무게와 책임을 스스로 짊어지는 인간의 능력을 말한다. AI가 대신할 수 있는 '실행'이나 '정보 종합'과 구별되는 — <em>맥락을 읽어 값을 매기는 판단력</em>이다.</p>
+</div>
+
 <div class="prose">
 
 <!-- Section I -->
