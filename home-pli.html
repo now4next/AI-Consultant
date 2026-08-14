@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
-<title>PLI · Project Leadership Insight — 홈 시안</title>
+<title>PLI · Project Leadership Insight (홈 시안)</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,7 +67,7 @@
   .spot h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,4.4vw,42px);line-height:1.18;letter-spacing:-.02em;margin:8px 0 16px;word-break:keep-all}
   .spot .tldr{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0 0 18px}
   .spot .tldr li{font-family:var(--serif);font-size:16px;line-height:1.6;color:var(--ink-2);padding-left:18px;position:relative;word-break:keep-all}
-  .spot .tldr li::before{content:"—";position:absolute;left:0;color:var(--muted)}
+  .spot .tldr li::before{content:"·";position:absolute;left:0;color:var(--muted);font-weight:700}
   .spot .meta{display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
   .pill{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--ink-2);background:var(--surface-2);border-radius:999px;padding:5px 11px}
   .curated{font-family:var(--serif-display);font-style:italic;color:var(--muted)}
@@ -130,22 +130,41 @@
 </head>
 <body>
 
-<div class="concept">홈 리뉴얼 시안 · Concept — 실제 배포본 아님</div>
+<div class="concept">홈 리뉴얼 시안 · Concept · 실제 배포본 아님</div>
 
 <!-- owl mascot symbol (monochrome) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <g id="owl">
-    <circle cx="60" cy="60" r="57" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".4"/>
-    <path d="M42 30 L50 46 L34 44 Z" fill="currentColor"/>
-    <path d="M78 30 L86 44 L70 46 Z" fill="currentColor"/>
-    <path d="M60 38 C40 38 30 52 30 68 C30 86 44 96 60 96 C76 96 90 86 90 68 C90 52 80 38 60 38 Z"
-          fill="none" stroke="currentColor" stroke-width="2.4"/>
-    <circle cx="48" cy="62" r="13" fill="none" stroke="currentColor" stroke-width="2.2"/>
-    <circle cx="72" cy="62" r="13" fill="none" stroke="currentColor" stroke-width="2.2"/>
-    <circle cx="48" cy="62" r="5.4" fill="currentColor"/>
-    <circle cx="72" cy="62" r="5.4" fill="currentColor"/>
-    <path d="M60 70 L55 79 L65 79 Z" fill="currentColor"/>
-    <path d="M50 84 q10 8 20 0" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".5"/>
+  <g id="owl" stroke-linecap="round" stroke-linejoin="round">
+    <!-- ear tufts -->
+    <path d="M47 19 L53 38 L37 33 Z" fill="currentColor"/>
+    <path d="M73 19 L67 38 L83 33 Z" fill="currentColor"/>
+    <!-- head -->
+    <path d="M60 30 C38 30 27 46 27 65 C27 85 42 95 60 95 C78 95 93 85 93 65 C93 46 82 30 60 30 Z" fill="none" stroke="currentColor" stroke-width="2.6"/>
+    <!-- glasses -->
+    <circle cx="47" cy="61" r="15" fill="none" stroke="currentColor" stroke-width="2.6"/>
+    <circle cx="73" cy="61" r="15" fill="none" stroke="currentColor" stroke-width="2.6"/>
+    <path d="M58.5 57 q1.5 -2.6 3 0" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M32.2 59 L28 61" fill="none" stroke="currentColor" stroke-width="2.4"/>
+    <path d="M87.8 59 L92 61" fill="none" stroke="currentColor" stroke-width="2.4"/>
+    <!-- eyes -->
+    <circle cx="47" cy="62" r="6.6" fill="none" stroke="currentColor" stroke-width="2"/>
+    <circle cx="73" cy="62" r="6.6" fill="none" stroke="currentColor" stroke-width="2"/>
+    <circle cx="47" cy="62" r="3" fill="currentColor"/>
+    <circle cx="73" cy="62" r="3" fill="currentColor"/>
+    <!-- beak -->
+    <path d="M60 68 L56 76 L64 76 Z" fill="currentColor"/>
+    <!-- chest -->
+    <path d="M52 84 q8 6 16 0" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".5"/>
+    <!-- wings holding the book -->
+    <path d="M33 82 C27 91 29 101 40 105" fill="none" stroke="currentColor" stroke-width="2.4"/>
+    <path d="M87 82 C93 91 91 101 80 105" fill="none" stroke="currentColor" stroke-width="2.4"/>
+    <!-- open book -->
+    <path d="M60 101 L37 105 L37 119 L60 115 Z" fill="none" stroke="currentColor" stroke-width="2.2"/>
+    <path d="M60 101 L83 105 L83 119 L60 115 Z" fill="none" stroke="currentColor" stroke-width="2.2"/>
+    <path d="M60 101 L60 115" fill="none" stroke="currentColor" stroke-width="2.2"/>
+    <path d="M43 109 L55 107.5 M43 113 L55 111.5 M65 107.5 L77 109 M65 111.5 L77 113" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/>
+    <!-- feet -->
+    <path d="M52 119 L52 124 M49 124 L55 124 M68 119 L68 124 M65 124 L71 124" fill="none" stroke="currentColor" stroke-width="2"/>
   </g>
 </defs></svg>
 
@@ -178,7 +197,7 @@
         <h2>신뢰의 화폐</h2>
         <ul class="tldr">
           <li>AI가 그럴듯함을 값싸게 찍어낼수록, 조직의 진짜 화폐는 신뢰다.</li>
-          <li>신뢰는 감정이 아니라 진정성·논리·공감으로 설계하는 자본이다.</li>
+          <li>신뢰는 막연한 감정이 아니라 설계하고 쌓아 가는 자본이다.</li>
           <li>모든 AI 결정을 '신뢰 결정'으로 다루는 리더가 성과를 만든다.</li>
         </ul>
         <div class="meta">
@@ -269,7 +288,7 @@
 <section class="foothero" id="subscribe">
   <div class="wrap grid">
     <div class="mascot" style="color:#fff">
-      <svg viewBox="0 0 120 120" role="img" aria-label="부엉이 마스코트 플리"><use href="#owl"/></svg>
+      <svg viewBox="0 0 120 130" role="img" aria-label="부엉이 마스코트 플리"><use href="#owl"/></svg>
       <div class="cap">“안녕하세요, 플리예요”</div>
     </div>
     <div>
@@ -287,13 +306,11 @@
 
 <footer>
   <div class="wrap">
-    <div class="big">PLI — Project Leadership Insight</div>
+    <div class="big">PLI · Project Leadership Insight</div>
     <div class="f-row">
       <a href="#latest">Weekly</a>
       <a href="#archive">아카이브</a>
       <a href="#subscribe">구독</a>
-      <a href="survey.html">니즈 서베이</a>
-      <a href="blog.html">Blog</a>
     </div>
     <div class="cr">© 2026 Project Leadership Insight · 부엉이 플리와 인사이터들 · projectleadership.cc</div>
   </div>
