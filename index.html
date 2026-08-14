@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='84'>🦉</text></svg>">
 <title>PLI · Project Leadership Insight</title>
 <meta name="description" content="매주 금요일, 세계의 리더십·경영 통찰을 리더의 언어로 한 편씩. 부엉이 플리가 고른 Weekly Insight.">
 <link rel="canonical" href="https://projectleadership.cc/">
@@ -99,10 +100,12 @@
   .card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.12);border-color:rgba(0,0,0,.25)}
   .card .thumb{aspect-ratio:16/10;background:var(--surface);overflow:hidden;position:relative}
   .card .thumb img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
-  .card .thumb.ph{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;
-    background:#0a0a0a;color:#fff}
-  .card .thumb.ph .pn{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:#bdbdbd}
-  .card .thumb.ph .pt{font-family:var(--serif);font-weight:700;font-size:22px;letter-spacing:-.02em}
+  .card .thumb.ph{position:relative;display:flex;flex-direction:column;justify-content:flex-end;
+    padding:14px 16px;background:radial-gradient(125% 130% at 88% 0%, #24314a, #0a0e17 68%);color:#fff;overflow:hidden}
+  .card .thumb.ph::after{content:attr(data-n);position:absolute;top:-26px;right:2px;
+    font-family:var(--serif-display);font-weight:900;font-size:112px;line-height:1;color:rgba(255,255,255,.07)}
+  .card .thumb.ph .kw{position:relative;font-family:var(--serif);font-weight:700;font-size:27px;letter-spacing:-.03em;line-height:1.05}
+  .card .thumb.ph .src{position:relative;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#9fb2cc;margin-top:6px}
   .card .body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
   .card .no{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--ink);text-transform:uppercase}
   .card h3{font-family:var(--serif);font-weight:700;font-size:20px;line-height:1.3;letter-spacing:-.02em;margin:6px 0 8px;word-break:keep-all}
@@ -134,7 +137,8 @@
   footer{border-top:1px solid var(--line);padding:36px 0 60px}
   footer .f-row{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
   footer .f-row a:hover{color:var(--ink)}
-  footer .big{display:flex;align-items:baseline;gap:9px;margin-bottom:14px}
+  footer .big{display:flex;align-items:baseline;gap:9px;margin-bottom:8px}
+  footer .ftag{font-family:var(--serif);font-size:15px;color:var(--muted);margin-bottom:18px;word-break:keep-all}
   .big .mark{font-size:26px}.big .sep{font-size:18px}.big .full{font-size:13.5px}
   footer .cr{margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted-2)}
 </style>
@@ -228,31 +232,31 @@
           <div class="foot"><span class="tag">#사람 · Kahneman</span><span class="rt">⏱ 6분</span></div></div>
       </a>
       <a class="card" data-cat="전략" href="insight-vol-05.html">
-        <div class="thumb ph"><span class="pn">VOL. 05</span><span class="pt">가치가 사는 곳</span></div>
+        <div class="thumb ph" data-n="05"><span class="kw">가치</span><span class="src">McKinsey</span></div>
         <div class="body"><div class="no">Vol. 05</div><h3>가치가 사는 곳</h3>
           <p>생산성은 입장권일 뿐. AI가 진짜 가치를 만드는 네 지점.</p>
           <div class="foot"><span class="tag">#전략 · McKinsey</span><span class="rt">⏱ 5분</span></div></div>
       </a>
       <a class="card" data-cat="의사결정" href="insight-vol-04.html">
-        <div class="thumb ph"><span class="pn">VOL. 04</span><span class="pt">결단력의 부재</span></div>
+        <div class="thumb ph" data-n="04"><span class="kw">결단력</span><span class="src">HBR · McKinsey</span></div>
         <div class="body"><div class="no">Vol. 04</div><h3>결단력의 부재</h3>
           <p>AI가 지운 건 정보가 아니라 변명이었다. 드러난 결단력의 부재.</p>
           <div class="foot"><span class="tag">#의사결정 · HBR</span><span class="rt">⏱ 5분</span></div></div>
       </a>
       <a class="card" data-cat="의사결정" href="insight-vol-03.html">
-        <div class="thumb ph"><span class="pn">VOL. 03</span><span class="pt">질문의 주권</span></div>
+        <div class="thumb ph" data-n="03"><span class="kw">질문</span><span class="src">Gregersen · MIT</span></div>
         <div class="body"><div class="no">Vol. 03</div><h3>질문의 주권</h3>
           <p>답의 문화에서 질문의 문화로. 큰 질문을 가진 리더가 큰 변화를 만든다.</p>
           <div class="foot"><span class="tag">#의사결정 · MIT</span><span class="rt">⏱ 4분</span></div></div>
       </a>
       <a class="card" data-cat="사람" href="insight-vol-02.html">
-        <div class="thumb ph"><span class="pn">VOL. 02</span><span class="pt">리더십의 역설</span></div>
+        <div class="thumb ph" data-n="02"><span class="kw">역설</span><span class="src">Bansal</span></div>
         <div class="body"><div class="no">Vol. 02</div><h3>리더십의 역설</h3>
           <p>가장 큰 강점이 가장 큰 맹점이 되는 순간, 강점이 만든 그림자.</p>
           <div class="foot"><span class="tag">#사람 · Bansal</span><span class="rt">⏱ 4분</span></div></div>
       </a>
       <a class="card" data-cat="사람" href="insight.html">
-        <div class="thumb ph"><span class="pn">VOL. 01</span><span class="pt">리더십의 사각지대</span></div>
+        <div class="thumb ph" data-n="01"><span class="kw">사각지대</span><span class="src">Scharmer · MIT SMR</span></div>
         <div class="body"><div class="no">Vol. 01</div><h3>AI 시대 리더십의 사각지대</h3>
           <p>지능을 계산으로만 정의할 때, 인간은 무엇을 잃어가는가.</p>
           <div class="foot"><span class="tag">#사람 · Scharmer</span><span class="rt">⏱ 5분</span></div></div>
@@ -284,6 +288,7 @@
 <footer>
   <div class="wrap">
     <div class="big"><span class="mark">PLI</span><span class="sep">·</span><span class="full">Project Leadership Insight</span></div>
+    <div class="ftag">세계의 통찰을 리더의 언어로, 매주 금요일.</div>
     <div class="f-row">
       <a href="#latest">Weekly</a>
       <a href="#archive">아카이브</a>
