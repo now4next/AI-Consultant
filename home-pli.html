@@ -38,8 +38,10 @@
     border-bottom:1px solid var(--line)}
   .top .row{display:flex;align-items:center;justify-content:space-between;height:64px}
   .brand{display:flex;align-items:baseline;gap:10px}
-  .brand .mark{font-family:var(--serif-display);font-weight:900;font-style:italic;font-size:26px;letter-spacing:.02em;color:var(--ink)}
-  .brand .full{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .brand .mark,.big .mark{font-family:var(--serif-display);font-weight:900;font-style:normal;letter-spacing:.01em;color:var(--ink)}
+  .brand .sep,.big .sep{font-family:var(--sans);font-weight:300;color:var(--muted-2)}
+  .brand .full,.big .full{font-family:var(--sans);font-weight:300;letter-spacing:.04em;text-transform:none;color:var(--muted)}
+  .brand .mark{font-size:26px}.brand .sep{font-size:18px}.brand .full{font-size:13.5px}
   .nav{display:flex;align-items:center;gap:22px}
   .nav a{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
   .nav a:hover{color:var(--ink)}
@@ -125,7 +127,8 @@
   footer{border-top:1px solid var(--line);padding:36px 0 60px}
   footer .f-row{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
   footer .f-row a:hover{color:var(--ink)}
-  footer .big{font-family:var(--serif-display);font-style:italic;font-weight:700;font-size:22px;color:var(--ink);margin-bottom:14px}
+  footer .big{display:flex;align-items:baseline;gap:9px;margin-bottom:14px}
+  .big .mark{font-size:26px}.big .sep{font-size:18px}.big .full{font-size:13.5px}
   footer .cr{margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted-2)}
 </style>
 </head>
@@ -139,6 +142,7 @@
   <div class="wrap row">
     <div class="brand">
       <span class="mark">PLI</span>
+      <span class="sep">·</span>
       <span class="full">Project Leadership Insight</span>
     </div>
     <nav class="nav">
@@ -273,7 +277,7 @@
 
 <footer>
   <div class="wrap">
-    <div class="big">PLI · Project Leadership Insight</div>
+    <div class="big"><span class="mark">PLI</span><span class="sep">·</span><span class="full">Project Leadership Insight</span></div>
     <div class="f-row">
       <a href="#latest">Weekly</a>
       <a href="#archive">아카이브</a>
