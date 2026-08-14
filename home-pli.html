@@ -265,7 +265,7 @@
     <div>
       <div class="eyebrow">매주 금요일 · 3분 통찰</div>
       <h1>리더는 시간이 없지,<br><em>통찰</em>이 필요 없는 건 아니니까</h1>
-      <p class="sub">세계의 리더십·경영 통찰을 리더의 언어로 한 편씩 정리해 드려요. 이 편지를 읽는 당신은 <em>인사이터</em>. 매주 금요일, 플리가 그 주의 한 편을 골라 문 앞에 둘게요.</p>
+      <p class="sub">세계의 리더십·경영 통찰을 리더의 언어로 한 편씩 정리해 드려요. 이 편지를 읽는 당신은 <em>플리더</em>. 매주 금요일, 플리가 그 주의 한 편을 골라 문 앞에 둘게요.</p>
       <form class="subscribe" id="subForm" onsubmit="return subMock(event)">
         <input id="email" type="email" placeholder="이메일 주소" aria-label="이메일 주소" required>
         <button class="btn" type="submit">구독</button>
@@ -283,7 +283,7 @@
       <a href="#archive">아카이브</a>
       <a href="#subscribe">구독</a>
     </div>
-    <div class="cr">© 2026 Project Leadership Insight · 부엉이 플리와 인사이터들 · projectleadership.cc</div>
+    <div class="cr">© 2026 Project Leadership Insight · 부엉이 플리와 플리더들 · projectleadership.cc</div>
   </div>
 </footer>
 
@@ -298,7 +298,7 @@
   });
   function subMock(ev){
     ev.preventDefault();
-    document.getElementById('subForm').innerHTML='<div style="font-family:var(--serif);font-size:16px;color:#fff;padding:6px 2px">곧 만나요, 인사이터! 🦉 <span style="color:#b8b8b8">(구독 폼은 시안입니다)</span></div>';
+    document.getElementById('subForm').innerHTML='<div style="font-family:var(--serif);font-size:16px;color:#fff;padding:6px 2px">곧 만나요, 플리더! 🦉 <span style="color:#b8b8b8">(구독 폼은 시안입니다)</span></div>';
     document.getElementById('subNote').textContent='실제 발송은 이메일 서비스 연동 시 활성화됩니다.';
     return false;
   }
