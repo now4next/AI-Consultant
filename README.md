@@ -7,7 +7,7 @@ PM 역량 고도화·모델링 컨설팅 수요를 파악하기 위한 설문 �
 
 GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 
-- [index.html](index.html) — 리더십 인사이트 허브 (홈, 전체 Vol 목록)
+- [index.html](index.html) — PLI 홈 (뉴스레터형: Weekly Insight 스포트라이트 + 커버 카드 아카이브, 부엉이 마스코트 '플리', 구독 폼)
 - [survey.html](survey.html) — AI4PM 니즈 조사 설문 (단일 HTML, 별도 서버 불필요)
 - [blog.html](blog.html) — 추진 내용 홍보 블로그 글 (설문 참여 CTA 포함) · <https://now4next.github.io/AI-Consultant/blog.html>
 - [city/index.html](city/index.html) — Smart Sustainable City Partners 소개 사이트 (UI/UX 업그레이드) · <https://now4next.github.io/AI-Consultant/city/>
