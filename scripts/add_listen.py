@@ -1,13 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Add the "본문 듣기" (listen) button to Leadership Insight volume pages.
+Add the "음성 듣기" (listen) button to Leadership Insight volume pages.
 
-Option A: browser-native Web Speech API (speechSynthesis).
-Free, no API key, works on a static site. Reads the article aloud with a
-Korean voice, highlights the block being read, and supports play/pause/stop.
+Option A: browser-native Web Speech API (speechSynthesis) — free, no API key,
+works on a static site. Reads the article aloud with a Korean voice and
+highlights the block being read.
 
-Idempotent: running it again on an already-patched file changes nothing.
+UI: a single small toggle button, right-aligned in the hero just above the
+deck rule. Idle label "음성 듣기"; while reading it becomes "듣기 정지", and
+clicking again stops.
+
+Idempotent: injected sections are wrapped in pli-listen markers, so re-running
+replaces the previous version cleanly.
 
 Usage:
     python scripts/add_listen.py                 # all volume pages
@@ -16,50 +21,46 @@ Usage:
 import os, re, sys, glob
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MARK = "pli-listen"
 
-CSS = """  /* ---- listen / TTS (Web Speech API) ---- */
-  .listen{display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-    margin:0 0 28px;padding:13px 15px;border:1px solid var(--ink);background:var(--paper-2)}
-  .listen button{display:inline-flex;align-items:center;gap:7px;cursor:pointer;
-    font-family:var(--sans);font-weight:600;font-size:14px;letter-spacing:-.01em;
+CSS = """  /* pli-listen:start */
+  .hero .listen{display:flex;justify-content:flex-end;margin:-8px 0 12px}
+  .hero .listen button{display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+    font-family:var(--sans);font-weight:600;font-size:12.6px;letter-spacing:-.01em;
     border:1px solid var(--ink);background:var(--ink);color:var(--paper);
-    padding:9px 16px;border-radius:999px;transition:.15s}
-  .listen button:hover{opacity:.85}
-  .listen button.ghost{background:transparent;color:var(--ink)}
-  .listen .ico{font-size:11px;line-height:1}
-  .listen .note{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--muted)}
+    padding:8px 14px;border-radius:999px;transition:.15s}
+  .hero .listen button:hover{opacity:.85}
+  .hero .listen button.on{background:transparent;color:var(--ink)}
+  .hero .listen .ico{font-size:10px;line-height:1}
   .reading{background:rgba(26,62,107,.10);border-radius:2px;
     box-shadow:0 0 0 4px rgba(26,62,107,.10);transition:background .2s}
+  /* pli-listen:end */
 """
 
-HTML = """<div class="listen" id="listenBar">
-  <button id="lsnPlay" type="button" aria-label="본문 음성으로 듣기">
-    <span class="ico" id="lsnIco">&#9654;</span><span id="lsnLabel">본문 듣기</span>
-  </button>
-  <button id="lsnStop" type="button" class="ghost" hidden>&#9632; 정지</button>
-  <span class="note" id="lsnNote">브라우저 음성으로 읽어 드려요</span>
-</div>
-
+HTML = """    <!-- pli-listen:start -->
+    <div class="listen">
+      <button id="lsnPlay" type="button" aria-label="본문 음성으로 듣기">
+        <span class="ico" id="lsnIco">&#9654;</span><span id="lsnLabel">음성 듣기</span>
+      </button>
+    </div>
+    <!-- pli-listen:end -->
 """
 
 JS = """<script>
-/* pli-listen — read the article aloud with the browser's built-in Korean voice */
+/* pli-listen:start — read the article aloud with the browser's built-in Korean voice */
 (function(){
-  var bar = document.getElementById('listenBar');
-  if(!bar) return;
+  var btn = document.getElementById('lsnPlay');
+  if(!btn) return;
   var synth = window.speechSynthesis;
-  if(!synth || typeof window.SpeechSynthesisUtterance === 'undefined'){ bar.style.display='none'; return; }
+  if(!synth || typeof window.SpeechSynthesisUtterance === 'undefined'){
+    var wrap = btn.parentNode; if(wrap) wrap.style.display = 'none'; return;
+  }
 
-  var playBtn = document.getElementById('lsnPlay'),
-      stopBtn = document.getElementById('lsnStop'),
-      label   = document.getElementById('lsnLabel'),
-      ico     = document.getElementById('lsnIco'),
-      note    = document.getElementById('lsnNote');
+  var label = document.getElementById('lsnLabel'),
+      ico   = document.getElementById('lsnIco');
 
   var SEL = '.prose h2, .prose h3, .prose p, .prose blockquote, .td-word, .td-body,'
           + ' .stat .cap, .ld-ti, .st-title, .st-body, .ck-ti, .item .txt, .item .sub';
-  var blocks = [], queue = [], state = 'idle', voice = null;
+  var blocks = [], queue = [], playing = false, voice = null;
 
   function collect(){
     var art = document.querySelector('article.article');
@@ -123,14 +124,13 @@ JS = """<script>
   }
 
   function ui(){
-    if(state === 'playing'){ label.textContent = '일시정지'; ico.innerHTML = '&#10074;&#10074;'; stopBtn.hidden = false; }
-    else if(state === 'paused'){ label.textContent = '이어 듣기'; ico.innerHTML = '&#9654;'; stopBtn.hidden = false; }
-    else { label.textContent = '본문 듣기'; ico.innerHTML = '&#9654;'; stopBtn.hidden = true; }
+    if(playing){ label.textContent = '듣기 정지'; ico.innerHTML = '&#9632;'; btn.classList.add('on'); }
+    else { label.textContent = '음성 듣기'; ico.innerHTML = '&#9654;'; btn.classList.remove('on'); }
   }
 
   function speakFrom(i){
-    if(state !== 'playing') return;
-    if(i >= queue.length){ done(); return; }
+    if(!playing) return;
+    if(i >= queue.length){ stop(); return; }
     var item = queue[i];
     mark(item.bi);
     var u = new SpeechSynthesisUtterance(item.text);
@@ -142,68 +142,70 @@ JS = """<script>
     synth.speak(u);
   }
 
-  function done(){ state = 'idle'; clearMark(); ui(); note.textContent = '다 읽었어요'; }
-
   function start(){
     build();
     if(!queue.length) return;
     voice = voice || pickVoice();
-    note.textContent = voice ? ('음성: ' + voice.name) : '이 브라우저에는 한국어 음성이 없어요';
-    state = 'playing'; ui();
+    btn.title = voice ? ('음성: ' + voice.name) : '이 브라우저에는 한국어 음성이 없어요';
+    playing = true; ui();
     try{ synth.cancel(); }catch(e){}
     speakFrom(0);
   }
 
-  playBtn.addEventListener('click', function(){
-    if(state === 'idle') start();
-    else if(state === 'playing'){ try{ synth.pause(); }catch(e){} state = 'paused'; ui(); }
-    else { try{ synth.resume(); }catch(e){} state = 'playing'; ui(); }
-  });
-
-  stopBtn.addEventListener('click', function(){
-    state = 'idle';
+  function stop(){
+    playing = false;
     try{ synth.cancel(); }catch(e){}
-    clearMark(); ui(); note.textContent = '브라우저 음성으로 읽어 드려요';
-  });
+    clearMark(); ui();
+  }
+
+  btn.addEventListener('click', function(){ playing ? stop() : start(); });
 
   if(!synth.getVoices().length && typeof synth.addEventListener === 'function'){
     synth.addEventListener('voiceschanged', function(){ voice = pickVoice(); });
   }
   window.addEventListener('pagehide', function(){ try{ synth.cancel(); }catch(e){} });
 
-  window.__pliListen = { state: function(){ return state; }, blocks: function(){ return blocks.length; },
+  window.__pliListen = { playing: function(){ return playing; }, blocks: function(){ return blocks.length; },
                          chunks: function(){ return queue.length; }, voice: function(){ return voice && voice.name; } };
 })();
+/* pli-listen:end */
 </script>
 </body>"""
 
+RE_CSS  = re.compile(r"[ \t]*/\* pli-listen:start \*/.*?/\* pli-listen:end \*/\n", re.S)
+RE_HTML = re.compile(r"[ \t]*<!-- pli-listen:start -->.*?<!-- pli-listen:end -->\n", re.S)
+RE_JS   = re.compile(r"<script>\n/\* pli-listen:start.*?/\* pli-listen:end \*/\n</script>\n", re.S)
+# v1 (unmarked) blocks, for upgrading pages patched by the earlier version
+RE_V1_CSS  = re.compile(r"[ \t]*/\* ---- listen / TTS \(Web Speech API\) ---- \*/.*?\.reading\{[^}]*\}\n", re.S)
+RE_V1_HTML = re.compile(r'<div class="listen" id="listenBar">.*?</div>\n\n', re.S)
+RE_V1_JS   = re.compile(r"<script>\n/\* pli-listen —.*?\n</script>\n(?=</body>)", re.S)
+
+
+def unpatch(s):
+    for rx in (RE_CSS, RE_HTML, RE_JS, RE_V1_CSS, RE_V1_HTML, RE_V1_JS):
+        s = rx.sub("", s)
+    return s
+
 
 def patch(path):
-    s = open(path, encoding="utf-8").read()
-    if MARK in s:
-        return "skip (already patched)"
+    s0 = open(path, encoding="utf-8").read()
+    s = unpatch(s0)
 
-    # 1) CSS before </style>
     if "</style>" not in s:
         return "FAIL (no </style>)"
     s = s.replace("</style>", CSS + "</style>", 1)
 
-    # 2) listen bar before the first .termdef / .prose inside the article
-    ai = s.find('<article class="article">')
-    if ai < 0:
-        return "FAIL (no article)"
-    rest = s[ai:]
-    m = re.search(r'<div class="termdef">|<div class="prose">', rest)
+    m = re.search(r'[ \t]*<p class="deck">', s)
     if not m:
-        return "FAIL (no anchor)"
-    at = ai + m.start()
-    s = s[:at] + HTML + s[at:]
+        return "FAIL (no deck anchor)"
+    s = s[:m.start()] + HTML + s[m.start():]
 
-    # 3) JS before </body>
     if "</body>" not in s:
         return "FAIL (no </body>)"
     s = s.replace("</body>", JS, 1)
 
+    if s == s0:
+        return "unchanged"
     open(path, "w", encoding="utf-8").write(s)
     return "patched"
 

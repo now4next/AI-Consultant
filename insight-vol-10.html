@@ -581,19 +581,18 @@
   .termdef .td-word .en{font-family:var(--sans);font-weight:300;font-size:15px;color:var(--muted);margin-left:7px}
   .termdef .td-body{font-family:var(--serif);font-size:15.5px;line-height:1.78;color:var(--ink-2);word-break:keep-all}
   .termdef .td-body em{font-style:normal;color:var(--accent);font-weight:700}
-  /* ---- listen / TTS (Web Speech API) ---- */
-  .listen{display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-    margin:0 0 28px;padding:13px 15px;border:1px solid var(--ink);background:var(--paper-2)}
-  .listen button{display:inline-flex;align-items:center;gap:7px;cursor:pointer;
-    font-family:var(--sans);font-weight:600;font-size:14px;letter-spacing:-.01em;
+  /* pli-listen:start */
+  .hero .listen{display:flex;justify-content:flex-end;margin:-8px 0 12px}
+  .hero .listen button{display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+    font-family:var(--sans);font-weight:600;font-size:12.6px;letter-spacing:-.01em;
     border:1px solid var(--ink);background:var(--ink);color:var(--paper);
-    padding:9px 16px;border-radius:999px;transition:.15s}
-  .listen button:hover{opacity:.85}
-  .listen button.ghost{background:transparent;color:var(--ink)}
-  .listen .ico{font-size:11px;line-height:1}
-  .listen .note{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--muted)}
+    padding:8px 14px;border-radius:999px;transition:.15s}
+  .hero .listen button:hover{opacity:.85}
+  .hero .listen button.on{background:transparent;color:var(--ink)}
+  .hero .listen .ico{font-size:10px;line-height:1}
   .reading{background:rgba(26,62,107,.10);border-radius:2px;
     box-shadow:0 0 0 4px rgba(26,62,107,.10);transition:background .2s}
+  /* pli-listen:end */
 </style>
 </head>
 <body id="top">
@@ -625,6 +624,13 @@
       <span class="ko-sub">"신뢰란 불확실성과 맺는 자신 있는 관계다"</span>
     </h1>
 
+    <!-- pli-listen:start -->
+    <div class="listen">
+      <button id="lsnPlay" type="button" aria-label="본문 음성으로 듣기">
+        <span class="ico" id="lsnIco">&#9654;</span><span id="lsnLabel">음성 듣기</span>
+      </button>
+    </div>
+    <!-- pli-listen:end -->
     <p class="deck">
       AI는 그럴듯한 글과 얼굴, 결정까지 순식간에 만들어 낸다. 진짜와 가짜가 뒤섞이는 세계에서 조직을 실제로 움직이는 힘은 기술이 아니라 사람들 사이의 <em>신뢰</em>다. 신뢰는 막연한 감정이 아니다. 진단하고 설계하고, 무너지면 다시 세울 수 있는 리더의 <em>자본</em>이다.
     </p>
@@ -659,14 +665,6 @@
 <figure class="cover-bleed">
   <img src="assets/vol10-cover.png" alt="Leadership Insight Vol. 10 커버 — 무엇이든 진짜처럼 보이는 시대, 화폐는 신뢰다" width="948" height="1659" loading="lazy">
 </figure>
-
-<div class="listen" id="listenBar">
-  <button id="lsnPlay" type="button" aria-label="본문 음성으로 듣기">
-    <span class="ico" id="lsnIco">&#9654;</span><span id="lsnLabel">본문 듣기</span>
-  </button>
-  <button id="lsnStop" type="button" class="ghost" hidden>&#9632; 정지</button>
-  <span class="note" id="lsnNote">브라우저 음성으로 읽어 드려요</span>
-</div>
 
 <div class="termdef">
   <div class="td-lab">용어 · 이 글에서의 정의</div>
@@ -924,22 +922,21 @@
   }
 </script>
 <script>
-/* pli-listen — read the article aloud with the browser's built-in Korean voice */
+/* pli-listen:start — read the article aloud with the browser's built-in Korean voice */
 (function(){
-  var bar = document.getElementById('listenBar');
-  if(!bar) return;
+  var btn = document.getElementById('lsnPlay');
+  if(!btn) return;
   var synth = window.speechSynthesis;
-  if(!synth || typeof window.SpeechSynthesisUtterance === 'undefined'){ bar.style.display='none'; return; }
+  if(!synth || typeof window.SpeechSynthesisUtterance === 'undefined'){
+    var wrap = btn.parentNode; if(wrap) wrap.style.display = 'none'; return;
+  }
 
-  var playBtn = document.getElementById('lsnPlay'),
-      stopBtn = document.getElementById('lsnStop'),
-      label   = document.getElementById('lsnLabel'),
-      ico     = document.getElementById('lsnIco'),
-      note    = document.getElementById('lsnNote');
+  var label = document.getElementById('lsnLabel'),
+      ico   = document.getElementById('lsnIco');
 
   var SEL = '.prose h2, .prose h3, .prose p, .prose blockquote, .td-word, .td-body,'
           + ' .stat .cap, .ld-ti, .st-title, .st-body, .ck-ti, .item .txt, .item .sub';
-  var blocks = [], queue = [], state = 'idle', voice = null;
+  var blocks = [], queue = [], playing = false, voice = null;
 
   function collect(){
     var art = document.querySelector('article.article');
@@ -1003,14 +1000,13 @@
   }
 
   function ui(){
-    if(state === 'playing'){ label.textContent = '일시정지'; ico.innerHTML = '&#10074;&#10074;'; stopBtn.hidden = false; }
-    else if(state === 'paused'){ label.textContent = '이어 듣기'; ico.innerHTML = '&#9654;'; stopBtn.hidden = false; }
-    else { label.textContent = '본문 듣기'; ico.innerHTML = '&#9654;'; stopBtn.hidden = true; }
+    if(playing){ label.textContent = '듣기 정지'; ico.innerHTML = '&#9632;'; btn.classList.add('on'); }
+    else { label.textContent = '음성 듣기'; ico.innerHTML = '&#9654;'; btn.classList.remove('on'); }
   }
 
   function speakFrom(i){
-    if(state !== 'playing') return;
-    if(i >= queue.length){ done(); return; }
+    if(!playing) return;
+    if(i >= queue.length){ stop(); return; }
     var item = queue[i];
     mark(item.bi);
     var u = new SpeechSynthesisUtterance(item.text);
@@ -1022,38 +1018,33 @@
     synth.speak(u);
   }
 
-  function done(){ state = 'idle'; clearMark(); ui(); note.textContent = '다 읽었어요'; }
-
   function start(){
     build();
     if(!queue.length) return;
     voice = voice || pickVoice();
-    note.textContent = voice ? ('음성: ' + voice.name) : '이 브라우저에는 한국어 음성이 없어요';
-    state = 'playing'; ui();
+    btn.title = voice ? ('음성: ' + voice.name) : '이 브라우저에는 한국어 음성이 없어요';
+    playing = true; ui();
     try{ synth.cancel(); }catch(e){}
     speakFrom(0);
   }
 
-  playBtn.addEventListener('click', function(){
-    if(state === 'idle') start();
-    else if(state === 'playing'){ try{ synth.pause(); }catch(e){} state = 'paused'; ui(); }
-    else { try{ synth.resume(); }catch(e){} state = 'playing'; ui(); }
-  });
-
-  stopBtn.addEventListener('click', function(){
-    state = 'idle';
+  function stop(){
+    playing = false;
     try{ synth.cancel(); }catch(e){}
-    clearMark(); ui(); note.textContent = '브라우저 음성으로 읽어 드려요';
-  });
+    clearMark(); ui();
+  }
+
+  btn.addEventListener('click', function(){ playing ? stop() : start(); });
 
   if(!synth.getVoices().length && typeof synth.addEventListener === 'function'){
     synth.addEventListener('voiceschanged', function(){ voice = pickVoice(); });
   }
   window.addEventListener('pagehide', function(){ try{ synth.cancel(); }catch(e){} });
 
-  window.__pliListen = { state: function(){ return state; }, blocks: function(){ return blocks.length; },
+  window.__pliListen = { playing: function(){ return playing; }, blocks: function(){ return blocks.length; },
                          chunks: function(){ return queue.length; }, voice: function(){ return voice && voice.name; } };
 })();
+/* pli-listen:end */
 </script>
 </body>
 </html>
