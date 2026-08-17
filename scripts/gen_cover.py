@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+PLI cover generator (Option A) — data-driven, font-accurate, free.
+
+Covers are rendered as an inline HTML/CSS component (.gcover) so they use the
+page's loaded webfonts (Gowun Batang / Playfair / JetBrains Mono). No image
+files, no external image API, no cost.
+
+To add a volume: append an entry to VOLUMES below and run this script.
+It writes, per volume, to scripts/out/:
+  - vol-NN.cover.html   (portrait cover figure — paste into the volume hero + home spotlight)
+It also writes scripts/out/gcover.css once (paste into each page's <style> if missing).
+
+Usage:  python scripts/gen_cover.py
+"""
+import os, html
+
+OUT = os.path.join(os.path.dirname(__file__), "out")
+
+# ---- motif library (inline SVG, no text so fonts don't matter) ----
+def motif_broken_ladder(accent="#d9c48f"):
+    return f'''<svg viewBox="0 0 100 132" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" stroke-width="3" stroke-linecap="round" fill="none">
+        <line x1="32" y1="6" x2="32" y2="126"/>
+        <line x1="68" y1="6" x2="68" y2="126"/>
+        <line x1="32" y1="30" x2="68" y2="30"/>
+        <line x1="32" y1="56" x2="68" y2="56"/>
+        <line x1="32" y1="82" x2="68" y2="82"/>
+      </g>
+      <line x1="32" y1="110" x2="68" y2="110" stroke="{accent}" stroke-width="3"
+            stroke-dasharray="4 6" opacity=".33"/>
+    </svg>'''
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "none": lambda accent=None: ""}
+
+# ---- per-volume metadata ----
+VOLUMES = [
+    {
+        "vol": 11,
+        "eyebrow": "Vol. 11 · The Apprenticeship Gap",
+        "title": "사라진 사다리",
+        "sub": "AI가 신입의 일을 삼킬 때,\n전문가는 어떻게 자라는가",
+        "source": "원전 · McKinsey · Matt Beane",
+        "c1": "#16233a", "c2": "#080b12",  # bg gradient
+        "accent": "#d9c48f",
+        "motif": "broken-ladder",
+    },
+]
+
+def render_cover(m):
+    num = str(m["vol"])
+    motif_svg = MOTIFS.get(m.get("motif", "none"), MOTIFS["none"])(m.get("accent", "#d9c48f"))
+    sub_html = "<br>".join(html.escape(line) for line in m["sub"].split("\n"))
+    motif_block = f'<div class="g-motif">{motif_svg}</div>' if motif_svg else ""
+    return (
+        f'<figure class="gcover" style="--c1:{m["c1"]};--c2:{m["c2"]}" '
+        f'role="img" aria-label="{html.escape(m["title"])} 커버">\n'
+        f'  <span class="g-num">{num}</span>\n'
+        f'  <span class="g-eyebrow">{html.escape(m["eyebrow"])}</span>\n'
+        f'  {motif_block}\n'
+        f'  <div class="g-body">\n'
+        f'    <div class="g-title">{html.escape(m["title"])}</div>\n'
+        f'    <div class="g-sub">{sub_html}</div>\n'
+        f'  </div>\n'
+        f'  <div class="g-src">{html.escape(m["source"])}</div>\n'
+        f'</figure>'
+    )
+
+GCOVER_CSS = """  /* ---- generated cover component (.gcover) — data-driven, scales with width ---- */
+  .gcover{container-type:inline-size;position:relative;aspect-ratio:600/1050;overflow:hidden;
+    background:linear-gradient(158deg,var(--c1,#16233a),var(--c2,#080b12));color:#fff}
+  .gcover .g-num{position:absolute;right:-3cqw;top:-6cqw;font-family:var(--serif-display);
+    font-weight:900;font-size:82cqw;line-height:1;color:rgba(255,255,255,.05)}
+  .gcover .g-eyebrow{position:absolute;top:8cqw;left:9cqw;right:9cqw;font-family:var(--mono);
+    font-size:3cqw;letter-spacing:.26em;color:#9fb2cc;text-transform:uppercase}
+  .gcover .g-motif{position:absolute;top:26cqw;left:0;right:0;display:flex;justify-content:center}
+  .gcover .g-motif svg{width:34cqw;height:auto}
+  .gcover .g-body{position:absolute;left:9cqw;right:9cqw;bottom:13cqw}
+  .gcover .g-title{font-family:var(--serif);font-weight:700;font-size:19cqw;line-height:1.02;
+    letter-spacing:-.03em;word-break:keep-all}
+  .gcover .g-sub{font-family:var(--serif);font-size:4.6cqw;line-height:1.45;color:#cdd5e2;
+    margin-top:3.4cqw;word-break:keep-all}
+  .gcover .g-src{position:absolute;left:9cqw;right:9cqw;bottom:5cqw;font-family:var(--mono);
+    font-size:2.9cqw;letter-spacing:.1em;color:#8595a9;padding-top:3cqw;border-top:1px solid rgba(255,255,255,.14)}
+"""
+
+def main():
+    os.makedirs(OUT, exist_ok=True)
+    with open(os.path.join(OUT, "gcover.css"), "w", encoding="utf-8") as f:
+        f.write(GCOVER_CSS)
+    for m in VOLUMES:
+        snippet = render_cover(m)
+        with open(os.path.join(OUT, f"vol-{m['vol']:02d}.cover.html"), "w", encoding="utf-8") as f:
+            f.write(snippet)
+        print(f"wrote vol-{m['vol']:02d}.cover.html ({len(snippet)} chars)")
+    print("wrote gcover.css")
+
+if __name__ == "__main__":
+    main()

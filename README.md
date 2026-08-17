@@ -21,6 +21,14 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-08.html](insight-vol-08.html) — "브레인 캐피탈" 리더십 인사이트 Vol. 08 (McKinsey · 브레인 파워 조직) · <https://projectleadership.cc/insight-vol-08.html>
 - [insight-vol-09.html](insight-vol-09.html) — "분별의 값" 리더십 인사이트 Vol. 09 (MIT SMR · The Judgment Premium) · <https://projectleadership.cc/insight-vol-09.html>
 - [insight-vol-10.html](insight-vol-10.html) — "신뢰의 화폐" 리더십 인사이트 Vol. 10 (Botsman · Frei · The Currency of Trust) · <https://projectleadership.cc/insight-vol-10.html>
+- [insight-vol-11.html](insight-vol-11.html) — "사라진 사다리" 리더십 인사이트 Vol. 11 (McKinsey · Matt Beane · The Apprenticeship Gap) · <https://projectleadership.cc/insight-vol-11.html>
+
+### 커버 자동 생성 (Option A · 무료)
+
+Vol.11부터 커버는 이미지 파일 대신 **데이터 기반 HTML/CSS 컴포넌트**(`.gcover`)로 렌더됩니다(사이트 폰트 사용, API·비용 없음).
+- 볼륨 메타데이터를 [scripts/gen_cover.py](scripts/gen_cover.py)의 `VOLUMES`에 추가하고 `python scripts/gen_cover.py` 실행 → `scripts/out/vol-NN.cover.html` 스니펫 생성.
+- 그 스니펫을 해당 글 히어로(`.cover-bleed`)와 홈 스포트라이트(`.spot .cover`)에 붙여넣으면 커버 완성.
+- 모티프(예: `broken-ladder`)는 `MOTIFS`에 인라인 SVG로 추가.
 - [field-trip/index.html](field-trip/index.html) — EPM 30기 현장 견학 신청 페이지 (Next.js 스타터를 정적 변환) · <https://now4next.github.io/AI-Consultant/field-trip/>
   - "참가 신청하기" 클릭 시 Google 시트에 기록됩니다(설문과 동일 Apps Script 엔드포인트). `__sheet__` 값으로 별도 탭('현장견학 신청')에 분리 저장하려면 [apps-script/Code.gs](apps-script/Code.gs) 최신본을 재배포하세요(미배포 시에도 기본 시트에 정상 기록).
 

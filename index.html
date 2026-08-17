@@ -141,6 +141,23 @@
   footer .ftag{font-family:var(--serif);font-size:15px;color:var(--muted);margin-bottom:18px;word-break:keep-all}
   .big .mark{font-size:26px}.big .sep{font-size:18px}.big .full{font-size:13.5px}
   footer .cr{margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted-2)}
+  /* ---- generated cover component (.gcover) — data-driven, scales with width ---- */
+  .gcover{container-type:inline-size;position:relative;aspect-ratio:600/1050;overflow:hidden;
+    background:linear-gradient(158deg,var(--c1,#16233a),var(--c2,#080b12));color:#fff}
+  .gcover .g-num{position:absolute;right:-3cqw;top:-6cqw;font-family:var(--serif-display);
+    font-weight:900;font-size:82cqw;line-height:1;color:rgba(255,255,255,.05)}
+  .gcover .g-eyebrow{position:absolute;top:8cqw;left:9cqw;right:9cqw;font-family:var(--mono);
+    font-size:3cqw;letter-spacing:.26em;color:#9fb2cc;text-transform:uppercase}
+  .gcover .g-motif{position:absolute;top:26cqw;left:0;right:0;display:flex;justify-content:center}
+  .gcover .g-motif svg{width:34cqw;height:auto}
+  .gcover .g-body{position:absolute;left:9cqw;right:9cqw;bottom:13cqw}
+  .gcover .g-title{font-family:var(--serif);font-weight:700;font-size:19cqw;line-height:1.02;
+    letter-spacing:-.03em;word-break:keep-all}
+  .gcover .g-sub{font-family:var(--serif);font-size:4.6cqw;line-height:1.45;color:#cdd5e2;
+    margin-top:3.4cqw;word-break:keep-all}
+  .gcover .g-src{position:absolute;left:9cqw;right:9cqw;bottom:5cqw;font-family:var(--mono);
+    font-size:2.9cqw;letter-spacing:.1em;color:#8595a9;padding-top:3cqw;border-top:1px solid rgba(255,255,255,.14)}
+  .spot .cover .gcover{width:100%;height:100%}
 </style>
 </head>
 <body>
@@ -171,19 +188,33 @@
       <div class="sec-lab"><b>Weekly Insight</b></div>
       <div class="kick">매주 금요일, <strong>플리</strong>가 고른 한 편 🦉</div>
     </div>
-    <a class="spot" href="insight-vol-10.html">
-      <div class="cover"><img src="assets/vol10-cover.png" alt="Vol.10 신뢰의 화폐 커버" loading="lazy"></div>
+    <a class="spot" href="insight-vol-11.html">
+      <div class="cover">
+        <figure class="gcover" style="--c1:#16233a;--c2:#080b12" role="img" aria-label="사라진 사다리 커버">
+          <span class="g-num">11</span>
+          <span class="g-eyebrow">Vol. 11 · The Apprenticeship Gap</span>
+          <div class="g-motif"><svg viewBox="0 0 100 132" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g stroke="#d9c48f" stroke-width="3" stroke-linecap="round" fill="none">
+                <line x1="32" y1="6" x2="32" y2="126"/><line x1="68" y1="6" x2="68" y2="126"/>
+                <line x1="32" y1="30" x2="68" y2="30"/><line x1="32" y1="56" x2="68" y2="56"/><line x1="32" y1="82" x2="68" y2="82"/>
+              </g>
+              <line x1="32" y1="110" x2="68" y2="110" stroke="#d9c48f" stroke-width="3" stroke-dasharray="4 6" opacity=".33"/>
+            </svg></div>
+          <div class="g-body"><div class="g-title">사라진 사다리</div><div class="g-sub">AI가 신입의 일을 삼킬 때,<br>전문가는 어떻게 자라는가</div></div>
+          <div class="g-src">원전 · McKinsey · Matt Beane</div>
+        </figure>
+      </div>
       <div>
-        <div class="no">Vol. 10 · The Currency of Trust</div>
-        <h2>신뢰의 화폐</h2>
+        <div class="no">Vol. 11 · The Apprenticeship Gap</div>
+        <h2>사라진 사다리</h2>
         <ul class="tldr">
-          <li>AI가 그럴듯함을 값싸게 찍어낼수록, 조직의 진짜 화폐는 신뢰다.</li>
-          <li>신뢰는 막연한 감정이 아니라 설계하고 쌓아 가는 자본이다.</li>
-          <li>모든 AI 결정을 '신뢰 결정'으로 다루는 리더가 성과를 만든다.</li>
+          <li>AI가 초급자의 일을 대신하면서, 초심자가 전문가로 오르던 사다리가 끊긴다.</li>
+          <li>숙련은 도전·복잡성·연결 위에서 자란다. 셋 중 하나만 빠져도 시든다.</li>
+          <li>도제를 없애지 말고 다시 설계하라. 먼저 해 보고 AI와 비교하게 하라.</li>
         </ul>
         <div class="meta">
-          <span class="pill">⏱ 읽는 시간 3분</span>
-          <span class="pill">#신뢰 #Botsman #Frei</span>
+          <span class="pill">⏱ 읽는 시간 4분</span>
+          <span class="pill">#도제 #McKinsey #Beane</span>
           <span class="curated">🦉 <strong>플리</strong>가 골랐어요</span>
         </div>
         <span class="btn ghost">이번 주 통찰 읽기 →</span>
@@ -196,7 +227,7 @@
 <section class="sec" id="archive">
   <div class="wrap">
     <div class="sec-head">
-      <div class="sec-lab"><b>Archive</b> · 전체 10편</div>
+      <div class="sec-lab"><b>Archive</b> · 전체 11편</div>
       <div class="sec-lab">태그로 골라보기</div>
     </div>
     <div class="filter" id="filter">
@@ -207,6 +238,12 @@
     </div>
 
     <div class="grid-cards" id="cards">
+      <a class="card" data-cat="사람" href="insight-vol-10.html">
+        <div class="thumb"><img src="assets/vol10-cover.png" alt="" loading="lazy"></div>
+        <div class="body"><div class="no">Vol. 10</div><h3>신뢰의 화폐</h3>
+          <p>그럴듯함이 흔해질수록 조직의 진짜 화폐는 신뢰다. 진정성·논리·공감으로 설계한다.</p>
+          <div class="foot"><span class="tag">#사람 · Botsman·Frei</span><span class="rt">⏱ 4분</span></div></div>
+      </a>
       <a class="card" data-cat="의사결정" href="insight-vol-09.html">
         <div class="thumb"><img src="assets/vol09-cover.png" alt="" loading="lazy"></div>
         <div class="body"><div class="no">Vol. 09</div><h3>분별의 값</h3>
