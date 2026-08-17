@@ -23,6 +23,33 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-10.html](insight-vol-10.html) — "신뢰의 화폐" 리더십 인사이트 Vol. 10 (Botsman · Frei · The Currency of Trust) · <https://projectleadership.cc/insight-vol-10.html>
 - [insight-vol-11.html](insight-vol-11.html) — "사라진 사다리" 리더십 인사이트 Vol. 11 (McKinsey · Matt Beane · The Apprenticeship Gap) · <https://projectleadership.cc/insight-vol-11.html>
 
+### 새 볼륨 발행 워크플로우
+
+손으로 하던 조립·검증을 스크립트로 대체했습니다. **직접 쓰는 것은 본문뿐**이고, 나머지는 자동입니다.
+
+```bash
+# 1) 주제 고르기 — 큐 맨 위 항목 사용
+#    data/backlog.md
+
+# 2) 두 파일 작성
+#    data/volumes/vol-12.json        ← TEMPLATE.json 복사해 채우기 (제목·히어로·커버·종합·홈 카드)
+#    data/volumes/vol-12.body.html   ← 본문 (<article> 안쪽 내용만)
+
+# 3) 조립 (원하면 --dry-run 으로 페이지만 먼저 확인)
+python scripts/new_volume.py 12
+
+# 4) 검증
+python scripts/lint_volume.py
+```
+
+`new_volume.py` 가 자동 처리하는 것: 페이지 생성(헤더·히어로·이전호 콜아웃·커버·종합·다음호 티저·공유·푸터)
+· 스크립트 id 번호 변경 · 듣기 버튼 주입 · **이전 볼륨 네비/푸터 연결** · **홈 스포트라이트 교체 + 이전호를 아카이브 카드로 강등 + 편수 갱신** · `vol-NN/` 리다이렉트 · README 줄 추가 · `data/volumes.json` 레지스트리 등록.
+
+`lint_volume.py` 가 검사하는 것: 필수 컴포넌트 · 태그 균형 · **내부 링크 유효성** · 중복 id · **스크립트가 참조하는 요소 존재 여부**(볼륨 복제 시 id 누락 탐지) · 하우스 스타일(em대시 과다, "단 하나/핵심은" 등 금칙어, "아니라" 반복). 에러가 있으면 종료 코드 1.
+
+- 주제 큐: [data/backlog.md](data/backlog.md)
+- 볼륨 레지스트리: [data/volumes.json](data/volumes.json)
+
 ### 커버 자동 생성 (Option A · 무료)
 
 Vol.11부터 커버는 이미지 파일 대신 **데이터 기반 HTML/CSS 컴포넌트**(`.gcover`)로 렌더됩니다(사이트 폰트 사용, API·비용 없음).

@@ -1,0 +1,47 @@
+{
+  "_howto": "이 파일을 vol-NN.json 으로 복사해 채우고, 같은 폴더에 vol-NN.body.html(본문)을 만든 뒤 `python scripts/new_volume.py NN` 을 실행하세요.",
+
+  "vol": 12,
+  "title": "볼륨 제목",
+  "sub": "한 줄 요약 (이전호 콜아웃·다음호 티저에 쓰임)",
+  "eyebrow": "Vol. 12 · English Theme",
+  "kicker": "출처 매체 · 저자",
+  "koLead": "히어로 대제목<br>줄바꿈은 br<br><em>강조</em>는 em",
+  "koSub": "히어로 부제 또는 인용",
+  "deck": "도입 문단. <em>강조</em>와 <strong>굵게</strong> 사용 가능.",
+  "pillars": [["Label One", "한글 라벨"], ["Label Two", "한글 라벨"], ["Label Three", "한글 라벨"]],
+  "sourceTitle": "원전 제목 (영문 원제)",
+  "source": "저자 · 매체, 연도",
+
+  "cover": {
+    "kind": "gcover",
+    "c1": "#16233a",
+    "c2": "#080b12",
+    "accent": "#d9c48f",
+    "motif": "none",
+    "sub": "커버 부제<br>두 줄까지"
+  },
+
+  "takeaway": {
+    "h3": "종합 대제목<br>줄바꿈 가능",
+    "p1": "종합 첫 문단.",
+    "p2": "종합 둘째 문단.",
+    "sig": "출처 · 저자 '26"
+  },
+
+  "home": {
+    "tldr": ["홈 스포트라이트 요약 1", "요약 2", "요약 3"],
+    "readTime": "4분",
+    "tags": "#태그 #Source",
+    "cat": "사람",
+    "tag": "#사람 · Source",
+    "desc": "아카이브 카드에 들어갈 한 줄 설명."
+  },
+
+  "_notes": {
+    "cover.kind": "gcover(자동 생성) | image(assets/…png 직접 지정 시 file 키 사용)",
+    "cover.motif": "scripts/gen_cover.py 의 MOTIFS 키 (예: broken-ladder, none)",
+    "home.cat": "홈 태그 필터 값: 전략 | 사람 | 의사결정",
+    "본문": "vol-NN.body.html 에 <article> 안쪽 내용만 작성 (커버·헤더·푸터는 자동 생성)"
+  }
+}
