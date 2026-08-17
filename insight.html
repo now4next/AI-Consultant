@@ -1087,16 +1087,29 @@
   var label = document.getElementById('lsnLabel'),
       ico   = document.getElementById('lsnIco');
 
+  var HERO_SEL = ['.ko-lead', '.ko-sub', '.deck'];   /* 제목 → 부제 → 도입문 */
   var SEL = '.prose h2, .prose h3, .prose p, .prose blockquote, .td-word, .td-body,'
           + ' .stat .cap, .ld-ti, .st-title, .st-body, .ck-ti, .item .txt, .item .sub';
   var blocks = [], queue = [], playing = false, voice = null;
 
+  /* innerText turns <br> into a line break, which split() folds into a space */
+  function textOf(el){ return (el.innerText || el.textContent || ''); }
+
   function collect(){
+    var out = [], hero = document.querySelector('section.hero');
+    if(hero){
+      HERO_SEL.forEach(function(sel){
+        var el = hero.querySelector(sel);
+        if(el && textOf(el).trim().length > 1) out.push(el);
+      });
+    }
     var art = document.querySelector('article.article');
-    if(!art) return [];
-    return Array.prototype.slice.call(art.querySelectorAll(SEL)).filter(function(el){
-      return (el.textContent || '').trim().length > 1;
-    });
+    if(art){
+      Array.prototype.slice.call(art.querySelectorAll(SEL)).forEach(function(el){
+        if(textOf(el).trim().length > 1) out.push(el);
+      });
+    }
+    return out;
   }
 
   /* Chrome truncates long utterances, so speak sentence-sized chunks. */
@@ -1122,7 +1135,7 @@
   function build(){
     blocks = collect(); queue = [];
     blocks.forEach(function(el, bi){
-      split(el.textContent).forEach(function(s){ queue.push({ text: s, bi: bi }); });
+      split(textOf(el)).forEach(function(s){ queue.push({ text: s, bi: bi }); });
     });
   }
 
@@ -1165,7 +1178,7 @@
     var u = new SpeechSynthesisUtterance(item.text);
     u.lang = 'ko-KR';
     if(voice) u.voice = voice;
-    u.rate = 1; u.pitch = 1;
+    u.rate = 1.2; u.pitch = 1;
     u.onend   = function(){ speakFrom(i + 1); };
     u.onerror = function(){ speakFrom(i + 1); };
     synth.speak(u);
