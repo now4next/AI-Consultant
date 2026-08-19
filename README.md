@@ -22,6 +22,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-09.html](insight-vol-09.html) — "분별의 값" 리더십 인사이트 Vol. 09 (MIT SMR · The Judgment Premium) · <https://projectleadership.cc/insight-vol-09.html>
 - [insight-vol-10.html](insight-vol-10.html) — "신뢰의 화폐" 리더십 인사이트 Vol. 10 (Botsman · Frei · The Currency of Trust) · <https://projectleadership.cc/insight-vol-10.html>
 - [insight-vol-11.html](insight-vol-11.html) — "사라진 사다리" 리더십 인사이트 Vol. 11 (McKinsey · Matt Beane · The Apprenticeship Gap) · <https://projectleadership.cc/insight-vol-11.html>
+- [insight-vol-12.html](insight-vol-12.html) — "곁에 있다는 것" 리더십 인사이트 Vol. 12 (Graham Ward · INSEAD Knowledge, 2025) · <https://projectleadership.cc/insight-vol-12.html>
 
 ### 새 볼륨 발행 워크플로우
 

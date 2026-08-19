@@ -3,114 +3,221 @@
   "site": "https://projectleadership.cc",
   "volumes": [
     {
-      "vol": 1, "file": "insight.html", "dir": null,
+      "vol": 1,
+      "file": "insight.html",
+      "dir": null,
       "title": "AI 시대 리더십의 사각지대",
       "sub": "지능을 계산으로만 정의할 때, 인간은 무엇을 잃어가는가",
       "eyebrow": "Vol. 01 · The Blind Spot",
       "source": "Otto Scharmer · MIT SMR",
-      "cat": "사람", "tag": "#사람 · Scharmer", "readTime": "5분",
+      "cat": "사람",
+      "tag": "#사람 · Scharmer",
+      "readTime": "5분",
       "desc": "지능을 계산으로만 정의할 때, 인간은 무엇을 잃어가는가.",
-      "cover": { "kind": "typo", "keyword": "사각지대", "src": "Scharmer · MIT SMR" }
+      "cover": {
+        "kind": "typo",
+        "keyword": "사각지대",
+        "src": "Scharmer · MIT SMR"
+      }
     },
     {
-      "vol": 2, "file": "insight-vol-02.html", "dir": "vol-02",
+      "vol": 2,
+      "file": "insight-vol-02.html",
+      "dir": "vol-02",
       "title": "리더십의 역설",
       "sub": "강점이 맹점이 되는 순간, 강점이 만든 그림자",
       "eyebrow": "Vol. 02 · The Paradox",
       "source": "Bansal",
-      "cat": "사람", "tag": "#사람 · Bansal", "readTime": "4분",
+      "cat": "사람",
+      "tag": "#사람 · Bansal",
+      "readTime": "4분",
       "desc": "가장 큰 강점이 가장 큰 맹점이 되는 순간, 강점이 만든 그림자.",
-      "cover": { "kind": "typo", "keyword": "역설", "src": "Bansal" }
+      "cover": {
+        "kind": "typo",
+        "keyword": "역설",
+        "src": "Bansal"
+      }
     },
     {
-      "vol": 3, "file": "insight-vol-03.html", "dir": "vol-03",
+      "vol": 3,
+      "file": "insight-vol-03.html",
+      "dir": "vol-03",
       "title": "질문의 주권",
       "sub": "답이 아니라 질문의 문화로, 묻는 자만이 이끈다",
       "eyebrow": "Vol. 03 · The Question",
       "source": "Hal Gregersen · MIT",
-      "cat": "의사결정", "tag": "#의사결정 · MIT", "readTime": "4분",
+      "cat": "의사결정",
+      "tag": "#의사결정 · MIT",
+      "readTime": "4분",
       "desc": "답의 문화에서 질문의 문화로. 큰 질문을 가진 리더가 큰 변화를 만든다.",
-      "cover": { "kind": "typo", "keyword": "질문", "src": "Gregersen · MIT" }
+      "cover": {
+        "kind": "typo",
+        "keyword": "질문",
+        "src": "Gregersen · MIT"
+      }
     },
     {
-      "vol": 4, "file": "insight-vol-04.html", "dir": "vol-04",
+      "vol": 4,
+      "file": "insight-vol-04.html",
+      "dir": "vol-04",
       "title": "결단력의 부재",
       "sub": "AI가 지운 것은 정보가 아니라 변명이다",
       "eyebrow": "Vol. 04 · The Missing Resolve",
       "source": "Entrepreneur · HBR · McKinsey",
-      "cat": "의사결정", "tag": "#의사결정 · HBR", "readTime": "5분",
+      "cat": "의사결정",
+      "tag": "#의사결정 · HBR",
+      "readTime": "5분",
       "desc": "AI가 지운 건 정보가 아니라 변명이었다. 드러난 결단력의 부재.",
-      "cover": { "kind": "typo", "keyword": "결단력", "src": "HBR · McKinsey" }
+      "cover": {
+        "kind": "typo",
+        "keyword": "결단력",
+        "src": "HBR · McKinsey"
+      }
     },
     {
-      "vol": 5, "file": "insight-vol-05.html", "dir": "vol-05",
+      "vol": 5,
+      "file": "insight-vol-05.html",
+      "dir": "vol-05",
       "title": "가치가 사는 곳",
       "sub": "AI가 가치를 만드는 곳, 사라지는 곳",
       "eyebrow": "Vol. 05 · Where Value Lives",
       "source": "McKinsey",
-      "cat": "전략", "tag": "#전략 · McKinsey", "readTime": "5분",
+      "cat": "전략",
+      "tag": "#전략 · McKinsey",
+      "readTime": "5분",
       "desc": "생산성은 입장권일 뿐. AI가 진짜 가치를 만드는 네 지점.",
-      "cover": { "kind": "typo", "keyword": "가치", "src": "McKinsey" }
+      "cover": {
+        "kind": "typo",
+        "keyword": "가치",
+        "src": "McKinsey"
+      }
     },
     {
-      "vol": 6, "file": "insight-vol-06.html", "dir": "vol-06",
+      "vol": 6,
+      "file": "insight-vol-06.html",
+      "dir": "vol-06",
       "title": "사람에 대한 더 깊은 이해",
       "sub": "비합리적 인간을 이해하는 것이 리더의 마지막 경쟁력",
       "eyebrow": "Vol. 06 · Understanding People",
       "source": "Daniel Kahneman",
-      "cat": "사람", "tag": "#사람 · Kahneman", "readTime": "6분",
+      "cat": "사람",
+      "tag": "#사람 · Kahneman",
+      "readTime": "6분",
       "desc": "합리적 계산을 AI가 대신하는 시대, 비합리적 인간을 이해하는 힘.",
-      "cover": { "kind": "image", "file": "assets/vol06-cover.png" }
+      "cover": {
+        "kind": "image",
+        "file": "assets/vol06-cover.png"
+      }
     },
     {
-      "vol": 7, "file": "insight-vol-07.html", "dir": "vol-07",
+      "vol": 7,
+      "file": "insight-vol-07.html",
+      "dir": "vol-07",
       "title": "인간의 자리",
       "sub": "AI가 유능해질수록, 인간다움이 값지다",
       "eyebrow": "Vol. 07 · The AI Effect",
       "source": "Benoît Monin · Stanford GSB",
-      "cat": "사람", "tag": "#사람 · Stanford", "readTime": "5분",
+      "cat": "사람",
+      "tag": "#사람 · Stanford",
+      "readTime": "5분",
       "desc": "AI가 유능해질수록 사람들은 '진짜 인간다움'을 더 소중히 여긴다.",
-      "cover": { "kind": "image", "file": "assets/vol07-cover.png" }
+      "cover": {
+        "kind": "image",
+        "file": "assets/vol07-cover.png"
+      }
     },
     {
-      "vol": 8, "file": "insight-vol-08.html", "dir": "vol-08",
+      "vol": 8,
+      "file": "insight-vol-08.html",
+      "dir": "vol-08",
       "title": "브레인 캐피탈",
       "sub": "AI 시대의 진짜 병목은 사람의 인지 역량이다",
       "eyebrow": "Vol. 08 · Brain Capital",
       "source": "McKinsey · People & Organizational Performance",
-      "cat": "전략", "tag": "#전략 · McKinsey", "readTime": "6분",
+      "cat": "전략",
+      "tag": "#전략 · McKinsey",
+      "readTime": "6분",
       "desc": "병목은 기술이 아니라 사람의 두뇌다. 브레인 파워 조직의 다섯 원칙.",
-      "cover": { "kind": "image", "file": "assets/vol08-cover.png" }
+      "cover": {
+        "kind": "image",
+        "file": "assets/vol08-cover.png"
+      }
     },
     {
-      "vol": 9, "file": "insight-vol-09.html", "dir": "vol-09",
+      "vol": 9,
+      "file": "insight-vol-09.html",
+      "dir": "vol-09",
       "title": "분별의 값",
       "sub": "AI가 실행을 삼킬 때, 값이 오르는 것은 분별이다",
       "eyebrow": "Vol. 09 · The Judgment Premium",
       "source": "MIT Sloan Management Review · Ravikiran Kalluri",
-      "cat": "의사결정", "tag": "#의사결정 · MIT SMR", "readTime": "5분",
+      "cat": "의사결정",
+      "tag": "#의사결정 · MIT SMR",
+      "readTime": "5분",
       "desc": "실행이 공짜가 될수록 값이 오르는 것. 무엇을 할 가치가 있는지 가려내는 판단.",
-      "cover": { "kind": "image", "file": "assets/vol09-cover.png" }
+      "cover": {
+        "kind": "image",
+        "file": "assets/vol09-cover.png"
+      }
     },
     {
-      "vol": 10, "file": "insight-vol-10.html", "dir": "vol-10",
+      "vol": 10,
+      "file": "insight-vol-10.html",
+      "dir": "vol-10",
       "title": "신뢰의 화폐",
       "sub": "AI가 그럴듯함을 흔하게 만들수록, 조직의 진짜 화폐는 신뢰다",
       "eyebrow": "Vol. 10 · The Currency of Trust",
       "source": "Rachel Botsman · Frei & Morriss · HBS",
-      "cat": "사람", "tag": "#사람 · Botsman·Frei", "readTime": "4분",
+      "cat": "사람",
+      "tag": "#사람 · Botsman·Frei",
+      "readTime": "4분",
       "desc": "그럴듯함이 흔해질수록 조직의 진짜 화폐는 신뢰다. 진정성·논리·공감으로 설계한다.",
-      "cover": { "kind": "image", "file": "assets/vol10-cover.png" }
+      "cover": {
+        "kind": "image",
+        "file": "assets/vol10-cover.png"
+      }
     },
     {
-      "vol": 11, "file": "insight-vol-11.html", "dir": "vol-11",
+      "vol": 11,
+      "file": "insight-vol-11.html",
+      "dir": "vol-11",
       "title": "사라진 사다리",
       "sub": "AI가 신입의 일을 대신할 때, 누가 다음 세대를 훈련하는가",
       "eyebrow": "Vol. 11 · The Apprenticeship Gap",
       "source": "McKinsey · Matt Beane (UCSB)",
-      "cat": "사람", "tag": "#도제 · McKinsey·Beane", "readTime": "4분",
+      "cat": "사람",
+      "tag": "#도제 · McKinsey·Beane",
+      "readTime": "4분",
       "desc": "AI가 초급자의 일을 대신하면서 끊기는 사다리. 도제를 다시 설계하라.",
-      "cover": { "kind": "gcover", "c1": "#16233a", "c2": "#080b12", "accent": "#d9c48f", "motif": "broken-ladder", "sub": "AI가 신입의 일을 삼킬 때,<br>전문가는 어떻게 자라는가" }
+      "cover": {
+        "kind": "gcover",
+        "c1": "#16233a",
+        "c2": "#080b12",
+        "accent": "#d9c48f",
+        "motif": "broken-ladder",
+        "sub": "AI가 신입의 일을 삼킬 때,<br>전문가는 어떻게 자라는가"
+      }
+    },
+    {
+      "vol": 12,
+      "file": "insight-vol-12.html",
+      "dir": "vol-12",
+      "title": "곁에 있다는 것",
+      "sub": "심리적 안전감과 공감은 덕목이 아니라, 함께 일하는 일의 조건이다",
+      "eyebrow": "Vol. 12 · Presence & Safety",
+      "source": "Graham Ward · INSEAD Knowledge, 2025",
+      "cat": "사람",
+      "tag": "#사람 · INSEAD·Ward",
+      "readTime": "5분",
+      "desc": "심리적 안전감과 공감은 함께 일하기로 한 순간부터 작동하는 조건이다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1b2a2e",
+        "c2": "#0a1113",
+        "accent": "#d9c48f",
+        "motif": "between",
+        "sub": "심리적 안전감과 공감은<br>함께 일하는 일의 조건이다"
+      }
     }
   ]
 }
