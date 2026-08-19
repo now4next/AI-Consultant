@@ -32,7 +32,20 @@ def motif_broken_ladder(accent="#d9c48f"):
             stroke-dasharray="4 6" opacity=".33"/>
     </svg>'''
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "none": lambda accent=None: ""}
+def motif_between(accent="#d9c48f"):
+    """Two presences facing each other, and the space that opens between them."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" stroke-width="3" fill="none" stroke-linecap="round">
+        <path d="M40 18 C16 40 16 80 40 102"/>
+        <path d="M80 18 C104 40 104 80 80 102"/>
+      </g>
+      <circle cx="60" cy="60" r="7" fill="{accent}"/>
+      <circle cx="60" cy="60" r="17" stroke="{accent}" stroke-width="1.4" fill="none" opacity=".45"/>
+      <circle cx="60" cy="60" r="27" stroke="{accent}" stroke-width="1" fill="none" opacity=".22"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
