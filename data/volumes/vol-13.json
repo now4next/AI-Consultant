@@ -1,0 +1,52 @@
+{
+  "vol": 13,
+  "title": "좋은 실패",
+  "sub": "모든 실패가 배움은 아니다. 문제는 가려낼 수 있는가이다",
+  "eyebrow": "Vol. 13 · The Right Kind of Wrong",
+  "kicker": "Amy C. Edmondson · Harvard Business School",
+  "koLead": "모든 실패가<br><em>배움</em>은<br>아니다",
+  "koSub": "실패를 허용할지 말지가 아니라, 가려낼 수 있는지가 문제다",
+  "deck": "AI 도입기에 실패는 쏟아진다. 무조건 감싸면 부주의까지 학습으로 포장되고, 무조건 나무라면 실험이 사라진다. 리더가 할 일은 실패를 허용하거나 금지하는 데 있지 않다. <em>가려내는 것</em>이다.",
+  "pillars": [
+    [
+      "Three Types",
+      "세 가지 실패"
+    ],
+    [
+      "Intelligent",
+      "지적 실패의 조건"
+    ],
+    [
+      "Sorting",
+      "가려내는 일"
+    ]
+  ],
+  "sourceTitle": "Right Kind of Wrong: The Science of Failing Well",
+  "source": "Amy C. Edmondson · Harvard Business School, 2023",
+  "cover": {
+    "kind": "gcover",
+    "c1": "#2b2119",
+    "c2": "#120d09",
+    "accent": "#d9c48f",
+    "motif": "three-failures",
+    "sub": "모든 실패가 배움은 아니다.<br>가려낼 수 있는가"
+  },
+  "takeaway": {
+    "h3": "실패에 관대한가보다,<br><em>가려낼</em> 수 있는가",
+    "p1": "익숙한 영역에서 주의를 놓쳐 생긴 실패는 학습이 되지 못하고 낭비로 끝난다. 새로운 영역에서 잘 설계된 실험이 낳은 실패만 값을 한다. 리더의 일은 실패를 감싸거나 나무라기에 앞서 이 둘을 갈라내는 데 있다.",
+    "p2": "그래서 물어야 할 것은 \"우리는 실패에 관대한가\"가 아니다. <em>\"우리는 어떤 실패였는지 말할 수 있는가\"</em>이다. 가려내는 조직만 실패에 치른 값을 회수한다.",
+    "sig": "Edmondson · HBS '23"
+  },
+  "home": {
+    "tldr": [
+      "MIT 보고서는 생성형 AI 파일럿의 95%가 손익에 측정 가능한 영향을 남기지 못했다고 정리했다.",
+      "실패에는 세 종류가 있다. 기본적 실패, 복합적 실패, 그리고 지적 실패.",
+      "리더의 일은 실패를 감싸거나 나무라기에 앞서 가려내는 데 있다."
+    ],
+    "readTime": "5분",
+    "tags": "#실패 #Edmondson #MIT",
+    "cat": "의사결정",
+    "tag": "#의사결정 · Edmondson",
+    "desc": "모든 실패가 배움은 아니다. 기본적·복합적·지적 실패를 가려내는 일."
+  }
+}

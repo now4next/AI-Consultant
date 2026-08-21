@@ -218,6 +218,27 @@
         "motif": "between",
         "sub": "심리적 안전감과 공감은<br>함께 일하는 일의 조건이다"
       }
+    },
+    {
+      "vol": 13,
+      "file": "insight-vol-13.html",
+      "dir": "vol-13",
+      "title": "좋은 실패",
+      "sub": "모든 실패가 배움은 아니다. 문제는 가려낼 수 있는가이다",
+      "eyebrow": "Vol. 13 · The Right Kind of Wrong",
+      "source": "Amy C. Edmondson · Harvard Business School, 2023",
+      "cat": "의사결정",
+      "tag": "#의사결정 · Edmondson",
+      "readTime": "5분",
+      "desc": "모든 실패가 배움은 아니다. 기본적·복합적·지적 실패를 가려내는 일.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#2b2119",
+        "c2": "#120d09",
+        "accent": "#d9c48f",
+        "motif": "three-failures",
+        "sub": "모든 실패가 배움은 아니다.<br>가려낼 수 있는가"
+      }
     }
   ]
 }

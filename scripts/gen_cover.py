@@ -45,7 +45,26 @@ def motif_between(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "none": lambda accent=None: ""}
+def motif_three_failures(accent="#d9c48f"):
+    """Three failures side by side: preventable, tangled, and the one worth paying for."""
+    return f'''<svg viewBox="0 0 132 92" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" stroke-width="2.6" fill="none" stroke-linecap="round" opacity=".3">
+        <circle cx="22" cy="44" r="18"/>
+        <path d="M14 36 L30 52 M30 36 L14 52"/>
+        <circle cx="66" cy="44" r="18"/>
+        <path d="M56 50 C62 34 70 56 76 40"/>
+        <path d="M56 40 C63 52 69 32 76 48"/>
+      </g>
+      <g stroke="{accent}" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="110" cy="44" r="18"/>
+        <path d="M110 54 L110 34"/>
+        <path d="M103 41 L110 34 L117 41"/>
+      </g>
+      <circle cx="110" cy="44" r="26" stroke="{accent}" stroke-width="1" fill="none" opacity=".28"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
