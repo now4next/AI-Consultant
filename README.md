@@ -28,6 +28,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-15.html](insight-vol-15.html) — "일을 다시 짜다" 리더십 인사이트 Vol. 15 (McKinsey · State of AI 2025 · Superagency) · <https://projectleadership.cc/insight-vol-15.html>
 - [insight-vol-16.html](insight-vol-16.html) — "만드는 동안" 리더십 인사이트 Vol. 16 (Amabile & Kramer · Daniel Pink · Scientific Reports (2025)) · <https://projectleadership.cc/insight-vol-16.html>
 - [insight-vol-17.html](insight-vol-17.html) — "되돌릴 수 있는가" 리더십 인사이트 Vol. 17 (Gary Klein · Kahneman · Bezos framework · 2007–2009) · <https://projectleadership.cc/insight-vol-17.html>
+- [insight-vol-18.html](insight-vol-18.html) — "고쳐 생각하다" 리더십 인사이트 Vol. 18 (Adam Grant · Philip Tetlock · 2015–2021) · <https://projectleadership.cc/insight-vol-18.html>
 
 ### 새 볼륨 발행 워크플로우
 

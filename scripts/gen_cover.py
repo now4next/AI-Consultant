@@ -146,7 +146,19 @@ def motif_doors(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "none": lambda accent=None: ""}
+def motif_rethink(accent="#d9c48f"):
+    """A near-closed loop arrow circling back on a marked belief: reconsidering, updating."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8">
+        <path d="M84 40 A32 32 0 1 1 60 28"/>
+        <path d="M51 22 L60 28 L53 37"/>
+      </g>
+      <circle cx="60" cy="60" r="4.5" fill="{accent}"/>
+      <circle cx="60" cy="60" r="12" fill="none" stroke="{accent}" stroke-width="1.3" opacity=".42"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -199,6 +211,16 @@ VOLUMES = [
         "c1": "#1e2630", "c2": "#0b0f14",
         "accent": "#d9c48f",
         "motif": "doors",
+    },
+    {
+        "vol": 18,
+        "eyebrow": "Vol. 18 · Think Again",
+        "title": "고쳐 생각하다",
+        "sub": "확신이 싸진 시대, 리더의 근육은 답을 내는 힘보다 고쳐 생각하는 힘이다",
+        "source": "원전 · Adam Grant · Tetlock",
+        "c1": "#1f1a30", "c2": "#0d0a18",
+        "accent": "#d9c48f",
+        "motif": "rethink",
     },
 ]
 

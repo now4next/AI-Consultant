@@ -323,6 +323,27 @@
         "motif": "doors",
         "sub": "능력이 아니라 결정의 모양.<br>되돌릴 수 있는 문인가"
       }
+    },
+    {
+      "vol": 18,
+      "file": "insight-vol-18.html",
+      "dir": "vol-18",
+      "title": "고쳐 생각하다",
+      "sub": "AI가 확신을 값싸게 내주는 시대, 리더의 근육은 답을 내는 힘보다 고쳐 생각하는 힘이다.",
+      "eyebrow": "Vol. 18 · Think Again",
+      "source": "Adam Grant · Philip Tetlock · 2015–2021",
+      "cat": "성찰",
+      "tag": "#성찰 · Grant·Tetlock",
+      "readTime": "6분",
+      "desc": "AI가 확신을 값싸게 내주는 시대, 리더의 근육은 답을 내는 힘보다 고쳐 생각하는 힘.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1f1a30",
+        "c2": "#0d0a18",
+        "accent": "#d9c48f",
+        "motif": "rethink",
+        "sub": "확신이 싸진 시대,<br>답을 다시 여는 근육"
+      }
     }
   ]
 }
