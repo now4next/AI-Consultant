@@ -260,6 +260,27 @@
         "motif": "trellis",
         "sub": "코칭은 통째로 자동화되지 않는다.<br>과업마다 나누어 설계한다"
       }
+    },
+    {
+      "vol": 15,
+      "file": "insight-vol-15.html",
+      "dir": "vol-15",
+      "title": "일을 다시 짜다",
+      "sub": "88%가 AI를 쓰지만 값이 남는 곳은 6%. 차이는 도구가 아니라 다시 짠 조직에 있다.",
+      "eyebrow": "Vol. 15 · The Agentic Organization",
+      "source": "McKinsey · State of AI 2025 · Superagency",
+      "cat": "전략",
+      "tag": "#전략 · McKinsey",
+      "readTime": "6분",
+      "desc": "88%가 AI를 쓰지만 값이 남는 곳은 6%. 차이는 도구가 아니라 다시 짠 조직에 있다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1b2338",
+        "c2": "#0a0e18",
+        "accent": "#d9c48f",
+        "motif": "rewire",
+        "sub": "덧대면 값이 나오지 않는다.<br>일을 다시 짜야 한다"
+      }
     }
   ]
 }

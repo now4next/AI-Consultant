@@ -82,7 +82,34 @@ def motif_trellis(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "none": lambda accent=None: ""}
+def motif_rewire(accent="#d9c48f"):
+    """A hub agent with faint old links being rerouted into new solid ones: rewiring the org."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" stroke-width="1.2" opacity=".24" stroke-dasharray="3 5" fill="none">
+        <line x1="60" y1="60" x2="24" y2="30"/>
+        <line x1="60" y1="60" x2="96" y2="34"/>
+        <line x1="60" y1="60" x2="30" y2="94"/>
+      </g>
+      <g stroke="{accent}" stroke-width="2.2" fill="none" stroke-linecap="round">
+        <line x1="60" y1="60" x2="90" y2="88"/>
+        <line x1="60" y1="60" x2="34" y2="46"/>
+        <line x1="60" y1="60" x2="74" y2="24"/>
+      </g>
+      <g fill="{accent}">
+        <circle cx="60" cy="60" r="7"/>
+        <circle cx="90" cy="88" r="4.2"/>
+        <circle cx="34" cy="46" r="4.2"/>
+        <circle cx="74" cy="24" r="4.2"/>
+      </g>
+      <g fill="none" stroke="{accent}" stroke-width="1.2" opacity=".4">
+        <circle cx="24" cy="30" r="3.4"/>
+        <circle cx="96" cy="34" r="3.4"/>
+        <circle cx="30" cy="94" r="3.4"/>
+      </g>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -105,6 +132,16 @@ VOLUMES = [
         "c1": "#17281d", "c2": "#0b130e",
         "accent": "#d9c48f",
         "motif": "trellis",
+    },
+    {
+        "vol": 15,
+        "eyebrow": "Vol. 15 · The Agentic Organization",
+        "title": "일을 다시 짜다",
+        "sub": "덧대면 값이 나오지 않는다. 일을 다시 짜야 한다",
+        "source": "원전 · McKinsey · State of AI 2025",
+        "c1": "#1b2338", "c2": "#0a0e18",
+        "accent": "#d9c48f",
+        "motif": "rewire",
     },
 ]
 
