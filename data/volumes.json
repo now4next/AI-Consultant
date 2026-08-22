@@ -281,6 +281,27 @@
         "motif": "rewire",
         "sub": "덧대면 값이 나오지 않는다.<br>일을 다시 짜야 한다"
       }
+    },
+    {
+      "vol": 16,
+      "file": "insight-vol-16.html",
+      "dir": "vol-16",
+      "title": "만드는 동안",
+      "sub": "사람을 움직이는 건 진척의 감각. AI가 만드는 과정을 대신할 때 의미는 어디서 오는가.",
+      "eyebrow": "Vol. 16 · The Progress Principle",
+      "source": "Amabile & Kramer · Daniel Pink · Scientific Reports (2025)",
+      "cat": "사람",
+      "tag": "#사람 · Amabile·Pink",
+      "readTime": "6분",
+      "desc": "사람을 움직이는 건 진척의 감각. AI가 만드는 과정을 대신할 때 의미는 어디서 오는가.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#2a1e26",
+        "c2": "#140a10",
+        "accent": "#d9c48f",
+        "motif": "progress",
+        "sub": "동기는 진척에서 온다.<br>만드는 과정을 내주면 의미도 옅어진다"
+      }
     }
   ]
 }

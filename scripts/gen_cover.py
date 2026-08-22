@@ -109,7 +109,25 @@ def motif_rewire(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "none": lambda accent=None: ""}
+def motif_progress(accent="#d9c48f"):
+    """Small wins accumulating into a rising climb, with the spark of felt progress on top."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="{accent}">
+        <rect x="28" y="80" width="12" height="14" rx="2" opacity=".45"/>
+        <rect x="46" y="68" width="12" height="26" rx="2" opacity=".62"/>
+        <rect x="64" y="54" width="12" height="40" rx="2" opacity=".8"/>
+        <rect x="82" y="38" width="12" height="56" rx="2"/>
+      </g>
+      <g stroke="{accent}" stroke-width="2.4" stroke-linecap="round">
+        <line x1="88" y1="26" x2="88" y2="16"/>
+        <line x1="81" y1="22" x2="74" y2="18"/>
+        <line x1="95" y1="22" x2="102" y2="18"/>
+      </g>
+      <circle cx="88" cy="31" r="3.2" fill="{accent}"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -142,6 +160,16 @@ VOLUMES = [
         "c1": "#1b2338", "c2": "#0a0e18",
         "accent": "#d9c48f",
         "motif": "rewire",
+    },
+    {
+        "vol": 16,
+        "eyebrow": "Vol. 16 · The Progress Principle",
+        "title": "만드는 동안",
+        "sub": "동기는 진척에서 온다. 만드는 과정을 내주면 의미도 옅어진다",
+        "source": "원전 · Amabile & Kramer · Pink",
+        "c1": "#2a1e26", "c2": "#140a10",
+        "accent": "#d9c48f",
+        "motif": "progress",
     },
 ]
 

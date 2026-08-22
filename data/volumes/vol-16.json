@@ -1,0 +1,52 @@
+{
+  "vol": 16,
+  "title": "만드는 동안",
+  "sub": "사람을 움직이는 건 진척의 감각. AI가 만드는 과정을 대신할 때 의미는 어디서 오는가.",
+  "eyebrow": "Vol. 16 · The Progress Principle",
+  "kicker": "Teresa Amabile · Harvard Business School",
+  "koLead": "결과는 와도<br>의미는<br><em>오지 않는다</em>",
+  "koSub": "동기는 진척에서 온다. 만드는 과정을 내주면, 산출은 늘어도 의미는 얇아진다.",
+  "deck": "일하는 사람을 움직이는 것은 보상보다 진척의 감각이다. 그런데 AI에게 '만드는 과정'을 통째로 내주면, 결과물은 늘어도 그 감각은 얇아진다. 리더가 지켜야 할 것은 산출이 아닌 <em>진척이 태어나는 자리</em>다.",
+  "pillars": [
+    [
+      "The Engine",
+      "진척이라는 동력"
+    ],
+    [
+      "Double-edged",
+      "양날의 협업"
+    ],
+    [
+      "The Design",
+      "진척을 지키는 설계"
+    ]
+  ],
+  "sourceTitle": "The Progress Principle: Using Small Wins to Ignite Joy, Engagement, and Creativity at Work",
+  "source": "Amabile & Kramer · Daniel Pink · Scientific Reports (2025)",
+  "cover": {
+    "kind": "gcover",
+    "c1": "#2a1e26",
+    "c2": "#140a10",
+    "accent": "#d9c48f",
+    "motif": "progress",
+    "sub": "동기는 진척에서 온다.<br>만드는 과정을 내주면 의미도 옅어진다"
+  },
+  "takeaway": {
+    "h3": "결과를 늘리기 전에,<br><em>진척</em>을 지킨다",
+    "p1": "사람을 움직이는 가장 강한 힘은 의미 있는 일에서 진척을 이루는 감각이다. 그 감각은 결과물이 아니라 '만드는 동안'에 태어난다. AI가 만드는 과정을 통째로 대신하면, 산출은 늘어도 그 감각은 얇아진다.",
+    "p2": "그러니 넘길 것과 남길 것을 가르는 기준은 하나다. 진척이 태어나는가. 지루함은 넘기고, 작은 승리가 태어나는 자리는 남긴다. 그것이 산출과 의미를 함께 지키는 설계다.",
+    "sig": "Amabile · Progress Principle '11"
+  },
+  "home": {
+    "tldr": [
+      "사람을 움직이는 가장 강한 힘은 보상보다 '의미 있는 일에서 진척을 이루는 감각'이다 (Amabile, 일기 12,000건).",
+      "생성형 AI와 협업하면 성과는 오르지만, 다시 혼자 일할 때 내재 동기는 내리고 지루함은 커졌다 (Scientific Reports, 2025).",
+      "지루함은 AI에 넘기되, 작은 승리가 태어나는 '만드는 동안'은 사람 손에 남기는 설계."
+    ],
+    "readTime": "6분",
+    "tags": "#일의의미 #Amabile #Pink",
+    "cat": "사람",
+    "tag": "#사람 · Amabile·Pink",
+    "desc": "사람을 움직이는 건 진척의 감각. AI가 만드는 과정을 대신할 때 의미는 어디서 오는가."
+  }
+}
