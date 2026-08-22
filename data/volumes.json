@@ -344,6 +344,27 @@
         "motif": "rethink",
         "sub": "확신이 싸진 시대,<br>답을 다시 여는 근육"
       }
+    },
+    {
+      "vol": 19,
+      "file": "insight-vol-19.html",
+      "dir": "vol-19",
+      "title": "배우는 속도",
+      "sub": "직무는 빨리 바뀌고 배움은 못 따라간다. 그 격차를 메우는 건 갈아 끼우기보다 다시 기르기다.",
+      "eyebrow": "Vol. 19 · The Reskilling Economy",
+      "source": "WEF Future of Jobs 2025 · David Autor · MIT",
+      "cat": "성장",
+      "tag": "#성장 · WEF·Autor",
+      "readTime": "6분",
+      "desc": "직무는 빨리 바뀌고 배움은 못 따라간다. 그 격차를 메우는 건 갈아 끼우기가 아니라 다시 기르기다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#282013",
+        "c2": "#130f08",
+        "accent": "#d9c48f",
+        "motif": "catchup",
+        "sub": "직무는 빨리 바뀌고<br>배움은 그 속도를 따라잡는가"
+      }
     }
   ]
 }

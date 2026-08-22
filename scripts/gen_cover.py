@@ -158,7 +158,20 @@ def motif_rethink(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "none": lambda accent=None: ""}
+def motif_catchup(accent="#d9c48f"):
+    """A steep curve (roles changing) pulling ahead of a lagging one (learning) climbing to close the gap."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="18" y1="98" x2="104" y2="98" stroke="{accent}" stroke-width="1.4" opacity=".35"/>
+      <path d="M20 92 C48 80 70 44 100 24" stroke="{accent}" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+      <circle cx="100" cy="24" r="3.6" fill="{accent}"/>
+      <path d="M20 92 C50 88 74 66 96 44" stroke="{accent}" stroke-width="2.6" fill="none" stroke-linecap="round" opacity=".8"/>
+      <circle cx="96" cy="44" r="3.2" fill="{accent}" opacity=".8"/>
+      <line x1="98" y1="28" x2="98" y2="42" stroke="{accent}" stroke-width="1.4" stroke-dasharray="3 3" opacity=".6"/>
+      <path d="M91 47 L96 43 L99 49" stroke="{accent}" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -221,6 +234,16 @@ VOLUMES = [
         "c1": "#1f1a30", "c2": "#0d0a18",
         "accent": "#d9c48f",
         "motif": "rethink",
+    },
+    {
+        "vol": 19,
+        "eyebrow": "Vol. 19 · The Reskilling Economy",
+        "title": "배우는 속도",
+        "sub": "직무는 빨리 바뀌고 배움은 못 따라간다. 메우는 건 갈아 끼우기보다 다시 기르기다",
+        "source": "원전 · WEF Future of Jobs · David Autor",
+        "c1": "#282013", "c2": "#130f08",
+        "accent": "#d9c48f",
+        "motif": "catchup",
     },
 ]
 
