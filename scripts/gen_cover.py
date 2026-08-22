@@ -64,7 +64,25 @@ def motif_three_failures(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "none": lambda accent=None: ""}
+def motif_trellis(accent="#d9c48f"):
+    """A sprig growing along a structured lattice: the tool holds the structure, the person grows."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" stroke-width="1.1" opacity=".30">
+        <line x1="30" y1="26" x2="78" y2="74"/>
+        <line x1="54" y1="26" x2="96" y2="68"/>
+        <line x1="90" y1="26" x2="42" y2="74"/>
+        <line x1="66" y1="26" x2="24" y2="68"/>
+      </g>
+      <g stroke="{accent}" stroke-width="2.8" fill="none" stroke-linecap="round">
+        <path d="M60 102 C60 86 60 74 60 48"/>
+      </g>
+      <path d="M60 74 C50 71 45 63 47 54 C57 56 62 65 60 74Z" fill="{accent}" stroke="none"/>
+      <path d="M60 64 C70 60 75 52 73 43 C63 46 58 55 60 64Z" fill="{accent}" stroke="none"/>
+      <circle cx="60" cy="46" r="3.4" fill="{accent}"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -77,6 +95,16 @@ VOLUMES = [
         "c1": "#16233a", "c2": "#080b12",  # bg gradient
         "accent": "#d9c48f",
         "motif": "broken-ladder",
+    },
+    {
+        "vol": 14,
+        "eyebrow": "Vol. 14 · The Augmented Coach",
+        "title": "나누어 기르다",
+        "sub": "코칭은 통째로 자동화되지 않는다. 과업마다 나누어 설계한다",
+        "source": "원전 · Terblanche · ICF · Passmore et al.",
+        "c1": "#17281d", "c2": "#0b130e",
+        "accent": "#d9c48f",
+        "motif": "trellis",
     },
 ]
 
