@@ -127,7 +127,26 @@ def motif_progress(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "none": lambda accent=None: ""}
+def motif_doors(accent="#d9c48f"):
+    """A two-way door (reversible, dashed sill, double arrow) beside a one-way door (irreversible)."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 90 L22 48 Q22 34 35 34 Q48 34 48 48 L48 90" stroke-width="2.6"/>
+        <path d="M72 90 L72 48 Q72 34 85 34 Q98 34 98 48 L98 90" stroke-width="2.6"/>
+        <line x1="20" y1="90" x2="50" y2="90" stroke-width="2.4" stroke-dasharray="3 4" opacity=".6"/>
+        <line x1="70" y1="90" x2="100" y2="90" stroke-width="2.8"/>
+        <g stroke-width="2">
+          <line x1="28" y1="64" x2="42" y2="64"/>
+          <path d="M32 60 L27 64 L32 68"/>
+          <path d="M38 60 L43 64 L38 68"/>
+          <line x1="78" y1="64" x2="92" y2="64"/>
+          <path d="M88 60 L93 64 L88 68"/>
+        </g>
+      </g>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -170,6 +189,16 @@ VOLUMES = [
         "c1": "#2a1e26", "c2": "#140a10",
         "accent": "#d9c48f",
         "motif": "progress",
+    },
+    {
+        "vol": 17,
+        "eyebrow": "Vol. 17 · The Delegation Line",
+        "title": "되돌릴 수 있는가",
+        "sub": "맡길 결정과 쥘 결정을 가르는 선. 능력이 아니라 되돌림이 정한다",
+        "source": "원전 · Gary Klein · Kahneman · Bezos",
+        "c1": "#1e2630", "c2": "#0b0f14",
+        "accent": "#d9c48f",
+        "motif": "doors",
     },
 ]
 

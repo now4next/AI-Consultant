@@ -1,0 +1,132 @@
+<div class="termdef">
+  <div class="td-lab">용어 · 이 글에서의 정의</div>
+  <div class="td-word">일방문과 양방문 <span class="en">One-Way &amp; Two-Way Doors</span></div>
+  <p class="td-body">이 글에서 '일방문·양방문'은 제프 베조스가 1997년 주주 서한에서 나눈 결정의 두 유형이다. <em>되돌릴 수 있는 결정(양방문)</em>은 빠르게 내리고 위임해도 되고, <em>되돌릴 수 없는 결정(일방문)</em>은 느리게, 사람이 신중히 내려야 한다. 이 글은 그 선을 사람과 AI 사이에 긋는다.</p>
+</div>
+
+<div class="prose">
+
+<!-- Section I -->
+<h2><span class="num">Section Ⅰ · The Reframe</span>틀린 물음부터 버린다</h2>
+<h3>물을 것은 능력보다<br>결정의 모양이다</h3>
+
+<p class="lede dropcap">AI에 결정을 맡겨도 되는가. 흔히 'AI가 이 결정을 내릴 만큼 똑똑한가'로 묻는다. 그런데 그 물음으로는 선을 그을 수 없다. 똑같이 유능한 AI라도, 어떤 결정은 맡겨도 되고 어떤 결정은 절대 맡기면 안 되기 때문이다.</p>
+
+<p>가르는 것은 능력이 아니라 결정의 <strong>모양</strong>이다. 베조스는 결정을 두 종류로 나눴다. 되돌릴 수 있는 결정, 곧 양방문은 빠르게 내려도 된다. 틀려도 문을 도로 열고 나오면 그만이다. 그가 정보의 70%쯤 모이면 결정하라고 한 것도 이 유형이다. 반대로 되돌릴 수 없는 일방문은 느리게, 신중히, 사람이 내려야 한다.</p>
+
+<p>위임의 선도 여기서 시작한다. AI가 얼마나 잘하느냐가 아니라, 틀렸을 때 우리가 되돌리고 알아챌 수 있느냐가 먼저다. 능력은 그다음 문제다.</p>
+
+</div>
+
+<div class="stat-strip">
+  <div class="stat"><div class="lab">Two doors</div><div class="num">1997<span class="sm">년</span></div><div class="cap">베조스가 되돌릴 수 있는 결정과 없는 결정을 나눈 주주 서한 (Type 2 · Type 1)</div></div>
+  <div class="stat"><div class="lab">Move fast</div><div class="num">70<span class="sm">%</span></div><div class="cap">되돌릴 수 있는 결정은 정보가 이만큼만 모여도 빠르게 내려도 된다는 기준</div></div>
+  <div class="stat"><div class="lab">Trust test</div><div class="num">2<span class="sm">조건</span></div><div class="cap">직관을 믿어도 되는 조건: 규칙적인 환경 + 피드백으로 배울 기회 (Kahneman &amp; Klein, 2009)</div></div>
+  <div class="stat"><div class="lab">Premortem</div><div class="num">30<span class="sm">%</span></div><div class="cap">사후가정이 실패 원인을 미리 짚는 정확도를 높인 폭 (Klein, HBR 2007)</div></div>
+</div>
+
+<!-- Section II -->
+<div class="prose">
+<h2><span class="num">Section Ⅱ · Three Gates</span>세 관문으로 거른다</h2>
+<h3>맡겨도 되는 결정은<br>세 관문을 지난다</h3>
+
+<p>그렇다면 어떤 결정을 AI에 맡겨도 되나. 세 관문으로 거른다. 셋을 다 지나면 맡겨도 손실이 작고, 하나라도 막히면 사람이 쥔다.</p>
+</div>
+
+<div class="ladder">
+  <div class="ld-hd">Three Gates Before You Delegate</div>
+  <div class="ld-ti">맡기기 전 통과할 세 관문</div>
+
+  <div class="step">
+    <div class="st-n">01</div>
+    <div>
+      <div class="st-title">되돌릴 수 있는가</div>
+      <div class="st-en">Reversible · 양방문인가 일방문인가</div>
+      <div class="st-body">틀려도 되돌릴 수 있는 결정은 맡겨도 손실이 작다. 잘못됐으면 문을 도로 열고 나오면 된다. 되돌릴 수 없는 일방문은 사람이 느리게 내린다.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="st-n">02</div>
+    <div>
+      <div class="st-title">배울 수 있는 영역인가</div>
+      <div class="st-en">High-validity · 규칙과 피드백이 있는가</div>
+      <div class="st-body">카너먼과 클라인은 직관을 믿어도 되는 조건을 둘로 정리했다. 규칙적인 환경, 그리고 피드백으로 그 규칙을 익힐 기회. AI의 자신 있는 답도 같은 잣대로 봐야 한다. 규칙이 옅고 피드백이 없는 영역에서는 그럴듯한 답일수록 위험하다.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="st-n">03</div>
+    <div>
+      <div class="st-title">오답을 알아챌 수 있는가</div>
+      <div class="st-en">Verifiable · 검증 고리가 있는가</div>
+      <div class="st-body">틀렸는지 곧 확인할 수 있는가. 오답이 조용히 흘러가 버리는 결정은 맡겨선 안 된다. 결과를 되짚어 잘못을 잡아낼 고리가 있어야 위임이 안전하다.</div>
+    </div>
+  </div>
+</div>
+
+<div class="prose">
+<p>세 관문을 모두 지난 결정은 사람이 붙들고 있을 이유가 오히려 적다. 반대로 하나라도 막히면, AI가 아무리 그럴듯한 답을 내도 사람이 마지막에 선다. 셋을 함께 봐야 한다. 되돌릴 수 있어도 검증할 수 없으면 오답이 쌓이고, 검증돼도 되돌릴 수 없으면 한 번의 실수가 크다.</p>
+
+<blockquote>“직관은 규칙적인 환경에서, 피드백으로 그 규칙을 익힐 기회가 있을 때에만 믿을 만하다.” <span class="src">(요지 · Kahneman &amp; Klein, 2009)</span></blockquote>
+
+<p>이 문장은 사람의 직관에 관한 것이지만, 패턴을 익혀 답을 내는 AI에도 그대로 적용된다. 규칙이 없는 곳에서 나온 확신은 사람의 것이든 기계의 것이든 믿을 근거가 얇다.</p>
+</div>
+
+<!-- Section III -->
+<div class="prose">
+<h2><span class="num">Section Ⅲ · Premortem</span>넘기기 전에, 프리모템</h2>
+<h3>일방문 앞에서는<br>먼저 실패를 상상한다</h3>
+
+<p>되돌릴 수 없는 결정을 AI에 맡기려 할 때, 넘기기 전에 할 일이 있다. 게리 클라인의 프리모템이다. "1년 뒤, 이 결정이 큰 사고로 끝났다. 왜인가?" 이미 실패한 것으로 놓고 원인을 거꾸로 짚는다. 1989년 연구에서 이 사후가정은 미래의 원인을 짚는 정확도를 30% 높였다. 과신과 집단사고를 눌러, 일방문 뒤에 무엇이 있는지 미리 보게 한다.</p>
+
+<p>위임의 선을 실제 설계로 세우려면, 결정을 넘기기 전에 다음을 통과해야 한다.</p>
+</div>
+
+<div class="checklist">
+  <div class="ck-hd">Design Checks · 결정을 넘기기 전에</div>
+  <div class="ck-ti">위임의 선을 긋는 다섯 질문</div>
+
+  <div class="item">
+    <span class="q">01</span>
+    <div>
+      <div class="txt">되돌릴 수 있는 문인가?</div>
+      <div class="sub">이 결정이 틀렸을 때 되돌릴 수 있는가. 일방문이라면 사람이 느리게 내린다.</div>
+    </div>
+  </div>
+  <div class="item">
+    <span class="q">02</span>
+    <div>
+      <div class="txt">배울 수 있는 영역인가?</div>
+      <div class="sub">규칙이 있고 피드백으로 익힐 수 있는 영역인가. 그렇지 않다면 AI의 확신을 그대로 믿지 않는다.</div>
+    </div>
+  </div>
+  <div class="item">
+    <span class="q">03</span>
+    <div>
+      <div class="txt">오답을 알아챌 수 있는가?</div>
+      <div class="sub">틀렸을 때 곧 드러나는가, 조용히 흘러가는가. 잘못을 잡아낼 검증 고리를 함께 설계했는가.</div>
+    </div>
+  </div>
+  <div class="item">
+    <span class="q">04</span>
+    <div>
+      <div class="txt">프리모템을 돌렸는가?</div>
+      <div class="sub">되돌릴 수 없는 위임 앞에서 '이미 실패했다면 왜?'를 먼저 물어 봤는가.</div>
+    </div>
+  </div>
+  <div class="item">
+    <span class="q">05</span>
+    <div>
+      <div class="txt">감독이 형식은 아닌가?</div>
+      <div class="sub">사람이 '검토'라는 도장만 찍고 있지는 않은가. 자동화된 답을 무심코 승인하는 자동화 편향을 경계했는가.</div>
+    </div>
+  </div>
+</div>
+
+<div class="prose">
+<p>위임은 능력의 문제처럼 보이지만 실은 되돌림의 문제다. 능력만 보고 넘기면, 되돌릴 수 없는 일방문을 조용히 기계에 열어 주게 된다. 정작 물어야 할 것은 이 문이 다시 열리느냐다.</p>
+
+<p>이 편은 Vol. 09의 실무편이다. 실행이 공짜가 될수록 값이 오르는 것은 분별이라 했다. 무엇을 할지 가려내는 일과 무엇을 맡길지 가려내는 일은 같은 근육을 쓴다. Vol. 06에서 본 편향처럼, 자동화 편향도 결국 사람 쪽에서 다스릴 문제다.</p>
+
+<p>AI에 맡길 결정과 사람이 쥘 결정을 가르는 선은 능력이 아니라 <strong>되돌림·검증·타당성</strong>에서 나온다. 양방문은 열어 주고, 일방문 앞에는 사람이 선다.</p>
+
+</div>

@@ -302,6 +302,27 @@
         "motif": "progress",
         "sub": "동기는 진척에서 온다.<br>만드는 과정을 내주면 의미도 옅어진다"
       }
+    },
+    {
+      "vol": 17,
+      "file": "insight-vol-17.html",
+      "dir": "vol-17",
+      "title": "되돌릴 수 있는가",
+      "sub": "AI에 맡길 결정과 사람이 쥘 결정을 가르는 선. 능력이 아니라 되돌림·검증·타당성이 정한다.",
+      "eyebrow": "Vol. 17 · The Delegation Line",
+      "source": "Gary Klein · Kahneman · Bezos framework · 2007–2009",
+      "cat": "판단",
+      "tag": "#판단 · Klein·Kahneman",
+      "readTime": "6분",
+      "desc": "AI에 맡길 결정과 사람이 쥘 결정을 가르는 선. 능력이 아니라 되돌림·검증·타당성이 정한다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1e2630",
+        "c2": "#0b0f14",
+        "accent": "#d9c48f",
+        "motif": "doors",
+        "sub": "능력이 아니라 결정의 모양.<br>되돌릴 수 있는 문인가"
+      }
     }
   ]
 }
