@@ -187,7 +187,26 @@ def motif_fork(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "none": lambda accent=None: ""}
+def motif_sensemaking(accent="#d9c48f"):
+    """Scattered ambiguous signals, a workable path drawn through a subset: making meaning."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="{accent}" opacity=".38">
+        <circle cx="34" cy="30" r="2.4"/>
+        <circle cx="92" cy="28" r="2.4"/>
+        <circle cx="82" cy="92" r="2.4"/>
+        <circle cx="22" cy="74" r="2.4"/>
+      </g>
+      <path d="M26 92 L48 58 L70 72 L96 38" stroke="{accent}" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+      <g fill="{accent}">
+        <circle cx="26" cy="92" r="3.4"/>
+        <circle cx="48" cy="58" r="3.4"/>
+        <circle cx="70" cy="72" r="3.4"/>
+        <circle cx="96" cy="38" r="3.8"/>
+      </g>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -270,6 +289,16 @@ VOLUMES = [
         "c1": "#2a151a", "c2": "#130a0c",
         "accent": "#d9c48f",
         "motif": "fork",
+    },
+    {
+        "vol": 21,
+        "eyebrow": "Vol. 21 · Sensemaking",
+        "title": "지도가 없을 때",
+        "sub": "정보가 넘칠수록 모자란 건 의미다. 지도가 없을 때 쓸 만한 해석을 짓는 일",
+        "source": "원전 · Karl Weick · Ronald Heifetz",
+        "c1": "#1a1f28", "c2": "#0c0f15",
+        "accent": "#d9c48f",
+        "motif": "sensemaking",
     },
 ]
 
