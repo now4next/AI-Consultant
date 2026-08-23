@@ -470,6 +470,27 @@
         "motif": "candor",
         "sub": "고칠 것은 문장이 아니라<br>그 문장을 고른 판단이다"
       }
+    },
+    {
+      "vol": 25,
+      "file": "insight-vol-25.html",
+      "dir": "vol-25",
+      "title": "숙련의 재발명",
+      "sub": "지름길이 흔해질수록 희소해지는 것은 의도된 연습이다. 숙련은 고른 어려움에서 자란다.",
+      "eyebrow": "Vol. 25 · The Right Kind of Practice",
+      "source": "Anders Ericsson · Robert Pool · 2016",
+      "cat": "성장",
+      "tag": "#성장 · Ericsson",
+      "readTime": "5분",
+      "desc": "지름길이 흔해질수록 희소해지는 것은 의도된 연습이다. 숙련은 고른 어려움에서 자란다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#2a1a13",
+        "c2": "#130a07",
+        "accent": "#d9c48f",
+        "motif": "practice",
+        "sub": "숙련은 지름길이 아니라<br>고른 어려움에서 자란다"
+      }
     }
   ]
 }
