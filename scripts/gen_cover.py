@@ -241,7 +241,37 @@ def motif_hourglass(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "none": lambda accent=None: ""}
+def motif_candor(accent="#d9c48f"):
+    """A 2x2 grid with the care+challenge quadrant lit: Radical Candor."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" stroke-width="1.6" opacity=".35">
+        <line x1="28" y1="60" x2="98" y2="60"/>
+        <line x1="60" y1="26" x2="60" y2="94"/>
+      </g>
+      <rect x="63" y="31" width="30" height="27" rx="3" fill="{accent}" opacity=".85"/>
+      <g stroke="{accent}" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".6">
+        <path d="M94 56 L98 60 L94 64"/>
+        <path d="M56 30 L60 26 L64 30"/>
+      </g>
+    </svg>'''
+
+
+def motif_practice(accent="#d9c48f"):
+    """Ascending reps climbing above a dashed comfort line: deliberate practice."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="20" y1="74" x2="100" y2="74" stroke="{accent}" stroke-width="1.4" stroke-dasharray="4 4" opacity=".4"/>
+      <g stroke="{accent}" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4">
+        <path d="M28 86 Q34 70 44 80"/>
+        <path d="M44 80 Q52 58 62 70"/>
+        <path d="M62 70 Q72 44 84 58"/>
+      </g>
+      <circle cx="28" cy="86" r="3.1" fill="{accent}" opacity=".55"/>
+      <circle cx="84" cy="58" r="3.8" fill="{accent}"/>
+      <path d="M79 53 L84 47 L89 53" stroke="{accent}" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -354,6 +384,26 @@ VOLUMES = [
         "c1": "#16262b", "c2": "#0a1013",
         "accent": "#d9c48f",
         "motif": "hourglass",
+    },
+    {
+        "vol": 24,
+        "eyebrow": "Vol. 24 · Beyond the Draft",
+        "title": "초안 너머",
+        "sub": "AI가 초안을 쓰는 시대, 고칠 것은 문장이 아니라 그 문장을 고른 판단이다",
+        "source": "원전 · Kim Scott · Radical Candor",
+        "c1": "#1e2417", "c2": "#0e120a",
+        "accent": "#d9c48f",
+        "motif": "candor",
+    },
+    {
+        "vol": 25,
+        "eyebrow": "Vol. 25 · The Right Kind of Practice",
+        "title": "숙련의 재발명",
+        "sub": "지름길이 흔해질수록 희소해지는 것은 의도된 연습이다",
+        "source": "원전 · Anders Ericsson · Peak",
+        "c1": "#2a1a13", "c2": "#130a07",
+        "accent": "#d9c48f",
+        "motif": "practice",
     },
 ]
 

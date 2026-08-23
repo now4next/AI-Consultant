@@ -449,6 +449,27 @@
         "motif": "hourglass",
         "sub": "빨라질수록<br>느려야 할 자리가 드러난다"
       }
+    },
+    {
+      "vol": 24,
+      "file": "insight-vol-24.html",
+      "dir": "vol-24",
+      "title": "초안 너머",
+      "sub": "AI가 초안을 쓰는 시대, 고칠 것은 문장이 아니라 그 문장을 고른 판단이다.",
+      "eyebrow": "Vol. 24 · Beyond the Draft",
+      "source": "Kim Scott · Radical Candor · 2017",
+      "cat": "성장",
+      "tag": "#성장 · Kim Scott",
+      "readTime": "5분",
+      "desc": "AI가 초안을 쓰는 시대, 고칠 것은 문장이 아니라 그 문장을 고른 판단이다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1e2417",
+        "c2": "#0e120a",
+        "accent": "#d9c48f",
+        "motif": "candor",
+        "sub": "고칠 것은 문장이 아니라<br>그 문장을 고른 판단이다"
+      }
     }
   ]
 }
