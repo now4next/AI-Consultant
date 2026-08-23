@@ -365,6 +365,27 @@
         "motif": "catchup",
         "sub": "직무는 빨리 바뀌고<br>배움은 그 속도를 따라잡는가"
       }
+    },
+    {
+      "vol": 20,
+      "file": "insight-vol-20.html",
+      "dir": "vol-20",
+      "title": "방향을 고르다",
+      "sub": "기술은 저절로 좋아지지 않는다. AI가 누구에게 이로울지는 무엇을 자동화하고 무엇을 넓힐지의 선택이 정한다.",
+      "eyebrow": "Vol. 20 · Power and Progress",
+      "source": "Acemoglu & Johnson · MIT · 2023–2024",
+      "cat": "전략",
+      "tag": "#전략 · Acemoglu",
+      "readTime": "6분",
+      "desc": "기술은 저절로 좋아지지 않는다. AI가 누구에게 이로울지는 무엇을 자동화하고 무엇을 넓힐지의 선택이 정한다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#2a151a",
+        "c2": "#130a0c",
+        "accent": "#d9c48f",
+        "motif": "fork",
+        "sub": "기술은 저절로 좋아지지 않는다.<br>방향을 고를 때 좋아진다"
+      }
     }
   ]
 }

@@ -171,7 +171,23 @@ def motif_catchup(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "none": lambda accent=None: ""}
+def motif_fork(accent="#d9c48f"):
+    """A path rising to a choice node, then two diverging arrows: augment (up) or so-so (down)."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6">
+        <path d="M28 100 L60 62"/>
+        <path d="M60 62 L96 34"/>
+        <path d="M88 33 L96 34 L92 42"/>
+      </g>
+      <g stroke="{accent}" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" opacity=".5">
+        <path d="M60 62 L98 76"/>
+        <path d="M90 71 L98 76 L91 82"/>
+      </g>
+      <circle cx="60" cy="62" r="4" fill="{accent}"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -244,6 +260,16 @@ VOLUMES = [
         "c1": "#282013", "c2": "#130f08",
         "accent": "#d9c48f",
         "motif": "catchup",
+    },
+    {
+        "vol": 20,
+        "eyebrow": "Vol. 20 · Power and Progress",
+        "title": "방향을 고르다",
+        "sub": "기술은 저절로 좋아지지 않는다. AI가 누구에게 이로울지는 무엇을 넓힐지의 선택이 정한다",
+        "source": "원전 · Acemoglu & Johnson · MIT",
+        "c1": "#2a151a", "c2": "#130a0c",
+        "accent": "#d9c48f",
+        "motif": "fork",
     },
 ]
 
