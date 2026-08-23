@@ -33,6 +33,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-20.html](insight-vol-20.html) — "방향을 고르다" 리더십 인사이트 Vol. 20 (Acemoglu & Johnson · MIT · 2023–2024) · <https://projectleadership.cc/insight-vol-20.html>
 - [insight-vol-21.html](insight-vol-21.html) — "지도가 없을 때" 리더십 인사이트 Vol. 21 (Karl Weick · Ronald Heifetz · 1993–2009) · <https://projectleadership.cc/insight-vol-21.html>
 - [insight-vol-22.html](insight-vol-22.html) — "평균으로 끌리다" 리더십 인사이트 Vol. 22 (Doshi & Hauser · Meincke et al. · 2024–2025) · <https://projectleadership.cc/insight-vol-22.html>
+- [insight-vol-23.html](insight-vol-23.html) — "느림의 값" 리더십 인사이트 Vol. 23 (Rita McGrath · Roger Martin · A.G. Lafley) · <https://projectleadership.cc/insight-vol-23.html>
 
 ### 새 볼륨 발행 워크플로우
 

@@ -226,7 +226,22 @@ def motif_converge(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "none": lambda accent=None: ""}
+def motif_hourglass(accent="#d9c48f"):
+    """An hourglass: deliberate time amid speed — patience as the scarce strategic act."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6">
+        <line x1="36" y1="26" x2="84" y2="26"/>
+        <line x1="36" y1="94" x2="84" y2="94"/>
+        <path d="M42 26 L42 40 L60 60 L42 80 L42 94"/>
+        <path d="M78 26 L78 40 L60 60 L78 80 L78 94"/>
+      </g>
+      <path d="M48 33 L72 33 L60 53 Z" fill="{accent}" opacity=".68"/>
+      <path d="M52 87 L68 87 L60 73 Z" fill="{accent}"/>
+      <circle cx="60" cy="66" r="1.8" fill="{accent}"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -329,6 +344,16 @@ VOLUMES = [
         "c1": "#281526", "c2": "#120a11",
         "accent": "#d9c48f",
         "motif": "converge",
+    },
+    {
+        "vol": 23,
+        "eyebrow": "Vol. 23 · The Speed Trap",
+        "title": "느림의 값",
+        "sub": "실행이 공짜가 될수록 드러나는 것: 빨라지면 안 되는 결정들. 값은 언제 느려질지 아는 데 있다",
+        "source": "원전 · Rita McGrath · Roger Martin",
+        "c1": "#16262b", "c2": "#0a1013",
+        "accent": "#d9c48f",
+        "motif": "hourglass",
     },
 ]
 

@@ -428,6 +428,27 @@
         "motif": "converge",
         "sub": "각자는 나아지고<br>모두는 비슷해진다"
       }
+    },
+    {
+      "vol": 23,
+      "file": "insight-vol-23.html",
+      "dir": "vol-23",
+      "title": "느림의 값",
+      "sub": "AI가 실행을 공짜로 만들수록 드러나는 것: 빨라지면 안 되는 결정들. 값은 언제 느려질지 아는 데 있다.",
+      "eyebrow": "Vol. 23 · The Speed Trap",
+      "source": "Rita McGrath · Roger Martin · A.G. Lafley",
+      "cat": "전략",
+      "tag": "#전략 · McGrath·Martin",
+      "readTime": "6분",
+      "desc": "AI가 실행을 공짜로 만들수록 드러나는 것: 빨라지면 안 되는 결정들. 값은 언제 느려질지 아는 데 있다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#16262b",
+        "c2": "#0a1013",
+        "accent": "#d9c48f",
+        "motif": "hourglass",
+        "sub": "빨라질수록<br>느려야 할 자리가 드러난다"
+      }
     }
   ]
 }
