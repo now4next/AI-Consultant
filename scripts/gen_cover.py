@@ -206,7 +206,27 @@ def motif_sensemaking(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "none": lambda accent=None: ""}
+def motif_converge(accent="#d9c48f"):
+    """A dense cluster pulled to the mean by inward arrows, with one outlier standing apart."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="{accent}">
+        <circle cx="56" cy="58" r="3.1"/>
+        <circle cx="64" cy="55" r="3.1"/>
+        <circle cx="62" cy="64" r="3.1"/>
+        <circle cx="54" cy="65" r="3.1"/>
+        <circle cx="67" cy="62" r="3.1"/>
+      </g>
+      <g stroke="{accent}" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" opacity=".5">
+        <path d="M22 28 L42 46"/><path d="M38 45 L43 47 L41 42"/>
+        <path d="M99 32 L78 48"/><path d="M78 43 L77 49 L82 49"/>
+        <path d="M24 90 L44 74"/><path d="M44 79 L45 73 L50 76"/>
+      </g>
+      <circle cx="96" cy="94" r="4" fill="{accent}"/>
+      <circle cx="96" cy="94" r="11" fill="none" stroke="{accent}" stroke-width="1.3" opacity=".45"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -299,6 +319,16 @@ VOLUMES = [
         "c1": "#1a1f28", "c2": "#0c0f15",
         "accent": "#d9c48f",
         "motif": "sensemaking",
+    },
+    {
+        "vol": 22,
+        "eyebrow": "Vol. 22 · The Homogenization Effect",
+        "title": "평균으로 끌리다",
+        "sub": "각자는 나아지고 모두는 비슷해진다. 리더가 지킬 것은 평균이 아니라 바깥값이다",
+        "source": "원전 · Doshi & Hauser · Meincke et al.",
+        "c1": "#281526", "c2": "#120a11",
+        "accent": "#d9c48f",
+        "motif": "converge",
     },
 ]
 

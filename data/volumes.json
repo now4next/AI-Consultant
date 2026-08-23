@@ -407,6 +407,27 @@
         "motif": "sensemaking",
         "sub": "정보가 넘칠수록<br>모자란 것은 의미다"
       }
+    },
+    {
+      "vol": 22,
+      "file": "insight-vol-22.html",
+      "dir": "vol-22",
+      "title": "평균으로 끌리다",
+      "sub": "AI는 개인의 창의성을 높이지만 집단의 다양성은 줄인다. 리더가 지킬 것은 평균이 아니라 바깥값이다.",
+      "eyebrow": "Vol. 22 · The Homogenization Effect",
+      "source": "Doshi & Hauser · Meincke et al. · 2024–2025",
+      "cat": "성찰",
+      "tag": "#성찰 · Doshi·Hauser",
+      "readTime": "6분",
+      "desc": "AI는 개인의 창의성을 높이지만 집단의 다양성은 줄인다. 리더가 지킬 것은 평균이 아니라 바깥값이다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#281526",
+        "c2": "#120a11",
+        "accent": "#d9c48f",
+        "motif": "converge",
+        "sub": "각자는 나아지고<br>모두는 비슷해진다"
+      }
     }
   ]
 }
