@@ -271,7 +271,25 @@ def motif_practice(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "none": lambda accent=None: ""}
+def motif_gap(accent="#d9c48f"):
+    """A chain of responsibility broken by a gap, with responsibility falling through it."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="{accent}">
+        <circle cx="22" cy="42" r="5"/>
+        <circle cx="52" cy="42" r="5"/>
+        <circle cx="98" cy="42" r="5"/>
+      </g>
+      <line x1="27" y1="42" x2="47" y2="42" stroke="{accent}" stroke-width="2.6" stroke-linecap="round"/>
+      <line x1="58" y1="42" x2="92" y2="42" stroke="{accent}" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 6" opacity=".35"/>
+      <g stroke="{accent}" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7">
+        <path d="M70 50 L70 86"/>
+        <path d="M63 79 L70 88 L77 79"/>
+      </g>
+      <circle cx="70" cy="46" r="2.4" fill="{accent}" opacity=".7"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -404,6 +422,16 @@ VOLUMES = [
         "c1": "#2a1a13", "c2": "#130a07",
         "accent": "#d9c48f",
         "motif": "practice",
+    },
+    {
+        "vol": 26,
+        "eyebrow": "Vol. 26 · The Accountability Gap",
+        "title": "떠넘길 수 없는 것",
+        "sub": "결정은 맡겨도 책임은 떠넘길 수 없다. 공백은 통제 있는 자리에 붙들어 메운다",
+        "source": "원전 · Matthias · Elish · EU AI Act",
+        "c1": "#241a1a", "c2": "#100a0a",
+        "accent": "#d9c48f",
+        "motif": "gap",
     },
 ]
 

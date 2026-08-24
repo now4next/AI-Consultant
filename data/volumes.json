@@ -491,6 +491,27 @@
         "motif": "practice",
         "sub": "숙련은 지름길이 아니라<br>고른 어려움에서 자란다"
       }
+    },
+    {
+      "vol": 26,
+      "file": "insight-vol-26.html",
+      "dir": "vol-26",
+      "title": "떠넘길 수 없는 것",
+      "sub": "AI에 결정은 맡겨도 책임은 떠넘길 수 없다. 책임의 공백은 통제 있는 자리에 붙들어 메운다.",
+      "eyebrow": "Vol. 26 · The Accountability Gap",
+      "source": "Matthias (2004) · Elish (2019) · EU AI Act (2024)",
+      "cat": "판단",
+      "tag": "#판단 · 책임·Elish",
+      "readTime": "6분",
+      "desc": "AI에 결정은 맡겨도 책임은 떠넘길 수 없다. 공백은 통제 있는 자리에 붙들어 메운다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#241a1a",
+        "c2": "#100a0a",
+        "accent": "#d9c48f",
+        "motif": "gap",
+        "sub": "결정은 맡겨도<br>책임은 떠넘길 수 없다"
+      }
     }
   ]
 }

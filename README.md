@@ -36,6 +36,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-23.html](insight-vol-23.html) — "느림의 값" 리더십 인사이트 Vol. 23 (Rita McGrath · Roger Martin · A.G. Lafley) · <https://projectleadership.cc/insight-vol-23.html>
 - [insight-vol-24.html](insight-vol-24.html) — "초안 너머" 리더십 인사이트 Vol. 24 (Kim Scott · Radical Candor · 2017) · <https://projectleadership.cc/insight-vol-24.html>
 - [insight-vol-25.html](insight-vol-25.html) — "숙련의 재발명" 리더십 인사이트 Vol. 25 (Anders Ericsson · Robert Pool · 2016) · <https://projectleadership.cc/insight-vol-25.html>
+- [insight-vol-26.html](insight-vol-26.html) — "떠넘길 수 없는 것" 리더십 인사이트 Vol. 26 (Matthias (2004) · Elish (2019) · EU AI Act (2024)) · <https://projectleadership.cc/insight-vol-26.html>
 
 ### 새 볼륨 발행 워크플로우
 
