@@ -289,7 +289,23 @@ def motif_gap(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "none": lambda accent=None: ""}
+def motif_focus(accent="#d9c48f"):
+    """A held focus (concentric rings) amid scattered drifting fragments: attention against distraction."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" stroke-width="2.2" stroke-linecap="round" opacity=".38">
+        <line x1="20" y1="26" x2="31" y2="24"/>
+        <line x1="94" y1="30" x2="104" y2="26"/>
+        <line x1="24" y1="94" x2="35" y2="97"/>
+        <line x1="90" y1="95" x2="100" y2="91"/>
+        <line x1="15" y1="60" x2="25" y2="60"/>
+      </g>
+      <circle cx="60" cy="60" r="5" fill="{accent}"/>
+      <circle cx="60" cy="60" r="14" fill="none" stroke="{accent}" stroke-width="2"/>
+      <circle cx="60" cy="60" r="24" fill="none" stroke="{accent}" stroke-width="1.3" opacity=".42"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -432,6 +448,16 @@ VOLUMES = [
         "c1": "#241a1a", "c2": "#100a0a",
         "accent": "#d9c48f",
         "motif": "gap",
+    },
+    {
+        "vol": 27,
+        "eyebrow": "Vol. 27 · Attention Span",
+        "title": "주의라는 자원",
+        "sub": "화면 앞 집중은 47초로 줄었다. 산출은 무한해도 주의는 유한하다",
+        "source": "원전 · Gloria Mark · UC Irvine",
+        "c1": "#181d29", "c2": "#0a0d15",
+        "accent": "#d9c48f",
+        "motif": "focus",
     },
 ]
 

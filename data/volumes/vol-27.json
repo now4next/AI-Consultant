@@ -1,0 +1,52 @@
+{
+  "vol": 27,
+  "title": "주의라는 자원",
+  "sub": "화면 앞 집중은 47초로 줄었다. AI가 산출을 무한히 늘려도, 그것을 붙들 주의는 유한하다.",
+  "eyebrow": "Vol. 27 · Attention Span",
+  "kicker": "Gloria Mark · UC Irvine · Attention Span, 2023",
+  "koLead": "화면 앞 집중은<br>이제<br><em>47초</em>",
+  "koSub": "AI가 산출을 무한히 늘려도, 그것을 붙들 주의는 유한하다. 주의는 설계할 자원이다.",
+  "deck": "AI는 산출을 무한히 내놓는다. 그런데 그것을 붙들 주의는 유한하다. 화면 앞 평균 집중은 20년 새 2.5분에서 47초로 줄었다. 리더가 지켜야 할 것은 더 많은 산출보다, 그것을 붙들 <em>주의</em>다.",
+  "pillars": [
+    [
+      "47 Seconds",
+      "47초로 줄었다"
+    ],
+    [
+      "The Hidden Cost",
+      "숨은 비용"
+    ],
+    [
+      "Design for It",
+      "주의를 설계한다"
+    ]
+  ],
+  "sourceTitle": "Attention Span: A Groundbreaking Way to Restore Balance, Happiness and Productivity",
+  "source": "Gloria Mark · UC Irvine · 2023",
+  "cover": {
+    "kind": "gcover",
+    "c1": "#181d29",
+    "c2": "#0a0d15",
+    "accent": "#d9c48f",
+    "motif": "focus",
+    "sub": "산출은 무한해도<br>주의는 유한하다"
+  },
+  "takeaway": {
+    "h3": "산출은 무한해도,<br><em>주의</em>는 유한하다",
+    "p1": "화면 앞 집중은 20년 새 2.5분에서 47초로 줄었다(Mark). 한 번 끊기면 온전한 집중으로 돌아오는 데 평균 23분. AI가 산출과 알림과 전환을 늘릴수록, 이 유한한 자원은 더 잘게 부서진다.",
+    "p2": "그래서 주의는 늘 있는 것이 아니라, 시간·예산처럼 설계할 자원이다. 끊김을 줄이고, 깊은 일의 블록을 내고, 전환을 아끼고, 리더가 먼저 본을 보이는 것. 깊은 판단은 붙든 주의에서만 자란다.",
+    "sig": "Gloria Mark · '23"
+  },
+  "home": {
+    "tldr": [
+      "화면 앞 평균 집중 시간이 2004년 2.5분에서 최근 47초로 줄었다 (Gloria Mark, 5개 독립 연구). 한 번 끊기면 되찾는 데 평균 23분.",
+      "AI가 산출·알림·도구 전환을 늘릴수록, 이미 짧아진 주의는 더 잘게 부서진다.",
+      "주의는 늘 있는 게 아니라 시간·예산처럼 설계할 유한한 자원. 깊은 판단은 붙든 주의에서만 자란다."
+    ],
+    "readTime": "5분",
+    "tags": "#주의 #집중 #GloriaMark",
+    "cat": "성찰",
+    "tag": "#성찰 · Gloria Mark",
+    "desc": "화면 앞 집중은 47초로 줄었다. AI가 산출을 늘려도 그것을 붙들 주의는 유한한 자원이다."
+  }
+}
