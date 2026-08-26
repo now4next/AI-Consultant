@@ -37,7 +37,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-24.html](insight-vol-24.html) — "초안 너머" 리더십 인사이트 Vol. 24 (Kim Scott · Radical Candor · 2017) · <https://projectleadership.cc/insight-vol-24.html>
 - [insight-vol-25.html](insight-vol-25.html) — "숙련의 재발명" 리더십 인사이트 Vol. 25 (Anders Ericsson · Robert Pool · 2016) · <https://projectleadership.cc/insight-vol-25.html>
 - [insight-vol-26.html](insight-vol-26.html) — "떠넘길 수 없는 것" 리더십 인사이트 Vol. 26 (Matthias (2004) · Elish (2019) · EU AI Act (2024)) · <https://projectleadership.cc/insight-vol-26.html>
-- [insight-vol-27.html](insight-vol-27.html) — "주의라는 자원" 리더십 인사이트 Vol. 27 (Gloria Mark · UC Irvine · 2023) · <https://projectleadership.cc/insight-vol-27.html>
+- [insight-vol-27.html](insight-vol-27.html) — "집중력이라는 자원" 리더십 인사이트 Vol. 27 (Gloria Mark · UC Irvine · 2023) · <https://projectleadership.cc/insight-vol-27.html>
 - [insight-vol-28.html](insight-vol-28.html) — "말할 수 있는 위계" 리더십 인사이트 Vol. 28 (Hofstede · Edmondson · 권력거리 연구) · <https://projectleadership.cc/insight-vol-28.html>
 - [insight-vol-29.html](insight-vol-29.html) — "빨리빨리" 리더십 인사이트 Vol. 29 (한국의 속도 문화 · 성수(1994)·삼풍(1995)) · <https://projectleadership.cc/insight-vol-29.html>
 - [insight-vol-30.html](insight-vol-30.html) — "AI 1:1 설계도" 리더십 인사이트 Vol. 30 (Andy Grove · Julie Zhuo · 1:1 실무) · <https://projectleadership.cc/insight-vol-30.html>

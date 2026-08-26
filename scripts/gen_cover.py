@@ -495,8 +495,8 @@ VOLUMES = [
     {
         "vol": 27,
         "eyebrow": "Vol. 27 · Attention Span",
-        "title": "주의라는 자원",
-        "sub": "화면 앞 집중은 47초로 줄었다. 산출은 무한해도 주의는 유한하다",
+        "title": "집중력이라는 자원",
+        "sub": "화면 앞 집중은 47초로 줄었다. 산출은 무한해도 집중력은 유한하다",
         "source": "원전 · Gloria Mark · UC Irvine",
         "c1": "#181d29", "c2": "#0a0d15",
         "accent": "#d9c48f",
