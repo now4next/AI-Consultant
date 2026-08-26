@@ -575,6 +575,27 @@
         "motif": "splitspeed",
         "sub": "강점이자 약점.<br>늦추지 말고 속도를 가른다"
       }
+    },
+    {
+      "vol": 30,
+      "file": "insight-vol-30.html",
+      "dir": "vol-30",
+      "title": "AI 1:1 설계도",
+      "sub": "상태 보고는 도구가 대신할 수 있다. 그러면 1:1은 원래 목적, 곧 사람에게로 돌아간다.",
+      "eyebrow": "Vol. 30 · The 1:1 Playbook",
+      "source": "Andy Grove · Julie Zhuo · 1:1 실무",
+      "cat": "성장",
+      "tag": "#성장 · Andy Grove",
+      "readTime": "5분",
+      "desc": "상태 보고는 도구가 대신할 수 있다. 그러면 1:1은 원래 목적, 곧 사람에게로 돌아간다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1b241d",
+        "c2": "#0c120e",
+        "accent": "#d9c48f",
+        "motif": "oneonone",
+        "sub": "상태는 도구에 맡기고<br>1:1은 사람에게 돌려준다"
+      }
     }
   ]
 }

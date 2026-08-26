@@ -1,0 +1,140 @@
+<style>
+  .playbook{margin:30px 0}
+  .pb-lead{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+  .pb-phase{border:1px solid rgba(28,26,23,.16);border-radius:12px;padding:20px 22px;margin:14px 0;background:rgba(255,255,255,.42)}
+  .pb-ph-top{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px 12px;margin-bottom:12px;border-bottom:1px solid rgba(28,26,23,.1);padding-bottom:10px}
+  .pb-ph-tag{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:#fff;background:var(--accent);border-radius:5px;padding:3px 10px}
+  .pb-ph-when{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:#6f685d}
+  .pb-ph-title{font-family:var(--serif);font-weight:700;font-size:19px;line-height:1.3;color:var(--ink)}
+  .pb-do{margin:0;padding:0;list-style:none}
+  .pb-do li{position:relative;padding-left:24px;margin:9px 0;font-family:var(--serif);font-size:16.5px;line-height:1.62;color:var(--ink)}
+  .pb-do li::before{content:"→";position:absolute;left:0;top:1px;color:var(--accent);font-family:var(--mono);font-weight:500}
+  .pb-split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+  .pb-col{border:1px solid rgba(28,26,23,.16);border-radius:12px;padding:16px 18px;background:rgba(255,255,255,.3)}
+  .pb-col h4{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid rgba(28,26,23,.1)}
+  .pb-col.ai h4{color:#6f685d}
+  .pb-col.human h4{color:var(--accent)}
+  .pb-col ul{margin:0;padding-left:18px}
+  .pb-col li{font-family:var(--serif);font-size:15px;line-height:1.55;margin:6px 0;color:var(--ink)}
+  .pb-scripts{border-left:3px solid var(--accent);padding:4px 0 4px 20px;margin:20px 0}
+  .pb-scripts .sh{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#6f685d;margin-bottom:8px}
+  .pb-scripts .q{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.5;margin:9px 0;color:var(--ink)}
+  .pb-warn{background:rgba(26,62,107,.06);border:1px solid rgba(26,62,107,.24);border-radius:12px;padding:16px 20px;margin:20px 0}
+  .pb-warn h4{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+  .pb-warn ul{margin:0;padding-left:18px}
+  .pb-warn li{font-family:var(--serif);font-size:15.5px;line-height:1.6;margin:6px 0;color:var(--ink)}
+  .pb-template{border:1.5px dashed rgba(28,26,23,.32);border-radius:12px;padding:18px 22px;margin:22px 0;background:rgba(255,255,255,.35)}
+  .pb-template .tt{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#6f685d;margin-bottom:12px}
+  .pb-template .row{display:flex;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(28,26,23,.2);font-family:var(--serif);font-size:15.5px;line-height:1.5;color:var(--ink)}
+  .pb-template .row:last-child{border-bottom:none}
+  .pb-template .row b{font-family:var(--mono);font-size:12px;letter-spacing:.06em;min-width:52px;color:var(--accent);padding-top:2px}
+  @media(max-width:640px){.pb-split{grid-template-columns:1fr}}
+</style>
+
+<div class="prose">
+<p class="lede dropcap">상태 보고는 이제 도구가 대신할 수 있다. 그러면 1:1에 남는 것은 원래 그 시간이 하려던 일, 곧 사람을 마주하는 일이다. 앤디 그로브는 1:1을 '부하 직원의 회의'라 불렀다. 아래는 그 30분을 되찾는 설계도다.</p>
+</div>
+
+<div class="playbook">
+
+<div class="pb-lead">The 1:1 Playbook · 세 국면</div>
+
+<div class="pb-phase">
+  <div class="pb-ph-top">
+    <span class="pb-ph-tag">전</span>
+    <span class="pb-ph-when">회의 전 · 15분</span>
+    <span class="pb-ph-title">도구가 채우고, 사람이 고른다</span>
+  </div>
+  <ul class="pb-do">
+    <li>AI가 지표와 지난 회의 이후의 변화를 끌어와 의제 초안을 만든다.</li>
+    <li>그 초안에서 <strong>상태 보고는 걷어 낸다.</strong> 회의 시간에 소리 내어 읽을 이유가 없다.</li>
+    <li>부하 직원에게 먼저 의제를 채우게 한다. 이 회의의 주인은 그 사람이다(그로브).</li>
+    <li>리더는 '오늘 꼭 물을 한 가지'를 정해 둔다.</li>
+  </ul>
+</div>
+
+<div class="pb-phase">
+  <div class="pb-ph-top">
+    <span class="pb-ph-tag">중</span>
+    <span class="pb-ph-when">회의 · 30–45분</span>
+    <span class="pb-ph-title">상태로 열지 말고, 사람으로 연다</span>
+  </div>
+  <ul class="pb-do">
+    <li>상태 보고로 시작하지 않는다. 그건 도구가 이미 정리했다. 첫 질문은 사람에게 간다.</li>
+    <li>서두르지 않는다. 그로브가 관찰한 '속마음'은 대개 20–30분이 지나서야 나온다.</li>
+    <li><strong>"한 가지만 더 물어보기."</strong> 다 말한 것 같을 때 한 번 더 묻는다(그로브의 원칙).</li>
+    <li>AI는 조용히 기록만 한다. 대화의 주인공이 되지 않는다.</li>
+  </ul>
+</div>
+
+<div class="pb-phase">
+  <div class="pb-ph-top">
+    <span class="pb-ph-tag">후</span>
+    <span class="pb-ph-when">회의 후 · 10분</span>
+    <span class="pb-ph-title">기록은 도구가, 약속은 사람이</span>
+  </div>
+  <ul class="pb-do">
+    <li>AI가 대화를 요약하고 할 일과 기한을 정리한다.</li>
+    <li>리더는 그중 <strong>자기가 지킬 약속 하나</strong>를 고른다. 지키지 못할 것은 적지 않는다.</li>
+    <li>다음 회의를 열기 전, 그 약속을 지켰는지 먼저 확인한다.</li>
+  </ul>
+</div>
+
+<div class="pb-split">
+  <div class="pb-col ai">
+    <h4>AI가 맡는 것</h4>
+    <ul>
+      <li>지표·상태 수집</li>
+      <li>의제 초안</li>
+      <li>회의 기록·요약</li>
+      <li>할 일 추적·리마인더</li>
+      <li>지난 대화와 연결</li>
+    </ul>
+  </div>
+  <div class="pb-col human">
+    <h4>사람이 쥐는 것</h4>
+    <ul>
+      <li>듣기와 침묵</li>
+      <li>신뢰와 안전감</li>
+      <li>어려운 피드백</li>
+      <li>맥락과 감정 읽기</li>
+      <li>약속과 책임</li>
+    </ul>
+  </div>
+</div>
+
+<div class="pb-scripts">
+  <div class="sh">질문 은행 · 상태 대신 사람에게</div>
+  <div class="q">"지금 가장 막혀 있는 건 무엇인가요?"</div>
+  <div class="q">"제가 돕는다는 것 중에 오히려 방해가 되는 게 있나요?"</div>
+  <div class="q">"요즘 일에서 언제 가장 살아 있다고 느끼나요?"</div>
+  <div class="q">"이 결정의 약점은 무엇일까요?" (이견을 청하기 · Vol. 28)</div>
+  <div class="q">"한 가지만 더 — 그 말 뒤에 더 있나요?" (그로브의 '한 번 더')</div>
+</div>
+
+<div class="pb-warn">
+  <h4>넘기면 안 되는 것</h4>
+  <ul>
+    <li><strong>듣기.</strong> 요약은 도구가 해도, 듣는 일은 사람만 한다.</li>
+    <li><strong>어려운 대화.</strong> 매끄러운 초안이 아니라 그 뒤의 판단에 대고 말하는 일이다(Vol. 24).</li>
+    <li><strong>침묵과 현존.</strong> 곁에 있다는 감각은 자동화되지 않는다(Vol. 12).</li>
+    <li><strong>성장의 책임.</strong> 도구는 거들 뿐, 그 사람에 대한 책임은 넘어가지 않는다(Vol. 26).</li>
+  </ul>
+</div>
+
+<div class="pb-template">
+  <div class="tt">1:1 · 한 장 설계도</div>
+  <div class="row"><b>주인</b><span>이 회의는 부하 직원의 것. 의제를 그가 채운다.</span></div>
+  <div class="row"><b>전</b><span>AI: 지표·변화 요약 → 리더: 오늘 물을 한 가지.</span></div>
+  <div class="row"><b>중</b><span>사람으로 열기 · 서두르지 않기 · 한 번 더 묻기.</span></div>
+  <div class="row"><b>후</b><span>AI: 기록·할 일 / 리더: 지킬 약속 하나.</span></div>
+  <div class="row"><b>금지</b><span>상태 보고로 시간 채우기 · 듣기를 도구에 넘기기.</span></div>
+</div>
+
+</div>
+
+<div class="prose">
+<p>이 편은 Vol. 14의 실무편이다. 무엇을 도구에 맡기고 무엇을 사람이 쥘지(Vol. 14), 그 원칙을 1:1이라는 30분에 그대로 옮겼다. 도구가 상태와 기록을 맡을수록, 그 시간은 사람을 마주하는 일로 돌아간다.</p>
+
+<p>1:1의 주인은 언제나 사람이다. 도구가 잘하는 것을 도구에 맡기는 이유도 결국 그 때문이다. 기계적인 층을 걷어 내야, 그 밑에 있던 사람이 비로소 보인다.</p>
+</div>

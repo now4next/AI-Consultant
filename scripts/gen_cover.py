@@ -335,7 +335,20 @@ def motif_splitspeed(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "none": lambda accent=None: ""}
+def motif_oneonone(accent="#d9c48f"):
+    """Two people facing across a table with dialog between: the 1:1."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="28" y1="74" x2="92" y2="74" stroke="{accent}" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="40" cy="52" r="9" fill="none" stroke="{accent}" stroke-width="2.6"/>
+      <path d="M28 72 C28 62 34 60 40 60 C46 60 52 62 52 72" fill="none" stroke="{accent}" stroke-width="2.6" stroke-linecap="round"/>
+      <circle cx="80" cy="52" r="9" fill="none" stroke="{accent}" stroke-width="2.6"/>
+      <path d="M68 72 C68 62 74 60 80 60 C86 60 92 62 92 72" fill="none" stroke="{accent}" stroke-width="2.6" stroke-linecap="round"/>
+      <circle cx="55" cy="40" r="2.8" fill="{accent}"/>
+      <circle cx="65" cy="40" r="2.8" fill="{accent}" opacity=".45"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -508,6 +521,16 @@ VOLUMES = [
         "c1": "#241a12", "c2": "#120a06",
         "accent": "#d9c48f",
         "motif": "splitspeed",
+    },
+    {
+        "vol": 30,
+        "eyebrow": "Vol. 30 · The 1:1 Playbook",
+        "title": "AI 1:1 설계도",
+        "sub": "상태는 도구에 맡기고, 1:1은 사람에게 돌려준다",
+        "source": "원전 · Andy Grove · High Output Management",
+        "c1": "#1b241d", "c2": "#0c120e",
+        "accent": "#d9c48f",
+        "motif": "oneonone",
     },
 ]
 
