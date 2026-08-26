@@ -320,7 +320,22 @@ def motif_hierarchy(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "none": lambda accent=None: ""}
+def motif_splitspeed(accent="#d9c48f"):
+    """A speed streak splitting into a clean rising edge and a jagged breaking risk."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" stroke-width="2.6" stroke-linecap="round">
+        <line x1="14" y1="60" x2="40" y2="60"/>
+        <line x1="10" y1="50" x2="28" y2="50" opacity=".38"/>
+        <line x1="10" y1="70" x2="28" y2="70" opacity=".38"/>
+      </g>
+      <circle cx="46" cy="60" r="4" fill="{accent}"/>
+      <path d="M46 60 L96 34" stroke="{accent}" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M88 33 L96 34 L93 42" stroke="{accent}" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M46 60 L60 72 L54 80 L68 88 L62 96" stroke="{accent}" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -483,6 +498,16 @@ VOLUMES = [
         "c1": "#1e2622", "c2": "#0d120f",
         "accent": "#d9c48f",
         "motif": "hierarchy",
+    },
+    {
+        "vol": 29,
+        "eyebrow": "Vol. 29 · Ppalli-Ppalli",
+        "title": "빨리빨리",
+        "sub": "빨리빨리는 강점이자 약점이다. 늦추지 말고 속도를 가른다",
+        "source": "원전 · 한국의 속도 문화 · 성수·삼풍",
+        "c1": "#241a12", "c2": "#120a06",
+        "accent": "#d9c48f",
+        "motif": "splitspeed",
     },
 ]
 
