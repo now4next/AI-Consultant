@@ -539,8 +539,11 @@ def render_cover(m):
     motif_svg = MOTIFS.get(m.get("motif", "none"), MOTIFS["none"])(m.get("accent", "#d9c48f"))
     sub_html = "<br>".join(html.escape(line) for line in m["sub"].split("\n"))
     motif_block = f'<div class="g-motif">{motif_svg}</div>' if motif_svg else ""
+    mw = max((len(w) for w in m["title"].split()), default=0)
+    _gt = {5: 16, 6: 13.5, 7: 11.5}.get(mw, 10 if mw >= 8 else 0)
+    gt = f";--gt:{_gt}cqw" if _gt else ""
     return (
-        f'<figure class="gcover" style="--c1:{m["c1"]};--c2:{m["c2"]}" '
+        f'<figure class="gcover" style="--c1:{m["c1"]};--c2:{m["c2"]}{gt}" '
         f'role="img" aria-label="{html.escape(m["title"])} 커버">\n'
         f'  <span class="g-num">{num}</span>\n'
         f'  <span class="g-eyebrow">{html.escape(m["eyebrow"])}</span>\n'
@@ -563,7 +566,7 @@ GCOVER_CSS = """  /* ---- generated cover component (.gcover) — data-driven, s
   .gcover .g-motif{position:absolute;top:26cqw;left:0;right:0;display:flex;justify-content:center}
   .gcover .g-motif svg{width:34cqw;height:auto}
   .gcover .g-body{position:absolute;left:9cqw;right:9cqw;bottom:13cqw}
-  .gcover .g-title{font-family:var(--serif);font-weight:700;font-size:19cqw;line-height:1.02;
+  .gcover .g-title{font-family:var(--serif);font-weight:700;font-size:var(--gt,19cqw);line-height:1.02;
     letter-spacing:-.03em;word-break:keep-all}
   .gcover .g-sub{font-family:var(--serif);font-size:4.6cqw;line-height:1.45;color:#cdd5e2;
     margin-top:3.4cqw;word-break:keep-all}
