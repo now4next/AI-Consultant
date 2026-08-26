@@ -533,6 +533,27 @@
         "motif": "focus",
         "sub": "산출은 무한해도<br>주의는 유한하다"
       }
+    },
+    {
+      "vol": 28,
+      "file": "insight-vol-28.html",
+      "dir": "vol-28",
+      "title": "말할 수 있는 위계",
+      "sub": "권력거리가 큰 곳에서 심리적 안전감은 선언이 아닌 설계다. AI의 권위가 겹치면 벽은 하나 더 선다.",
+      "eyebrow": "Vol. 28 · Power Distance",
+      "source": "Hofstede · Edmondson · 권력거리 연구",
+      "cat": "사람",
+      "tag": "#사람 · Hofstede·Edmondson",
+      "readTime": "6분",
+      "desc": "권력거리가 큰 곳에서 심리적 안전감은 선언이 아니라 설계다. AI의 권위가 겹치면 벽은 하나 더 선다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1e2622",
+        "c2": "#0d120f",
+        "accent": "#d9c48f",
+        "motif": "hierarchy",
+        "sub": "권력거리가 큰 곳에서<br>안전감은 선언이 아니라 설계다"
+      }
     }
   ]
 }

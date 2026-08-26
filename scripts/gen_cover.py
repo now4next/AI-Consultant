@@ -305,7 +305,22 @@ def motif_focus(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "none": lambda accent=None: ""}
+def motif_hierarchy(accent="#d9c48f"):
+    """Steep hierarchy tiers with a voice rising from the bottom up through them."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" stroke-width="2.4" stroke-linecap="round" opacity=".45">
+        <line x1="32" y1="30" x2="88" y2="30"/>
+        <line x1="32" y1="52" x2="88" y2="52"/>
+        <line x1="32" y1="74" x2="88" y2="74"/>
+        <line x1="32" y1="96" x2="88" y2="96"/>
+      </g>
+      <path d="M60 92 L60 34" stroke="{accent}" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+      <path d="M53 41 L60 32 L67 41" stroke="{accent}" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="60" cy="96" r="4" fill="{accent}"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -458,6 +473,16 @@ VOLUMES = [
         "c1": "#181d29", "c2": "#0a0d15",
         "accent": "#d9c48f",
         "motif": "focus",
+    },
+    {
+        "vol": 28,
+        "eyebrow": "Vol. 28 · Power Distance",
+        "title": "말할 수 있는 위계",
+        "sub": "권력거리가 큰 곳에서 안전감은 선언이 아니라 설계다",
+        "source": "원전 · Hofstede · Edmondson",
+        "c1": "#1e2622", "c2": "#0d120f",
+        "accent": "#d9c48f",
+        "motif": "hierarchy",
     },
 ]
 
