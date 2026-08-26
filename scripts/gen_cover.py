@@ -348,7 +348,17 @@ def motif_oneonone(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "none": lambda accent=None: ""}
+def motif_watch(accent="#d9c48f"):
+    """A watching eye: the convenience tool that is also surveillance."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M18 60 Q60 26 102 60 Q60 94 18 60 Z" fill="none" stroke="{accent}" stroke-width="2.6" stroke-linejoin="round"/>
+      <circle cx="60" cy="60" r="14" fill="none" stroke="{accent}" stroke-width="2.6"/>
+      <circle cx="60" cy="60" r="5" fill="{accent}"/>
+      <circle cx="65" cy="55" r="2" fill="#0e0b12"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -531,6 +541,16 @@ VOLUMES = [
         "c1": "#1b241d", "c2": "#0c120e",
         "accent": "#d9c48f",
         "motif": "oneonone",
+    },
+    {
+        "vol": 31,
+        "eyebrow": "Vol. 31 · Convenience as Surveillance",
+        "title": "감시가 된 편의",
+        "sub": "돕겠다며 들어온 도구가 지켜보는 도구가 된다. 편의는 미끼일 수 있다",
+        "source": "원전 · Shoshana Zuboff · 직장 모니터링",
+        "c1": "#1e1a24", "c2": "#0e0b12",
+        "accent": "#d9c48f",
+        "motif": "watch",
     },
 ]
 

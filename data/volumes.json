@@ -500,8 +500,8 @@
       "sub": "AI에 결정은 맡겨도 책임은 떠넘길 수 없다. 책임의 공백은 통제 있는 자리에 붙들어 메운다.",
       "eyebrow": "Vol. 26 · The Accountability Gap",
       "source": "Matthias (2004) · Elish (2019) · EU AI Act (2024)",
-      "cat": "판단",
-      "tag": "#판단 · 책임·Elish",
+      "cat": "책임",
+      "tag": "#책임 · Elish",
       "readTime": "6분",
       "desc": "AI에 결정은 맡겨도 책임은 떠넘길 수 없다. 공백은 통제 있는 자리에 붙들어 메운다.",
       "cover": {
@@ -595,6 +595,27 @@
         "accent": "#d9c48f",
         "motif": "oneonone",
         "sub": "상태는 도구에 맡기고<br>1:1은 사람에게 돌려준다"
+      }
+    },
+    {
+      "vol": 31,
+      "file": "insight-vol-31.html",
+      "dir": "vol-31",
+      "title": "감시가 된 편의",
+      "sub": "돕겠다며 들어온 도구가 동시에 지켜보는 도구가 된다. 편의는 미끼이고, 진짜 상품은 행동 데이터일 수 있다.",
+      "eyebrow": "Vol. 31 · Convenience as Surveillance",
+      "source": "Shoshana Zuboff (2019) · 직장 모니터링 통계 (2024)",
+      "cat": "책임",
+      "tag": "#책임 · Zuboff",
+      "readTime": "6분",
+      "desc": "돕겠다며 들어온 도구가 동시에 지켜보는 도구가 된다. 리더가 그을 것은 편의와 감시 사이의 선이다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1e1a24",
+        "c2": "#0e0b12",
+        "accent": "#d9c48f",
+        "motif": "watch",
+        "sub": "돕겠다며 들어온 도구가<br>지켜보는 도구가 된다"
       }
     }
   ]
