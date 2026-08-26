@@ -540,7 +540,7 @@ def render_cover(m):
     sub_html = "<br>".join(html.escape(line) for line in m["sub"].split("\n"))
     motif_block = f'<div class="g-motif">{motif_svg}</div>' if motif_svg else ""
     mw = max((len(w) for w in m["title"].split()), default=0)
-    _gt = {5: 16, 6: 13.5, 7: 11.5}.get(mw, 10 if mw >= 8 else 0)
+    _gt = {5: 16, 6: 13, 7: 11.5}.get(mw, 10 if mw >= 8 else 0)
     gt = f";--gt:{_gt}cqw" if _gt else ""
     return (
         f'<figure class="gcover" style="--c1:{m["c1"]};--c2:{m["c2"]}{gt}" '
