@@ -358,7 +358,18 @@ def motif_watch(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "none": lambda accent=None: ""}
+def motif_jagged(accent="#d9c48f"):
+    """An uneven (jagged) frontier line: safe dots above, an off/no-go dot below."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M14 68 L30 44 L44 62 L58 38 L74 60 L88 42 L106 58" fill="none" stroke="{accent}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="30" cy="28" r="3" fill="{accent}"/>
+      <circle cx="74" cy="28" r="3" fill="{accent}"/>
+      <circle cx="58" cy="92" r="3.6" fill="none" stroke="{accent}" stroke-width="2" opacity=".55"/>
+      <path d="M55 89 L61 95 M61 89 L55 95" stroke="{accent}" stroke-width="1.8" stroke-linecap="round" opacity=".55"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -551,6 +562,16 @@ VOLUMES = [
         "c1": "#1e1a24", "c2": "#0e0b12",
         "accent": "#d9c48f",
         "motif": "watch",
+    },
+    {
+        "vol": 32,
+        "eyebrow": "Vol. 32 · The Jagged Frontier",
+        "title": "끄는 자리",
+        "sub": "경계 밖에서 AI는 돕는 대신 더 틀리게 한다. 쓰는 법만큼 안 쓰는 자리를 안다",
+        "source": "원전 · Dell'Acqua & Mollick · Harvard/BCG",
+        "c1": "#1a2028", "c2": "#0b0e13",
+        "accent": "#d9c48f",
+        "motif": "jagged",
     },
 ]
 

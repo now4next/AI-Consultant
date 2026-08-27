@@ -617,6 +617,27 @@
         "motif": "watch",
         "sub": "돕겠다며 들어온 도구가<br>지켜보는 도구가 된다"
       }
+    },
+    {
+      "vol": 32,
+      "file": "insight-vol-32.html",
+      "dir": "vol-32",
+      "title": "끄는 자리",
+      "sub": "경계 밖에서 AI는 돕는 대신 더 틀리게 한다. 쓰는 법만큼, 안 쓰는 자리를 아는 것이 분별이다.",
+      "eyebrow": "Vol. 32 · The Jagged Frontier",
+      "source": "Dell'Acqua · Mollick et al. · Harvard/BCG, 2023",
+      "cat": "판단",
+      "tag": "#판단 · Dell'Acqua·Mollick",
+      "readTime": "6분",
+      "desc": "경계 밖에서 AI는 돕는 대신 더 틀리게 한다. 쓰는 법만큼, 안 쓰는 자리를 아는 것이 분별이다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1a2028",
+        "c2": "#0b0e13",
+        "accent": "#d9c48f",
+        "motif": "jagged",
+        "sub": "경계 밖에서 AI는<br>돕는 대신 더 틀리게 한다"
+      }
     }
   ]
 }

@@ -42,6 +42,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-29.html](insight-vol-29.html) — "빨리빨리" 리더십 인사이트 Vol. 29 (한국의 속도 문화 · 성수(1994)·삼풍(1995)) · <https://projectleadership.cc/insight-vol-29.html>
 - [insight-vol-30.html](insight-vol-30.html) — "AI 1:1 설계도" 리더십 인사이트 Vol. 30 (Andy Grove · Julie Zhuo · 1:1 실무) · <https://projectleadership.cc/insight-vol-30.html>
 - [insight-vol-31.html](insight-vol-31.html) — "감시가 된 편의" 리더십 인사이트 Vol. 31 (Shoshana Zuboff (2019) · 직장 모니터링 통계 (2024)) · <https://projectleadership.cc/insight-vol-31.html>
+- [insight-vol-32.html](insight-vol-32.html) — "끄는 자리" 리더십 인사이트 Vol. 32 (Dell'Acqua · Mollick et al. · Harvard/BCG, 2023) · <https://projectleadership.cc/insight-vol-32.html>
 
 ### 새 볼륨 발행 워크플로우
 
