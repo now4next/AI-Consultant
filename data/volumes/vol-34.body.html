@@ -1,0 +1,150 @@
+<style>
+  .playbook{margin:30px 0}
+  .pb-lead{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+  .pb-phase{border:1px solid rgba(28,26,23,.16);border-radius:12px;padding:20px 22px;margin:14px 0;background:rgba(255,255,255,.42)}
+  .pb-ph-top{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px 12px;margin-bottom:12px;border-bottom:1px solid rgba(28,26,23,.1);padding-bottom:10px}
+  .pb-ph-tag{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:#fff;background:var(--accent);border-radius:5px;padding:3px 10px}
+  .pb-ph-when{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:#6f685d}
+  .pb-ph-title{font-family:var(--serif);font-weight:700;font-size:19px;line-height:1.3;color:var(--ink)}
+  .pb-do{margin:0;padding:0;list-style:none}
+  .pb-do li{position:relative;padding-left:24px;margin:9px 0;font-family:var(--serif);font-size:16.5px;line-height:1.62;color:var(--ink)}
+  .pb-do li::before{content:"→";position:absolute;left:0;top:1px;color:var(--accent);font-family:var(--mono);font-weight:500}
+  .pb-split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+  .pb-col{border:1px solid rgba(28,26,23,.16);border-radius:12px;padding:16px 18px;background:rgba(255,255,255,.3)}
+  .pb-col h4{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid rgba(28,26,23,.1)}
+  .pb-col.ai h4{color:#6f685d}
+  .pb-col.human h4{color:var(--accent)}
+  .pb-col ul{margin:0;padding-left:18px}
+  .pb-col li{font-family:var(--serif);font-size:15px;line-height:1.55;margin:6px 0;color:var(--ink)}
+  .pb-scripts{border-left:3px solid var(--accent);padding:4px 0 4px 20px;margin:20px 0}
+  .pb-scripts .sh{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#6f685d;margin-bottom:8px}
+  .pb-scripts .q{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.5;margin:9px 0;color:var(--ink)}
+  .pb-warn{background:rgba(26,62,107,.06);border:1px solid rgba(26,62,107,.24);border-radius:12px;padding:16px 20px;margin:20px 0}
+  .pb-warn h4{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+  .pb-warn ul{margin:0;padding-left:18px}
+  .pb-warn li{font-family:var(--serif);font-size:15.5px;line-height:1.6;margin:6px 0;color:var(--ink)}
+  .pb-template{border:1.5px dashed rgba(28,26,23,.32);border-radius:12px;padding:18px 22px;margin:22px 0;background:rgba(255,255,255,.35)}
+  .pb-template .tt{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#6f685d;margin-bottom:12px}
+  .pb-template .row{display:flex;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(28,26,23,.2);font-family:var(--serif);font-size:15.5px;line-height:1.5;color:var(--ink)}
+  .pb-template .row:last-child{border-bottom:none}
+  .pb-template .row b{font-family:var(--mono);font-size:12px;letter-spacing:.06em;min-width:52px;color:var(--accent);padding-top:2px}
+  @media(max-width:640px){.pb-split{grid-template-columns:1fr}}
+</style>
+
+<div class="prose">
+<p class="lede dropcap">Vol. 15에서 값은 도구를 얹는 데서 나지 않고, 흐름을 다시 짜는 데서 난다고 했다. 맞는 말이지만 실행 앞에서 자주 멈춘다. "다시 짜라"는 방향이지 순서가 아니기 때문이다. 아래는 그 다음 문장, 어떻게 다시 짜는지를 네 단계로 옮긴 실습이다.</p>
+</div>
+
+<div class="playbook">
+
+<div class="pb-lead">The Rewiring Playbook · 네 단계</div>
+
+<div class="pb-phase">
+  <div class="pb-ph-top">
+    <span class="pb-ph-tag">1</span>
+    <span class="pb-ph-when">초점 · 1–2주</span>
+    <span class="pb-ph-title">전부가 아니라 두세 개를 고른다</span>
+  </div>
+  <ul class="pb-do">
+    <li>손익에 직결된 핵심 워크플로 2~3개만 고른다. 전사 도입은 나중이다.</li>
+    <li>주변부 실험이 아니라 <strong>핵심 업무 깊숙이</strong> 심을 흐름을 고른다(Vol. 15).</li>
+    <li>성과 지표를 먼저 정한다. 비용·속도·품질 중 무엇을 움직일지 미리 쓴다.</li>
+    <li>이 단계에서 아직 도구를 켜지 않는다. 무엇을 잴지부터 정한다.</li>
+  </ul>
+</div>
+
+<div class="pb-phase">
+  <div class="pb-ph-top">
+    <span class="pb-ph-tag">2</span>
+    <span class="pb-ph-when">재발명 · 2–4주</span>
+    <span class="pb-ph-title">옛 절차 위에 얹지 말고, 처음부터 다시 그린다</span>
+  </div>
+  <ul class="pb-do">
+    <li>승인·인수인계·검토 순서를 종이 위에 다시 그린다. 옛 흐름을 그대로 두고 한 칸만 바꾸지 않는다.</li>
+    <li>어느 단계를 에이전트가 병렬로, 실시간으로 처리할 수 있는지 표시한다.</li>
+    <li>사람과 에이전트의 몫을 다시 나눈다(아래 역할 분담).</li>
+    <li>되돌릴 수 있는 결정과 없는 결정을 가른다(Vol. 17). 여기서 감독의 자리가 정해진다.</li>
+  </ul>
+</div>
+
+<div class="pb-phase">
+  <div class="pb-ph-top">
+    <span class="pb-ph-tag">3</span>
+    <span class="pb-ph-when">감독 · 재발명과 병행</span>
+    <span class="pb-ph-title">거버넌스를 나중에 붙이지 않는다</span>
+  </div>
+  <ul class="pb-do">
+    <li>사람이 반드시 확인할 지점(체크포인트)을 재설계 단계에 미리 심는다.</li>
+    <li>도구가 자율로 움직일 범위와, 사람에게 넘어와야 할 범위를 문서로 정한다.</li>
+    <li>결정을 소유할 사람을 이름으로 지정한다(Vol. 26). 책임은 나중에 정하지 않는다.</li>
+  </ul>
+</div>
+
+<div class="pb-phase">
+  <div class="pb-ph-top">
+    <span class="pb-ph-tag">4</span>
+    <span class="pb-ph-when">평가 · 배포 전</span>
+    <span class="pb-ph-title">배포보다 먼저, 평가 기준을 정한다</span>
+  </div>
+  <ul class="pb-do">
+    <li>1단계에서 정한 지표로 파일럿을 잰다. 사용률이 아니라 성과로.</li>
+    <li>기준에 못 미치면 확장하지 않는다. 취소도 실습의 정상적인 결과다.</li>
+    <li>통과한 흐름만 다음 두세 개로 넓혀 간다. 한 번에 전부 넓히지 않는다.</li>
+  </ul>
+</div>
+
+<div class="pb-split">
+  <div class="pb-col ai">
+    <h4>에이전트가 맡는 것</h4>
+    <ul>
+      <li>병렬 실행·실시간 적응</li>
+      <li>반복 검증·데이터 취합</li>
+      <li>저위험·되돌릴 수 있는 단계</li>
+      <li>초안·시뮬레이션</li>
+    </ul>
+  </div>
+  <div class="pb-col human">
+    <h4>사람이 쥐는 것</h4>
+    <ul>
+      <li>초점 선정과 트레이드오프</li>
+      <li>되돌릴 수 없는 승인</li>
+      <li>체크포인트 판단</li>
+      <li>평가 기준과 취소 결정</li>
+    </ul>
+  </div>
+</div>
+
+<div class="pb-scripts">
+  <div class="sh">질문 은행 · 재설계 회의에서</div>
+  <div class="q">"이 흐름, 옛 절차에 에이전트만 끼워 넣은 건 아닌가?"</div>
+  <div class="q">"이 단계, 되돌릴 수 있는가 없는가?" (Vol. 17)</div>
+  <div class="q">"이 결정, 누가 소유하는가?" (Vol. 26)</div>
+  <div class="q">"성공을 사용률로 잴 것인가, 성과로 잴 것인가?"</div>
+  <div class="q">"기준에 못 미치면, 정말 취소할 준비가 되어 있는가?"</div>
+</div>
+
+<div class="pb-warn">
+  <h4>가트너의 경고</h4>
+  <ul>
+    <li>에이전틱 AI 프로젝트의 <strong>40% 이상</strong>이 2027년까지 취소될 것으로 본다(Gartner, 2025). 원인은 비용 급증, 불분명한 사업 가치, 부실한 위험 통제다.</li>
+    <li>많은 벤더가 기존 챗봇·RPA를 '에이전트'로 재포장한다. 실제 에이전틱 역량을 갖춘 곳은 소수다.</li>
+    <li>그래서 4단계 중 <strong>평가 기준을 먼저 정하는 일</strong>을 건너뛰면 안 된다. 화려한 배포보다 정직한 취소 기준이 먼저다.</li>
+  </ul>
+</div>
+
+<div class="pb-template">
+  <div class="tt">워크플로 재설계 · 한 장 실습지</div>
+  <div class="row"><b>초점</b><span>고른 흐름 2~3개, 그리고 각각의 성과 지표.</span></div>
+  <div class="row"><b>재발명</b><span>절차를 처음부터 다시 그린 뒤, 사람·에이전트 몫 배분.</span></div>
+  <div class="row"><b>감독</b><span>체크포인트 위치와 결정 소유자.</span></div>
+  <div class="row"><b>평가</b><span>통과 기준과, 못 미쳤을 때의 취소 조건.</span></div>
+  <div class="row"><b>금지</b><span>옛 절차에 한 칸만 바꿔 끼우기 · 평가 기준 없이 배포하기.</span></div>
+</div>
+
+</div>
+
+<div class="prose">
+<p>이 편은 Vol. 15의 실습편이다. 값이 다시 짜기에서 난다는 것을 알아도, 어디서 시작할지 모르면 얹기로 되돌아간다. 초점·재발명·감독·평가, 이 네 단계가 그 시작점이다.</p>
+
+<p>다시 짜는 일에 지름길은 없다. 다만 순서는 있다. 무엇을 잴지 정하지 않고 배포부터 하면, 가트너가 말한 40%의 취소 목록에 이름을 올린다.</p>
+</div>

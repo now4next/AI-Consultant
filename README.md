@@ -44,6 +44,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-31.html](insight-vol-31.html) — "감시가 된 편의" 리더십 인사이트 Vol. 31 (Shoshana Zuboff (2019) · 직장 모니터링 통계 (2024)) · <https://projectleadership.cc/insight-vol-31.html>
 - [insight-vol-32.html](insight-vol-32.html) — "끄는 자리" 리더십 인사이트 Vol. 32 (Dell'Acqua · Mollick et al. · Harvard/BCG, 2023) · <https://projectleadership.cc/insight-vol-32.html>
 - [insight-vol-33.html](insight-vol-33.html) — "꺼두는 시간" 리더십 인사이트 Vol. 33 (Sonnentag & Fritz (2007·2015) · Sonnentag (2018)) · <https://projectleadership.cc/insight-vol-33.html>
+- [insight-vol-34.html](insight-vol-34.html) — "다시 짜는 법" 리더십 인사이트 Vol. 34 (McKinsey (2025) · Gartner (2025)) · <https://projectleadership.cc/insight-vol-34.html>
 
 ### 새 볼륨 발행 워크플로우
 

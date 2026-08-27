@@ -659,6 +659,27 @@
         "motif": "unplug",
         "sub": "일이 꺼지지 않으면<br>사람이 꺼진다"
       }
+    },
+    {
+      "vol": 34,
+      "file": "insight-vol-34.html",
+      "dir": "vol-34",
+      "title": "다시 짜는 법",
+      "sub": "일을 다시 짜라 했다(Vol. 15). 이번 편은 그 다시 짜기를 실습으로 옮긴다.",
+      "eyebrow": "Vol. 34 · The Rewiring Playbook",
+      "source": "McKinsey (2025) · Gartner (2025)",
+      "cat": "전략",
+      "tag": "#전략 · McKinsey·Gartner",
+      "readTime": "6분",
+      "desc": "얹지 말고 다시 짜라 했다(Vol. 15). 이번 편은 그 다시 짜기를 네 단계 실습으로 옮긴다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1c2130",
+        "c2": "#0c0e16",
+        "accent": "#d9c48f",
+        "motif": "blueprint",
+        "sub": "얹지 말고 다시 짜라.<br>이번엔 그 실습이다"
+      }
     }
   ]
 }

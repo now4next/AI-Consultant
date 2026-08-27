@@ -385,7 +385,25 @@ def motif_unplug(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "none": lambda accent=None: ""}
+def motif_blueprint(accent="#d9c48f"):
+    """An old flow (faint, dashed, many nodes) redrawn as a shorter bold path with a checkpoint gate."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" stroke-width="1.4" stroke-dasharray="2 5" opacity=".3" fill="none">
+        <path d="M14 34 L38 34 L38 52 L62 52 L62 34 L86 34 L86 52 L106 52"/>
+      </g>
+      <g fill="{accent}" opacity=".3">
+        <circle cx="14" cy="34" r="3"/><circle cx="38" cy="34" r="3"/><circle cx="38" cy="52" r="3"/>
+        <circle cx="62" cy="52" r="3"/><circle cx="62" cy="34" r="3"/><circle cx="86" cy="34" r="3"/>
+        <circle cx="86" cy="52" r="3"/><circle cx="106" cy="52" r="3"/>
+      </g>
+      <path d="M14 80 L50 80 L50 96 L90 96" stroke="{accent}" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="14" cy="80" r="4" fill="{accent}"/>
+      <rect x="46" y="72" width="8" height="16" rx="2" fill="none" stroke="{accent}" stroke-width="2.2"/>
+      <circle cx="90" cy="96" r="4.4" fill="{accent}"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -598,6 +616,16 @@ VOLUMES = [
         "c1": "#1c1830", "c2": "#0d0b18",
         "accent": "#d9c48f",
         "motif": "unplug",
+    },
+    {
+        "vol": 34,
+        "eyebrow": "Vol. 34 · The Rewiring Playbook",
+        "title": "다시 짜는 법",
+        "sub": "얹지 말고 다시 짜라 했다. 이번엔 그 다시 짜기를 실습한다",
+        "source": "원전 · McKinsey · Gartner",
+        "c1": "#1c2130", "c2": "#0c0e16",
+        "accent": "#d9c48f",
+        "motif": "blueprint",
     },
 ]
 
