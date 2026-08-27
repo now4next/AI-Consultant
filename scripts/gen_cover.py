@@ -369,7 +369,23 @@ def motif_jagged(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "none": lambda accent=None: ""}
+def motif_unplug(accent="#d9c48f"):
+    """An unplugged connection: cable and socket separated by a deliberate gap — detachment."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6">
+        <path d="M14 84 C30 84 30 60 44 60 L52 60"/>
+        <rect x="52" y="52" width="12" height="16" rx="3"/>
+        <line x1="64" y1="56" x2="70" y2="56"/>
+        <line x1="64" y1="64" x2="70" y2="64"/>
+        <path d="M88 46 L88 74 L106 74 L106 46 Z" opacity=".55"/>
+        <circle cx="94" cy="60" r="1.6" fill="{accent}" opacity=".55"/>
+        <circle cx="100" cy="60" r="1.6" fill="{accent}" opacity=".55"/>
+      </g>
+      <path d="M79 40 A21 21 0 0 1 79 80" stroke="{accent}" stroke-width="1.2" fill="none" stroke-dasharray="3 5" opacity=".4"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -572,6 +588,16 @@ VOLUMES = [
         "c1": "#1a2028", "c2": "#0b0e13",
         "accent": "#d9c48f",
         "motif": "jagged",
+    },
+    {
+        "vol": 33,
+        "eyebrow": "Vol. 33 · Psychological Detachment",
+        "title": "꺼두는 시간",
+        "sub": "일이 꺼지지 않으면 사람이 꺼진다. 회복은 마음이 일에서 떨어져 있는 동안 일어난다",
+        "source": "원전 · Sabine Sonnentag · Fritz",
+        "c1": "#1c1830", "c2": "#0d0b18",
+        "accent": "#d9c48f",
+        "motif": "unplug",
     },
 ]
 

@@ -638,6 +638,27 @@
         "motif": "jagged",
         "sub": "경계 밖에서 AI는<br>돕는 대신 더 틀리게 한다"
       }
+    },
+    {
+      "vol": 33,
+      "file": "insight-vol-33.html",
+      "dir": "vol-33",
+      "title": "꺼두는 시간",
+      "sub": "일이 꺼지지 않으면 사람이 꺼진다. 회복은 쉬는 시간의 길이보다, 마음이 일에서 떨어져 있는 동안 일어난다.",
+      "eyebrow": "Vol. 33 · Psychological Detachment",
+      "source": "Sonnentag & Fritz (2007·2015) · Sonnentag (2018)",
+      "cat": "성찰",
+      "tag": "#성찰 · Sonnentag",
+      "readTime": "5분",
+      "desc": "일이 꺼지지 않으면 사람이 꺼진다. 회복은 마음이 일에서 떨어져 있는 동안 일어난다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1c1830",
+        "c2": "#0d0b18",
+        "accent": "#d9c48f",
+        "motif": "unplug",
+        "sub": "일이 꺼지지 않으면<br>사람이 꺼진다"
+      }
     }
   ]
 }
