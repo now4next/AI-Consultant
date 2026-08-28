@@ -403,7 +403,22 @@ def motif_blueprint(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "none": lambda accent=None: ""}
+def motif_comfort(accent="#d9c48f"):
+    """Two human figures drifting apart while a small glowing node sits between them: comfort outsourced."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" stroke-width="2.4" fill="none" stroke-linecap="round">
+        <circle cx="26" cy="42" r="8"/>
+        <path d="M14 74 C14 58 18 54 26 54 C34 54 38 58 38 74"/>
+        <circle cx="94" cy="42" r="8"/>
+        <path d="M82 74 C82 58 86 54 94 54 C102 54 106 58 106 74"/>
+      </g>
+      <line x1="40" y1="64" x2="80" y2="64" stroke="{accent}" stroke-width="1.4" stroke-dasharray="2 6" opacity=".35"/>
+      <circle cx="60" cy="64" r="6" fill="{accent}" opacity=".85"/>
+      <circle cx="60" cy="64" r="13" fill="none" stroke="{accent}" stroke-width="1.2" opacity=".4"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -626,6 +641,16 @@ VOLUMES = [
         "c1": "#1c2130", "c2": "#0c0e16",
         "accent": "#d9c48f",
         "motif": "blueprint",
+    },
+    {
+        "vol": 35,
+        "eyebrow": "Vol. 35 · The Companionship Paradox",
+        "title": "위로를 맡기면",
+        "sub": "덜 외로우려다 더 외로워진다. 곁을 맡길수록 사람에게 가는 길이 멀어진다",
+        "source": "원전 · OpenAI · MIT Media Lab · Sherry Turkle",
+        "c1": "#241a28", "c2": "#110b14",
+        "accent": "#d9c48f",
+        "motif": "comfort",
     },
 ]
 
