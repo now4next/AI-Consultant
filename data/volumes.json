@@ -701,6 +701,27 @@
         "motif": "comfort",
         "sub": "곁을 맡길수록<br>사람에게 가는 길이 멀어진다"
       }
+    },
+    {
+      "vol": 36,
+      "file": "insight-vol-36.html",
+      "dir": "vol-36",
+      "title": "거꾸로 배우기",
+      "sub": "AI 앞에서 전문성의 기울기가 뒤집혔다. 아래에서 위로 배움이 흐르게 하는 조직만 격차를 줄인다.",
+      "eyebrow": "Vol. 36 · Reverse Mentoring",
+      "source": "Jack Welch · GE (1999) · Jordan & Sorell · HBR (2019)",
+      "cat": "성장",
+      "tag": "#성장 · Welch·HBR",
+      "readTime": "5분",
+      "desc": "AI 앞에서 전문성의 기울기가 뒤집혔다. 아래에서 위로 배움이 흐르게 하는 조직만 격차를 줄인다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#232817",
+        "c2": "#11130a",
+        "accent": "#d9c48f",
+        "motif": "upflow",
+        "sub": "기울기가 뒤집혔다.<br>위가 배우는 조직만 아래도 배운다"
+      }
     }
   ]
 }

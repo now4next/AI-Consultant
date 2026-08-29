@@ -418,7 +418,27 @@ def motif_comfort(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "none": lambda accent=None: ""}
+def motif_upflow(accent="#d9c48f"):
+    """Knowledge flowing upward: a junior figure below teaching a senior above; the old downward arrow faded."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" stroke-width="2.6" fill="none" stroke-linecap="round">
+        <circle cx="60" cy="26" r="9"/>
+        <path d="M46 48 C46 38 52 36 60 36 C68 36 74 38 74 48"/>
+      </g>
+      <g stroke="{accent}" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".85">
+        <circle cx="60" cy="88" r="7"/>
+        <path d="M49 106 C49 98 54 96 60 96 C66 96 71 98 71 106"/>
+      </g>
+      <path d="M60 78 L60 56" stroke="{accent}" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+      <path d="M53 63 L60 54 L67 63" stroke="{accent}" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <g stroke="{accent}" stroke-width="1.4" stroke-dasharray="3 5" opacity=".3" stroke-linecap="round">
+        <line x1="28" y1="46" x2="28" y2="78"/>
+        <path d="M24 73 L28 79 L32 73" fill="none"/>
+      </g>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -651,6 +671,16 @@ VOLUMES = [
         "c1": "#241a28", "c2": "#110b14",
         "accent": "#d9c48f",
         "motif": "comfort",
+    },
+    {
+        "vol": 36,
+        "eyebrow": "Vol. 36 · Reverse Mentoring",
+        "title": "거꾸로 배우기",
+        "sub": "AI 앞에서 전문성의 기울기가 뒤집혔다. 위가 배우는 조직만 아래도 배운다",
+        "source": "원전 · Jack Welch · HBR",
+        "c1": "#232817", "c2": "#11130a",
+        "accent": "#d9c48f",
+        "motif": "upflow",
     },
 ]
 
