@@ -438,7 +438,26 @@ def motif_upflow(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "none": lambda accent=None: ""}
+def motif_scale(accent="#d9c48f"):
+    """A balance scale tilted off-level: fairness that must be measured, not assumed."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" stroke-width="2.6" fill="none" stroke-linecap="round">
+        <line x1="60" y1="46" x2="60" y2="92"/>
+        <line x1="46" y1="98" x2="74" y2="98"/>
+        <line x1="28" y1="54" x2="92" y2="38"/>
+      </g>
+      <circle cx="60" cy="46" r="3.4" fill="{accent}"/>
+      <g stroke="{accent}" stroke-width="2" fill="none" stroke-linecap="round">
+        <line x1="28" y1="54" x2="28" y2="66"/>
+        <path d="M18 66 Q28 78 38 66"/>
+        <line x1="92" y1="38" x2="92" y2="50"/>
+        <path d="M82 50 Q92 62 102 50"/>
+      </g>
+      <circle cx="28" cy="72" r="2.6" fill="{accent}" opacity=".7"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -681,6 +700,16 @@ VOLUMES = [
         "c1": "#232817", "c2": "#11130a",
         "accent": "#d9c48f",
         "motif": "upflow",
+    },
+    {
+        "vol": 37,
+        "eyebrow": "Vol. 37 · Bias at Scale",
+        "title": "어제를 배운 기계",
+        "sub": "AI는 편향을 지우지 않는다. 조용히, 일관되게, 대량으로 확장한다",
+        "source": "원전 · Reuters · NYC LL144",
+        "c1": "#2a151f", "c2": "#140a0f",
+        "accent": "#d9c48f",
+        "motif": "scale",
     },
 ]
 

@@ -722,6 +722,27 @@
         "motif": "upflow",
         "sub": "기울기가 뒤집혔다.<br>위가 배우는 조직만 아래도 배운다"
       }
+    },
+    {
+      "vol": 37,
+      "file": "insight-vol-37.html",
+      "dir": "vol-37",
+      "title": "어제를 배운 기계",
+      "sub": "사람의 편견을 지우려 들인 AI가, 어제의 데이터에서 그 편견을 배운다. 공정은 가정이 아니라 감사 항목이다.",
+      "eyebrow": "Vol. 37 · Bias at Scale",
+      "source": "Jeffrey Dastin · Reuters (2018) · NYC LL144 (2023)",
+      "cat": "책임",
+      "tag": "#책임 · Reuters·LL144",
+      "readTime": "6분",
+      "desc": "사람의 편견을 지우려 들인 AI가 어제의 데이터에서 그 편견을 배운다. 공정은 가정이 아니라 감사 항목이다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#2a151f",
+        "c2": "#140a0f",
+        "accent": "#d9c48f",
+        "motif": "scale",
+        "sub": "AI는 편향을 지우지 않는다.<br>확장한다"
+      }
     }
   ]
 }
