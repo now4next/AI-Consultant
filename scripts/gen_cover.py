@@ -475,7 +475,26 @@ def motif_disclose(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "none": lambda accent=None: ""}
+def motif_debt(accent="#d9c48f"):
+    """A visible output bar rising while a hidden maintenance bar grows below the line."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="14" y1="60" x2="106" y2="60" stroke="{accent}" stroke-width="1.6" opacity=".45"/>
+      <g fill="{accent}">
+        <rect x="26" y="44" width="13" height="16" rx="2" opacity=".9"/>
+        <rect x="48" y="34" width="13" height="26" rx="2" opacity=".9"/>
+        <rect x="70" y="26" width="13" height="34" rx="2" opacity=".9"/>
+      </g>
+      <g fill="{accent}" opacity=".32">
+        <rect x="26" y="60" width="13" height="14" rx="2"/>
+        <rect x="48" y="60" width="13" height="26" rx="2"/>
+        <rect x="70" y="60" width="13" height="38" rx="2"/>
+      </g>
+      <path d="M92 66 L92 96" stroke="{accent}" stroke-width="2" stroke-dasharray="3 4" opacity=".5" stroke-linecap="round"/>
+      <path d="M87 90 L92 98 L97 90" stroke="{accent}" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -738,6 +757,16 @@ VOLUMES = [
         "c1": "#1a2226", "c2": "#0b0f11",
         "accent": "#d9c48f",
         "motif": "disclose",
+    },
+    {
+        "vol": 39,
+        "eyebrow": "Vol. 39 · The Integration Tax",
+        "title": "보이지 않는 청구서",
+        "sub": "AI가 만든 일은 눈에 보이고, AI가 만든 일거리는 안 보인다",
+        "source": "원전 · DORA · BCG · MIT",
+        "c1": "#1f1c25", "c2": "#0e0c12",
+        "accent": "#d9c48f",
+        "motif": "debt",
     },
 ]
 

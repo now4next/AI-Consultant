@@ -764,6 +764,27 @@
         "motif": "disclose",
         "sub": "밝히면 신뢰가 준다.<br>그래도 밝혀야 하는 이유"
       }
+    },
+    {
+      "vol": 39,
+      "file": "insight-vol-39.html",
+      "dir": "vol-39",
+      "title": "보이지 않는 청구서",
+      "sub": "AI가 만들어 낸 산출은 눈에 보이고, AI가 만들어 낸 일거리는 보이지 않는다. 그 청구서는 사람에게 온다.",
+      "eyebrow": "Vol. 39 · The Integration Tax",
+      "source": "DORA (2024) · BCG (2025) · MIT (2025)",
+      "cat": "전략",
+      "tag": "#전략 · DORA·BCG",
+      "readTime": "6분",
+      "desc": "AI가 만들어 낸 산출은 보이고, AI가 만들어 낸 일거리는 보이지 않는다. 그 청구서는 사람에게 온다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1f1c25",
+        "c2": "#0e0c12",
+        "accent": "#d9c48f",
+        "motif": "debt",
+        "sub": "AI가 만든 일은 보이고<br>AI가 만든 일거리는 안 보인다"
+      }
     }
   ]
 }
