@@ -48,6 +48,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-35.html](insight-vol-35.html) — "위로를 맡기면" 리더십 인사이트 Vol. 35 (OpenAI × MIT Media Lab (2025) · Sherry Turkle (2011)) · <https://projectleadership.cc/insight-vol-35.html>
 - [insight-vol-36.html](insight-vol-36.html) — "거꾸로 배우기" 리더십 인사이트 Vol. 36 (Jack Welch · GE (1999) · Jordan & Sorell · HBR (2019)) · <https://projectleadership.cc/insight-vol-36.html>
 - [insight-vol-37.html](insight-vol-37.html) — "어제를 배운 기계" 리더십 인사이트 Vol. 37 (Jeffrey Dastin · Reuters (2018) · NYC LL144 (2023)) · <https://projectleadership.cc/insight-vol-37.html>
+- [insight-vol-38.html](insight-vol-38.html) — "밝히면 잃는다" 리더십 인사이트 Vol. 38 (Schilke & Reimann · OBHDP (2025) · EU AI Act) · <https://projectleadership.cc/insight-vol-38.html>
 
 ### 새 볼륨 발행 워크플로우
 

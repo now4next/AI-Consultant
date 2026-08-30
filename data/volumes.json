@@ -743,6 +743,27 @@
         "motif": "scale",
         "sub": "AI는 편향을 지우지 않는다.<br>확장한다"
       }
+    },
+    {
+      "vol": 38,
+      "file": "insight-vol-38.html",
+      "dir": "vol-38",
+      "title": "밝히면 잃는다",
+      "sub": "AI를 썼다고 밝히면 신뢰가 줄어든다. 그런데도 밝혀야 하는 이유가 있다.",
+      "eyebrow": "Vol. 38 · The Transparency Dilemma",
+      "source": "Schilke & Reimann · OBHDP (2025) · EU AI Act",
+      "cat": "책임",
+      "tag": "#책임 · Schilke·EU AI Act",
+      "readTime": "6분",
+      "desc": "AI를 썼다고 밝히면 신뢰가 줄어든다. 그런데도 밝혀야 하는 이유가 있다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1a2226",
+        "c2": "#0b0f11",
+        "accent": "#d9c48f",
+        "motif": "disclose",
+        "sub": "밝히면 신뢰가 준다.<br>그래도 밝혀야 하는 이유"
+      }
     }
   ]
 }

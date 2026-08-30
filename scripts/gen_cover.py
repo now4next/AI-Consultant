@@ -457,7 +457,25 @@ def motif_scale(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "none": lambda accent=None: ""}
+def motif_disclose(accent="#d9c48f"):
+    """A document with a visible AI label beside one where the label is hidden: to mark or not."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="{accent}" stroke-width="2.4" fill="none" stroke-linejoin="round">
+        <path d="M20 26 L52 26 L52 88 L20 88 Z"/>
+        <path d="M68 26 L100 26 L100 88 L68 88 Z" opacity=".45"/>
+      </g>
+      <g stroke="{accent}" stroke-width="1.6" stroke-linecap="round" opacity=".5">
+        <line x1="27" y1="38" x2="45" y2="38"/>
+        <line x1="27" y1="46" x2="45" y2="46"/>
+        <line x1="75" y1="38" x2="93" y2="38" opacity=".6"/>
+        <line x1="75" y1="46" x2="93" y2="46" opacity=".6"/>
+      </g>
+      <rect x="26" y="66" width="20" height="12" rx="3" fill="{accent}"/>
+      <rect x="74" y="66" width="20" height="12" rx="3" fill="none" stroke="{accent}" stroke-width="1.6" stroke-dasharray="3 4" opacity=".4"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -710,6 +728,16 @@ VOLUMES = [
         "c1": "#2a151f", "c2": "#140a0f",
         "accent": "#d9c48f",
         "motif": "scale",
+    },
+    {
+        "vol": 38,
+        "eyebrow": "Vol. 38 · The Transparency Dilemma",
+        "title": "밝히면 잃는다",
+        "sub": "AI를 썼다고 밝히면 신뢰가 준다. 그래도 밝혀야 하는 이유",
+        "source": "원전 · Schilke & Reimann · EU AI Act",
+        "c1": "#1a2226", "c2": "#0b0f11",
+        "accent": "#d9c48f",
+        "motif": "disclose",
     },
 ]
 
