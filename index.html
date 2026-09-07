@@ -95,6 +95,8 @@
   .grid-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
   @media(max-width:900px){.grid-cards{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:600px){.grid-cards{grid-template-columns:1fr}}
+  .no-cards{margin:26px 0 0;font-size:15px;color:var(--muted);letter-spacing:-.01em}
+  .no-cards a{text-decoration:underline;text-underline-offset:3px}
   .card{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
     overflow:hidden;box-shadow:var(--shadow);transition:.18s}
   .card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.12);border-color:rgba(0,0,0,.25)}
@@ -491,6 +493,7 @@
           <div class="foot"><span class="tag">#성찰 · Scharmer</span><span class="rt">⏱ 5분</span></div></div>
       </a>
     </div>
+    <p class="no-cards" id="noCards" hidden>이 분류의 가장 최근 글은 맨 위 <a href="#latest">이번 주 글</a>에 있습니다.</p>
   </div>
 </section>
 
@@ -532,9 +535,13 @@
     const b=e.target.closest('.chip'); if(!b) return;
     document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on', c===b));
     const f=b.dataset.f;
+    let shown=0;
     document.querySelectorAll('#cards .card').forEach(c=>{
-      c.style.display = (f==='all'||c.dataset.cat===f) ? '' : 'none';
+      const on = (f==='all'||c.dataset.cat===f);
+      c.style.display = on ? '' : 'none';
+      if(on) shown++;
     });
+    document.getElementById('noCards').hidden = shown>0;
   });
   const SUB_ENDPOINT="https://script.google.com/macros/s/AKfycbxWmwn531V2RO8UCCcI8JiMaQlNYQ77Oni6mEiBlcTXSaugsAkDpeUvN6UYfl8duA0O/exec";
   function subMock(ev){
