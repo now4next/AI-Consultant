@@ -494,7 +494,30 @@ def motif_debt(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "none": lambda accent=None: ""}
+def motif_pulley(accent="#d9c48f"):
+    """A block-and-tackle (geojunggi): a small pull raising a heavy stone."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="24" y1="24" x2="96" y2="24" stroke="{accent}" stroke-width="2.6" stroke-linecap="round"/>
+      <g stroke="{accent}" stroke-width="1.6" opacity=".35">
+        <line x1="30" y1="24" x2="30" y2="100"/>
+        <line x1="90" y1="24" x2="90" y2="100"/>
+      </g>
+      <circle cx="60" cy="33" r="7" fill="none" stroke="{accent}" stroke-width="2.4"/>
+      <g stroke="{accent}" stroke-width="2" stroke-linecap="round">
+        <line x1="53" y1="34" x2="53" y2="62"/>
+        <line x1="67" y1="34" x2="67" y2="62"/>
+      </g>
+      <circle cx="60" cy="68" r="7" fill="none" stroke="{accent}" stroke-width="2.4"/>
+      <line x1="60" y1="75" x2="60" y2="80" stroke="{accent}" stroke-width="2.2" stroke-linecap="round"/>
+      <rect x="45" y="80" width="30" height="19" rx="2.5" fill="{accent}" opacity=".85"/>
+      <g stroke="{accent}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".55">
+        <line x1="40" y1="40" x2="40" y2="58"/>
+        <path d="M35 53 L40 60 L45 53" fill="none"/>
+      </g>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -768,6 +791,16 @@ VOLUMES = [
         "accent": "#d9c48f",
         "motif": "debt",
     },
+    {
+        "vol": 40,
+        "eyebrow": "Vol. 40 · Hwaseong, 1794",
+        "title": "조선 정조 대왕의 프로젝트 리더십",
+        "sub": "10년 걸릴 공사를 2년 8개월에. 사람을 압박하지 않고 설계와 기술로",
+        "source": "원전 · 화성성역의궤 · 규장각",
+        "c1": "#2a2118", "c2": "#120c07",
+        "accent": "#d9c48f",
+        "motif": "pulley",
+    },
 ]
 
 def render_cover(m):
@@ -776,7 +809,11 @@ def render_cover(m):
     sub_html = "<br>".join(html.escape(line) for line in m["sub"].split("\n"))
     motif_block = f'<div class="g-motif">{motif_svg}</div>' if motif_svg else ""
     mw = max((len(w) for w in m["title"].split()), default=0)
-    _gt = {5: 16, 6: 13, 7: 11.5}.get(mw, 10 if mw >= 8 else 0)
+    _word = {5: 16, 6: 13, 7: 11.5}.get(mw, 10 if mw >= 8 else 0)
+    tl = len(m["title"].replace(" ", ""))
+    _total = 11.5 if tl >= 12 else (13 if tl >= 10 else 0)
+    cands = [x for x in (_word, _total) if x]
+    _gt = min(cands) if cands else 0
     gt = f";--gt:{_gt}cqw" if _gt else ""
     return (
         f'<figure class="gcover" style="--c1:{m["c1"]};--c2:{m["c2"]}{gt}" '

@@ -50,6 +50,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-37.html](insight-vol-37.html) — "어제를 배운 기계" 리더십 인사이트 Vol. 37 (Jeffrey Dastin · Reuters (2018) · NYC LL144 (2023)) · <https://projectleadership.cc/insight-vol-37.html>
 - [insight-vol-38.html](insight-vol-38.html) — "밝히면 잃는다" 리더십 인사이트 Vol. 38 (Schilke & Reimann · OBHDP (2025) · EU AI Act) · <https://projectleadership.cc/insight-vol-38.html>
 - [insight-vol-39.html](insight-vol-39.html) — "보이지 않는 청구서" 리더십 인사이트 Vol. 39 (DORA (2024) · BCG (2025) · MIT (2025)) · <https://projectleadership.cc/insight-vol-39.html>
+- [insight-vol-40.html](insight-vol-40.html) — "조선 정조 대왕의 프로젝트 리더십" 리더십 인사이트 Vol. 40 (화성성역의궤(1801) · 국사편찬위원회 · 국립중앙박물관) · <https://projectleadership.cc/insight-vol-40.html>
 
 ### 새 볼륨 발행 워크플로우
 
