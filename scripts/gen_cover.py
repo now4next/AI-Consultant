@@ -517,7 +517,24 @@ def motif_pulley(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "none": lambda accent=None: ""}
+def motif_stamp(accent="#d9c48f"):
+    """An approval stamp coming down on a line of documents, its mark left hollow."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="49" y="18" width="22" height="11" rx="4" fill="{accent}"/>
+      <line x1="60" y1="29" x2="60" y2="42" stroke="{accent}" stroke-width="3" stroke-linecap="round"/>
+      <rect x="38" y="42" width="44" height="13" rx="3" fill="{accent}"/>
+      <line x1="20" y1="70" x2="100" y2="70" stroke="{accent}" stroke-width="2.2" stroke-linecap="round" opacity=".55"/>
+      <circle cx="60" cy="86" r="11" fill="none" stroke="{accent}" stroke-width="2.4" stroke-dasharray="3 4" opacity=".7"/>
+      <g stroke="{accent}" stroke-width="1.6" stroke-linecap="round" opacity=".3">
+        <line x1="22" y1="84" x2="38" y2="84"/>
+        <line x1="22" y1="92" x2="38" y2="92"/>
+        <line x1="82" y1="84" x2="98" y2="84"/>
+        <line x1="82" y1="92" x2="98" y2="92"/>
+      </g>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -800,6 +817,16 @@ VOLUMES = [
         "c1": "#2a2118", "c2": "#120c07",
         "accent": "#d9c48f",
         "motif": "pulley",
+    },
+    {
+        "vol": 41,
+        "eyebrow": "Vol. 41 · Rubber-Stamp Oversight",
+        "title": "사람이 있다는 착각",
+        "sub": "최종 승인은 사람이 한다. 그 기록만 남고 판단은 이미 기계가 했을 수 있다",
+        "source": "원전 · Bainbridge · Lee et al. · Schemmer",
+        "c1": "#26202a", "c2": "#110d14",
+        "accent": "#d9c48f",
+        "motif": "stamp",
     },
 ]
 

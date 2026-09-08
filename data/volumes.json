@@ -806,6 +806,27 @@
         "motif": "pulley",
         "sub": "10년 걸릴 공사를 2년 8개월에.<br>사람을 압박하지 않고 설계와 기술로"
       }
+    },
+    {
+      "vol": 41,
+      "file": "insight-vol-41.html",
+      "dir": "vol-41",
+      "title": "사람이 있다는 착각",
+      "sub": "최종 승인은 사람이 한다. 그런데 그 기록만 남고 판단은 이미 기계가 했을 수 있다.",
+      "eyebrow": "Vol. 41 · Rubber-Stamp Oversight",
+      "source": "Bainbridge(1983) · Lee et al.(CHI 2025) · Schemmer et al.(IUI 2023)",
+      "cat": "책임",
+      "tag": "#책임 · Bainbridge·Lee",
+      "readTime": "7분",
+      "desc": "최종 승인은 사람이 한다. 그런데 그 기록만 남고 판단은 이미 기계가 했을 수 있다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#26202a",
+        "c2": "#110d14",
+        "accent": "#d9c48f",
+        "motif": "stamp",
+        "sub": "최종 승인은 사람이 한다.<br>그 기록만 남을 때가 있다"
+      }
     }
   ]
 }
