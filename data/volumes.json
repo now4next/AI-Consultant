@@ -827,6 +827,27 @@
         "motif": "stamp",
         "sub": "최종 승인은 사람이 한다.<br>그 기록만 남을 때가 있다"
       }
+    },
+    {
+      "vol": 42,
+      "file": "insight-vol-42.html",
+      "dir": "vol-42",
+      "title": "부끄러우면 숨긴다",
+      "sub": "사람에게는 변명이 붙고 기계에는 사실이 나온다. 리더가 받는 보고는 이미 걸러져 있다.",
+      "eyebrow": "Vol. 42 · The Competence-Judgment Tradeoff",
+      "source": "Sussman, So & Yang · MIT Sloan Ideas (2026) · RAND·JAMA Pediatrics",
+      "cat": "사람",
+      "tag": "#사람 · Sussman·So·Yang",
+      "readTime": "7분",
+      "desc": "사람에게는 변명이 붙고 기계에는 사실이 나온다. 리더가 받는 보고는 이미 걸러져 있다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#241f1a",
+        "c2": "#100d0a",
+        "accent": "#d9c48f",
+        "motif": "partition",
+        "sub": "사람에게는 변명이 붙고<br>기계에는 사실이 나온다"
+      }
     }
   ]
 }

@@ -534,7 +534,25 @@ def motif_stamp(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "none": lambda accent=None: ""}
+def motif_partition(accent="#d9c48f"):
+    """A person speaking through a partition: what stays behind a face gets said to a screen."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="26" cy="46" r="8" fill="none" stroke="{accent}" stroke-width="2.4"/>
+      <path d="M14 78 C14 63 19 60 26 60 C33 60 38 63 38 78" fill="none" stroke="{accent}" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="60" y1="16" x2="60" y2="104" stroke="{accent}" stroke-width="2" stroke-dasharray="5 6" opacity=".55"/>
+      <g fill="{accent}">
+        <circle cx="47" cy="52" r="2.6"/>
+        <circle cx="60" cy="52" r="2.6" opacity=".7"/>
+        <circle cx="73" cy="52" r="2.6"/>
+      </g>
+      <rect x="82" y="38" width="24" height="28" rx="4" fill="none" stroke="{accent}" stroke-width="2.4"/>
+      <line x1="88" y1="47" x2="100" y2="47" stroke="{accent}" stroke-width="1.8" stroke-linecap="round" opacity=".6"/>
+      <line x1="88" y1="55" x2="96" y2="55" stroke="{accent}" stroke-width="1.8" stroke-linecap="round" opacity=".6"/>
+      <path d="M86 78 L102 78" stroke="{accent}" stroke-width="2" stroke-linecap="round" opacity=".35"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
@@ -827,6 +845,16 @@ VOLUMES = [
         "c1": "#26202a", "c2": "#110d14",
         "accent": "#d9c48f",
         "motif": "stamp",
+    },
+    {
+        "vol": 42,
+        "eyebrow": "Vol. 42 · The Competence-Judgment Tradeoff",
+        "title": "부끄러우면 숨긴다",
+        "sub": "사람에게는 변명이 붙고 기계에는 사실이 나온다. 리더가 받는 보고는 이미 걸러져 있다",
+        "source": "원전 · MIT Sloan · Sussman, So & Yang",
+        "c1": "#241f1a", "c2": "#100d0a",
+        "accent": "#d9c48f",
+        "motif": "partition",
     },
 ]
 

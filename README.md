@@ -52,6 +52,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-39.html](insight-vol-39.html) — "보이지 않는 청구서" 리더십 인사이트 Vol. 39 (DORA (2024) · BCG (2025) · MIT (2025)) · <https://projectleadership.cc/insight-vol-39.html>
 - [insight-vol-40.html](insight-vol-40.html) — "조선 정조 대왕의 프로젝트 리더십" 리더십 인사이트 Vol. 40 (화성성역의궤(1801) · 국사편찬위원회 · 국립중앙박물관) · <https://projectleadership.cc/insight-vol-40.html>
 - [insight-vol-41.html](insight-vol-41.html) — "사람이 있다는 착각" 리더십 인사이트 Vol. 41 (Bainbridge(1983) · Lee et al.(CHI 2025) · Schemmer et al.(IUI 2023)) · <https://projectleadership.cc/insight-vol-41.html>
+- [insight-vol-42.html](insight-vol-42.html) — "부끄러우면 숨긴다" 리더십 인사이트 Vol. 42 (Sussman, So & Yang · MIT Sloan Ideas (2026) · RAND·JAMA Pediatrics) · <https://projectleadership.cc/insight-vol-42.html>
 
 ### 새 볼륨 발행 워크플로우
 
