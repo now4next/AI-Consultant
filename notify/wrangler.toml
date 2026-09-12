@@ -20,9 +20,14 @@ database_id = "b524cc38-a8be-45b5-80ad-4daa78dd8a93"
 SITE = "https://projectleadership.cc"
 SELF = "https://notify.projectleadership.cc"
 KAKAO_REDIRECT_URI = "https://notify.projectleadership.cc/kakao/callback"
+# email sender (Resend). MAIL_FROM needs projectleadership.cc verified at resend.com/domains;
+# until then the worker falls back to MAIL_FROM_FALLBACK (a domain already verified in the same Resend account).
+MAIL_FROM = "PLI 리더십 인사이트 <insight@projectleadership.cc>"
+MAIL_FROM_FALLBACK = "PLI 리더십 인사이트 <noreply@99wisdombook.org>"
 
 # secrets (wrangler secret put ...):
 #   KAKAO_REST_API_KEY   카카오 디벨로퍼스 REST API 키
 #   KAKAO_CLIENT_SECRET  카카오 로그인 > 보안 > Client Secret
+#   RESEND_API_KEY       resend.com > API Keys (이메일 채널)
 #   SIGNING_KEY          32+ random bytes (openssl rand -hex 32) — HMAC tokens + AES-GCM for refresh tokens
 #   CRON_SECRET          random string — protects POST /cron/run (manual trigger / tests)

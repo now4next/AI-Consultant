@@ -16,6 +16,16 @@ Cloudflare Worker + D1. 구독자가 카카오 동의 1탭으로 신청하고, �
 
 공통: 카카오 로그인 > 보안 > **Client Secret** 생성·사용 ON. REST API 키와 함께 아래 시크릿으로 저장.
 
+## 0-b. 이메일 채널 (Resend)
+
+99WisdomBook과 같은 Resend 계정을 씁니다. `RESEND_API_KEY` 시크릿만 있으면 동작하고, 발신 주소는
+`wrangler.toml`의 `MAIL_FROM`(`insight@projectleadership.cc`)입니다. 이 도메인이 resend.com/domains에서
+아직 검증되지 않았으면 워커가 자동으로 `MAIL_FROM_FALLBACK`(이미 검증된 `noreply@99wisdombook.org`)로 보냅니다.
+
+흐름: 사이트 폼에 주소 입력 → `POST /email/start` → **설정 링크 메일** → 링크에서 요일·시간·주제 저장(=신청 완료, 환영 메일)
+→ 정해진 시간에 **표지 + 핵심 문장 + 이 글의 용어 + 도입부 두 문단 + 이어서 읽기** 메일. 모든 메일에 설정 변경·그만 받기 링크와
+`List-Unsubscribe` 헤더가 붙습니다. 디자인 확인: `https://notify.projectleadership.cc/email/preview?vol=42&kind=issue|welcome|link|exhausted`.
+
 ## 1. 배포
 
 ```bash
@@ -27,6 +37,7 @@ wrangler d1 execute pli-notify-db --remote --file=schema.sql
 
 wrangler secret put KAKAO_REST_API_KEY
 wrangler secret put KAKAO_CLIENT_SECRET
+wrangler secret put RESEND_API_KEY         # 이메일 채널 (resend.com > API Keys)
 wrangler secret put SIGNING_KEY            # openssl rand -hex 32
 wrangler secret put CRON_SECRET            # openssl rand -hex 24
 

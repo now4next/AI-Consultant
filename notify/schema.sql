@@ -1,10 +1,13 @@
--- pli-notify · D1 schema
--- wrangler d1 execute pli-notify-db --remote --file=schema.sql
+-- pli-notify · D1 schema (v2: kakao + email channels)
+-- fresh install:  wrangler d1 execute pli-notify-db --remote --file=schema.sql
+-- upgrade from v1: wrangler d1 execute pli-notify-db --remote --file=migrate-001-email.sql
 
 CREATE TABLE IF NOT EXISTS subscribers (
   id                TEXT PRIMARY KEY,            -- random id (also the manage-token subject)
-  kakao_uid         TEXT UNIQUE NOT NULL,        -- 카카오 회원번호
-  refresh_token_enc TEXT NOT NULL,               -- AES-GCM(SIGNING_KEY) · never stored in clear
+  channel           TEXT NOT NULL DEFAULT 'kakao', -- kakao | email
+  kakao_uid         TEXT UNIQUE,                 -- 카카오 회원번호 (kakao only)
+  refresh_token_enc TEXT,                        -- AES-GCM(SIGNING_KEY) · never stored in clear (kakao only)
+  email             TEXT UNIQUE,                 -- lower-cased address (email only)
   days              TEXT NOT NULL DEFAULT '1',   -- '1,3,5'  (0=일 … 6=토)
   slot              TEXT NOT NULL DEFAULT '08:00', -- 'HH:00' | 'HH:30', 07:00–22:00
   cats              TEXT NOT NULL DEFAULT '',    -- '' = 전체, 또는 '전략,사람'
@@ -23,7 +26,7 @@ CREATE TABLE IF NOT EXISTS sends (
   id            INTEGER PRIMARY KEY AUTOINCREMENT,
   subscriber_id TEXT NOT NULL,
   vol           INTEGER,
-  kind          TEXT NOT NULL DEFAULT 'issue',   -- issue | welcome | exhausted
+  kind          TEXT NOT NULL DEFAULT 'issue',   -- issue | welcome | exhausted | link
   ok            INTEGER NOT NULL DEFAULT 1,
   error         TEXT,
   sent_at       TEXT NOT NULL DEFAULT (datetime('now'))

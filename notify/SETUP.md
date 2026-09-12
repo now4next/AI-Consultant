@@ -150,6 +150,23 @@ npx wrangler deploy
 
 ---
 
+## 6단계 · 이메일 채널 (Resend)
+
+1. https://resend.com 로그인(99WisdomBook과 같은 계정) → **API Keys > Create API Key** → 이름 `pli-notify`, 권한 Sending access → 생성된 키 복사(한 번만 보입니다).
+2. 복사 직후 터미널에서 (붙여넣기 없이 클립보드를 그대로 넘깁니다):
+   ```powershell
+   cd C:/Users/User/AI-Consultant-main/notify; ((Get-Clipboard -Raw) -replace '[^\x20-\x7E]','') | npx wrangler secret put RESEND_API_KEY
+   ```
+   확인: `curl.exe -s https://notify.projectleadership.cc/health` → `"email":true`
+3. **발신 도메인**: Resend > **Domains > Add Domain** → `projectleadership.cc` (Region: Tokyo) → 표시되는 DNS 레코드 3개(MX·SPF TXT·DKIM TXT)를
+   Cloudflare 대시보드 > projectleadership.cc > DNS에 **Proxy 끄고(DNS only)** 그대로 추가 → Resend에서 **Verify**. 검증 전까지는
+   워커가 자동으로 `noreply@99wisdombook.org`(이미 검증됨)로 보내므로 테스트는 바로 가능합니다.
+4. 테스트: 홈 하단 **이메일로 받기** → 주소 입력 → 설정 링크 메일 → 요일·시간 저장 → 환영 메일. 즉시 1편:
+   ```bash
+   npx wrangler d1 execute pli-notify-db --remote --command "SELECT id, channel, email, status FROM subscribers"
+   curl -X POST "https://notify.projectleadership.cc/cron/run?id=<id>&force=1" -H "Authorization: Bearer <CRON_SECRET>"
+   ```
+
 ## 자주 나오는 오류
 
 | 증상 | 원인 → 조치 |

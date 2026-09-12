@@ -621,13 +621,14 @@
     more.addEventListener('click', ()=>{ limit+=PAGE; render(); });
     render();
   })();
+  const NOTIFY="https://notify.projectleadership.cc";
   (function(){
     const k=document.getElementById('kakaoBtn'), t=document.getElementById('emailToggle'), f=document.getElementById('subForm');
     t.addEventListener('click', function(){ f.hidden=false; t.hidden=true; document.getElementById('email').focus(); });
     // show the Kakao option only when the notify worker is live; otherwise go straight to email
     const ac=new AbortController(); const timer=setTimeout(()=>ac.abort(), 3000);
-    fetch('https://notify.projectleadership.cc/health', {mode:'cors', signal:ac.signal, cache:'no-store'})
-      .then(r=>r.ok?r.json():Promise.reject()).then(j=>{ if(!j.ok||!j.ready) throw 0; k.hidden=false; t.hidden=false; })
+    fetch(NOTIFY+'/health', {mode:'cors', signal:ac.signal, cache:'no-store'})
+      .then(r=>r.ok?r.json():Promise.reject()).then(j=>{ if(!j.ok||!j.ready) throw 0; window.__notifyEmail=!!j.email; k.hidden=false; t.hidden=false; })
       .catch(()=>{ f.hidden=false; })
       .finally(()=>clearTimeout(timer));
   })();
@@ -637,12 +638,24 @@
     const email=(document.getElementById('email').value||'').trim();
     const form=document.getElementById('subForm');
     const note=document.getElementById('subNote');
+    const btn=form.querySelector('button');
+    const escH=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const done=(msg,sub)=>{ form.innerHTML='<div style="font-family:var(--serif);font-size:16px;line-height:1.55;color:#fff;padding:6px 2px;word-break:keep-all">'+msg+'</div>'; note.textContent=sub; };
+    // worker live → real sign-up: the worker mails a settings link (요일·시간·주제), nothing is sent before it is saved
+    if(window.__notifyEmail){
+      btn.disabled=true; btn.textContent='보내는 중…';
+      fetch(NOTIFY+'/email/start',{method:'POST',mode:'cors',headers:{'Accept':'application/json'},body:new URLSearchParams({email})})
+        .then(r=>r.json()).then(j=>{ if(!j.ok) throw new Error(j.msg||'');
+          done('📮 <strong>'+escH(email)+'</strong>로 설정 링크를 보냈어요.', '메일의 버튼을 눌러 요일·시간·주제를 고르면 신청이 끝나요. 안 보이면 스팸함도 확인해 주세요.'); })
+        .catch(e=>{ btn.disabled=false; btn.textContent='구독'; note.textContent=(e&&e.message)||'잠시 뒤 다시 시도해 주세요.'; });
+      return false;
+    }
+    // fallback (worker down): log the address to the sheet so nobody is lost
     try{
       fetch(SUB_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},
         body:JSON.stringify({이메일:email,신청유형:'뉴스레터 구독',__sheet__:'뉴스레터구독'})}).catch(function(){});
     }catch(e){}
-    form.innerHTML='<div style="font-family:var(--serif);font-size:16px;color:#fff;padding:6px 2px">곧 만나요, <strong>플리더</strong>! 🦉 구독 신청이 접수되었어요.</div>';
-    note.textContent='매주 금요일, 플리가 고른 한 편을 보내드릴게요.';
+    done('곧 만나요, <strong>플리더</strong>! 🦉 구독 신청이 접수되었어요.', '매주 금요일, 플리가 고른 한 편을 보내드릴게요.');
     return false;
   }
 </script>
