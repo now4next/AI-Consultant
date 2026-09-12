@@ -1,5 +1,11 @@
 # 카카오톡 알림 워커 — 처음 설정 가이드 (화면 단위)
 
+> **진행 상태 (2026-09-12)** — 카카오 앱 `PLI`(ID 1574940, 새 앱·비즈 앱 아님) 콘솔 설정 완료:
+> 카카오 로그인 ON · `talk_message` 선택 동의 · Redirect URI 등록 · 클라이언트 시크릿 발급/활성 · 대표 도메인.
+> Cloudflare 쪽 완료: D1 `pli-notify-db` + 스키마, 워커 배포(`notify.projectleadership.cc`), 크론, `SIGNING_KEY`·`CRON_SECRET`.
+> **남은 것: `KAKAO_REST_API_KEY`·`KAKAO_CLIENT_SECRET` 두 시크릿 등록(3단계)** → `/health`가 `ready:true`가 되면 사이트에 카카오 버튼이 켜집니다.
+> 값은 카카오 콘솔 **앱 > 플랫폼 키 > REST API 키**(키 값)와 **더보기 > 수정 > 클라이언트 시크릿 > 카카오 로그인**(코드)에서 복사합니다.
+
 > 계정 권한이 필요한 5단계. 0·1·3단계는 직접 하셔야 하고, **1단계(`wrangler login`)만 끝나면 2·4·5단계는 같은 PC에서 Claude가 대신 실행할 수 있습니다** (wrangler가 로그인 정보를 PC에 저장하므로).
 
 | 단계 | 내용 | 누가 | 걸리는 시간 |
