@@ -1,0 +1,28 @@
+name = "pli-notify"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+# notify.projectleadership.cc — DNS is on Cloudflare, so custom_domain provisions the record
+routes = [
+  { pattern = "notify.projectleadership.cc", custom_domain = true }
+]
+
+# every 5 minutes; sends are gated to :00 / :30 slots and locked to once per day per subscriber
+[triggers]
+crons = ["*/5 * * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "pli-notify-db"
+database_id = "REPLACE_WITH_ID_FROM_wrangler_d1_create"
+
+[vars]
+SITE = "https://projectleadership.cc"
+SELF = "https://notify.projectleadership.cc"
+KAKAO_REDIRECT_URI = "https://notify.projectleadership.cc/kakao/callback"
+
+# secrets (wrangler secret put ...):
+#   KAKAO_REST_API_KEY   카카오 디벨로퍼스 REST API 키
+#   KAKAO_CLIENT_SECRET  카카오 로그인 > 보안 > Client Secret
+#   SIGNING_KEY          32+ random bytes (openssl rand -hex 32) — HMAC tokens + AES-GCM for refresh tokens
+#   CRON_SECRET          random string — protects POST /cron/run (manual trigger / tests)

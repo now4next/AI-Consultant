@@ -37,7 +37,10 @@
 
 **결정:** 1단계는 B. 2단계에서 규모·브랜딩 필요 시 A를 추가 채널로 붙인다(구독자가 채널 선택).
 
-> 확인 사항: `talk_message` 동의항목은 앱 설정에서 '사용 권한 신청'이 붙을 수 있다. 필요 시 **비즈앱 전환(사업자등록번호 등록)**으로 해결 — NFN 사업자 정보로 가능.
+> **사업자등록 없이 `talk_message`를 여는 두 경로** (사업자 정보 등록 방식은 쓰지 않는다)
+> - **A. 99WisdomBook 카카오 앱 재사용(가장 빠름):** 이미 일반 사용자에게 '나에게 보내기'가 동작 중인 앱에 플랫폼 도메인 `notify.projectleadership.cc`와 Redirect URI만 추가. 동의 화면에 그 앱 이름·아이콘이 뜨므로, 앱 이름이 두 서비스에 무리 없는지만 확인.
+> - **B. 새 앱 + 개인 개발자 비즈앱 전환 신청:** 카카오 디벨로퍼스에서 사업자등록 없이 개인 개발자 자격으로 비즈앱 전환을 요청(데브톡 문의 경로). 며칠 소요. 브랜드를 분리하고 싶을 때.
+> - 99WisdomBook 저장소에는 권한 취득 경위가 기록돼 있지 않다. 그 앱의 **카카오 디벨로퍼스 콘솔 > 앱 설정 > 비즈니스** 상태를 한 번 확인하면 A/B 중 어느 쪽인지 바로 안다.
 
 ---
 
@@ -92,6 +95,19 @@ Vol. 42 · 부끄러우면 숨긴다
 ---
 
 ## 3. 시스템 구성
+
+**전제(확인됨):** `projectleadership.cc` DNS는 Cloudflare에 있고 권한 계정이 관리한다 → `notify` 서브도메인은 워커의 `custom_domain`으로 자동 생성된다. 사이트는 GitHub Pages에 그대로 둔다(99WisdomBook처럼 Cloudflare Pages Functions로 옮길 수도 있지만, 정기 발송에는 **워커의 네이티브 Cron Trigger**가 더 맞다 — 외부 크론 서비스가 필요 없다).
+
+### 3.0 참고 구현: 99WisdomBook(`functions/api/[[path]].js`)에서 가져올 것 / 바꿀 것
+
+| 그대로 가져옴 | 바꿈 |
+|---|---|
+| 인가코드 → 토큰 교환(`kauth.kakao.com/oauth/token`), `v2/user/me`로 회원번호 | 사이트 회원 테이블 없음 → `subscribers`만. 이름·이메일 요청 안 함 |
+| `kakao_refresh_token` 저장, 발송 직전 갱신, 새 refresh token 오면 교체 | refresh token은 **AES-GCM 암호화** 저장 |
+| `talk/memo/default/send` + `feed` 템플릿(이미지·제목·버튼) | 이미지 = 편별 OG 카드, 버튼 2개(지금 읽기 / 설정·그만 받기) |
+| `notify_days` = `"1,3,5"`, 30분 슬롯 매칭, KST 변환 | 하루 1회 잠금(`last_sent_date`)으로 크론이 늦게 떠도 자가 복구 |
+| `CRON_SECRET` Bearer로 보호된 수동 실행 엔드포인트(어드민 테스트 버튼) | 정기 실행은 Cron Trigger가 직접 호출 |
+| 날짜·사용자 해시로 '오늘의 문장' 결정(매일 바뀌지만 반복 가능) | **구독자별 `sent_vols` 집합으로 비중복 무작위**, 주제 필터, 최신순 옵션 |
 
 ```
 projectleadership.cc (GitHub Pages, 정적)
@@ -155,9 +171,11 @@ sends(id, subscriber_id, vol, sent_at, ok, error)
 1. developers.kakao.com → 앱 생성 "Project Leadership Insight"
 2. 플랫폼 > Web: `https://projectleadership.cc`, `https://notify.projectleadership.cc`
 3. 카카오 로그인 활성화 → Redirect URI: `https://notify.projectleadership.cc/kakao/callback`
-4. 동의항목 > **카카오톡 메시지 전송(`talk_message`)** = 선택 동의. 권한 신청이 요구되면 **비즈앱 전환**(사업자등록번호)
+4. 동의항목 > **카카오톡 메시지 전송(`talk_message`)** = 선택 동의. 공개 허용은 **A. 99WisdomBook 앱 재사용** 또는 **B. 개인 개발자 비즈앱 전환 신청** — 사업자등록 없이
 5. 앱 키: REST API 키 · Client Secret(사용 ON) → Workers Secret에 저장
 6. 테스트 계정으로 동의→발송 1회 검증
+
+> 구현 코드는 `notify/` 디렉터리(워커 + D1 스키마 + 배포 절차 README)에 있다.
 
 ---
 

@@ -143,6 +143,13 @@
   .subscribe .btn{background:#fff;color:#0a0a0a;padding:13px 22px;white-space:nowrap}
   .subscribe .btn:hover{background:#dcdcdc}
   .foothero .note{margin-top:12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted-2)}
+  .channels{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .btn.kakao{background:#FEE500;color:#191919;border:1px solid #FEE500}
+  .btn.kakao:hover{background:#f3da00}
+  .btn.kakao .rec{font-family:var(--mono);font-size:10px;letter-spacing:.1em;background:rgba(0,0,0,.12);border-radius:999px;padding:2px 7px}
+  .btn.ghost.light{color:#fff;border-color:rgba(255,255,255,.55)}
+  .btn.ghost.light:hover{background:#fff;color:#0a0a0a;border-color:#fff}
+  .subscribe[hidden]{display:none}
   .mascot{justify-self:center;text-align:center}
   .mascot img{width:min(260px,64vw);height:auto;display:block;margin:0 auto;filter:drop-shadow(0 14px 30px rgba(0,0,0,.45))}
   .mascot .cap{margin-top:12px;font-family:var(--serif-display);font-style:italic;font-size:16px;color:var(--muted-2)}
@@ -214,7 +221,7 @@
     <nav class="nav">
       <a href="#latest">Weekly</a>
       <a href="#archive">아카이브</a>
-      <a href="#subscribe" class="btn">구독하기</a>
+      <a href="#subscribe" class="btn">알림 받기</a>
     </nav>
   </div>
 </header>
@@ -550,14 +557,18 @@
       <div class="cap">“안녕하세요, <strong>플리</strong>예요”</div>
     </div>
     <div>
-      <div class="eyebrow">매주 금요일 · 3분 통찰</div>
+      <div class="eyebrow">매주 · 리더십 인사이트 알림 받기</div>
       <h1>리더는 시간이 없지,<br><em>통찰</em>이 필요 없는 건 아니니까</h1>
-      <p class="sub">세계의 리더십·경영 통찰을 리더의 언어로 한 편씩 정리해 드려요. 이 편지를 읽는 당신은 <strong><em>플리더</em></strong>. 매주 금요일, <strong>플리</strong>가 그 주의 한 편을 골라 문 앞에 둘게요.</p>
-      <form class="subscribe" id="subForm" onsubmit="return subMock(event)">
+      <p class="sub">원하는 요일·시간에, 아직 읽지 않은 편을 한 편씩 보내드려요. 이 편지를 읽는 당신은 <strong><em>플리더</em></strong>. 회원가입 없이, <strong>플리</strong>가 당신의 카카오톡 문 앞에 둘게요.</p>
+      <div class="channels">
+        <a class="btn kakao" href="https://notify.projectleadership.cc/kakao/start">카카오톡으로 받기 <span class="rec">추천</span></a>
+        <button class="btn ghost light" type="button" id="emailToggle">이메일로 받기</button>
+      </div>
+      <form class="subscribe" id="subForm" onsubmit="return subMock(event)" hidden>
         <input id="email" type="email" placeholder="이메일 주소" aria-label="이메일 주소" required>
         <button class="btn" type="submit">구독</button>
       </form>
-      <div class="note" id="subNote">무료 · 매주 금요일 · 언제든 구독 취소</div>
+      <div class="note" id="subNote">무료 · 요일과 시간은 내가 정해요 · 언제든 그만 받기</div>
     </div>
   </div>
 </section>
@@ -610,6 +621,9 @@
     more.addEventListener('click', ()=>{ limit+=PAGE; render(); });
     render();
   })();
+  document.getElementById('emailToggle').addEventListener('click', function(){
+    const f=document.getElementById('subForm'); f.hidden=false; this.hidden=true; document.getElementById('email').focus();
+  });
   const SUB_ENDPOINT="https://script.google.com/macros/s/AKfycbxWmwn531V2RO8UCCcI8JiMaQlNYQ77Oni6mEiBlcTXSaugsAkDpeUvN6UYfl8duA0O/exec";
   function subMock(ev){
     ev.preventDefault();

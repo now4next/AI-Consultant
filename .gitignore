@@ -1,3 +1,8 @@
 __pycache__/
 *.pyc
 _dryrun_*.html
+
+# cloudflare worker (notify/)
+notify/node_modules/
+notify/.wrangler/
+notify/.dev.vars
