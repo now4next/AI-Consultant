@@ -14,7 +14,7 @@ crons = ["*/5 * * * *"]
 [[d1_databases]]
 binding = "DB"
 database_name = "pli-notify-db"
-database_id = "REPLACE_WITH_ID_FROM_wrangler_d1_create"
+database_id = "b524cc38-a8be-45b5-80ad-4daa78dd8a93"
 
 [vars]
 SITE = "https://projectleadership.cc"
