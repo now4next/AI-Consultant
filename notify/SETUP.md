@@ -160,9 +160,17 @@ npx wrangler deploy
    cd C:/Users/User/AI-Consultant-main/notify; ((Get-Clipboard -Raw) -replace '[^\x20-\x7E]','') | npx wrangler secret put RESEND_API_KEY
    ```
    확인: `curl.exe -s https://notify.projectleadership.cc/health` → `"email":true`
-3. **발신 도메인**: Resend > **Domains > Add Domain** → `projectleadership.cc` (Region: Tokyo) → 표시되는 DNS 레코드 3개(MX·SPF TXT·DKIM TXT)를
-   Cloudflare 대시보드 > projectleadership.cc > DNS에 **Proxy 끄고(DNS only)** 그대로 추가 → Resend에서 **Verify**. 검증 전까지는
-   워커가 자동으로 `noreply@99wisdombook.org`(이미 검증됨)로 보내므로 테스트는 바로 가능합니다.
+3. **발신 도메인**: Resend > **Domains**에 `nfn.co.kr`이 추가돼 있습니다(Region Tokyo, 상태 Not Started, 2026-09-12). Resend 화면의
+   **DNS Records** 표에 있는 **보내기용 3개**를 nfn.co.kr의 DNS(**AWS Route 53**)에 추가한 뒤 **Verify DNS Records**:
+   | 이름 | 타입 | 값 |
+   |---|---|---|
+   | `resend._domainkey` | TXT | `p=MIGf…` (Resend 화면의 복사 버튼으로 그대로) |
+   | `rsend` | CNAME | `rsend-apne1.forge.rmta.net` |
+   | `send` | CNAME | `send.forge.rmta.net` |
+   **주의**: "Enable Receiving"의 `@ MX inbound-smtp…` 레코드는 넣지 마세요. 회사 메일(Naver Works) MX를 덮어씁니다.
+   검증되면 `wrangler.toml`의 `MAIL_FROM`을 `now@nfn.co.kr`로 바꾸고 `npx wrangler deploy`.
+   Resend 계정(nowfornext@gmail.com 팀)에는 검증된 도메인이 없어서, 검증 전에는 워커가 Resend 테스트 발신(`onboarding@resend.dev`)으로
+   **계정 주인 주소(nowfornext@gmail.com)** 에만 보낼 수 있습니다. `99wisdombook.org`는 다른 Resend 계정에 검증돼 있어 이 키로는 못 씁니다.
 4. 테스트: 홈 하단 **이메일로 받기** → 주소 입력 → 바로 설정 페이지 → 요일·시간 저장 → 확인 메일 + 첫 편이 즉시 도착.
    안 오면 설정 페이지의 **테스트 메일 다시 보내기**(실패 사유가 화면에 표시됩니다). 이미 받은 편 외에 1편 더 보내려면:
    ```bash
