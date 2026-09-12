@@ -58,6 +58,8 @@ async function route(request, env, ctx) {
 
 // ───────────────────────────────────────────── kakao oauth
 async function kakaoStart(env) {
+  if (!env.KAKAO_REST_API_KEY || !env.KAKAO_CLIENT_SECRET)
+    return html(page('준비 중', '<p>카카오톡 알림 신청은 잠시 뒤에 열려요. 조금만 기다려 주세요.</p>' + backLink(env)), 503);
   const state = await makeToken(env, { n: rand(12), t: Date.now() });
   const q = new URLSearchParams({
     client_id: env.KAKAO_REST_API_KEY, redirect_uri: env.KAKAO_REDIRECT_URI,
