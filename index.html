@@ -561,8 +561,8 @@
       <h1>리더는 시간이 없지,<br><em>통찰</em>이 필요 없는 건 아니니까</h1>
       <p class="sub">원하는 요일·시간에, 아직 읽지 않은 편을 한 편씩 보내드려요. 이 편지를 읽는 당신은 <strong><em>플리더</em></strong>. 회원가입 없이, <strong>플리</strong>가 당신의 카카오톡 문 앞에 둘게요.</p>
       <div class="channels">
-        <a class="btn kakao" href="https://notify.projectleadership.cc/kakao/start">카카오톡으로 받기 <span class="rec">추천</span></a>
-        <button class="btn ghost light" type="button" id="emailToggle">이메일로 받기</button>
+        <a class="btn kakao" id="kakaoBtn" href="https://notify.projectleadership.cc/kakao/start" hidden>카카오톡으로 받기 <span class="rec">추천</span></a>
+        <button class="btn ghost light" type="button" id="emailToggle" hidden>이메일로 받기</button>
       </div>
       <form class="subscribe" id="subForm" onsubmit="return subMock(event)" hidden>
         <input id="email" type="email" placeholder="이메일 주소" aria-label="이메일 주소" required>
@@ -621,9 +621,16 @@
     more.addEventListener('click', ()=>{ limit+=PAGE; render(); });
     render();
   })();
-  document.getElementById('emailToggle').addEventListener('click', function(){
-    const f=document.getElementById('subForm'); f.hidden=false; this.hidden=true; document.getElementById('email').focus();
-  });
+  (function(){
+    const k=document.getElementById('kakaoBtn'), t=document.getElementById('emailToggle'), f=document.getElementById('subForm');
+    t.addEventListener('click', function(){ f.hidden=false; t.hidden=true; document.getElementById('email').focus(); });
+    // show the Kakao option only when the notify worker is live; otherwise go straight to email
+    const ac=new AbortController(); const timer=setTimeout(()=>ac.abort(), 3000);
+    fetch('https://notify.projectleadership.cc/health', {mode:'cors', signal:ac.signal, cache:'no-store'})
+      .then(r=>r.ok?r.json():Promise.reject()).then(j=>{ if(!j.ok) throw 0; k.hidden=false; t.hidden=false; })
+      .catch(()=>{ f.hidden=false; })
+      .finally(()=>clearTimeout(timer));
+  })();
   const SUB_ENDPOINT="https://script.google.com/macros/s/AKfycbxWmwn531V2RO8UCCcI8JiMaQlNYQ77Oni6mEiBlcTXSaugsAkDpeUvN6UYfl8duA0O/exec";
   function subMock(ev){
     ev.preventDefault();
