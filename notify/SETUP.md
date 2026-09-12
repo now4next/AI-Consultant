@@ -39,6 +39,8 @@
    ```
    기존 `https://99wisdombook.org/kakao-callback.html`은 그대로 두고 **추가**만 합니다.
 5. **동의항목 확인** — 카카오 로그인 > 동의항목 → "카카오톡 메시지 전송(`talk_message`)"이 **선택 동의**로 켜져 있는지 확인. (99Wisdom이 이미 쓰고 있으면 켜져 있습니다.)
+5-b. **메시지 링크 도메인** — 앱 > **제품 링크 관리 > 웹 도메인 등록** → `https://projectleadership.cc`, `https://notify.projectleadership.cc` 두 개 등록.
+   메시지 템플릿의 `web_url`은 여기 등록된 도메인만 허용됩니다. 등록 전에는 카드가 도착해도 링크가 죽어 있고 PC 카카오톡에 "모바일에서 확인해 주세요"만 뜹니다. (JavaScript SDK 도메인과는 다른 설정입니다.)
 6. **키 두 개 복사**
    - **REST API 키**: 앱 > 플랫폼 키 > REST API 키 (구: 앱 설정 > 앱 키) → 32자리 값. → 3단계의 `KAKAO_REST_API_KEY`
    - **Client Secret**: 같은 REST API 키 화면의 "클라이언트 시크릿" (구: 카카오 로그인 > 보안) → 코드가 없으면 **생성**, 상태를 **사용함**으로 → 값 복사. → `KAKAO_CLIENT_SECRET`
