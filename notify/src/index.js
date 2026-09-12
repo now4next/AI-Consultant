@@ -55,6 +55,15 @@ async function route(request, env, ctx) {
       body.probe = d.error_code || d.error || 'ok';
       body.secret = d.error_code === 'KOE320' ? 'ok' : d.error_code === 'KOE010' ? 'mismatch' : 'unknown';
     }
+    // ?deep=1 with the email key set → which sender domains Resend has, and whether MAIL_FROM's domain is verified
+    if (url.searchParams.get('deep') === '1' && env.RESEND_API_KEY) {
+      const r = await fetch('https://api.resend.com/domains', { headers: { Authorization: `Bearer ${env.RESEND_API_KEY}` } });
+      const d = await r.json().catch(() => ({}));
+      body.email_domains = r.ok ? (d.data || []).map(x => ({ name: x.name, status: x.status, region: x.region })) : `resend ${r.status}`;
+      const dom = (env.MAIL_FROM.match(/@([^>\s]+)/) || [])[1];
+      body.mail_from = env.MAIL_FROM;
+      body.mail_from_verified = r.ok ? (d.data || []).some(x => x.name === dom && x.status === 'verified') : null;
+    }
     return new Response(JSON.stringify(body),
       { headers: { 'content-type': 'application/json; charset=utf-8', 'access-control-allow-origin': env.SITE, 'cache-control': 'no-store' } });
   }
@@ -139,7 +148,7 @@ async function emailStart(request, env, ctx) {
   }
   const t = await makeToken(env, { id: sub.id });
   ctx.waitUntil(sendEmail(env, linkEmail(env, sub, t))
-    .then(() => log(env, sub.id, null, 'link', true), e => log(env, sub.id, null, 'link', false, e.message || String(e))));
+    .then(r => log(env, sub.id, null, 'link', true, via(env, r)), e => log(env, sub.id, null, 'link', false, e.message || String(e))));
   return reply(true, `${email} 로 설정 링크를 보냈어요. 메일의 버튼을 누르면 요일·시간·주제를 고를 수 있어요. 안 보이면 스팸함도 확인해 주세요.`);
 }
 
@@ -235,7 +244,7 @@ async function settingsSave(request, env, ctx) {
     .bind(days.join(','), slot, cats.join(','), mode, status, sub.id).run();
 
   if (first) ctx.waitUntil(sendWelcome(env, { ...sub, days: days.join(','), slot, cats: cats.join(','), mode }, form.get('t'))
-    .then(() => log(env, sub.id, null, 'welcome', true), e => log(env, sub.id, null, 'welcome', false, e.message || String(e))));
+    .then(r => log(env, sub.id, null, 'welcome', true, via(env, r)), e => log(env, sub.id, null, 'welcome', false, e.message || String(e))));
   return Response.redirect(`${env.SELF}/settings?t=${form.get('t')}&saved=1`, 302);
 }
 
@@ -296,8 +305,9 @@ async function tick(env, opt) {
       const v = pick(vols, sub);
       const t = await makeToken(env, { id: sub.id });
       const manage = `${env.SELF}/settings?t=${t}`;
+      let r = null;
       if (isEmail) {
-        await sendEmail(env, v ? await issueEmail(env, sub, v, t) : exhaustedEmail(env, sub, t, vols.length));
+        r = await sendEmail(env, v ? await issueEmail(env, sub, v, t) : exhaustedEmail(env, sub, t, vols.length));
       } else {
         const at = await freshAccessToken(env, sub);
         await sendToMe(at, v ? issueTemplate(env, v, manage)
@@ -313,7 +323,7 @@ async function tick(env, opt) {
       sent.push(String(v.vol));
       await env.DB.prepare("UPDATE subscribers SET sent_vols=?, last_sent_date=?, fail_count=0, updated_at=datetime('now') WHERE id=?")
         .bind(sent.join(','), today, sub.id).run();
-      await log(env, sub.id, v.vol, 'issue', true);
+      await log(env, sub.id, v.vol, 'issue', true, via(env, r));
       out.sent++;
     } catch (e) {
       const msg = e.message || String(e);
@@ -439,8 +449,10 @@ async function sendEmail(env, m, from = env.MAIL_FROM) {
     if (/not verified/i.test(d.message || '') && env.MAIL_FROM_FALLBACK && from !== env.MAIL_FROM_FALLBACK) return sendEmail(env, m, env.MAIL_FROM_FALLBACK);
     const e = new Error(d.message || `resend ${r.status}`); e.code = d.name || r.status; throw e;
   }
-  return d;
+  return { ...d, from };
 }
+// note in the send log when a mail went out through the fallback sender instead of MAIL_FROM
+const via = (env, r) => r && r.from && r.from !== env.MAIL_FROM ? `via ${r.from}` : null;
 
 const F = "'Inter Tight','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',Helvetica,Arial,sans-serif";
 const SERIF = "'Gowun Batang','Noto Serif KR','Apple Myungjo','Nanum Myeongjo',Batang,Georgia,serif";

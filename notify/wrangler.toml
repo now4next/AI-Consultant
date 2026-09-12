@@ -20,9 +20,9 @@ database_id = "b524cc38-a8be-45b5-80ad-4daa78dd8a93"
 SITE = "https://projectleadership.cc"
 SELF = "https://notify.projectleadership.cc"
 KAKAO_REDIRECT_URI = "https://notify.projectleadership.cc/kakao/callback"
-# email sender (Resend). MAIL_FROM needs projectleadership.cc verified at resend.com/domains;
+# email sender (Resend). MAIL_FROM's domain must be verified at resend.com/domains;
 # until then the worker falls back to MAIL_FROM_FALLBACK (a domain already verified in the same Resend account).
-MAIL_FROM = "PLI 리더십 인사이트 <insight@projectleadership.cc>"
+MAIL_FROM = "PLI 리더십 인사이트 <now@nfn.co.kr>"
 MAIL_FROM_FALLBACK = "PLI 리더십 인사이트 <noreply@99wisdombook.org>"
 
 # secrets (wrangler secret put ...):
