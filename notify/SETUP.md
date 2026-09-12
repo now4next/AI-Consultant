@@ -160,7 +160,17 @@ npx wrangler deploy
    cd C:/Users/User/AI-Consultant-main/notify; ((Get-Clipboard -Raw) -replace '[^\x20-\x7E]','') | npx wrangler secret put RESEND_API_KEY
    ```
    확인: `curl.exe -s https://notify.projectleadership.cc/health` → `"email":true`
-3. **발신 도메인**: Resend > **Domains**에 `nfn.co.kr`이 추가돼 있습니다(Region Tokyo, 상태 Not Started, 2026-09-12). Resend 화면의
+3. **발신 도메인 (현재 방향: `projectleadership.cc`, 회신 `now@nfn.co.kr`)**: Resend > Domains에 `projectleadership.cc` 추가됨(Tokyo, 2026-09-12).
+   Cloudflare 대시보드 > projectleadership.cc > DNS > Records에 아래 3개를 **Proxy 끄고(DNS only)** 추가 → Resend에서 **Verify DNS Records**.
+   | 이름 | 타입 | 값 | 우선순위 |
+   |---|---|---|---|
+   | `resend._domainkey` | TXT | `p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDO6wX3ua5/EygrpTMlfBbGcAt1hR4kPPZXyOkFBd7hA/iZ0PFT02UfMtj1PdTcUwn4M85Vo3IfMvEUa6BiwTbD2vQb0Aom7t9/SHmlVAE1b7XCXhHnKXYoIPJ/4ZAx559fWuE33E7q5uZdi9Z55fMDW80eZj+/bfHtPTxSUWVAgQIDAQAB` | |
+   | `send` | MX | `feedback-smtp.ap-northeast-1.amazonses.com` | 10 |
+   | `send` | TXT | `v=spf1 include:amazonses.com ~all` | |
+   (DMARC `_dmarc` TXT `v=DMARC1; p=none;`는 선택. "Enable Receiving"의 `@ MX`는 넣지 않음.)
+   Resend 화면의 **Auto configure > Go to Cloudflare**로 Cloudflare에 로그인·승인하면 위 레코드가 자동으로 들어갑니다.
+
+   (예비안) Resend > **Domains**에 `nfn.co.kr`도 추가돼 있습니다(Region Tokyo, 상태 Not Started, 2026-09-12). Resend 화면의
    **DNS Records** 표에 있는 **보내기용 3개**를 nfn.co.kr의 DNS(**AWS Route 53**)에 추가한 뒤 **Verify DNS Records**:
    | 이름 | 타입 | 값 |
    |---|---|---|
