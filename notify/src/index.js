@@ -57,9 +57,16 @@ async function route(request, env, ctx) {
     }
     // ?deep=1 with the email key set → which sender domains Resend has, and whether MAIL_FROM's domain is verified
     if (url.searchParams.get('deep') === '1' && env.RESEND_API_KEY) {
-      const r = await fetch('https://api.resend.com/domains', { headers: { Authorization: `Bearer ${env.RESEND_API_KEY}` } });
+      const k = env.RESEND_API_KEY;
+      body.resend_key = { len: k.length, prefix: k.slice(0, 3) };   // shape only — never the value
+      // empty POST: a valid key gets a 422 validation error, an invalid one 401/400
+      const p = await fetch('https://api.resend.com/emails', { method: 'POST', headers: { Authorization: `Bearer ${k}`, 'Content-Type': 'application/json' }, body: '{}' });
+      const pd = await p.json().catch(() => ({}));
+      body.resend = /api key/i.test(pd.message || '') ? `invalid (${pd.message})`
+                  : p.status === 422 || /missing|required/i.test(pd.message || '') ? 'ok' : `unknown (${p.status} ${pd.message || ''})`.trim();
+      const r = await fetch('https://api.resend.com/domains', { headers: { Authorization: `Bearer ${k}` } });
       const d = await r.json().catch(() => ({}));
-      body.email_domains = r.ok ? (d.data || []).map(x => ({ name: x.name, status: x.status, region: x.region })) : `resend ${r.status}`;
+      body.email_domains = r.ok ? (d.data || []).map(x => ({ name: x.name, status: x.status, region: x.region })) : `resend ${r.status} ${d.message || ''}`.trim();
       const dom = (env.MAIL_FROM.match(/@([^>\s]+)/) || [])[1];
       body.mail_from = env.MAIL_FROM;
       body.mail_from_verified = r.ok ? (d.data || []).some(x => x.name === dom && x.status === 'verified') : null;
