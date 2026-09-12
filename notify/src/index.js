@@ -452,8 +452,13 @@ async function sendEmail(env, m, from = env.MAIL_FROM) {
   });
   const d = await r.json().catch(() => ({}));
   if (!r.ok) {
-    // sender domain not verified yet → retry once with the fallback sender (already-verified domain), if configured
-    if (/not verified/i.test(d.message || '') && env.MAIL_FROM_FALLBACK && from !== env.MAIL_FROM_FALLBACK) return sendEmail(env, m, env.MAIL_FROM_FALLBACK);
+    // sender domain not verified yet → walk the fallback chain: MAIL_FROM_FALLBACK, then Resend's own test sender
+    // (onboarding@resend.dev — Resend delivers it only to the account owner's address, which is fine for a first test)
+    if (/not verified/i.test(d.message || '')) {
+      const chain = [env.MAIL_FROM_FALLBACK, 'PLI 리더십 인사이트 <onboarding@resend.dev>'].filter(Boolean);
+      const next = chain[chain.indexOf(from) + 1];
+      if (next) return sendEmail(env, m, next);
+    }
     const e = new Error(d.message || `resend ${r.status}`); e.code = d.name || r.status; throw e;
   }
   return { ...d, from };
