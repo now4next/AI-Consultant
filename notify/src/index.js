@@ -36,8 +36,23 @@ async function route(request, env, ctx) {
   const p = url.pathname, m = request.method;
 
   // the site probes this before showing the "카카오톡으로 받기" button, so allow cross-origin reads
-  if (p === '/health') return new Response(JSON.stringify({ ok: true, ready: !!(env.KAKAO_REST_API_KEY && env.KAKAO_CLIENT_SECRET), time: new Date().toISOString() }),
-    { headers: { 'content-type': 'application/json; charset=utf-8', 'access-control-allow-origin': env.SITE, 'cache-control': 'no-store' } });
+  if (p === '/health') {
+    const body = { ok: true, ready: !!(env.KAKAO_REST_API_KEY && env.KAKAO_CLIENT_SECRET), time: new Date().toISOString() };
+    // ?deep=1 → ask kauth with a bogus code; the error code tells whether the app key + client secret are accepted
+    // (KOE320 = credentials fine, code rejected · KOE010 = client secret mismatch · KOE101 = unknown app key)
+    if (url.searchParams.get('deep') === '1' && body.ready) {
+      const r = await fetch('https://kauth.kakao.com/oauth/token', {
+        method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ grant_type: 'authorization_code', client_id: env.KAKAO_REST_API_KEY, client_secret: env.KAKAO_CLIENT_SECRET,
+          redirect_uri: env.KAKAO_REDIRECT_URI, code: 'probe' }),
+      });
+      const d = await r.json().catch(() => ({}));
+      body.probe = d.error_code || d.error || 'ok';
+      body.secret = d.error_code === 'KOE320' ? 'ok' : d.error_code === 'KOE010' ? 'mismatch' : 'unknown';
+    }
+    return new Response(JSON.stringify(body),
+      { headers: { 'content-type': 'application/json; charset=utf-8', 'access-control-allow-origin': env.SITE, 'cache-control': 'no-store' } });
+  }
   if (p === '/' ) return Response.redirect(`${env.SITE}/#subscribe`, 302);
 
   if (p === '/kakao/start' && m === 'GET') return kakaoStart(env);

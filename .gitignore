@@ -6,3 +6,4 @@ _dryrun_*.html
 notify/node_modules/
 notify/.wrangler/
 notify/.dev.vars
+notify/.secret.txt
