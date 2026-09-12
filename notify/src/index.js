@@ -36,7 +36,7 @@ async function route(request, env, ctx) {
   const p = url.pathname, m = request.method;
 
   // the site probes this before showing the "카카오톡으로 받기" button, so allow cross-origin reads
-  if (p === '/health') return new Response(JSON.stringify({ ok: true, time: new Date().toISOString() }),
+  if (p === '/health') return new Response(JSON.stringify({ ok: true, ready: !!(env.KAKAO_REST_API_KEY && env.KAKAO_CLIENT_SECRET), time: new Date().toISOString() }),
     { headers: { 'content-type': 'application/json; charset=utf-8', 'access-control-allow-origin': env.SITE, 'cache-control': 'no-store' } });
   if (p === '/' ) return Response.redirect(`${env.SITE}/#subscribe`, 302);
 

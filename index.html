@@ -627,7 +627,7 @@
     // show the Kakao option only when the notify worker is live; otherwise go straight to email
     const ac=new AbortController(); const timer=setTimeout(()=>ac.abort(), 3000);
     fetch('https://notify.projectleadership.cc/health', {mode:'cors', signal:ac.signal, cache:'no-store'})
-      .then(r=>r.ok?r.json():Promise.reject()).then(j=>{ if(!j.ok) throw 0; k.hidden=false; t.hidden=false; })
+      .then(r=>r.ok?r.json():Promise.reject()).then(j=>{ if(!j.ok||!j.ready) throw 0; k.hidden=false; t.hidden=false; })
       .catch(()=>{ f.hidden=false; })
       .finally(()=>clearTimeout(timer));
   })();
