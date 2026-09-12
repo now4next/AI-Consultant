@@ -22,9 +22,11 @@ Cloudflare Worker + D1. 구독자가 카카오 동의 1탭으로 신청하고, �
 `wrangler.toml`의 `MAIL_FROM`(`insight@projectleadership.cc`)입니다. 이 도메인이 resend.com/domains에서
 아직 검증되지 않았으면 워커가 자동으로 `MAIL_FROM_FALLBACK`(이미 검증된 `noreply@99wisdombook.org`)로 보냅니다.
 
-흐름: 사이트 폼에 주소 입력 → `POST /email/start` → **설정 링크 메일** → 링크에서 요일·시간·주제 저장(=신청 완료, 환영 메일)
-→ 정해진 시간에 **표지 + 핵심 문장 + 이 글의 용어 + 도입부 두 문단 + 이어서 읽기** 메일. 모든 메일에 설정 변경·그만 받기 링크와
-`List-Unsubscribe` 헤더가 붙습니다. 디자인 확인: `https://notify.projectleadership.cc/email/preview?vol=42&kind=issue|welcome|link|exhausted`.
+흐름: 사이트 폼에 주소 입력 → `POST /email/start` → 바로 **설정 페이지**(카카오와 같은 화면) → 저장 시 **확인 메일**(주소 검증 겸)과
+**첫 편**이 즉시 발송 → 이후 정해진 시간에 **표지 + 핵심 문장 + 이 글의 용어 + 도입부 두 문단 + 이어서 읽기** 메일.
+이미 신청된 주소를 다시 넣으면 설정 페이지 대신 그 주소로 관리 링크 메일을 보냅니다(남의 설정을 열 수 없게). 설정 페이지의
+**테스트 메일 다시 보내기**는 1분에 한 번. 모든 메일에 설정 변경·그만 받기 링크와 `List-Unsubscribe` 헤더가 붙습니다.
+디자인 확인: `https://notify.projectleadership.cc/email/preview?vol=42&kind=issue|welcome|link|exhausted`.
 
 ## 1. 배포
 

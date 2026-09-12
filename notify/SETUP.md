@@ -163,7 +163,8 @@ npx wrangler deploy
 3. **발신 도메인**: Resend > **Domains > Add Domain** → `projectleadership.cc` (Region: Tokyo) → 표시되는 DNS 레코드 3개(MX·SPF TXT·DKIM TXT)를
    Cloudflare 대시보드 > projectleadership.cc > DNS에 **Proxy 끄고(DNS only)** 그대로 추가 → Resend에서 **Verify**. 검증 전까지는
    워커가 자동으로 `noreply@99wisdombook.org`(이미 검증됨)로 보내므로 테스트는 바로 가능합니다.
-4. 테스트: 홈 하단 **이메일로 받기** → 주소 입력 → 설정 링크 메일 → 요일·시간 저장 → 환영 메일. 즉시 1편:
+4. 테스트: 홈 하단 **이메일로 받기** → 주소 입력 → 바로 설정 페이지 → 요일·시간 저장 → 확인 메일 + 첫 편이 즉시 도착.
+   안 오면 설정 페이지의 **테스트 메일 다시 보내기**(실패 사유가 화면에 표시됩니다). 이미 받은 편 외에 1편 더 보내려면:
    ```bash
    npx wrangler d1 execute pli-notify-db --remote --command "SELECT id, channel, email, status FROM subscribers"
    curl -X POST "https://notify.projectleadership.cc/cron/run?id=<id>&force=1" -H "Authorization: Bearer <CRON_SECRET>"
