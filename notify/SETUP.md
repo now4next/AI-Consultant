@@ -160,8 +160,8 @@ npx wrangler deploy
    cd C:/Users/User/AI-Consultant-main/notify; ((Get-Clipboard -Raw) -replace '[^\x20-\x7E]','') | npx wrangler secret put RESEND_API_KEY
    ```
    확인: `curl.exe -s https://notify.projectleadership.cc/health` → `"email":true`
-3. **발신 도메인 (현재 방향: `projectleadership.cc`, 회신 `now@nfn.co.kr`)**: Resend > Domains에 `projectleadership.cc` 추가됨(Tokyo, 2026-09-12).
-   Cloudflare 대시보드 > projectleadership.cc > DNS > Records에 아래 3개를 **Proxy 끄고(DNS only)** 추가 → Resend에서 **Verify DNS Records**.
+3. **발신 도메인: `projectleadership.cc` (검증 완료 2026-09-12 16:11), 회신 `now@nfn.co.kr`** — Resend > Domains에서 Auto configure로
+   Cloudflare에 아래 3개가 자동 등록됐습니다. 참고용 값:
    | 이름 | 타입 | 값 | 우선순위 |
    |---|---|---|---|
    | `resend._domainkey` | TXT | `p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDO6wX3ua5/EygrpTMlfBbGcAt1hR4kPPZXyOkFBd7hA/iZ0PFT02UfMtj1PdTcUwn4M85Vo3IfMvEUa6BiwTbD2vQb0Aom7t9/SHmlVAE1b7XCXhHnKXYoIPJ/4ZAx559fWuE33E7q5uZdi9Z55fMDW80eZj+/bfHtPTxSUWVAgQIDAQAB` | |
