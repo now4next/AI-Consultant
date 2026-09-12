@@ -20,10 +20,10 @@ database_id = "b524cc38-a8be-45b5-80ad-4daa78dd8a93"
 SITE = "https://projectleadership.cc"
 SELF = "https://notify.projectleadership.cc"
 KAKAO_REDIRECT_URI = "https://notify.projectleadership.cc/kakao/callback"
-# email sender (Resend). MAIL_FROM's domain must be verified at resend.com/domains;
-# until then the worker falls back to MAIL_FROM_FALLBACK (a domain already verified in the same Resend account).
-MAIL_FROM = "PLI 리더십 인사이트 <now@nfn.co.kr>"
-MAIL_FROM_FALLBACK = "PLI 리더십 인사이트 <noreply@99wisdombook.org>"
+# email sender (Resend). MAIL_FROM's domain must be verified in the Resend team that owns RESEND_API_KEY;
+# until then the worker falls back to MAIL_FROM_FALLBACK (if set) and finally to Resend's test sender
+# (onboarding@resend.dev, deliverable only to the Resend account owner). Target sender later: now@nfn.co.kr.
+MAIL_FROM = "PLI 리더십 인사이트 <noreply@99wisdombook.org>"
 
 # secrets (wrangler secret put ...):
 #   KAKAO_REST_API_KEY   카카오 디벨로퍼스 REST API 키
