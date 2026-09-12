@@ -22,9 +22,9 @@
  * refresh tokens, per-subscriber no-repeat selection, native Cron Trigger.
  */
 
-const DAYS = ['일', '월', '화', '수', '목', '금', '토'];
-const CATS = ['전략', '사람', '판단', '책임', '성장', '성찰', '역사'];
-const SLOTS = (() => { const a = []; for (let h = 7; h <= 22; h++) for (const m of ['00', '30']) if (!(h === 22 && m === '30')) a.push(`${String(h).padStart(2, '0')}:${m}`); return a; })();
+import { DAYS, CATS, SLOTS, rand, makeToken, readToken, encrypt, decrypt, esc, json, html, log, track } from './lib.js';
+import { adminRoute, recordCron, maybePrune } from './admin.js';
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export default {
@@ -32,7 +32,14 @@ export default {
     try { return await route(request, env, ctx); }
     catch (e) { return html(page('오류', `<p class="err">${esc(e.message || String(e))}</p>`), 500); }
   },
-  async scheduled(event, env, ctx) { ctx.waitUntil(tick(env, {})); },
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil((async () => {
+      const t0 = Date.now();
+      const r = await tick(env, {});
+      await recordCron(env, r, Date.now() - t0);   // /admin/access shows these
+      await maybePrune(env);                        // daily log retention (after 04:00 KST)
+    })());
+  },
 };
 
 // ───────────────────────────────────────────── routing
@@ -76,16 +83,19 @@ async function route(request, env, ctx) {
   }
   if (p === '/' ) return Response.redirect(`${env.SITE}/#subscribe`, 302);
 
-  if (p === '/kakao/start' && m === 'GET') return kakaoStart(env);
-  if (p === '/kakao/callback' && m === 'GET') return kakaoCallback(url, env, ctx);
+  if (p === '/admin' || p.startsWith('/admin/'))
+    return adminRoute(request, env, ctx, url, { tick, loadVolumes, sendEmail, welcomeEmail, sendToMe, textTemplate, freshAccessToken, log });
+
+  if (p === '/kakao/start' && m === 'GET') { track(env, ctx, request, 'kakao_start'); return kakaoStart(env); }
+  if (p === '/kakao/callback' && m === 'GET') return kakaoCallback(request, url, env, ctx);
 
   if (p === '/email/start' && m === 'POST') return emailStart(request, env, ctx);
   if (p === '/email/preview' && m === 'GET') return emailPreview(url, env);
 
-  if (p === '/settings' && m === 'GET') return settingsPage(url, env);
+  if (p === '/settings' && m === 'GET') return settingsPage(request, url, env, ctx);
   if (p === '/settings' && m === 'POST') return settingsSave(request, env, ctx);
   if (p === '/unsubscribe' && m === 'GET') return unsubscribePage(url, env);
-  if (['/pause', '/resume', '/unsubscribe', '/reset', '/test'].includes(p) && m === 'POST') return settingsAction(p.slice(1), request, env);
+  if (['/pause', '/resume', '/unsubscribe', '/reset', '/test'].includes(p) && m === 'POST') return settingsAction(p.slice(1), request, env, ctx);
 
   if (p === '/cron/run' && m === 'POST') {
     const auth = request.headers.get('Authorization') || '';
@@ -108,7 +118,7 @@ async function kakaoStart(env) {
   return Response.redirect('https://kauth.kakao.com/oauth/authorize?' + q, 302);
 }
 
-async function kakaoCallback(url, env, ctx) {
+async function kakaoCallback(request, url, env, ctx) {
   const code = url.searchParams.get('code'), state = url.searchParams.get('state');
   if (!code) return html(page('취소됨', '<p>카카오 동의가 취소되었어요.</p>' + backLink(env)));
   const st = await readToken(env, state);
@@ -127,6 +137,7 @@ async function kakaoCallback(url, env, ctx) {
     sub = { id: rand(16), kakao_uid: uid };
     await env.DB.prepare("INSERT INTO subscribers (id, channel, kakao_uid, refresh_token_enc) VALUES (?, 'kakao', ?, ?)").bind(sub.id, uid, enc).run();
   }
+  track(env, ctx, request, 'kakao_callback', sub.id);
   const t = await makeToken(env, { id: sub.id });
   return Response.redirect(`${env.SELF}/settings?t=${t}`, 302);
 }
@@ -154,6 +165,7 @@ async function emailStart(request, env, ctx) {
     await env.DB.prepare("INSERT INTO subscribers (id, channel, email) VALUES (?, 'email', ?)").bind(sub.id, email).run();
   }
   const t = await makeToken(env, { id: sub.id });
+  track(env, ctx, request, 'email_start', sub.id, { existing: sub.status !== 'pending' });
 
   // already set up → don't hand the manage page to whoever typed the address; mail the link to the mailbox owner instead
   if (sub.status !== 'pending') {
@@ -190,10 +202,11 @@ async function subFromToken(url_or_req, env) {
   return env.DB.prepare('SELECT * FROM subscribers WHERE id = ?').bind(tok.id).first();
 }
 
-async function settingsPage(url, env) {
+async function settingsPage(request, url, env, ctx) {
   const sub = await subFromToken(url, env);
   if (!sub) return html(page('링크 만료', '<p>이 링크는 더 이상 유효하지 않아요. 홈에서 다시 신청해 주세요.</p>' + backLink(env)), 401);
   const t = url.searchParams.get('t');
+  if (![...url.searchParams.keys()].some(k => ['saved', 'resumed', 'reset', 'test', 'mailerr'].includes(k))) track(env, ctx, request, 'settings_view', sub.id);
   const isEmail = sub.channel === 'email';
   const q = k => url.searchParams.get(k);
   const flash = q('mailerr') ? `<span class="err">설정은 저장됐지만 확인 메일을 보내지 못했어요: ${esc(q('mailerr'))}</span>` :
@@ -267,6 +280,7 @@ async function settingsSave(request, env, ctx) {
 
   const saved = { ...sub, days: days.join(','), slot, cats: cats.join(','), mode, status };
   const t = form.get('t');
+  track(env, ctx, request, 'settings_save', sub.id, { first, days: days.join(','), slot, cats: cats.join(','), mode });
   if (first && sub.channel === 'email') {
     // the welcome mail doubles as the address check, so send it before answering and surface a failure on the page;
     // the first issue follows right away instead of waiting for the slot
@@ -298,11 +312,12 @@ async function unsubscribePage(url, env) {
   </div>`));
 }
 
-async function settingsAction(action, request, env) {
+async function settingsAction(action, request, env, ctx) {
   const form = await request.formData().catch(() => new FormData());
   const t = form.get('t') || new URL(request.url).searchParams.get('t');   // query fallback: RFC 8058 one-click unsubscribe
   const tok = await readToken(env, t);
   if (!tok?.id) return html(page('링크 만료', '<p>이 링크는 더 이상 유효하지 않아요.</p>' + backLink(env)), 401);
+  track(env, ctx, request, action, tok.id);
   if (action === 'unsubscribe') {
     await env.DB.prepare('DELETE FROM subscribers WHERE id = ?').bind(tok.id).run();
     await env.DB.prepare('DELETE FROM sends WHERE subscriber_id = ?').bind(tok.id).run();
@@ -476,9 +491,6 @@ function issueTemplate(env, v, manageUrl) {
 function textTemplate(text, url, buttonTitle) {
   return { object_type: 'text', text, link: { web_url: url, mobile_web_url: url }, button_title: buttonTitle };
 }
-async function log(env, sid, vol, kind, ok, error) {
-  await env.DB.prepare('INSERT INTO sends (subscriber_id, vol, kind, ok, error) VALUES (?, ?, ?, ?, ?)').bind(sid, vol, kind, ok ? 1 : 0, error || null).run();
-}
 
 // ───────────────────────────────────────────── email (Resend)
 async function sendEmail(env, m, from = env.MAIL_FROM) {
@@ -616,28 +628,7 @@ async function fetchExcerpt(env, v) {
   return out;
 }
 
-// ───────────────────────────────────────────── crypto (Web Crypto only)
-const te = new TextEncoder(), td = new TextDecoder();
-const b64u = b => btoa(String.fromCharCode(...b)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-const ub64u = s => { s = s.replace(/-/g, '+').replace(/_/g, '/'); while (s.length % 4) s += '='; return Uint8Array.from(atob(s), c => c.charCodeAt(0)); };
-const rand = n => b64u(crypto.getRandomValues(new Uint8Array(n)));
-async function hmacKey(env) { return crypto.subtle.importKey('raw', te.encode(env.SIGNING_KEY), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']); }
-async function sign(env, s) { return b64u(new Uint8Array(await crypto.subtle.sign('HMAC', await hmacKey(env), te.encode(s)))); }
-async function makeToken(env, payload) { const p = b64u(te.encode(JSON.stringify(payload))); return `${p}.${await sign(env, p)}`; }
-async function readToken(env, t) {
-  if (!t || !t.includes('.')) return null;
-  const [p, s] = t.split('.');
-  if ((await sign(env, p)) !== s) return null;
-  try { return JSON.parse(td.decode(ub64u(p))); } catch { return null; }
-}
-async function aesKey(env) { const raw = await crypto.subtle.digest('SHA-256', te.encode('aes:' + env.SIGNING_KEY)); return crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['encrypt', 'decrypt']); }
-async function encrypt(env, text) { const iv = crypto.getRandomValues(new Uint8Array(12)); const ct = new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, await aesKey(env), te.encode(text))); return `${b64u(iv)}.${b64u(ct)}`; }
-async function decrypt(env, s) { const [iv, ct] = s.split('.'); return td.decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: ub64u(iv) }, await aesKey(env), ub64u(ct))); }
-
-// ───────────────────────────────────────────── html
-const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const json = (o, status = 200) => new Response(JSON.stringify(o), { status, headers: { 'content-type': 'application/json; charset=utf-8' } });
-const html = (s, status = 200) => new Response(s, { status, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' } });
+// ───────────────────────────────────────────── html (crypto + esc/json/html live in lib.js)
 const backLink = env => `<p><a class="btn ghost" href="${env.SITE}/#subscribe">홈으로</a></p>`;
 
 function page(title, body) {

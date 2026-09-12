@@ -62,7 +62,14 @@ wrangler deploy                            # custom_domain → notify.projectlea
 `index.html` 하단 섹션의 "카카오톡으로 받기" 버튼 → `https://notify.projectleadership.cc/kakao/start`.
 콘텐츠는 `data/volumes.json`과 `assets/og/vol-NN.jpg`를 그대로 읽으므로, 새 편을 발행하면 별도 배포 없이 후보에 들어갑니다.
 
-## 4. 운영 메모
+## 4. 관리자 대시보드 (`/admin`)
+
+`src/admin.js`. `ADMIN_USER` 변수 + `ADMIN_PASS_HASH` 시크릿(PBKDF2, `scripts/hash-password.js`)으로 로그인.
+개요(채널·상태별 수, 오늘 발송, 마지막 크론, 30일 그래프) · 신청자(필터·검색·CSV·상세·조치) · 발송 기록(필터·재시도) ·
+접속 기록(신청 흐름 이벤트 + 크론 실행) · 설정(비밀번호 변경·연동 상태·보존 기간). 세션 12시간 서명 쿠키, CSRF 토큰,
+5회 실패 잠금, 관리자 행동은 모두 `access_log`에 기록. 로컬 확인: `.dev.vars`에 `ADMIN_PASS_HASH`를 넣고 `npx wrangler dev`.
+
+## 5. 운영 메모
 
 - refresh token은 AES-GCM으로 암호화 저장(`SIGNING_KEY`). 매주 발송이 곧 토큰 갱신이라 활성 구독자는 만료되지 않음.
 - 카카오 연결 끊김(`invalid_grant`)은 자동 해지, 그 외 실패 3회 연속이면 `paused`.

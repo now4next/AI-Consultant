@@ -188,6 +188,22 @@ npx wrangler deploy
    curl -X POST "https://notify.projectleadership.cc/cron/run?id=<id>&force=1" -H "Authorization: Bearer <CRON_SECRET>"
    ```
 
+## 7단계 · 관리자 대시보드 (`/admin`)
+
+신청자 목록·발송 기록·접속 기록·설정을 보는 화면입니다. 관리자 1명, ID/PW 하나. 기획: `docs/admin-dashboard-plan.md`.
+
+1. 아이디는 `wrangler.toml`의 `ADMIN_USER`(기본 `admin`). 바꾸려면 값을 고치고 `npx wrangler deploy`.
+2. 비밀번호(8자 이상, 영문·숫자·기호)를 정해 **클립보드에 복사**한 뒤, 아래를 Run. 비밀번호는 해시로만 저장되고 화면에 보이지 않습니다.
+   ```powershell
+   cd C:/Users/User/AI-Consultant-main/notify; ((Get-Clipboard -Raw) -replace '[^\x20-\x7E]','') | node scripts/hash-password.js | npx wrangler secret put ADMIN_PASS_HASH
+   ```
+3. https://notify.projectleadership.cc/admin/login 에서 로그인. 5회 실패 시 15분 잠금, 세션 12시간.
+4. 비밀번호는 이후 **설정 > 관리자 비밀번호**에서 바꿀 수 있습니다(D1에 저장되어 시크릿보다 우선). 잊어버리면 2번을 다시 실행하고
+   `npx wrangler d1 execute pli-notify-db --remote --command "DELETE FROM admin_state WHERE key='pass_hash'"`.
+5. 선택: 특정 IP에서만 열리게 하려면 `wrangler.toml`의 `ADMIN_ALLOW_IPS`에 IP를 적고 배포. 더 강하게는 Cloudflare Zero Trust Access를 `/admin`에 붙이면 이메일 OTP가 추가됩니다.
+
+데이터: `migrate-002-admin.sql`(적용 완료)로 `access_log`·`cron_runs`·`admin_state`가 추가됐습니다. 접속 기록 90일, 발송 기록 1년 보관 후 매일 04:00(KST) 이후 첫 크론에서 정리(설정에서 변경 가능).
+
 ## 자주 나오는 오류
 
 | 증상 | 원인 → 조치 |
