@@ -3,6 +3,8 @@
 """
 One-off (idempotent) upgrade of every published volume page:
 
+  cat      hero carries data-cat; the "Deep read" label names the category with an accent dot
+  fonts    font diet: unused Playfair uprights and two Noto Serif KR weights dropped
   dark     prefers-color-scheme: dark palette for the reading page
   related  "Mentioned in this issue" block built from the Vol. NN references in the body
   rail     section markers on the top progress bar (click to jump)
@@ -101,10 +103,41 @@ RAIL_JS = """<script>
 """
 
 
+CAT_CSS = """
+  /* cat:start */
+  :root{--c-strategy:#2b6cb0;--c-people:#c2410c;--c-judgment:#6b21a8;--c-duty:#b45309;--c-growth:#15803d;--c-reflect:#0e7490;--c-history:#7c2d12}
+  @media (prefers-color-scheme: dark){:root{--c-strategy:#7fb3ff;--c-people:#ffa27a;--c-judgment:#c9a0ff;--c-duty:#f6bd5c;--c-growth:#5ce08c;--c-reflect:#5ccdf5;--c-history:#dca877}}
+  .hero[data-cat="전략"]{--cc:var(--c-strategy)} .hero[data-cat="사람"]{--cc:var(--c-people)} .hero[data-cat="판단"]{--cc:var(--c-judgment)}
+  .hero[data-cat="책임"]{--cc:var(--c-duty)} .hero[data-cat="성장"]{--cc:var(--c-growth)} .hero[data-cat="성찰"]{--cc:var(--c-reflect)} .hero[data-cat="역사"]{--cc:var(--c-history)}
+  .hero .eyebrow-row .r::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--cc,var(--muted));margin-right:8px;vertical-align:1px}
+  /* cat:end */
+"""
+
+FONT_DIET = [
+    (r"family=Playfair\+Display:ital,wght@[^&\"]*", "family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,500"),
+    (r"family=Noto\+Serif\+KR:wght@[^&\"]*", "family=Noto+Serif+KR:wght@400;700"),
+]
+
+
 def upgrade(path, reg):
     s = open(path, encoding="utf-8").read()
     n = int(re.search(r"insight(?:-vol-(\d+))?\.html", os.path.basename(path)).group(1) or 1)
     done = []
+
+    # --- category accent: hero carries data-cat, the "Deep read" label names the category
+    cat = next((v["cat"] for v in reg if v["vol"] == n), None)
+    if cat and "/* cat:start */" not in s:
+        s = s.replace("</style>", CAT_CSS + "</style>", 1)
+        s = s.replace('<section class="hero">', f'<section class="hero" data-cat="{cat}">', 1)
+        s = re.sub(r'<span class="r">(Deep read|Long read)</span>', lambda m: f'<span class="r">{cat} · {m.group(1)}</span>', s, count=1)
+        done.append("cat")
+
+    # --- font diet: drop unused Playfair uprights and two Noto Serif KR weights (the heavy CJK file)
+    before = s
+    for pat, rep in FONT_DIET:
+        s = re.sub(pat, rep, s, count=1)
+    if s != before:
+        done.append("fonts")
 
     # --- tokens for translucent ink/accent, so dark mode can retint them
     if "--ink-rgb:" not in s.split("</style>", 1)[0].split("@media (prefers-color-scheme")[0]:

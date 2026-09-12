@@ -123,10 +123,10 @@ def render_page(spec, body, prev, prev2, shell_src):
   <div class="R">Vol. {n:02d}</div>
 </header>
 
-<section class="hero">
+<section class="hero" data-cat="{spec["home"]["cat"]}">
   <div class="eyebrow-row">
     <span class="k">{spec["eyebrow"]}</span>
-    <span class="r">Deep read</span>
+    <span class="r">{spec["home"]["cat"]} · Deep read</span>
   </div>
 
   <div class="text-block">

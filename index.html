@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+KR:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,500&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+KR:wght@400;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#ffffff; --surface:#f6f6f6; --surface-2:#efefef;
@@ -77,7 +77,7 @@
 
   /* Weekly Insight (top spotlight) */
   .weekly{border-bottom:1px solid var(--line);padding-top:44px}
-  .spot{display:grid;grid-template-columns:300px 1fr;gap:32px;align-items:center;
+  .spot{display:grid;grid-template-columns:360px 1fr;gap:36px;align-items:center;
     background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
   .spot .cover{border-radius:10px;overflow:hidden;border:1px solid var(--ink);aspect-ratio:948/1659;background:#000}
   .spot .cover img{width:100%;height:100%;object-fit:cover}
@@ -187,6 +187,16 @@
     .mascot img{filter:drop-shadow(0 14px 30px rgba(0,0,0,.7))}
   }
   /* dark:end */
+  /* cat:start */
+  :root{--c-strategy:#2b6cb0;--c-people:#c2410c;--c-judgment:#6b21a8;--c-duty:#b45309;--c-growth:#15803d;--c-reflect:#0e7490;--c-history:#7c2d12}
+  @media (prefers-color-scheme: dark){:root{--c-strategy:#7fb3ff;--c-people:#ffa27a;--c-judgment:#c9a0ff;--c-duty:#f6bd5c;--c-growth:#5ce08c;--c-reflect:#5ccdf5;--c-history:#dca877}}
+  [data-cat="전략"],[data-f="전략"]{--cc:var(--c-strategy)} [data-cat="사람"],[data-f="사람"]{--cc:var(--c-people)}
+  [data-cat="판단"],[data-f="판단"]{--cc:var(--c-judgment)} [data-cat="책임"],[data-f="책임"]{--cc:var(--c-duty)}
+  [data-cat="성장"],[data-f="성장"]{--cc:var(--c-growth)} [data-cat="성찰"],[data-f="성찰"]{--cc:var(--c-reflect)} [data-cat="역사"],[data-f="역사"]{--cc:var(--c-history)}
+  .chip::before,.card .tag::before,.spot .no::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--cc);margin-right:7px;vertical-align:1px}
+  .chip[data-f="all"]::before{display:none}
+  .chip.on::before{box-shadow:0 0 0 2px rgba(255,255,255,.35)}
+  /* cat:end */
 </style>
 </head>
 <body>
