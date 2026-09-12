@@ -162,7 +162,10 @@
   footer .big{display:flex;align-items:baseline;gap:9px;margin-bottom:8px}
   footer .ftag{font-family:var(--serif);font-size:15px;color:var(--muted);margin-bottom:18px;word-break:keep-all}
   .big .mark{font-size:26px}.big .sep{font-size:18px}.big .full{font-size:13.5px}
-  footer .cr{margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted-2)}
+  footer .cr{margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted-2);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  footer .admin{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid var(--line);border-radius:999px;color:var(--muted-2);opacity:.75;transition:.15s;text-decoration:none}
+  footer .admin:hover{color:var(--ink);border-color:var(--ink);opacity:1}
+  footer .admin svg{width:15px;height:15px;display:block}
   /* ---- generated cover component (.gcover) — data-driven, scales with width ---- */
   .gcover{container-type:inline-size;position:relative;aspect-ratio:600/1050;overflow:hidden;
     background:linear-gradient(158deg,var(--c1,#16233a),var(--c2,#080b12));color:#fff}
@@ -582,7 +585,8 @@
       <a href="#archive">아카이브</a>
       <a href="#subscribe">구독</a>
     </div>
-    <div class="cr">© 2026 Project Leadership Insight · 부엉이 <strong>플리</strong>와 <strong>플리더</strong>들 · projectleadership.cc</div>
+    <div class="cr"><span>© 2026 Project Leadership Insight · 부엉이 <strong>플리</strong>와 <strong>플리더</strong>들 · projectleadership.cc</span>
+      <a class="admin" href="https://notify.projectleadership.cc/admin/login" rel="nofollow noopener" aria-label="관리자 페이지" title="관리자"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></a></div>
   </div>
 </footer>
 
