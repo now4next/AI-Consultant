@@ -85,7 +85,7 @@ async function route(request, env, ctx) {
   if (p === '/settings' && m === 'GET') return settingsPage(url, env);
   if (p === '/settings' && m === 'POST') return settingsSave(request, env, ctx);
   if (p === '/unsubscribe' && m === 'GET') return unsubscribePage(url, env);
-  if (['/pause', '/resume', '/unsubscribe', '/reset'].includes(p) && m === 'POST') return settingsAction(p.slice(1), request, env);
+  if (['/pause', '/resume', '/unsubscribe', '/reset', '/test'].includes(p) && m === 'POST') return settingsAction(p.slice(1), request, env);
 
   if (p === '/cron/run' && m === 'POST') {
     const auth = request.headers.get('Authorization') || '';
@@ -154,9 +154,17 @@ async function emailStart(request, env, ctx) {
     await env.DB.prepare("INSERT INTO subscribers (id, channel, email) VALUES (?, 'email', ?)").bind(sub.id, email).run();
   }
   const t = await makeToken(env, { id: sub.id });
-  ctx.waitUntil(sendEmail(env, linkEmail(env, sub, t))
-    .then(r => log(env, sub.id, null, 'link', true, via(env, r)), e => log(env, sub.id, null, 'link', false, e.message || String(e))));
-  return reply(true, `${email} 로 설정 링크를 보냈어요. 메일의 버튼을 누르면 요일·시간·주제를 고를 수 있어요. 안 보이면 스팸함도 확인해 주세요.`);
+
+  // already set up → don't hand the manage page to whoever typed the address; mail the link to the mailbox owner instead
+  if (sub.status !== 'pending') {
+    ctx.waitUntil(sendEmail(env, linkEmail(env, sub, t))
+      .then(r => log(env, sub.id, null, 'link', true, via(env, r)), e => log(env, sub.id, null, 'link', false, e.message || String(e))));
+    return reply(true, `${email} 은 이미 신청된 주소예요. 설정을 바꿀 수 있는 링크를 그 주소로 보냈어요.`);
+  }
+  // new address → straight to the settings page (same page as the Kakao flow); saving there sends the first mails
+  const settings = `${env.SELF}/settings?t=${t}`;
+  if (wantsJson) return new Response(JSON.stringify({ ok: true, url: settings }), { headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', ...cors } });
+  return Response.redirect(settings, 302);
 }
 
 async function emailPreview(url, env) {
@@ -187,9 +195,15 @@ async function settingsPage(url, env) {
   if (!sub) return html(page('링크 만료', '<p>이 링크는 더 이상 유효하지 않아요. 홈에서 다시 신청해 주세요.</p>' + backLink(env)), 401);
   const t = url.searchParams.get('t');
   const isEmail = sub.channel === 'email';
-  const flash = url.searchParams.get('saved') ? (isEmail ? '설정을 저장했어요. 메일함에서 환영 메일을 확인해 보세요.' : '설정을 저장했어요. 카카오톡 <b>나와의 채팅</b>을 확인해 보세요.') :
-                url.searchParams.get('resumed') ? '알림을 다시 켰어요.' :
-                url.searchParams.get('reset') ? '받은 편 기록을 지웠어요. 다시 처음부터 골라 보내드릴게요.' : '';
+  const q = k => url.searchParams.get(k);
+  const flash = q('mailerr') ? `<span class="err">설정은 저장됐지만 확인 메일을 보내지 못했어요: ${esc(q('mailerr'))}</span>` :
+                q('saved') ? (isEmail ? `설정을 저장했어요. 확인 메일과 첫 편을 <b>${esc(sub.email)}</b>로 보냈어요. 1~2분 안에 안 보이면 스팸함을 확인하거나 아래 <b>테스트 메일 다시 보내기</b>를 눌러 주세요.`
+                                      : '설정을 저장했어요. 카카오톡 <b>나와의 채팅</b>을 확인해 보세요.') :
+                q('test') === '1' ? `테스트 메일을 <b>${esc(sub.email)}</b>로 다시 보냈어요.` :
+                q('test') === 'wait' ? '방금 보냈어요. 1분 뒤에 다시 시도해 주세요.' :
+                q('test') ? `<span class="err">테스트 메일을 보내지 못했어요: ${esc(q('test'))}</span>` :
+                q('resumed') ? '알림을 다시 켰어요.' :
+                q('reset') ? '받은 편 기록을 지웠어요. 다시 처음부터 골라 보내드릴게요.' : '';
   return html(page('알림 설정', settingsForm(sub, t, flash, env)));
 }
 
@@ -228,6 +242,7 @@ function settingsForm(sub, t, flash, env) {
   <div class="row">
     <form method="post" action="${paused ? '/resume' : '/pause'}"><input type="hidden" name="t" value="${esc(t)}"><button class="btn ghost">${paused ? '다시 받기' : '일시정지'}</button></form>
     <form method="post" action="/reset"><input type="hidden" name="t" value="${esc(t)}"><button class="btn ghost">받은 편 기록 지우기</button></form>
+    ${isEmail ? `<form method="post" action="/test"><input type="hidden" name="t" value="${esc(t)}"><button class="btn ghost">테스트 메일 다시 보내기</button></form>` : ''}
     <form method="post" action="/unsubscribe" onsubmit="return confirm('정말 그만 받을까요? 설정과 연결 정보가 모두 삭제돼요.')"><input type="hidden" name="t" value="${esc(t)}"><button class="btn danger">그만 받기</button></form>
   </div>`}
   <p class="fine">저장하는 정보는 ${isEmail ? '이메일 주소와 위 설정뿐이에요. 이름·전화번호는 받지 않아요.' : '카카오 회원번호, 암호화된 발송 토큰, 위 설정뿐이에요. 이름·전화번호·이메일은 받지 않아요.'} 그만 받기를 누르면 즉시 삭제돼요. · <a href="${env.SITE}/">projectleadership.cc</a></p>`;
@@ -250,9 +265,25 @@ async function settingsSave(request, env, ctx) {
   await env.DB.prepare("UPDATE subscribers SET days=?, slot=?, cats=?, mode=?, status=?, updated_at=datetime('now') WHERE id=?")
     .bind(days.join(','), slot, cats.join(','), mode, status, sub.id).run();
 
-  if (first) ctx.waitUntil(sendWelcome(env, { ...sub, days: days.join(','), slot, cats: cats.join(','), mode }, form.get('t'))
-    .then(r => log(env, sub.id, null, 'welcome', true, via(env, r)), e => log(env, sub.id, null, 'welcome', false, e.message || String(e))));
-  return Response.redirect(`${env.SELF}/settings?t=${form.get('t')}&saved=1`, 302);
+  const saved = { ...sub, days: days.join(','), slot, cats: cats.join(','), mode, status };
+  const t = form.get('t');
+  if (first && sub.channel === 'email') {
+    // the welcome mail doubles as the address check, so send it before answering and surface a failure on the page;
+    // the first issue follows right away instead of waiting for the slot
+    try {
+      const r = await sendWelcome(env, saved, t);
+      await log(env, sub.id, null, 'welcome', true, via(env, r));
+    } catch (e) {
+      const msg = e.message || String(e);
+      await log(env, sub.id, null, 'welcome', false, msg);
+      return Response.redirect(`${env.SELF}/settings?t=${t}&mailerr=${encodeURIComponent(msg)}`, 302);
+    }
+    ctx.waitUntil(tick(env, { id: sub.id, force: true }).catch(() => {}));
+  } else if (first) {
+    ctx.waitUntil(sendWelcome(env, saved, t)
+      .then(r => log(env, sub.id, null, 'welcome', true, via(env, r)), e => log(env, sub.id, null, 'welcome', false, e.message || String(e))));
+  }
+  return Response.redirect(`${env.SELF}/settings?t=${t}&saved=1`, 302);
 }
 
 async function unsubscribePage(url, env) {
@@ -280,6 +311,14 @@ async function settingsAction(action, request, env) {
   if (action === 'pause') { await env.DB.prepare("UPDATE subscribers SET status='paused', updated_at=datetime('now') WHERE id=?").bind(tok.id).run(); return Response.redirect(`${env.SELF}/settings?t=${t}`, 302); }
   if (action === 'resume') { await env.DB.prepare("UPDATE subscribers SET status='active', fail_count=0, updated_at=datetime('now') WHERE id=?").bind(tok.id).run(); return Response.redirect(`${env.SELF}/settings?t=${t}&resumed=1`, 302); }
   if (action === 'reset') { await env.DB.prepare("UPDATE subscribers SET sent_vols='', status=CASE WHEN status='exhausted' THEN 'active' ELSE status END, updated_at=datetime('now') WHERE id=?").bind(tok.id).run(); return Response.redirect(`${env.SELF}/settings?t=${t}&reset=1`, 302); }
+  if (action === 'test') {   // re-send the welcome/test mail (email channel), at most once a minute
+    const sub = await env.DB.prepare('SELECT * FROM subscribers WHERE id = ?').bind(tok.id).first();
+    if (!sub || sub.channel !== 'email') return json({ error: 'bad action' }, 400);
+    const recent = await env.DB.prepare("SELECT 1 AS x FROM sends WHERE subscriber_id=? AND kind IN ('welcome','test') AND ok=1 AND sent_at > datetime('now','-60 seconds') LIMIT 1").bind(sub.id).first();
+    if (recent) return Response.redirect(`${env.SELF}/settings?t=${t}&test=wait`, 302);
+    try { const r = await sendEmail(env, welcomeEmail(env, sub, t, true)); await log(env, sub.id, null, 'test', true, via(env, r)); return Response.redirect(`${env.SELF}/settings?t=${t}&test=1`, 302); }
+    catch (e) { const msg = e.message || String(e); await log(env, sub.id, null, 'test', false, msg); return Response.redirect(`${env.SELF}/settings?t=${t}&test=${encodeURIComponent(msg)}`, 302); }
+  }
   return json({ error: 'bad action' }, 400);
 }
 
@@ -532,17 +571,19 @@ function linkEmail(env, sub, t) {
   return { to: sub.email, subject: '[리더십 인사이트] 알림 설정을 마쳐 주세요', html: emailLayout(env, { preheader: '요일·시간·주제만 고르면 끝나요.', rows, footer: `<a href="${env.SITE}/#subscribe" style="color:#5a554f;">projectleadership.cc</a>에서 신청한 이메일 알림이에요.` }), text };
 }
 
-function welcomeEmail(env, sub, t) {
+function welcomeEmail(env, sub, t, test = false) {
   const f = manageFooter(env, sub, t);
   const nx = nextRun(sub);
   const rows = [
-    h1Row('설정이 끝났어요 🦉'),
-    pRow(`<b>${esc(schedule(sub))}</b>에 아직 읽지 않은 편을 골라 이 주소로 보내드려요.${nx ? ` 첫 편은 <b>${esc(nx)}</b>에 도착해요.` : ''}`),
+    h1Row(test ? '테스트 메일이에요 🦉' : '설정이 끝났어요 🦉'),
+    pRow(test ? '이 메일이 도착했다면 주소와 설정 모두 정상이에요.' : '이 메일이 도착했다면 주소 확인도 끝난 거예요. 첫 편은 지금 바로 이어서 보내드려요.'),
+    pRow(`다음 편부터는 <b>${esc(schedule(sub))}</b>에 아직 읽지 않은 편을 골라 보내드려요.${nx ? ` 다음 도착은 <b>${esc(nx)}</b>예요.` : ''}`),
     pRow('메일에는 표지, 핵심 문장, 이 글의 용어, 도입부 두 문단이 담기고, 나머지는 사이트에서 이어서 읽는 방식이에요.'),
-    row(`padding:18px 28px 0;font-family:${F};font-size:13.5px;line-height:1.7;color:${C.muted};word-break:keep-all;`, '메일이 스팸함으로 들어가면 <b>스팸 아님</b>을 한 번 눌러 주세요. 그 뒤로는 받은편지함으로 와요.'),
+    row(`padding:18px 28px 0;font-family:${F};font-size:13.5px;line-height:1.7;color:${C.muted};word-break:keep-all;`,
+      `메일이 스팸함으로 들어가면 <b>스팸 아님</b>을 한 번 눌러 주세요. 이 알림을 신청한 적이 없다면 <a href="${f.unsub}" style="color:#5a554f;">여기서 바로 그만 받기</a>를 누르면 돼요.`),
     btnRow(`${env.SITE}/`, '지금 나온 편 둘러보기 →', `<a href="${f.manage}" style="font-family:${F};font-size:14px;color:#5a554f;margin-left:16px;">설정 변경</a>`),
   ].join('');
-  const text = `설정이 끝났어요\n\n${schedule(sub)}에 아직 읽지 않은 편을 골라 이 주소로 보내드려요.${nx ? ` 첫 편은 ${nx}에 도착해요.` : ''}\n\n${env.SITE}/\n\n${f.text}`;
+  const text = `설정이 끝났어요\n\n이 메일이 도착했다면 주소 확인도 끝난 거예요. 첫 편은 지금 바로 이어서 보내드려요.\n다음 편부터는 ${schedule(sub)}에 아직 읽지 않은 편을 골라 보내드려요.${nx ? ` 다음 도착은 ${nx}예요.` : ''}\n\n${env.SITE}/\n\n${f.text}`;
   return { to: sub.email, subject: '[리더십 인사이트] 설정이 끝났어요 🦉', html: emailLayout(env, { preheader: `${schedule(sub)}에 한 편씩 보내드려요.`, rows, footer: f.html }), text, unsub: f.unsub };
 }
 

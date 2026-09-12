@@ -564,8 +564,8 @@
         <a class="btn kakao" id="kakaoBtn" href="https://notify.projectleadership.cc/kakao/start" hidden>카카오톡으로 받기 <span class="rec">추천</span></a>
         <button class="btn ghost light" type="button" id="emailToggle" hidden>이메일로 받기</button>
       </div>
-      <form class="subscribe" id="subForm" onsubmit="return subMock(event)" hidden>
-        <input id="email" type="email" placeholder="이메일 주소" aria-label="이메일 주소" required>
+      <form class="subscribe" id="subForm" method="post" action="https://notify.projectleadership.cc/email/start" onsubmit="return subMock(event)" hidden>
+        <input id="email" name="email" type="email" placeholder="이메일 주소" aria-label="이메일 주소" required>
         <button class="btn" type="submit">구독</button>
       </form>
       <div class="note" id="subNote">무료 · 요일과 시간은 내가 정해요 · 언제든 그만 받기</div>
@@ -634,22 +634,14 @@
   })();
   const SUB_ENDPOINT="https://script.google.com/macros/s/AKfycbxWmwn531V2RO8UCCcI8JiMaQlNYQ77Oni6mEiBlcTXSaugsAkDpeUvN6UYfl8duA0O/exec";
   function subMock(ev){
+    // worker live → plain form POST: the worker opens the settings page (요일·시간·주제, same page as Kakao);
+    // saving there sends a confirmation mail plus the first issue right away
+    if(window.__notifyEmail){ const b=ev.target.querySelector('button'); b.disabled=true; b.textContent='이동 중…'; return true; }
     ev.preventDefault();
     const email=(document.getElementById('email').value||'').trim();
     const form=document.getElementById('subForm');
     const note=document.getElementById('subNote');
-    const btn=form.querySelector('button');
-    const escH=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const done=(msg,sub)=>{ form.innerHTML='<div style="font-family:var(--serif);font-size:16px;line-height:1.55;color:#fff;padding:6px 2px;word-break:keep-all">'+msg+'</div>'; note.textContent=sub; };
-    // worker live → real sign-up: the worker mails a settings link (요일·시간·주제), nothing is sent before it is saved
-    if(window.__notifyEmail){
-      btn.disabled=true; btn.textContent='보내는 중…';
-      fetch(NOTIFY+'/email/start',{method:'POST',mode:'cors',headers:{'Accept':'application/json'},body:new URLSearchParams({email})})
-        .then(r=>r.json()).then(j=>{ if(!j.ok) throw new Error(j.msg||'');
-          done('📮 <strong>'+escH(email)+'</strong>로 설정 링크를 보냈어요.', '메일의 버튼을 눌러 요일·시간·주제를 고르면 신청이 끝나요. 안 보이면 스팸함도 확인해 주세요.'); })
-        .catch(e=>{ btn.disabled=false; btn.textContent='구독'; note.textContent=(e&&e.message)||'잠시 뒤 다시 시도해 주세요.'; });
-      return false;
-    }
     // fallback (worker down): log the address to the sheet so nobody is lost
     try{
       fetch(SUB_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},
