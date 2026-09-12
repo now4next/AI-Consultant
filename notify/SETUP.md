@@ -112,6 +112,13 @@ openssl rand -hex 32                                                         # G
 
 확인: `npx wrangler secret list` → 4개 이름이 보이면 됩니다. (값은 다시 볼 수 없으니 CRON_SECRET만 메모.)
 
+> **붙여넣기가 안 되는 터미널이면** (Claude 앱 내장 터미널은 `Enter a secret value:` 숨김 입력에 Ctrl+V가 `^V` 제어 문자로 들어갑니다):
+> 값을 클립보드에 복사한 직후 아래처럼 클립보드를 바로 파이프로 넘깁니다. Windows PowerShell 5.1은 `&&`를 못 쓰니 `;`로 잇습니다.
+> ```powershell
+> ((Get-Clipboard -Raw) -replace '[^\x20-\x7E]','') | npx wrangler secret put KAKAO_CLIENT_SECRET
+> ```
+> 확인: `curl "https://notify.projectleadership.cc/health?deep=1"` → `"secret":"ok"` (`mismatch`면 값이 틀린 것).
+
 ---
 
 ## 4단계 · 배포
