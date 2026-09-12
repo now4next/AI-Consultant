@@ -32,6 +32,7 @@ def _load(mod, path):
 
 gen_cover = _load("gen_cover", os.path.join(ROOT, "scripts", "gen_cover.py"))
 add_listen = _load("add_listen", os.path.join(ROOT, "scripts", "add_listen.py"))
+gen_og = _load("gen_og", os.path.join(ROOT, "scripts", "gen_og.py"))
 
 
 # ---------------------------------------------------------------- helpers
@@ -58,15 +59,35 @@ def render_cover(spec):
     return f'<div class="cover-bleed">\n{fig}\n</div>'
 
 
+def related_html(n, body, reg=None):
+    """'Mentioned in this issue' block: the volumes this body cites (Vol. NN), in order, max 4."""
+    reg = reg or reg_load()["volumes"]
+    by = {v["vol"]: v for v in reg}
+    seen = []
+    for m in re.finditer(r"Vol\.\s?(\d{1,2})", body):
+        k = int(m.group(1))
+        if k != n and k in by and k not in seen:
+            seen.append(k)
+    seen = seen[:4]
+    if not seen:
+        return ""
+    items = "".join(
+        f'  <a class="rl" href="{by[k]["file"]}"><span class="no">Vol. {k:02d}</span>'
+        f'<span class="t">{by[k]["title"]}</span><span class="cat">#{by[k]["cat"]}</span></a>\n' for k in seen)
+    return ('<section class="related">\n  <div class="lab">Mentioned in this issue</div>\n'
+            '  <div class="ti">이 글에서 언급한 편들</div>\n' + items + '</section>\n')
+
+
 def render_page(spec, body, prev, prev2, shell_src):
     n = spec["vol"]
     shell = open(os.path.join(ROOT, shell_src), encoding="utf-8").read()
     head = shell[: shell.index("<body id=\"top\">") + len('<body id="top">')]
     tail = shell[shell.index("<script>"):]
 
-    # retitle + renumber the shell
+    # retitle + renumber the shell; drop the previous volume's OG block (gen_og re-adds ours)
     head = re.sub(r"<title>.*?</title>",
                   f'<title>{spec["title"]} · Leadership Insight Vol. {n:02d}</title>', head, count=1)
+    head = re.sub(r"<!-- og:start -->.*?<!-- og:end -->\n?", "", head, count=1, flags=re.S)
     pn = prev["vol"]
     for a, b in [(f"progBar{pn}", f"progBar{n}"), (f"bar{pn}", f"bar{n}"), (f"updProg{pn}", f"updProg{n}"),
                  (f"doShare{pn}", f"doShare{n}"), (f"shareLabel{pn}", f"shareLabel{n}"),
@@ -169,6 +190,7 @@ def render_page(spec, body, prev, prev2, shell_src):
   </div>
 </div>
 
+{related_html(n, body)}
 <div class="next-teaser">
   <div class="lab">More from Leadership Insight</div>
 {teaser}</div>
@@ -216,8 +238,12 @@ def home_card(v):
         thumb = f'<div class="thumb"><img src="{cov["file"]}" alt="" loading="lazy"></div>'
     else:
         kw = cov.get("keyword", v["title"])
-        thumb = (f'<div class="thumb ph" data-n="{v["vol"]:02d}"><span class="kw">{kw}</span>'
-                 f'<span class="src">{cov.get("src", v["source"])}</span></div>')
+        c1, c2 = cov.get("c1", "#24314a"), cov.get("c2", "#0a0e17")
+        svg = gen_cover.MOTIFS.get(cov.get("motif", "none"), gen_cover.MOTIFS["none"])(cov.get("accent", "#d9c48f"))
+        svg = re.sub(r"\s+", " ", svg).strip()
+        motif = f'<span class="motif">{svg}</span>' if svg else ""
+        thumb = (f'<div class="thumb ph" data-n="{v["vol"]:02d}" style="--c1:{c1};--c2:{c2}">{motif}'
+                 f'<span class="kw">{kw}</span><span class="src">{cov.get("src", v["source"])}</span></div>')
     return (f'      <a class="card" data-cat="{v["cat"]}" href="{v["file"]}">\n'
             f'        {thumb}\n'
             f'        <div class="body"><div class="no">Vol. {v["vol"]:02d}</div><h3>{v["title"]}</h3>\n'
@@ -235,14 +261,14 @@ def update_home(spec, prev, total):
     cover_html = render_cover(spec)
     cover_inner = re.sub(r"^<div class=\"cover-bleed\">\n|\n</div>$", "", cover_html)
     tldr = "\n".join(f"          <li>{t}</li>" for t in spec["home"]["tldr"])
-    spot = (f'    <a class="spot" href="{vol_file(n)}">\n'
+    spot = (f'    <a class="spot" data-cat="{spec["home"]["cat"]}" href="{vol_file(n)}">\n'
             f'      <div class="cover">\n        {cover_inner}\n      </div>\n'
             f'      <div>\n        <div class="no">{spec["eyebrow"]}</div>\n'
             f'        <h2>{spec["title"]}</h2>\n        <ul class="tldr">\n{tldr}\n        </ul>\n'
             f'        <div class="meta">\n'
             f'          <span class="pill">⏱ 읽는 시간 {spec["home"]["readTime"]}</span>\n'
             f'          <span class="pill">{spec["home"]["tags"]}</span>\n'
-            f'          <span class="curated">🦉 <strong>플리</strong>가 골랐어요</span>\n        </div>\n'
+            f'          <span class="curated"><img class="owl-mini" src="assets/pli-owl.png" alt="" width="28" height="28"> <strong>플리</strong>가 골랐어요</span>\n        </div>\n'
             f'        <span class="btn ghost">이번 주 통찰 읽기 →</span>\n      </div>\n    </a>')
     s = re.sub(r'    <a class="spot".*?\n    </a>', spot, s, count=1, flags=re.S)
 
@@ -337,7 +363,8 @@ def main():
     make_redirect(spec)
     update_readme(spec)
     update_registry(spec)
-    print("wired: prev nav · home · redirect · README · registry")
+    gen_og.build_one(n)
+    print("wired: prev nav · home · redirect · README · registry · og image+meta")
     print("next:  python scripts/lint_volume.py")
 
 

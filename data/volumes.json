@@ -17,7 +17,10 @@
       "cover": {
         "kind": "typo",
         "keyword": "사각지대",
-        "src": "Scharmer · MIT SMR"
+        "src": "Scharmer · MIT SMR",
+        "c1": "#1e2430",
+        "c2": "#0b0e14",
+        "motif": "none"
       }
     },
     {
@@ -35,7 +38,10 @@
       "cover": {
         "kind": "typo",
         "keyword": "역설",
-        "src": "Bansal"
+        "src": "Bansal",
+        "c1": "#2a1f2e",
+        "c2": "#120c15",
+        "motif": "none"
       }
     },
     {
@@ -53,7 +59,10 @@
       "cover": {
         "kind": "typo",
         "keyword": "질문",
-        "src": "Gregersen · MIT"
+        "src": "Gregersen · MIT",
+        "c1": "#1f2a26",
+        "c2": "#0c1310",
+        "motif": "none"
       }
     },
     {
@@ -71,7 +80,10 @@
       "cover": {
         "kind": "typo",
         "keyword": "결단력",
-        "src": "HBR · McKinsey"
+        "src": "HBR · McKinsey",
+        "c1": "#2c2218",
+        "c2": "#140f0a",
+        "motif": "none"
       }
     },
     {
@@ -89,7 +101,10 @@
       "cover": {
         "kind": "typo",
         "keyword": "가치",
-        "src": "McKinsey"
+        "src": "McKinsey",
+        "c1": "#1c2633",
+        "c2": "#0a0f16",
+        "motif": "none"
       }
     },
     {
