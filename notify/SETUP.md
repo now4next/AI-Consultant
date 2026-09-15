@@ -204,6 +204,18 @@ npx wrangler deploy
 
 데이터: `migrate-002-admin.sql`(적용 완료)로 `access_log`·`cron_runs`·`admin_state`가 추가됐습니다. 접속 기록 90일, 발송 기록 1년 보관 후 매일 04:00(KST) 이후 첫 크론에서 정리(설정에서 변경 가능).
 
+## 8단계 · 운영 점검 (발송이 안 올 때)
+
+1. **관리자 개요**에 빨간 배너(예약 발송이 N분째 실행되지 않음)가 있으면 Cron이 멈춘 것입니다. 2026-09-13 08:20 ~ 09-15 11:43(KST)에
+   Cloudflare가 예약 실행을 보내지 않은 적이 있습니다(배포·오류 없음). 대응: `npx wrangler deploy`로 트리거 재등록, 그래도 안 되면
+   Cloudflare 대시보드 › Workers › pli-notify › Settings › Triggers 확인. 멈춘 동안에도 사이트 방문(`/health`)이 대체 실행을 돌리고,
+   3시간 안에 놓친 발송은 따라잡습니다.
+2. **진단**: `curl -H "Authorization: Bearer <CRON_SECRET>" "https://notify.projectleadership.cc/cron/diag?id=<구독자 id>"`
+   → 최근 Cron 실행, Resend 메일 도착 상태(`delivered`/`bounced`/`opened`), 카카오 구독자면 `talk_message` 동의 여부.
+3. **카카오 "insufficient scopes"**: 동의 화면에서 (선택) 카카오톡 메시지 전송을 체크하지 않은 경우입니다. 이제 신청 단계에서 막고 다시 묻습니다.
+   이미 신청한 사람은 사이트의 **이미 신청했다면 내 알림 설정** → 카카오로 확인하기 → 그 항목에 체크하면 확인 메시지가 오고 자동 일시정지도 풀립니다.
+4. **내 알림 설정** `https://notify.projectleadership.cc/me`: 한 번 설정 화면을 연 브라우저는 바로 열리고(쿠키), 아니면 카카오 확인 또는 이메일 링크.
+
 ## 자주 나오는 오류
 
 | 증상 | 원인 → 조치 |
