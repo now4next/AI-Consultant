@@ -284,7 +284,7 @@ async function settingsPage(request, url, env, ctx) {
   const sub = await subFromToken(url, env);
   if (!sub) return html(page('링크 만료', `<p>이 링크는 더 이상 유효하지 않아요. <a href="/me">내 알림 설정</a>에서 다시 확인해 주세요.</p>` + backLink(env)), 401);
   const t = url.searchParams.get('t');
-  if (![...url.searchParams.keys()].some(k => ['saved', 'resumed', 'reset', 'test', 'mailerr', 'kakaoerr', 'back'].includes(k))) track(env, ctx, request, 'settings_view', sub.id);
+  if (![...url.searchParams.keys()].some(k => ['saved', 'resumed', 'reset', 'test', 'mailerr', 'kakaoerr', 'back', 'updated'].includes(k))) track(env, ctx, request, 'settings_view', sub.id);
   const isEmail = sub.channel === 'email';
   const q = k => url.searchParams.get(k);
   // any consent failure since the last successful send (a later unrelated error must not hide it)
@@ -299,6 +299,7 @@ async function settingsPage(request, url, env, ctx) {
     q('mailerr') ? `<span class="err">설정은 저장됐지만 확인 메일을 보내지 못했어요: ${esc(q('mailerr'))}</span>` :
     q('saved') ? (isEmail ? `설정을 저장했어요. 확인 메일과 첫 편을 <b>${esc(sub.email)}</b>로 보냈어요. 1~2분 안에 안 보이면 스팸함을 확인하거나 아래 <b>테스트 메일 다시 보내기</b>를 눌러 주세요.`
                           : '설정을 저장했어요. 카카오톡 <b>나와의 채팅</b>으로 확인 메시지와 첫 편을 보냈어요.') :
+    q('updated') ? `설정을 저장했어요. ${q('updated') === '1' ? (isEmail ? `변경 확인 메일을 <b>${esc(sub.email)}</b>로 보냈어요. ` : '카카오톡 <b>나와의 채팅</b>에 변경 확인 메시지를 보냈어요. ') : ''}${sub.status === 'paused' ? '지금은 <b>일시정지</b> 상태라 발송되지 않아요.' : nextRun(sub) ? `다음 발송은 <b>${esc(nextRun(sub))}</b>예요.` : ''}` :
     q('back') && q('test') === '1' ? '메시지 전송이 확인됐어요. 카카오톡 <b>나와의 채팅</b>에 확인 메시지를 보냈어요. 지금 설정은 아래와 같아요.' :
     q('back') ? '이미 신청돼 있어요. 지금 설정은 아래와 같아요. 다음부터는 사이트의 <b>내 알림 설정</b>에서 바로 열 수 있어요.' :
     q('test') === '1' ? (isEmail ? `테스트 메일을 <b>${esc(sub.email)}</b>로 다시 보냈어요.` : '테스트 메시지를 카카오톡 <b>나와의 채팅</b>으로 보냈어요.') :
@@ -383,6 +384,7 @@ async function settingsSave(request, env, ctx) {
       return Response.redirect(`${env.SELF}/settings?t=${t}&mailerr=${encodeURIComponent(msg)}`, 302);
     }
     ctx.waitUntil(tick(env, { id: sub.id, force: true }).catch(() => {}));
+    return Response.redirect(`${env.SELF}/settings?t=${t}&saved=1`, 302);
   } else if (first) {
     // Kakao: same as email — confirm now and surface a failure on the page (usually the unticked message consent),
     // then send the first issue right away
@@ -395,8 +397,25 @@ async function settingsSave(request, env, ctx) {
       return Response.redirect(`${env.SELF}/settings?t=${t}&kakaoerr=${/scope/i.test(msg) ? 'scope' : encodeURIComponent(msg)}`, 302);
     }
     ctx.waitUntil(tick(env, { id: sub.id, force: true }).catch(() => {}));
+    return Response.redirect(`${env.SELF}/settings?t=${t}&saved=1`, 302);
   }
-  return Response.redirect(`${env.SELF}/settings?t=${t}&saved=1`, 302);
+  // update: a short confirmation so people can see the change landed (at most once a minute, nothing while paused)
+  const recent = await env.DB.prepare("SELECT 1 AS x FROM sends WHERE subscriber_id=? AND kind IN ('welcome','test','update') AND ok=1 AND sent_at > datetime('now','-60 seconds') LIMIT 1").bind(sub.id).first();
+  if (recent || status === 'paused') return Response.redirect(`${env.SELF}/settings?t=${t}&updated=quiet`, 302);
+  try {
+    let r = null;
+    if (sub.channel === 'email') r = await sendEmail(env, welcomeEmail(env, saved, t, 'update'));
+    else {
+      const nx = nextRun(saved);
+      await sendToMe(await freshAccessToken(env, saved), textTemplate(`설정을 바꿨어요 🦉\n${schedule(saved)}에 리더십 인사이트를 한 편씩 보내드려요.${nx ? `\n다음 도착: ${nx}` : ''}`, `${env.SELF}/settings?t=${t}`, '설정 열기'));
+    }
+    await log(env, sub.id, null, 'update', true, via(env, r));
+  } catch (e) {
+    const msg = e.message || String(e);
+    await log(env, sub.id, null, 'update', false, msg);
+    return Response.redirect(`${env.SELF}/settings?t=${t}&${sub.channel === 'email' ? 'mailerr=' + encodeURIComponent(msg) : 'kakaoerr=' + (/scope/i.test(msg) ? 'scope' : encodeURIComponent(msg))}`, 302);
+  }
+  return Response.redirect(`${env.SELF}/settings?t=${t}&updated=1`, 302);
 }
 
 async function unsubscribePage(url, env) {
@@ -574,7 +593,7 @@ function schedule(sub) {
   const days = d.length === 7 ? '매일' : `매주 ${d.map(x => DAYS[x]).join('·')}요일`;
   return `${days} ${sub.slot}`;
 }
-function nextRun(sub) {   // first delivery after now, in KST — for the welcome mail
+function nextRun(sub, skipToday = false) {   // next delivery after now, in KST (welcome/update messages, settings page)
   const d = new Set((sub.days || '').split(',').filter(Boolean).map(Number));
   if (!d.size) return '';
   const kst = new Date(Date.now() + 9 * 3600e3);
@@ -582,7 +601,11 @@ function nextRun(sub) {   // first delivery after now, in KST — for the welcom
   for (let i = 0; i < 8; i++) {
     const c = new Date(kst.getTime() + i * 86400e3);
     if (!d.has(c.getUTCDay())) continue;
-    if (i === 0 && (kst.getUTCHours() > hh || (kst.getUTCHours() === hh && kst.getUTCMinutes() >= mm))) continue;
+    if (i === 0) {
+      if (skipToday || sub.last_sent_date === kst.toISOString().slice(0, 10)) continue;
+      const now = kst.getUTCHours() * 60 + kst.getUTCMinutes(), at = hh * 60 + mm;
+      if (now >= at) { if (now - at < CATCHUP_H * 60) return '오늘 곧 (5분 안에)'; continue; }   // tick catches up within the window
+    }
     return `${c.getUTCMonth() + 1}월 ${c.getUTCDate()}일 (${DAYS[c.getUTCDay()]}) ${sub.slot}`;
   }
   return '';
@@ -742,20 +765,22 @@ function manageLinkEmail(env, sub, t) {   // already subscribed: "open my settin
   return { to: sub.email, subject: '[리더십 인사이트] 내 알림 설정 링크', html: emailLayout(env, { preheader: '요일·시간·주제를 바꾸거나 잠시 멈출 수 있어요.', rows, footer: f.html }), text, unsub: f.unsub };
 }
 
-function welcomeEmail(env, sub, t, test = false) {
+function welcomeEmail(env, sub, t, test = false) {   // test: false = welcome · true = test · 'update' = settings changed
   const f = manageFooter(env, sub, t);
-  const nx = nextRun(sub);
+  const nx = nextRun(sub, !test);   // welcome: the first issue goes out right now, so the next one is not today
+  const head = test === 'update' ? '설정을 바꿨어요 🦉' : test ? '테스트 메일이에요 🦉' : '설정이 끝났어요 🦉';
+  const lead = test === 'update' ? '바뀐 설정으로 보내드릴게요.' : test ? '이 메일이 도착했다면 주소와 설정 모두 정상이에요.' : '이 메일이 도착했다면 주소 확인도 끝난 거예요. 첫 편은 지금 바로 이어서 보내드려요.';
   const rows = [
-    h1Row(test ? '테스트 메일이에요 🦉' : '설정이 끝났어요 🦉'),
-    pRow(test ? '이 메일이 도착했다면 주소와 설정 모두 정상이에요.' : '이 메일이 도착했다면 주소 확인도 끝난 거예요. 첫 편은 지금 바로 이어서 보내드려요.'),
+    h1Row(head),
+    pRow(lead),
     pRow(`다음 편부터는 <b>${esc(schedule(sub))}</b>에 아직 읽지 않은 편을 골라 보내드려요.${nx ? ` 다음 도착은 <b>${esc(nx)}</b>예요.` : ''}`),
     pRow('메일에는 표지, 핵심 문장, 이 글의 용어, 도입부 두 문단이 담기고, 나머지는 사이트에서 이어서 읽는 방식이에요.'),
     row(`padding:18px 28px 0;font-family:${F};font-size:13.5px;line-height:1.7;color:${C.muted};word-break:keep-all;`,
       `메일이 스팸함으로 들어가면 <b>스팸 아님</b>을 한 번 눌러 주세요. 이 알림을 신청한 적이 없다면 <a href="${f.unsub}" style="color:#5a554f;">여기서 바로 그만 받기</a>를 누르면 돼요.`),
     btnRow(`${env.SITE}/`, '지금 나온 편 둘러보기 →', `<a href="${f.manage}" style="font-family:${F};font-size:14px;color:#5a554f;margin-left:16px;">설정 변경</a>`),
   ].join('');
-  const text = `설정이 끝났어요\n\n이 메일이 도착했다면 주소 확인도 끝난 거예요. 첫 편은 지금 바로 이어서 보내드려요.\n다음 편부터는 ${schedule(sub)}에 아직 읽지 않은 편을 골라 보내드려요.${nx ? ` 다음 도착은 ${nx}예요.` : ''}\n\n${env.SITE}/\n\n${f.text}`;
-  return { to: sub.email, subject: '[리더십 인사이트] 설정이 끝났어요 🦉', html: emailLayout(env, { preheader: `${schedule(sub)}에 한 편씩 보내드려요.`, rows, footer: f.html }), text, unsub: f.unsub };
+  const text = `${head}\n\n${lead}\n다음 편부터는 ${schedule(sub)}에 아직 읽지 않은 편을 골라 보내드려요.${nx ? ` 다음 도착은 ${nx}예요.` : ''}\n\n${env.SITE}/\n\n${f.text}`;
+  return { to: sub.email, subject: `[리더십 인사이트] ${head}`, html: emailLayout(env, { preheader: `${schedule(sub)}에 한 편씩 보내드려요.`, rows, footer: f.html }), text, unsub: f.unsub };
 }
 
 function exhaustedEmail(env, sub, t, total) {

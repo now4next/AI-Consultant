@@ -14,7 +14,7 @@ import { DAYS, CATS, esc, json, html, rand, makeToken, readToken, pbkdf2Hash, pb
 
 const SESSION_HOURS = 12, LOCK_MAX = 5, LOCK_MIN = 15, PAGE = 50, PAGE_LOG = 100;
 const COOKIE = 'pli_admin';
-const KINDS = ['issue', 'welcome', 'test', 'exhausted', 'link'];
+const KINDS = ['issue', 'welcome', 'update', 'test', 'exhausted', 'link'];
 const EVENTS = ['kakao_start', 'kakao_callback', 'kakao_scope_missing', 'email_start', 'me_email', 'settings_view', 'settings_save', 'pause', 'resume', 'reset', 'unsubscribe', 'test', 'admin_login_ok', 'admin_login_fail', 'admin_action'];
 const NOINDEX = { 'x-robots-tag': 'noindex, nofollow' };
 
