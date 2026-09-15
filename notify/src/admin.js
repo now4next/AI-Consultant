@@ -15,7 +15,7 @@ import { DAYS, CATS, esc, json, html, rand, makeToken, readToken, pbkdf2Hash, pb
 const SESSION_HOURS = 12, LOCK_MAX = 5, LOCK_MIN = 15, PAGE = 50, PAGE_LOG = 100;
 const COOKIE = 'pli_admin';
 const KINDS = ['issue', 'welcome', 'test', 'exhausted', 'link'];
-const EVENTS = ['kakao_start', 'kakao_callback', 'email_start', 'settings_view', 'settings_save', 'pause', 'resume', 'reset', 'unsubscribe', 'test', 'admin_login_ok', 'admin_login_fail', 'admin_action'];
+const EVENTS = ['kakao_start', 'kakao_callback', 'kakao_scope_missing', 'email_start', 'me_email', 'settings_view', 'settings_save', 'pause', 'resume', 'reset', 'unsubscribe', 'test', 'admin_login_ok', 'admin_login_fail', 'admin_action'];
 const NOINDEX = { 'x-robots-tag': 'noindex, nofollow' };
 
 export async function adminRoute(request, env, ctx, url, api) {
@@ -109,13 +109,17 @@ async function overview(A) {
     env.DB.prepare("SELECT date(sent_at,'+9 hours') d, COALESCE(SUM(ok),0) ok, COUNT(*)-COALESCE(SUM(ok),0) fail FROM sends WHERE sent_at > datetime('now','-30 days') GROUP BY d ORDER BY d").all().then(r => r.results),
   ]);
   const cnt = (ch, st) => byStatus.filter(r => (!ch || r.channel === ch) && (!st || r.status === st)).reduce((a, r) => a + r.n, 0);
+  const lastReal = await env.DB.prepare("SELECT MAX(ts) ts FROM cron_runs WHERE COALESCE(slot,'') NOT LIKE '%fallback%'").first().catch(() => null);
+  const staleMin = lastReal?.ts ? Math.round((Date.now() - Date.parse(lastReal.ts.replace(' ', 'T') + 'Z')) / 60e3) : null;
+  const banner = staleMin === null || staleMin > 12
+    ? `<div class="flash err">예약 발송(Cron)이 ${staleMin === null ? '아직 한 번도 실행되지 않았어요' : `${staleMin}분째 실행되지 않고 있어요 (마지막 ${esc(kst(lastReal.ts))})`}. 사이트 방문 시 대체 실행으로 발송은 이어지지만, Cloudflare 대시보드 › Workers › pli-notify › Settings › Triggers에서 Cron 상태를 확인해 주세요.</div>` : '';
   const cards = [
     ['전체 신청', cnt(), `카카오 ${cnt('kakao')} · 이메일 ${cnt('email')}`],
     ['활성', cnt(null, 'active'), `일시정지 ${cnt(null, 'paused')} · 대기 ${cnt(null, 'pending')} · 완독 ${cnt(null, 'exhausted')}`],
     ['오늘 발송', `${todaySends.ok}`, `실패 ${todaySends.fail} · 남은 예정 ${due.n}`],
     ['마지막 크론', lastCron ? kst(lastCron.ts) : '기록 없음', lastCron ? `슬롯 ${lastCron.slot} · 대상 ${lastCron.due} · 발송 ${lastCron.sent} · 오류 ${lastCron.errors}` : '마이그레이션 후 첫 실행을 기다리는 중'],
   ];
-  const body = `<h1>개요</h1>
+  const body = `${banner}<h1>개요</h1>
   <div class="cards">${cards.map(([t, v, sub]) => `<div class="card"><div class="k">${esc(t)}</div><div class="v">${esc(v)}</div><div class="s">${esc(sub)}</div></div>`).join('')}</div>
   <h2>최근 30일 발송</h2>${chart(daily)}
   <h2>최근 발송 10건</h2>${sendsTable(A, recent, false)}`;
@@ -183,6 +187,13 @@ async function subscriber(A, id) {
     api.loadVolumes(env).catch(() => []),
   ]);
   const got = (u.sent_vols || '').split(',').filter(Boolean).map(Number);
+  let scopeRow = '';
+  if (u.channel === 'kakao') {   // live check with Kakao: without this consent every send fails with "insufficient scopes"
+    try {
+      const tm = (await api.kakaoScopes(await api.freshAccessToken(env, u))).find(x => x.id === 'talk_message');
+      scopeRow = `<dt>메시지 전송 동의</dt><dd>${tm?.agreed ? '<span class="ok">동의함</span>' : '<span class="fail">동의 안 함 · 발송 불가</span>'}</dd>`;
+    } catch (e) { scopeRow = `<dt>메시지 전송 동의</dt><dd class="fail">확인 실패: ${esc(e.message || e)}</dd>`; }
+  }
   const flash = url.searchParams.get('msg') ? `<div class="flash">${esc(url.searchParams.get('msg'))}</div>` : '';
   const act = (a, label, cls = 'ghost', confirm = '') => `<form method="post" action="/admin/subscribers/${u.id}/action" ${confirm ? `onsubmit="return confirm('${esc(confirm)}')"` : ''}><input type="hidden" name="_csrf" value="${A.csrf}"><input type="hidden" name="act" value="${a}"><button class="btn small ${cls}">${label}</button></form>`;
   const body = `${flash}<p class="crumb"><a href="/admin/subscribers">← 신청자</a></p>
@@ -190,7 +201,7 @@ async function subscriber(A, id) {
   <div class="grid2">
     <div class="box"><h3>설정</h3><dl>
       <dt>ID</dt><dd><code>${esc(u.id)}</code></dd>
-      ${u.channel === 'kakao' ? `<dt>카카오 회원번호</dt><dd><code>${esc(u.kakao_uid)}</code></dd>` : `<dt>이메일</dt><dd>${esc(u.email)}</dd>`}
+      ${u.channel === 'kakao' ? `<dt>카카오 회원번호</dt><dd><code>${esc(u.kakao_uid)}</code></dd>${scopeRow}` : `<dt>이메일</dt><dd>${esc(u.email)}</dd>`}
       <dt>요일 · 시간</dt><dd>${esc(daysText(u.days))} ${esc(u.slot)}</dd>
       <dt>주제</dt><dd>${esc(u.cats || '전체')}</dd><dt>순서</dt><dd>${u.mode === 'latest' ? '최신 편부터' : '무작위'}</dd>
       <dt>받은 편</dt><dd>${got.length}편 · 마지막 ${esc(u.last_sent_date || '없음')}</dd>

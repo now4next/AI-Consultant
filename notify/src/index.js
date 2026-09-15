@@ -78,16 +78,19 @@ async function route(request, env, ctx) {
       body.mail_from = env.MAIL_FROM;
       body.mail_from_verified = r.ok ? (d.data || []).some(x => x.name === dom && x.status === 'verified') : null;
     }
+    ctx.waitUntil(fallbackTick(env));
     return new Response(JSON.stringify(body),
       { headers: { 'content-type': 'application/json; charset=utf-8', 'access-control-allow-origin': env.SITE, 'cache-control': 'no-store' } });
   }
   if (p === '/' ) return Response.redirect(`${env.SITE}/#subscribe`, 302);
 
   if (p === '/admin' || p.startsWith('/admin/'))
-    return adminRoute(request, env, ctx, url, { tick, loadVolumes, sendEmail, welcomeEmail, sendToMe, textTemplate, freshAccessToken, log });
+    return adminRoute(request, env, ctx, url, { tick, loadVolumes, sendEmail, welcomeEmail, sendToMe, textTemplate, freshAccessToken, kakaoScopes, log });
 
   if (p === '/kakao/start' && m === 'GET') { track(env, ctx, request, 'kakao_start'); return kakaoStart(env); }
   if (p === '/kakao/callback' && m === 'GET') return kakaoCallback(request, url, env, ctx);
+  if (p === '/me' && m === 'GET') return mePage(request, env, ctx);
+  if (p === '/me' && m === 'POST') return meEmail(request, env, ctx);
 
   if (p === '/email/start' && m === 'POST') return emailStart(request, env, ctx);
   if (p === '/email/preview' && m === 'GET') return emailPreview(url, env);
@@ -97,6 +100,11 @@ async function route(request, env, ctx) {
   if (p === '/unsubscribe' && m === 'GET') return unsubscribePage(url, env);
   if (['/pause', '/resume', '/unsubscribe', '/reset', '/test'].includes(p) && m === 'POST') return settingsAction(p.slice(1), request, env, ctx);
 
+  if (p === '/cron/diag' && m === 'GET') {   // Bearer CRON_SECRET · recent cron runs, Resend delivery events, Kakao consent (?id=)
+    const auth = request.headers.get('Authorization') || '';
+    if (!env.CRON_SECRET || auth !== `Bearer ${env.CRON_SECRET}`) return json({ error: 'unauthorized' }, 401);
+    return json(await diag(env, url.searchParams.get('id')));
+  }
   if (p === '/cron/run' && m === 'POST') {
     const auth = request.headers.get('Authorization') || '';
     if (!env.CRON_SECRET || auth !== `Bearer ${env.CRON_SECRET}`) return json({ error: 'unauthorized' }, 401);
@@ -125,21 +133,91 @@ async function kakaoCallback(request, url, env, ctx) {
   if (!st || Date.now() - st.t > 15 * 60e3) return html(page('만료됨', '<p>인증 요청이 만료되었어요. 다시 시도해 주세요.</p>' + backLink(env)), 400);
 
   const tok = await kakaoToken(env, { grant_type: 'authorization_code', redirect_uri: env.KAKAO_REDIRECT_URI, code });
-  if (!tok.refresh_token) return html(page('권한 필요', '<p>카카오톡 메시지 전송 권한이 없어요. 동의 화면에서 <b>카카오톡 메시지 전송</b>을 허용해 주세요.</p>' + backLink(env)), 400);
+  // "카카오톡 메시지 전송" is an optional consent item: people can untick it, and then every send fails with "insufficient scopes"
+  if (!tok.refresh_token || !(await hasTalkScope(tok))) {
+    track(env, ctx, request, 'kakao_scope_missing', null, { scope: String(tok.scope || '').slice(0, 200) });
+    return html(page('동의가 필요해요', scopeMissingBody(env)), 400);
+  }
   const me = await kakaoMe(tok.access_token);
   const uid = String(me.id);
 
   let sub = await env.DB.prepare('SELECT * FROM subscribers WHERE kakao_uid = ?').bind(uid).first();
+  const existing = !!sub && sub.status !== 'pending';
   const enc = await encrypt(env, tok.refresh_token);
   if (sub) {
-    await env.DB.prepare("UPDATE subscribers SET refresh_token_enc = ?, fail_count = 0, updated_at = datetime('now') WHERE id = ?").bind(enc, sub.id).run();
+    // coming back with a fresh consent also lifts an automatic pause caused by repeated failures
+    await env.DB.prepare("UPDATE subscribers SET refresh_token_enc = ?, status = CASE WHEN status='paused' AND fail_count>=3 THEN 'active' ELSE status END, fail_count = 0, updated_at = datetime('now') WHERE id = ?").bind(enc, sub.id).run();
   } else {
     sub = { id: rand(16), kakao_uid: uid };
     await env.DB.prepare("INSERT INTO subscribers (id, channel, kakao_uid, refresh_token_enc) VALUES (?, 'kakao', ?, ?)").bind(sub.id, uid, enc).run();
   }
-  track(env, ctx, request, 'kakao_callback', sub.id);
+  track(env, ctx, request, 'kakao_callback', sub.id, { existing });
   const t = await makeToken(env, { id: sub.id });
-  return Response.redirect(`${env.SELF}/settings?t=${t}`, 302);
+  let confirmed = false;
+  if (existing) {
+    const last = await env.DB.prepare('SELECT ok FROM sends WHERE subscriber_id = ? ORDER BY id DESC LIMIT 1').bind(sub.id).first();
+    if (last && !last.ok) {   // they came back after a failed delivery (usually the missing consent) → prove it works now
+      try {
+        await sendToMe(tok.access_token, textTemplate(`메시지 전송이 확인됐어요 🦉\n${schedule(sub)}에 리더십 인사이트를 한 편씩 보내드려요.`, `${env.SELF}/settings?t=${t}`, '설정 열기'));
+        await log(env, sub.id, null, 'test', true); confirmed = true;
+      } catch (e) { await log(env, sub.id, null, 'test', false, e.message || String(e)); }
+    }
+  }
+  return Response.redirect(`${env.SELF}/settings?t=${t}${existing ? '&back=1' : ''}${confirmed ? '&test=1' : ''}`, 302);
+}
+
+function scopeMissingBody(env) {
+  return `<h1>메시지 전송 동의가 빠졌어요</h1>
+  <p class="lead">알림은 카카오톡 <b>나와의 채팅</b>으로 보내드려요. 그래서 카카오 동의 화면의 <b>(선택) 카카오톡 메시지 전송</b>에 체크가 있어야 받을 수 있어요.</p>
+  <p class="lead">아래 버튼을 누르면 그 항목만 다시 물어봐요. 체크한 뒤 <b>동의하고 계속하기</b>를 눌러 주세요.</p>
+  <p><a class="btn kakao" href="/kakao/start">메시지 전송 동의하기</a></p>` + backLink(env);
+}
+
+// ───────────────────────────────────────────── 내 알림 설정 (come back without signing up again)
+const SUB_COOKIE = 'pli_sub';
+const subCookie = t => `${SUB_COOKIE}=${t}; Max-Age=34560000; Path=/; Secure; HttpOnly; SameSite=Lax`;
+function readCookie(request, name) {
+  const c = (request.headers.get('cookie') || '').split(';').map(x => x.trim()).find(x => x.startsWith(name + '='));
+  return c ? c.slice(name.length + 1) : null;
+}
+async function mePage(request, env, ctx) {
+  const c = readCookie(request, SUB_COOKIE);
+  const tok = await readToken(env, c);
+  if (tok?.id && await env.DB.prepare('SELECT 1 AS x FROM subscribers WHERE id = ?').bind(tok.id).first()) return Response.redirect(`${env.SELF}/settings?t=${c}`, 302);
+  return html(page('내 알림 설정', `<h1>내 알림 설정</h1>
+  <p class="lead">신청하신 방법으로 본인만 확인해요. 새로 가입하는 게 아니라, 확인되면 지금 설정 화면이 바로 열려요.</p>
+  <fieldset><legend>카카오톡으로 신청했다면</legend><a class="btn kakao" href="/kakao/start">카카오로 확인하기</a></fieldset>
+  <fieldset><legend>이메일로 신청했다면</legend>
+    <form method="post" action="/me" class="inline"><input type="email" name="email" placeholder="이메일 주소" required><button class="btn ghost" type="submit">설정 링크 받기</button></form>
+  </fieldset>` + backLink(env)));
+}
+async function meEmail(request, env, ctx) {
+  const form = await request.formData().catch(() => new FormData());
+  const email = String(form.get('email') || '').trim().toLowerCase();
+  const sub = EMAIL_RE.test(email) ? await env.DB.prepare('SELECT * FROM subscribers WHERE email = ?').bind(email).first() : null;
+  if (sub && env.RESEND_API_KEY) {
+    const t = await makeToken(env, { id: sub.id });
+    ctx.waitUntil(sendEmail(env, linkEmail(env, sub, t))
+      .then(r => log(env, sub.id, null, 'link', true, via(env, r)), e => log(env, sub.id, null, 'link', false, e.message || String(e))));
+  }
+  track(env, ctx, request, 'me_email', sub?.id || null, { found: !!sub });
+  // same answer either way, so the page doesn't reveal who is subscribed
+  return html(page('메일을 확인해 주세요', `<h1>메일을 확인해 주세요</h1><p class="lead">신청된 주소라면 <b>${esc(email)}</b>로 설정 링크를 보냈어요. 1~2분 안에 안 보이면 스팸함도 확인해 주세요.</p>` + backLink(env)));
+}
+
+async function diag(env, id) {
+  const out = { now: new Date().toISOString() };
+  out.cron = await env.DB.prepare('SELECT ts, slot, due, sent, errors FROM cron_runs ORDER BY id DESC LIMIT 5').all().then(r => r.results).catch(e => String(e));
+  if (env.RESEND_API_KEY) {
+    const r = await fetch('https://api.resend.com/emails?limit=30', { headers: { Authorization: `Bearer ${env.RESEND_API_KEY}` } });
+    const d = await r.json().catch(() => ({}));
+    out.resend = r.ok ? (d.data || []).map(x => ({ to: x.to, subject: x.subject, last_event: x.last_event, created_at: x.created_at })) : `resend ${r.status} ${d.message || ''}`.trim();
+  }
+  if (id) {
+    const sub = await env.DB.prepare('SELECT * FROM subscribers WHERE id = ?').bind(id).first();
+    if (sub?.channel === 'kakao') { try { out.scopes = await kakaoScopes(await freshAccessToken(env, sub)); } catch (e) { out.scopes_error = e.message || String(e); } }
+  }
+  return out;
 }
 
 // ───────────────────────────────────────────── email sign-up
@@ -204,20 +282,32 @@ async function subFromToken(url_or_req, env) {
 
 async function settingsPage(request, url, env, ctx) {
   const sub = await subFromToken(url, env);
-  if (!sub) return html(page('링크 만료', '<p>이 링크는 더 이상 유효하지 않아요. 홈에서 다시 신청해 주세요.</p>' + backLink(env)), 401);
+  if (!sub) return html(page('링크 만료', `<p>이 링크는 더 이상 유효하지 않아요. <a href="/me">내 알림 설정</a>에서 다시 확인해 주세요.</p>` + backLink(env)), 401);
   const t = url.searchParams.get('t');
-  if (![...url.searchParams.keys()].some(k => ['saved', 'resumed', 'reset', 'test', 'mailerr'].includes(k))) track(env, ctx, request, 'settings_view', sub.id);
+  if (![...url.searchParams.keys()].some(k => ['saved', 'resumed', 'reset', 'test', 'mailerr', 'kakaoerr', 'back'].includes(k))) track(env, ctx, request, 'settings_view', sub.id);
   const isEmail = sub.channel === 'email';
   const q = k => url.searchParams.get(k);
-  const flash = q('mailerr') ? `<span class="err">설정은 저장됐지만 확인 메일을 보내지 못했어요: ${esc(q('mailerr'))}</span>` :
-                q('saved') ? (isEmail ? `설정을 저장했어요. 확인 메일과 첫 편을 <b>${esc(sub.email)}</b>로 보냈어요. 1~2분 안에 안 보이면 스팸함을 확인하거나 아래 <b>테스트 메일 다시 보내기</b>를 눌러 주세요.`
-                                      : '설정을 저장했어요. 카카오톡 <b>나와의 채팅</b>을 확인해 보세요.') :
-                q('test') === '1' ? `테스트 메일을 <b>${esc(sub.email)}</b>로 다시 보냈어요.` :
-                q('test') === 'wait' ? '방금 보냈어요. 1분 뒤에 다시 시도해 주세요.' :
-                q('test') ? `<span class="err">테스트 메일을 보내지 못했어요: ${esc(q('test'))}</span>` :
-                q('resumed') ? '알림을 다시 켰어요.' :
-                q('reset') ? '받은 편 기록을 지웠어요. 다시 처음부터 골라 보내드릴게요.' : '';
-  return html(page('알림 설정', settingsForm(sub, t, flash, env)));
+  // any consent failure since the last successful send (a later unrelated error must not hide it)
+  const fails = isEmail ? [] : (await env.DB.prepare(
+    'SELECT error FROM sends WHERE subscriber_id = ? AND ok = 0 AND id > COALESCE((SELECT MAX(id) FROM sends WHERE subscriber_id = ? AND ok = 1), 0) ORDER BY id DESC LIMIT 10'
+  ).bind(sub.id, sub.id).all()).results;
+  const scopeBroken = fails.some(f => /scope/i.test(f.error || ''));
+  const reconsent = `<p style="margin:12px 0 0"><a class="btn kakao small" href="/kakao/start">카카오톡 메시지 전송 동의하기</a></p>`;
+  const flash =
+    q('kakaoerr') === 'scope' || scopeBroken ? `<span class="err">카카오톡 <b>메시지 전송 동의</b>가 없어서 보내지 못했어요.</span> 카카오 동의 화면에서 <b>(선택) 카카오톡 메시지 전송</b>에 체크하면 바로 받을 수 있어요.${reconsent}` :
+    q('kakaoerr') ? `<span class="err">설정은 저장됐지만 카카오톡으로 보내지 못했어요: ${esc(q('kakaoerr'))}</span>` :
+    q('mailerr') ? `<span class="err">설정은 저장됐지만 확인 메일을 보내지 못했어요: ${esc(q('mailerr'))}</span>` :
+    q('saved') ? (isEmail ? `설정을 저장했어요. 확인 메일과 첫 편을 <b>${esc(sub.email)}</b>로 보냈어요. 1~2분 안에 안 보이면 스팸함을 확인하거나 아래 <b>테스트 메일 다시 보내기</b>를 눌러 주세요.`
+                          : '설정을 저장했어요. 카카오톡 <b>나와의 채팅</b>으로 확인 메시지와 첫 편을 보냈어요.') :
+    q('back') && q('test') === '1' ? '메시지 전송이 확인됐어요. 카카오톡 <b>나와의 채팅</b>에 확인 메시지를 보냈어요. 지금 설정은 아래와 같아요.' :
+    q('back') ? '이미 신청돼 있어요. 지금 설정은 아래와 같아요. 다음부터는 사이트의 <b>내 알림 설정</b>에서 바로 열 수 있어요.' :
+    q('test') === '1' ? (isEmail ? `테스트 메일을 <b>${esc(sub.email)}</b>로 다시 보냈어요.` : '테스트 메시지를 카카오톡 <b>나와의 채팅</b>으로 보냈어요.') :
+    q('test') === 'wait' ? '방금 보냈어요. 1분 뒤에 다시 시도해 주세요.' :
+    q('test') ? `<span class="err">테스트를 보내지 못했어요: ${esc(q('test'))}</span>` :
+    q('resumed') ? '알림을 다시 켰어요.' :
+    q('reset') ? '받은 편 기록을 지웠어요. 다시 처음부터 골라 보내드릴게요.' : '';
+  // remember this browser so "내 알림 설정" opens the page directly next time
+  return html(page('알림 설정', settingsForm(sub, t, flash, env)), 200, { 'set-cookie': subCookie(t) });
 }
 
 function settingsForm(sub, t, flash, env) {
@@ -255,7 +345,7 @@ function settingsForm(sub, t, flash, env) {
   <div class="row">
     <form method="post" action="${paused ? '/resume' : '/pause'}"><input type="hidden" name="t" value="${esc(t)}"><button class="btn ghost">${paused ? '다시 받기' : '일시정지'}</button></form>
     <form method="post" action="/reset"><input type="hidden" name="t" value="${esc(t)}"><button class="btn ghost">받은 편 기록 지우기</button></form>
-    ${isEmail ? `<form method="post" action="/test"><input type="hidden" name="t" value="${esc(t)}"><button class="btn ghost">테스트 메일 다시 보내기</button></form>` : ''}
+    <form method="post" action="/test"><input type="hidden" name="t" value="${esc(t)}"><button class="btn ghost">${isEmail ? '테스트 메일 다시 보내기' : '테스트 메시지 보내기'}</button></form>
     <form method="post" action="/unsubscribe" onsubmit="return confirm('정말 그만 받을까요? 설정과 연결 정보가 모두 삭제돼요.')"><input type="hidden" name="t" value="${esc(t)}"><button class="btn danger">그만 받기</button></form>
   </div>`}
   <p class="fine">저장하는 정보는 ${isEmail ? '이메일 주소와 위 설정뿐이에요. 이름·전화번호는 받지 않아요.' : '카카오 회원번호, 암호화된 발송 토큰, 위 설정뿐이에요. 이름·전화번호·이메일은 받지 않아요.'} 그만 받기를 누르면 즉시 삭제돼요. · <a href="${env.SITE}/">projectleadership.cc</a></p>`;
@@ -294,8 +384,17 @@ async function settingsSave(request, env, ctx) {
     }
     ctx.waitUntil(tick(env, { id: sub.id, force: true }).catch(() => {}));
   } else if (first) {
-    ctx.waitUntil(sendWelcome(env, saved, t)
-      .then(r => log(env, sub.id, null, 'welcome', true, via(env, r)), e => log(env, sub.id, null, 'welcome', false, e.message || String(e))));
+    // Kakao: same as email — confirm now and surface a failure on the page (usually the unticked message consent),
+    // then send the first issue right away
+    try {
+      await sendWelcome(env, saved, t);
+      await log(env, sub.id, null, 'welcome', true);
+    } catch (e) {
+      const msg = e.message || String(e);
+      await log(env, sub.id, null, 'welcome', false, msg);
+      return Response.redirect(`${env.SELF}/settings?t=${t}&kakaoerr=${/scope/i.test(msg) ? 'scope' : encodeURIComponent(msg)}`, 302);
+    }
+    ctx.waitUntil(tick(env, { id: sub.id, force: true }).catch(() => {}));
   }
   return Response.redirect(`${env.SELF}/settings?t=${t}&saved=1`, 302);
 }
@@ -321,18 +420,28 @@ async function settingsAction(action, request, env, ctx) {
   if (action === 'unsubscribe') {
     await env.DB.prepare('DELETE FROM subscribers WHERE id = ?').bind(tok.id).run();
     await env.DB.prepare('DELETE FROM sends WHERE subscriber_id = ?').bind(tok.id).run();
-    return html(page('그만 받기 완료', '<h1>해지했어요</h1><p class="lead">알림을 해지하고 저장된 정보를 모두 지웠어요. 언제든 다시 신청할 수 있어요.</p>' + backLink(env)));
+    return html(page('그만 받기 완료', '<h1>해지했어요</h1><p class="lead">알림을 해지하고 저장된 정보를 모두 지웠어요. 언제든 다시 신청할 수 있어요.</p>' + backLink(env)), 200,
+      { 'set-cookie': `${SUB_COOKIE}=; Max-Age=0; Path=/; Secure; HttpOnly; SameSite=Lax` });
   }
   if (action === 'pause') { await env.DB.prepare("UPDATE subscribers SET status='paused', updated_at=datetime('now') WHERE id=?").bind(tok.id).run(); return Response.redirect(`${env.SELF}/settings?t=${t}`, 302); }
   if (action === 'resume') { await env.DB.prepare("UPDATE subscribers SET status='active', fail_count=0, updated_at=datetime('now') WHERE id=?").bind(tok.id).run(); return Response.redirect(`${env.SELF}/settings?t=${t}&resumed=1`, 302); }
   if (action === 'reset') { await env.DB.prepare("UPDATE subscribers SET sent_vols='', status=CASE WHEN status='exhausted' THEN 'active' ELSE status END, updated_at=datetime('now') WHERE id=?").bind(tok.id).run(); return Response.redirect(`${env.SELF}/settings?t=${t}&reset=1`, 302); }
-  if (action === 'test') {   // re-send the welcome/test mail (email channel), at most once a minute
+  if (action === 'test') {   // a test mail or Kakao message, at most once a minute
     const sub = await env.DB.prepare('SELECT * FROM subscribers WHERE id = ?').bind(tok.id).first();
-    if (!sub || sub.channel !== 'email') return json({ error: 'bad action' }, 400);
+    if (!sub) return json({ error: 'bad action' }, 400);
     const recent = await env.DB.prepare("SELECT 1 AS x FROM sends WHERE subscriber_id=? AND kind IN ('welcome','test') AND ok=1 AND sent_at > datetime('now','-60 seconds') LIMIT 1").bind(sub.id).first();
     if (recent) return Response.redirect(`${env.SELF}/settings?t=${t}&test=wait`, 302);
-    try { const r = await sendEmail(env, welcomeEmail(env, sub, t, true)); await log(env, sub.id, null, 'test', true, via(env, r)); return Response.redirect(`${env.SELF}/settings?t=${t}&test=1`, 302); }
-    catch (e) { const msg = e.message || String(e); await log(env, sub.id, null, 'test', false, msg); return Response.redirect(`${env.SELF}/settings?t=${t}&test=${encodeURIComponent(msg)}`, 302); }
+    try {
+      let r = null;
+      if (sub.channel === 'email') r = await sendEmail(env, welcomeEmail(env, sub, t, true));
+      else await sendToMe(await freshAccessToken(env, sub), textTemplate(`테스트 메시지예요 🦉\n${schedule(sub)}에 리더십 인사이트를 한 편씩 보내드려요.`, `${env.SELF}/settings?t=${t}`, '설정 열기'));
+      await log(env, sub.id, null, 'test', true, via(env, r));
+      return Response.redirect(`${env.SELF}/settings?t=${t}&test=1`, 302);
+    } catch (e) {
+      const msg = e.message || String(e);
+      await log(env, sub.id, null, 'test', false, msg);
+      return Response.redirect(`${env.SELF}/settings?t=${t}&${sub.channel !== 'email' && /scope/i.test(msg) ? 'kakaoerr=scope' : 'test=' + encodeURIComponent(msg)}`, 302);
+    }
   }
   return json({ error: 'bad action' }, 400);
 }
@@ -349,10 +458,11 @@ async function tick(env, opt) {
   if (opt.id) {
     subs = [await env.DB.prepare('SELECT * FROM subscribers WHERE id = ?').bind(opt.id).first()].filter(Boolean);
   } else {
-    // any run inside the half-hour window delivers; last_sent_date makes it once per day
+    // due = today's slot arrived within the last CATCHUP_H hours and nothing went out today. A late or missed cron run
+    // (or the fallback tick from /health) still delivers today's issue; the claim below keeps it to once a day.
     const r = await env.DB.prepare(
-      "SELECT * FROM subscribers WHERE status='active' AND slot=? AND (','||days||',') LIKE ? AND (last_sent_date IS NULL OR last_sent_date<>?)"
-    ).bind(slot, `%,${dow},%`, today).all();
+      "SELECT * FROM subscribers WHERE status='active' AND slot<=? AND slot>=? AND (','||days||',') LIKE ? AND (last_sent_date IS NULL OR last_sent_date<>?)"
+    ).bind(slot, catchupFrom(kst), `%,${dow},%`, today).all();
     subs = r.results || [];
   }
   if (!subs.length) return { slot, dow, today, due: 0 };
@@ -362,6 +472,10 @@ async function tick(env, opt) {
 
   for (const sub of subs) {
     const isEmail = sub.channel === 'email';
+    if (!opt.force) {   // atomic claim: overlapping ticks (cron + fallback) can't both send to the same person
+      const c = await env.DB.prepare("UPDATE subscribers SET last_sent_date=? WHERE id=? AND (last_sent_date IS NULL OR last_sent_date<>?)").bind(today, sub.id, today).run();
+      if (!c.meta?.changes) { out.due--; continue; }
+    }
     try {
       const v = pick(vols, sub);
       const t = await makeToken(env, { id: sub.id });
@@ -394,11 +508,33 @@ async function tick(env, opt) {
         // user revoked the app / token dead → stop quietly; they can re-subscribe from the site
         await env.DB.prepare('DELETE FROM subscribers WHERE id = ?').bind(sub.id).run();
       } else {
-        await env.DB.prepare("UPDATE subscribers SET fail_count=fail_count+1, status=CASE WHEN fail_count+1>=3 THEN 'paused' ELSE status END, updated_at=datetime('now') WHERE id=?").bind(sub.id).run();
+        // release the claim so the next tick retries; three failures in a row pause the subscriber
+        await env.DB.prepare("UPDATE subscribers SET fail_count=fail_count+1, status=CASE WHEN fail_count+1>=3 THEN 'paused' ELSE status END, last_sent_date=?, updated_at=datetime('now') WHERE id=?").bind(sub.last_sent_date ?? null, sub.id).run();
       }
     }
   }
   return out;
+}
+
+const CATCHUP_H = 3;
+function catchupFrom(kst) {
+  const m = kst.getUTCHours() * 60 + kst.getUTCMinutes() - CATCHUP_H * 60;
+  if (m <= 0) return '00:00';
+  return `${String(Math.floor(m / 60)).padStart(2, '0')}:${m % 60 < 30 ? '00' : '30'}`;
+}
+
+// Cron Triggers once stopped firing for days (2026-09-13 → 09-15) with no error anywhere. Every /health hit (each home
+// page view) checks the last real cron run and, when it is stale, runs the tick itself — at most once per 4 minutes.
+async function fallbackTick(env) {
+  try {
+    const last = await env.DB.prepare("SELECT MAX(ts) ts FROM cron_runs WHERE COALESCE(slot,'') NOT LIKE '%fallback%'").first();
+    if (last?.ts && Date.parse(last.ts.replace(' ', 'T') + 'Z') > Date.now() - 12 * 60e3) return;
+    const c = await env.DB.prepare("INSERT INTO admin_state (key, value, updated_at) VALUES ('fallback_tick', '1', datetime('now')) ON CONFLICT(key) DO UPDATE SET updated_at = datetime('now') WHERE admin_state.updated_at < datetime('now', '-4 minutes')").run();
+    if (!c.meta?.changes) return;
+    const t0 = Date.now();
+    const r = await tick(env, {});
+    await recordCron(env, { ...r, slot: `${r.slot || ''} fallback` }, Date.now() - t0);
+  } catch {}
 }
 
 function pick(vols, sub) {
@@ -461,6 +597,16 @@ async function kakaoToken(env, params) {
   const d = await r.json().catch(() => ({}));
   if (!r.ok || !d.access_token) { const e = new Error(d.error_description || d.error || 'kakao token error'); e.code = d.error; throw e; }
   return d;
+}
+async function hasTalkScope(tok) {
+  if (String(tok.scope || '').split(/[\s,]+/).includes('talk_message')) return true;
+  const s = await kakaoScopes(tok.access_token).catch(() => null);   // double-check before blocking anyone
+  return s ? s.some(x => x.id === 'talk_message' && x.agreed) : true;
+}
+async function kakaoScopes(at) {
+  const r = await fetch('https://kapi.kakao.com/v2/user/scopes', { headers: { Authorization: `Bearer ${at}` } });
+  if (!r.ok) throw new Error(`kakao scopes ${r.status}`);
+  return ((await r.json()).scopes || []).map(x => ({ id: x.id, agreed: !!x.agreed, using: !!x.using }));
 }
 async function kakaoMe(at) {
   const r = await fetch('https://kapi.kakao.com/v2/user/me', { headers: { Authorization: `Bearer ${at}` } });
@@ -572,6 +718,7 @@ async function issueEmail(env, sub, v, t) {
 }
 
 function linkEmail(env, sub, t) {
+  if (sub.status && sub.status !== 'pending') return manageLinkEmail(env, sub, t);
   const manage = `${env.SELF}/settings?t=${t}`;
   const rows = [
     h1Row('한 단계만 더 남았어요'),
@@ -581,6 +728,18 @@ function linkEmail(env, sub, t) {
   ].join('');
   const text = `한 단계만 더 남았어요\n\n아래 링크에서 요일·시간·주제를 고르면 신청이 끝나요.\n${manage}\n\n이 메일을 요청하지 않으셨다면 무시하세요. 설정을 마치기 전에는 아무것도 발송되지 않아요.`;
   return { to: sub.email, subject: '[리더십 인사이트] 알림 설정을 마쳐 주세요', html: emailLayout(env, { preheader: '요일·시간·주제만 고르면 끝나요.', rows, footer: `<a href="${env.SITE}/#subscribe" style="color:#5a554f;">projectleadership.cc</a>에서 신청한 이메일 알림이에요.` }), text };
+}
+
+function manageLinkEmail(env, sub, t) {   // already subscribed: "open my settings" link
+  const f = manageFooter(env, sub, t);
+  const rows = [
+    h1Row('내 알림 설정 링크예요'),
+    pRow(`지금은 <b>${esc(schedule(sub))}</b>에 받도록 설정돼 있어요. 아래 버튼으로 요일·시간·주제를 바꾸거나 잠시 멈출 수 있어요.`),
+    btnRow(f.manage, '설정 열기 →'),
+    row(`padding:0 28px 8px;font-family:${F};font-size:13px;line-height:1.7;color:${C.muted};word-break:keep-all;`, '이 메일을 요청하지 않으셨다면 그냥 무시하세요. 설정은 바뀌지 않아요.'),
+  ].join('');
+  const text = `내 알림 설정 링크예요\n\n지금은 ${schedule(sub)}에 받도록 설정돼 있어요.\n${f.manage}\n\n${f.text}`;
+  return { to: sub.email, subject: '[리더십 인사이트] 내 알림 설정 링크', html: emailLayout(env, { preheader: '요일·시간·주제를 바꾸거나 잠시 멈출 수 있어요.', rows, footer: f.html }), text, unsub: f.unsub };
 }
 
 function welcomeEmail(env, sub, t, test = false) {
@@ -652,6 +811,8 @@ select{font:inherit;font-size:15px;padding:10px 14px;border:1px solid var(--line
 .consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.55;color:var(--ink-2);margin:6px 0 20px;word-break:keep-all}.consent input{margin-top:3px}
 .btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:600;font-size:15px;background:var(--accent);color:var(--bg);border:1px solid var(--accent);border-radius:999px;padding:12px 22px;cursor:pointer;text-decoration:none}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}.btn.ghost:hover{border-color:var(--ink)}.btn.danger{background:transparent;color:#c62828;border-color:#c62828}
+.btn.kakao{background:#FEE500;color:#191919;border-color:#FEE500}.btn.small{padding:9px 16px;font-size:14px}
+.inline{display:flex;flex-wrap:wrap;gap:8px}.inline input{font:inherit;font-size:15px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);min-width:220px;flex:1}
 .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
 .flash{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:14.5px;margin-bottom:22px}
 .fine{font-size:12.5px;line-height:1.6;color:var(--muted);margin-top:28px;word-break:keep-all}.fine a{color:inherit}.err{color:#c62828}
