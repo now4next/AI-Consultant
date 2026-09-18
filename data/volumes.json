@@ -884,6 +884,27 @@
         "motif": "source",
         "sub": "감정은 데이터다<br>다만 출처가 있다"
       }
+    },
+    {
+      "vol": 44,
+      "file": "insight-vol-44.html",
+      "dir": "vol-44",
+      "title": "이미 기운 배",
+      "sub": "시험은 배가 넘어간다고 말했다. 그 말을 왕에게 전할 사람이 없었다. 바사호는 첫 항해 1.3킬로미터에서 가라앉았다.",
+      "eyebrow": "Vol. 44 · Vasa, 1628",
+      "source": "Vasa Museum (Stockholm) · Fairley & Willshire, IEEE Software (2003)",
+      "cat": "역사",
+      "tag": "#역사 · Vasa 1628",
+      "readTime": "7분",
+      "desc": "시험은 배가 넘어간다고 말했다. 그 말을 왕에게 전할 사람이 없었다. 1628년 바사호의 프로젝트 실패.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1b2430",
+        "c2": "#0a0f16",
+        "accent": "#d9c48f",
+        "motif": "vasa",
+        "sub": "시험은 배가 넘어간다고 말했다<br>그 말을 전할 사람이 없었다"
+      }
     }
   ]
 }

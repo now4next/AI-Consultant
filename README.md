@@ -54,6 +54,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-41.html](insight-vol-41.html) — "사람이 있다는 착각" 리더십 인사이트 Vol. 41 (Bainbridge(1983) · Lee et al.(CHI 2025) · Schemmer et al.(IUI 2023)) · <https://projectleadership.cc/insight-vol-41.html>
 - [insight-vol-42.html](insight-vol-42.html) — "부끄러우면 숨긴다" 리더십 인사이트 Vol. 42 (Sussman, So & Yang · MIT Sloan Ideas (2026) · RAND·JAMA Pediatrics) · <https://projectleadership.cc/insight-vol-42.html>
 - [insight-vol-43.html](insight-vol-43.html) — "감정의 출처" 리더십 인사이트 Vol. 43 (Susan David (2017) · Schwarz & Clore (1983) · Lerner & Keltner (2001) · Barsade (2002)) · <https://projectleadership.cc/insight-vol-43.html>
+- [insight-vol-44.html](insight-vol-44.html) — "이미 기운 배" 리더십 인사이트 Vol. 44 (Vasa Museum (Stockholm) · Fairley & Willshire, IEEE Software (2003)) · <https://projectleadership.cc/insight-vol-44.html>
 
 ### 새 볼륨 발행 워크플로우
 

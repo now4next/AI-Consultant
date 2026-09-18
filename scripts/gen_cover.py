@@ -566,7 +566,23 @@ def motif_source(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "none": lambda accent=None: ""}
+def motif_vasa(accent="#d9c48f"):
+    """A tall two-gun-deck hull heeling over a waterline: the ship that failed its lurch test."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="8" y1="84" x2="112" y2="84" stroke="{accent}" stroke-width="1.4" stroke-dasharray="4 5" opacity=".45"/>
+      <g transform="rotate(-18 60 70)" fill="none" stroke="{accent}" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M26 62 L94 62 L86 84 L36 84 Z" stroke-width="2.6"/>
+        <line x1="60" y1="62" x2="60" y2="22" stroke-width="2.2"/>
+        <path d="M60 26 L80 40 L60 54" stroke-width="1.8" opacity=".7"/>
+        <g fill="{accent}" stroke="none" opacity=".85">
+          <rect x="40" y="66" width="4" height="4"/><rect x="50" y="66" width="4" height="4"/><rect x="60" y="66" width="4" height="4"/><rect x="70" y="66" width="4" height="4"/>
+          <rect x="44" y="74" width="4" height="4"/><rect x="54" y="74" width="4" height="4"/><rect x="64" y="74" width="4" height="4"/><rect x="74" y="74" width="4" height="4"/>
+        </g>
+      </g>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
