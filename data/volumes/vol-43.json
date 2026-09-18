@@ -1,0 +1,39 @@
+{
+  "vol": 43,
+  "title": "감정의 출처",
+  "sub": "감정은 데이터지 명령이 아니다. 다만 데이터에는 출처가 있다. 앞 회의의 화는 다음 결재로 흘러간다.",
+  "eyebrow": "Vol. 43 · Emotions as Data",
+  "kicker": "Susan David · Schwarz & Clore · Lerner",
+  "koLead": "그 감정은<br>어디서<br><em>왔는가</em>",
+  "koSub": "화난 사람의 위험 추정은 두려운 사람보다 기쁜 사람에 가까웠다.",
+  "deck": "감정은 데이터지 명령이 아니다. 수전 데이비드의 이 문장에 리더가 덧붙일 것이 있다. 데이터에는 <em>출처</em>가 있다. 앞 회의에서 생긴 화는 다음 결재로 흘러가고, 리더가 감춘 긴장은 맞은편 사람의 혈압으로 옮겨 간다.",
+  "pillars": [["With a Source", "데이터에는 출처가 있다"], ["Carryover", "앞 회의가 뒤 결정에 남는다"], ["Broadcast", "리더의 감정은 번진다"]],
+  "sourceTitle": "Mood, Misattribution, and Judgments of Well-Being: Informative and Directive Functions of Affective States",
+  "source": "Susan David (2017) · Schwarz & Clore (1983) · Lerner & Keltner (2001) · Barsade (2002)",
+  "cover": {
+    "kind": "gcover",
+    "c1": "#1f2a2e",
+    "c2": "#0c1214",
+    "accent": "#d9c48f",
+    "motif": "source",
+    "sub": "감정은 데이터다<br>다만 출처가 있다"
+  },
+  "takeaway": {
+    "h3": "감정은 읽되,<br><em>출처부터</em> 묻는다",
+    "p1": "슈바르츠와 클로어의 실험에서 비 오는 날의 우울은 삶 전체의 평가에 섞여 들었다. 기분의 출처가 날씨라는 것을 떠올리게 하자 그 차이가 사라졌다. 러너와 켈트너의 연구에서 화난 사람은 위험을 낙관했고 두려운 사람은 비관했다. 판단과 상관없는 곳에서 온 감정도 판단을 움직인다.",
+    "p2": "리더의 감정은 거기서 끝나지 않는다. 한 사람의 기분은 집단으로 번지고(Barsade), 표정을 지워도 상대의 긴장은 오히려 오른다(Butler 외). 그래서 리더의 일은 감정을 없애는 것이 아닌, 이름 붙이고 출처를 묻고 짧게 밝히는 것이다. 출처를 묻지 않은 감정은 데이터처럼 보이는 명령이 된다.",
+    "sig": "Schwarz & Clore · Lerner · Barsade"
+  },
+  "home": {
+    "tldr": [
+      "감정은 데이터지 명령이 아니다(Susan David). 리더가 덧붙일 문장은 '데이터에는 출처가 있다'이다. 비 오는 날의 기분은 삶의 평가에 섞였고, 날씨를 떠올리게 하자 걸러졌다(Schwarz & Clore, 1983).",
+      "판단과 무관한 곳에서 온 부수 감정도 결정을 움직인다. 화난 사람은 위험을 낙관하고 두려운 사람은 비관했다(Lerner & Keltner, 2001). 앞 회의의 화가 다음 결재의 위험을 작아 보이게 한다.",
+      "리더의 감정은 번진다(Barsade, 2002). 숨기면 상대의 혈압이 오른다(Butler 외, 2003). 쏟지도 숨기지도 말고, 출처를 한 문장으로 밝힌다."
+    ],
+    "readTime": "7분",
+    "tags": "#감정 #의사결정 #감정전염",
+    "cat": "성찰",
+    "tag": "#성찰 · Susan David",
+    "desc": "감정은 데이터지 명령이 아니다. 다만 데이터에는 출처가 있다. 앞 회의의 화는 다음 결재로 흘러간다."
+  }
+}

@@ -863,6 +863,27 @@
         "motif": "partition",
         "sub": "사람에게는 변명이 붙고<br>기계에는 사실이 나온다"
       }
+    },
+    {
+      "vol": 43,
+      "file": "insight-vol-43.html",
+      "dir": "vol-43",
+      "title": "감정의 출처",
+      "sub": "감정은 데이터지 명령이 아니다. 다만 데이터에는 출처가 있다. 앞 회의의 화는 다음 결재로 흘러간다.",
+      "eyebrow": "Vol. 43 · Emotions as Data",
+      "source": "Susan David (2017) · Schwarz & Clore (1983) · Lerner & Keltner (2001) · Barsade (2002)",
+      "cat": "성찰",
+      "tag": "#성찰 · Susan David",
+      "readTime": "7분",
+      "desc": "감정은 데이터지 명령이 아니다. 다만 데이터에는 출처가 있다. 앞 회의의 화는 다음 결재로 흘러간다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1f2a2e",
+        "c2": "#0c1214",
+        "accent": "#d9c48f",
+        "motif": "source",
+        "sub": "감정은 데이터다<br>다만 출처가 있다"
+      }
     }
   ]
 }
