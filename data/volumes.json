@@ -947,6 +947,27 @@
         "motif": "canal",
         "sub": "굴착은 가장 작은 일이었다<br>기반을 먼저 깔았다"
       }
+    },
+    {
+      "vol": 47,
+      "file": "insight-vol-47.html",
+      "dir": "vol-47",
+      "title": "인사이트 대신 아웃사이트",
+      "sub": "생각을 바꾸려면 먼저 해 봐야 한다. 리더는 문 닫은 방에서 태어나지 않고, 낯선 일과 낯선 사람 사이에서 남이 알아봐 줄 때 된다.",
+      "eyebrow": "Vol. 47 · The Outsight Principle",
+      "source": "Herminia Ibarra (2015) · DeRue & Ashford, AMR (2010) · Ibarra & Hunter, HBR (2007)",
+      "cat": "성장",
+      "tag": "#성장 · Herminia Ibarra",
+      "readTime": "7분",
+      "desc": "생각을 바꾸려면 먼저 해 봐야 한다. 리더는 문 닫은 방이 아닌, 낯선 일과 사람 사이에서 만들어진다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#2a1f2e",
+        "c2": "#110b13",
+        "accent": "#d9c48f",
+        "motif": "outsight",
+        "sub": "생각을 바꾸려면<br>먼저 해 봐야 한다"
+      }
     }
   ]
 }
