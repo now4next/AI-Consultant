@@ -56,6 +56,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-43.html](insight-vol-43.html) — "감정의 출처" 리더십 인사이트 Vol. 43 (Susan David (2017) · Schwarz & Clore (1983) · Lerner & Keltner (2001) · Barsade (2002)) · <https://projectleadership.cc/insight-vol-43.html>
 - [insight-vol-44.html](insight-vol-44.html) — "이미 기운 배" 리더십 인사이트 Vol. 44 (Vasa Museum (Stockholm) · Fairley & Willshire, IEEE Software (2003)) · <https://projectleadership.cc/insight-vol-44.html>
 - [insight-vol-45.html](insight-vol-45.html) — "만든 뒤의 3년" 리더십 인사이트 Vol. 45 (세종실록(1443–1446) · 훈민정음 해례본(1446) · 국사편찬위원회) · <https://projectleadership.cc/insight-vol-45.html>
+- [insight-vol-46.html](insight-vol-46.html) — "먼저 파지 않았다" 리더십 인사이트 Vol. 46 (McCullough (1977) · PBS American Experience · ASCE · Linda Hall Library) · <https://projectleadership.cc/insight-vol-46.html>
 
 ### 새 볼륨 발행 워크플로우
 

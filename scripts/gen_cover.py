@@ -598,7 +598,24 @@ def motif_hangul(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "none": lambda accent=None: ""}
+def motif_canal(accent="#d9c48f"):
+    """A lock staircase: water raised step by step over the ridge and lowered again, with gates."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M8 90 L30 90 L30 74 L48 74 L48 58 L72 58 L72 74 L90 74 L90 90 L112 90" fill="none" stroke="{accent}" stroke-width="2.6" stroke-linejoin="round"/>
+      <g stroke="{accent}" stroke-width="1.6" opacity=".45">
+        <line x1="12" y1="86" x2="28" y2="86"/><line x1="33" y1="70" x2="46" y2="70"/>
+        <line x1="51" y1="54" x2="69" y2="54"/><line x1="74" y1="70" x2="87" y2="70"/><line x1="94" y1="86" x2="110" y2="86"/>
+      </g>
+      <g stroke="{accent}" stroke-width="3" stroke-linecap="round">
+        <line x1="30" y1="64" x2="30" y2="74"/><line x1="48" y1="48" x2="48" y2="58"/>
+        <line x1="72" y1="48" x2="72" y2="58"/><line x1="90" y1="64" x2="90" y2="74"/>
+      </g>
+      <path d="M54 50 L66 50 L64 54 L56 54 Z" fill="{accent}"/>
+      <path d="M40 30 C52 24 68 24 80 30" fill="none" stroke="{accent}" stroke-width="1.2" stroke-dasharray="3 5" opacity=".4"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
