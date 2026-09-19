@@ -678,6 +678,11 @@
   .hero[data-cat="책임"]{--cc:var(--c-duty)} .hero[data-cat="성장"]{--cc:var(--c-growth)} .hero[data-cat="성찰"]{--cc:var(--c-reflect)} .hero[data-cat="역사"]{--cc:var(--c-history)}
   .hero .eyebrow-row .r::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--cc,var(--muted));margin-right:8px;vertical-align:1px}
   /* cat:end */
+
+  /* kicker-wrap: keep the source line inside the article frame at every width */
+  .hero .kicker .k-text{white-space:normal;text-align:center;line-height:1.45;min-width:0;overflow-wrap:anywhere}
+  .hero .kicker .k-line{min-width:24px}
+  .prose h2,.prose h3,.termdef .td-word,.hero h1 .ko-lead{overflow-wrap:anywhere}
 </style>
 </head>
 <body id="top">
