@@ -659,7 +659,29 @@ def motif_gate(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "none": lambda accent=None: ""}
+def motif_offload(accent="#d9c48f"):
+    """A dense network on one side, thinning into dashed outlines on the other."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="8" y1="100" x2="112" y2="100" stroke="{accent}" stroke-width="1.6" opacity=".35"/>
+      <g fill="none" stroke="{accent}" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 44 L42 30 M22 44 L36 62 M42 30 L36 62 M36 62 L24 80 M42 30 L56 48 M36 62 L56 48 M24 80 L36 62" stroke-width="1.7"/>
+        <g stroke-dasharray="3 6" opacity=".4" stroke-width="1.4">
+          <path d="M80 36 L98 50 M80 36 L84 64 M98 50 L84 64 M84 64 L98 82"/>
+        </g>
+        <path d="M58 50 C66 52 70 54 75 58" stroke-width="1.6" opacity=".7"/>
+        <path d="M75 58 L68.5 57.5 M75 58 L72.5 52" stroke-width="1.6" opacity=".7"/>
+      </g>
+      <g fill="{accent}" stroke="none">
+        <circle cx="22" cy="44" r="2.6"/><circle cx="42" cy="30" r="2.6"/><circle cx="36" cy="62" r="2.6"/>
+        <circle cx="24" cy="80" r="2.6"/><circle cx="56" cy="48" r="2.6"/>
+      </g>
+      <g fill="none" stroke="{accent}" stroke-width="1.3" opacity=".45">
+        <circle cx="80" cy="36" r="2.6"/><circle cx="98" cy="50" r="2.6"/><circle cx="84" cy="64" r="2.6"/><circle cx="98" cy="82" r="2.6"/>
+      </g>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [

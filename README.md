@@ -60,6 +60,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-47.html](insight-vol-47.html) — "인사이트 대신 아웃사이트" 리더십 인사이트 Vol. 47 (Herminia Ibarra (2015) · DeRue & Ashford, AMR (2010) · Ibarra & Hunter, HBR (2007)) · <https://projectleadership.cc/insight-vol-47.html>
 - [insight-vol-48.html](insight-vol-48.html) — "말하기 전에 묻는다" 리더십 인사이트 Vol. 48 (Edgar Schein (2013) · Huang et al., JPSP (2017) · Kluger & DeNisi (1996)) · <https://projectleadership.cc/insight-vol-48.html>
 - [insight-vol-49.html](insight-vol-49.html) — "말로만 막았다" 리더십 인사이트 Vol. 49 (Replit·SaaStr 사고(2025.7) · Gartner(2025) · EU AI Act 제73조) · <https://projectleadership.cc/insight-vol-49.html>
+- [insight-vol-50.html](insight-vol-50.html) — "믿을수록 덜 따진다" 리더십 인사이트 Vol. 50 (Lee 외(CHI 2025) · Bainbridge(1983) · MIT 미디어랩(2025)) · <https://projectleadership.cc/insight-vol-50.html>
 
 ### 새 볼륨 발행 워크플로우
 

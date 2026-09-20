@@ -1010,6 +1010,27 @@
         "motif": "gate",
         "sub": "지시는 했지만<br>막지는 않았다"
       }
+    },
+    {
+      "vol": 50,
+      "file": "insight-vol-50.html",
+      "dir": "vol-50",
+      "title": "믿을수록 덜 따진다",
+      "sub": "확인을 건너뛰게 만드는 것은 답의 품질이 아니다. 그 순간 내 안에서 어느 쪽 신뢰가 더 컸는가다.",
+      "eyebrow": "Vol. 50 · Cognitive Offloading",
+      "source": "Lee 외(CHI 2025) · Bainbridge(1983) · MIT 미디어랩(2025)",
+      "cat": "성찰",
+      "tag": "#성찰 · Cognitive Offloading",
+      "readTime": "9분",
+      "desc": "확인을 건너뛰게 만드는 것은 답의 품질이 아니라 신뢰다. 감독하려면 내 답이 먼저 있어야 한다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1d2340",
+        "c2": "#0a0d1c",
+        "accent": "#d9c48f",
+        "motif": "offload",
+        "sub": "믿을수록<br>덜 따지게 된다"
+      }
     }
   ]
 }
