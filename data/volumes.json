@@ -1052,6 +1052,27 @@
         "motif": "scatter",
         "sub": "같은 사안<br>다른 결정"
       }
+    },
+    {
+      "vol": 52,
+      "file": "insight-vol-52.html",
+      "dir": "vol-52",
+      "title": "쓰면서 숨긴다",
+      "sub": "금지는 사용을 없애지 못한다. 없애는 것은 기록이다. 그림자에서 일이 돌아가면 조직은 무엇이 어떻게 만들어졌는지 알지 못한다.",
+      "eyebrow": "Vol. 52 · Shadow AI",
+      "source": "MIT NANDA(2025, 예비 보고) · Microsoft Work Trend Index(2024)",
+      "cat": "책임",
+      "tag": "#책임 · Shadow AI",
+      "readTime": "8분",
+      "desc": "직원들은 이미 쓰고 있다. 금지가 없애는 것은 사용이 아니라 기록이고, 기록이 없으면 책임도 없다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#2a2118",
+        "c2": "#110d09",
+        "accent": "#d9c48f",
+        "motif": "shadow",
+        "sub": "금지는 사용을 두고<br>기록만 없앤다"
+      }
     }
   ]
 }
