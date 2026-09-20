@@ -629,7 +629,20 @@ def motif_outsight(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "none": lambda accent=None: ""}
+def motif_inquiry(accent="#d9c48f"):
+    """Two speech bubbles: a small one asking (question mark), a larger one answering at length."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="{accent}" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 30 H56 A4 4 0 0 1 60 34 V56 A4 4 0 0 1 56 60 H30 L20 70 V60 H14 A4 4 0 0 1 10 56 V34 A4 4 0 0 1 14 30 Z" stroke-width="2.4"/>
+        <path d="M30 41 A5.5 5.5 0 0 1 40.5 43.5 C40.5 48 35 48.5 35 52" stroke-width="2.2"/>
+        <path d="M64 62 H106 A4 4 0 0 1 110 66 V88 A4 4 0 0 1 106 92 H100 V102 L90 92 H64 A4 4 0 0 1 60 88 V66 A4 4 0 0 1 64 62 Z" stroke-width="1.8" opacity=".6"/>
+        <g stroke-width="1.8" opacity=".55"><line x1="68" y1="72" x2="100" y2="72"/><line x1="68" y1="80" x2="94" y2="80"/><line x1="68" y1="88" x2="86" y2="88"/></g>
+      </g>
+      <circle cx="35" cy="57" r="2.2" fill="{accent}"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [

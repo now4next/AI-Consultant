@@ -968,6 +968,27 @@
         "motif": "outsight",
         "sub": "생각을 바꾸려면<br>먼저 해 봐야 한다"
       }
+    },
+    {
+      "vol": 48,
+      "file": "insight-vol-48.html",
+      "dir": "vol-48",
+      "title": "말하기 전에 묻는다",
+      "sub": "상대가 이미 아는 것을 알려 주는 순간 대화의 문은 닫힌다. 에드거 샤인은 그 반대편에 '겸손한 질문'을 두었다. 답을 모르는 질문을 던지는 일이다.",
+      "eyebrow": "Vol. 48 · Humble Inquiry",
+      "source": "Edgar Schein (2013) · Huang et al., JPSP (2017) · Kluger & DeNisi (1996)",
+      "cat": "사람",
+      "tag": "#사람 · Edgar Schein",
+      "readTime": "8분",
+      "desc": "상대가 이미 아는 것을 알려 주는 순간 대화는 닫힌다. 샤인의 겸손한 질문과 '지금 여기의 겸손'.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#202a3a",
+        "c2": "#0c1119",
+        "accent": "#d9c48f",
+        "motif": "inquiry",
+        "sub": "말해 주기 전에<br>물어보기"
+      }
     }
   ]
 }

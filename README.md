@@ -58,6 +58,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-45.html](insight-vol-45.html) — "만든 뒤의 3년" 리더십 인사이트 Vol. 45 (세종실록(1443–1446) · 훈민정음 해례본(1446) · 국사편찬위원회) · <https://projectleadership.cc/insight-vol-45.html>
 - [insight-vol-46.html](insight-vol-46.html) — "먼저 파지 않았다" 리더십 인사이트 Vol. 46 (McCullough (1977) · PBS American Experience · ASCE · Linda Hall Library) · <https://projectleadership.cc/insight-vol-46.html>
 - [insight-vol-47.html](insight-vol-47.html) — "인사이트 대신 아웃사이트" 리더십 인사이트 Vol. 47 (Herminia Ibarra (2015) · DeRue & Ashford, AMR (2010) · Ibarra & Hunter, HBR (2007)) · <https://projectleadership.cc/insight-vol-47.html>
+- [insight-vol-48.html](insight-vol-48.html) — "말하기 전에 묻는다" 리더십 인사이트 Vol. 48 (Edgar Schein (2013) · Huang et al., JPSP (2017) · Kluger & DeNisi (1996)) · <https://projectleadership.cc/insight-vol-48.html>
 
 ### 새 볼륨 발행 워크플로우
 
