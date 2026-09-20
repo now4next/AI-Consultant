@@ -1031,6 +1031,27 @@
         "motif": "offload",
         "sub": "믿을수록<br>덜 따지게 된다"
       }
+    },
+    {
+      "vol": 51,
+      "file": "insight-vol-51.html",
+      "dir": "vol-51",
+      "title": "두 번 묻지 않는다",
+      "sub": "조직은 같은 사안을 두 사람에게 묻지 않는다. 그래서 두 사람의 답이 달랐으리라는 사실조차 알지 못한다.",
+      "eyebrow": "Vol. 51 · Noise",
+      "source": "Kahneman 외, Noise(2021) · 제2연방항소법원 양형 실험(1974)",
+      "cat": "판단",
+      "tag": "#판단 · Noise",
+      "readTime": "9분",
+      "desc": "같은 사안을 두 사람에게 주면 답이 갈린다. 조직이 그 사실을 모르는 이유는 두 번 묻지 않기 때문이다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1c242e",
+        "c2": "#0b0e13",
+        "accent": "#d9c48f",
+        "motif": "scatter",
+        "sub": "같은 사안<br>다른 결정"
+      }
     }
   ]
 }

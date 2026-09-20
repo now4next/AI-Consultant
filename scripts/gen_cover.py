@@ -659,6 +659,29 @@ def motif_gate(accent="#d9c48f"):
     </svg>'''
 
 
+def motif_scatter(accent="#d9c48f"):
+    """A target whose hits are spread wide: noise, not bias."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="8" y1="104" x2="112" y2="104" stroke="{accent}" stroke-width="1.6" opacity=".35"/>
+      <g fill="none" stroke="{accent}" stroke-linecap="round">
+        <circle cx="58" cy="56" r="34" stroke-width="1.4" opacity=".35"/>
+        <circle cx="58" cy="56" r="21" stroke-width="1.4" opacity=".5"/>
+        <circle cx="58" cy="56" r="8" stroke-width="1.8" opacity=".8"/>
+        <line x1="58" y1="14" x2="58" y2="24" stroke-width="1.3" opacity=".4"/>
+        <line x1="58" y1="88" x2="58" y2="98" stroke-width="1.3" opacity=".4"/>
+        <line x1="16" y1="56" x2="26" y2="56" stroke-width="1.3" opacity=".4"/>
+        <line x1="90" y1="56" x2="100" y2="56" stroke-width="1.3" opacity=".4"/>
+        <g stroke-width="2.1">
+          <path d="M34 34 L42 42 M42 34 L34 42"/>
+          <path d="M74 30 L82 38 M82 30 L74 38"/>
+          <path d="M28 70 L36 78 M36 70 L28 78"/>
+          <path d="M80 66 L88 74 M88 66 L80 74"/>
+          <path d="M54 80 L62 88 M62 80 L54 88"/>
+        </g>
+      </g>
+    </svg>'''
+
+
 def motif_offload(accent="#d9c48f"):
     """A dense network on one side, thinning into dashed outlines on the other."""
     return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -681,7 +704,7 @@ def motif_offload(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "none": lambda accent=None: ""}
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
