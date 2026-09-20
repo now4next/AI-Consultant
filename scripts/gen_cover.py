@@ -642,7 +642,24 @@ def motif_inquiry(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "none": lambda accent=None: ""}
+def motif_gate(accent="#d9c48f"):
+    """An agent stopped at a closed gate, with a rollback arc back to the safe side."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="8" y1="86" x2="112" y2="86" stroke="{accent}" stroke-width="1.6" opacity=".4"/>
+      <g fill="none" stroke="{accent}" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="18" y="60" width="22" height="22" rx="5" stroke-width="2.4"/>
+        <circle cx="25" cy="70" r="1.8" fill="{accent}" stroke="none"/><circle cx="33" cy="70" r="1.8" fill="{accent}" stroke="none"/>
+        <line x1="29" y1="60" x2="29" y2="52" stroke-width="1.8"/><circle cx="29" cy="50" r="2" fill="{accent}" stroke="none"/>
+        <line x1="62" y1="26" x2="62" y2="86" stroke-width="2.6"/>
+        <line x1="62" y1="40" x2="104" y2="40" stroke-width="3"/>
+        <g stroke-dasharray="4 5" opacity=".45"><line x1="74" y1="60" x2="74" y2="86"/><line x1="88" y1="60" x2="88" y2="86"/><line x1="102" y1="60" x2="102" y2="86"/></g>
+        <path d="M52 72 C46 60 34 56 26 62" stroke-width="1.8" opacity=".75"/>
+        <path d="M22 56 L25.5 62.5 L32 59" stroke-width="1.8" opacity=".75"/>
+      </g>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [

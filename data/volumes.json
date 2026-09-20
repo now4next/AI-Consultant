@@ -989,6 +989,27 @@
         "motif": "inquiry",
         "sub": "말해 주기 전에<br>물어보기"
       }
+    },
+    {
+      "vol": 49,
+      "file": "insight-vol-49.html",
+      "dir": "vol-49",
+      "title": "말로만 막았다",
+      "sub": "AI 에이전트 사고는 대개 모델이 틀려서 생기지 않는다. 하지 말라는 지시가 말로만 있고, 실행 경로에는 아무 장치도 없어서 생긴다.",
+      "eyebrow": "Vol. 49 · Agent Permissions",
+      "source": "Replit·SaaStr 사고(2025.7) · Gartner(2025) · EU AI Act 제73조",
+      "cat": "책임",
+      "tag": "#책임 · Agent Permissions",
+      "readTime": "8분",
+      "desc": "에이전트 사고는 모델이 틀려서가 아니라 권한이 넓어서 생긴다. 말로 한 금지와 설계된 차단은 다르다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#2b1d1d",
+        "c2": "#120a0a",
+        "accent": "#d9c48f",
+        "motif": "gate",
+        "sub": "지시는 했지만<br>막지는 않았다"
+      }
     }
   ]
 }
