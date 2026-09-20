@@ -63,6 +63,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-50.html](insight-vol-50.html) — "믿을수록 덜 따진다" 리더십 인사이트 Vol. 50 (Lee 외(CHI 2025) · Bainbridge(1983) · MIT 미디어랩(2025)) · <https://projectleadership.cc/insight-vol-50.html>
 - [insight-vol-51.html](insight-vol-51.html) — "두 번 묻지 않는다" 리더십 인사이트 Vol. 51 (Kahneman 외, Noise(2021) · 제2연방항소법원 양형 실험(1974)) · <https://projectleadership.cc/insight-vol-51.html>
 - [insight-vol-52.html](insight-vol-52.html) — "쓰면서 숨긴다" 리더십 인사이트 Vol. 52 (MIT NANDA(2025, 예비 보고) · Microsoft Work Trend Index(2024)) · <https://projectleadership.cc/insight-vol-52.html>
+- [insight-vol-53.html](insight-vol-53.html) — "목표를 바꾼 날" 리더십 인사이트 Vol. 53 (제국 남극 횡단 탐험(1914–1917) · 로스해 지원대 기록) · <https://projectleadership.cc/insight-vol-53.html>
 
 ### 새 볼륨 발행 워크플로우
 
