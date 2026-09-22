@@ -146,7 +146,6 @@
   .channels{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
   .btn.kakao{background:#FEE500;color:#191919;border:1px solid #FEE500}
   .btn.kakao:hover{background:#f3da00}
-  .btn.kakao .rec{font-family:var(--mono);font-size:10px;letter-spacing:.1em;background:rgba(0,0,0,.12);border-radius:999px;padding:2px 7px}
   .btn.ghost.light{color:#fff;border-color:rgba(255,255,255,.55)}
   .btn.ghost.light:hover{background:#fff;color:#0a0a0a;border-color:#fff}
   .subscribe[hidden]{display:none}
@@ -631,14 +630,14 @@
       <h1>리더는 시간이 없지,<br><em>통찰</em>이 필요 없는 건 아니니까</h1>
       <p class="sub">원하는 요일·시간에, 아직 읽지 않은 편을 한 편씩 보내드려요. 이 편지를 읽는 당신은 <strong><em>플리더</em></strong>. 회원가입 없이, <strong>플리</strong>가 당신의 카카오톡 문 앞에 둘게요.</p>
       <div class="channels">
-        <a class="btn kakao" id="kakaoBtn" href="https://notify.projectleadership.cc/kakao/start" hidden>카카오톡으로 받기 <span class="rec">추천</span></a>
-        <button class="btn ghost light" type="button" id="emailToggle" hidden>이메일로 받기</button>
+        <a class="btn kakao" id="kakaoBtn" href="https://notify.projectleadership.cc/kakao/start" hidden>카카오톡 알림 받기</a>
+        <button class="btn ghost light" type="button" id="emailToggle" hidden>이메일 알림 받기</button>
       </div>
       <form class="subscribe" id="subForm" method="post" action="https://notify.projectleadership.cc/email/start" onsubmit="return subMock(event)" hidden>
         <input id="email" name="email" type="email" placeholder="이메일 주소" aria-label="이메일 주소" required>
         <button class="btn" type="submit">구독</button>
       </form>
-      <div class="note" id="subNote">무료 · 요일과 시간은 내가 정해요 · 언제든 그만 받기 · <a href="https://notify.projectleadership.cc/me" style="color:inherit;text-decoration:underline;text-underline-offset:3px">이미 신청했다면 내 알림 설정</a></div>
+      <div class="note" id="subNote">무료 · 요일과 시간은 내가 정해요 · 언제든 그만 받기 · <a href="https://notify.projectleadership.cc/me" style="color:inherit;text-decoration:underline;text-underline-offset:3px">내 알림 설정</a></div>
     </div>
   </div>
 </section>
