@@ -7,7 +7,20 @@
   "koLead": "사람에게는<br>변명이<br><em>붙는다</em>",
   "koSub": "같은 문제를 사람에게 말할 때 자기정당화는 33%, 기계에게는 15%였다.",
   "deck": "사람들은 인간 전문가가 더 유능하다고 여기면서도, 문제의 원인이 부끄러울 때는 AI를 골랐다. 판단받지 않는다고 느끼기 때문이다. 그래서 같은 사실이 창구에 따라 다르게 도착한다. 리더가 받는 보고도 <em>그렇게 걸러진다</em>.",
-  "pillars": [["The Reversal", "부끄러우면 뒤집힌다"], ["Filtered Up", "걸러져 올라온다"], ["Lower the Bar", "문턱만 낮춘다"]],
+  "pillars": [
+    [
+      "The Reversal",
+      "부끄러우면 뒤집힌다"
+    ],
+    [
+      "Filtered Up",
+      "걸러져 올라온다"
+    ],
+    [
+      "Lower the Bar",
+      "문턱만 낮춘다"
+    ]
+  ],
   "sourceTitle": "AI Advisers and the Competence-Judgment Tradeoff in Information Disclosure",
   "source": "Sussman, So & Yang · MIT Sloan Ideas (2026) · RAND·JAMA Pediatrics",
   "cover": {
@@ -32,8 +45,8 @@
     ],
     "readTime": "7분",
     "tags": "#수치심 #자기공개 #MITSloan",
-    "cat": "사람",
-    "tag": "#사람 · Sussman·So·Yang",
+    "cat": "문화",
+    "tag": "#문화 · Sussman·So·Yang",
     "desc": "사람에게는 변명이 붙고 기계에는 사실이 나온다. 리더가 받는 보고는 이미 걸러져 있다."
   }
 }
