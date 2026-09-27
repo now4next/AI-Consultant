@@ -1,7 +1,7 @@
 // shared helpers for index.js (public routes) and admin.js (dashboard)
 
 export const DAYS = ['일', '월', '화', '수', '목', '금', '토'];
-export const CATS = ['전략', '사람', '판단', '책임', '성장', '성찰', '역사'];
+export const CATS = ['전략', '사람', '문화', '판단', '평가', '책임', '성장', '성찰', '역사'];
 export const SLOTS = (() => { const a = []; for (let h = 7; h <= 22; h++) for (const m of ['00', '30']) if (!(h === 22 && m === '30')) a.push(`${String(h).padStart(2, '0')}:${m}`); return a; })();
 
 // ───────────────────────────────────────────── crypto (Web Crypto only)

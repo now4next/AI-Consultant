@@ -1,10 +1,12 @@
--- pli-notify · D1 schema (v2: kakao + email channels)
+-- pli-notify · D1 schema (v4: email only — the kakao channel was removed 2026-09-27)
+-- channel/kakao_uid/refresh_token_enc are kept so existing rows still load; new rows are always
+-- channel='email', and every send query requires email IS NOT NULL.
 -- fresh install:  wrangler d1 execute pli-notify-db --remote --file=schema.sql
 -- upgrade from v1: wrangler d1 execute pli-notify-db --remote --file=migrate-001-email.sql
 
 CREATE TABLE IF NOT EXISTS subscribers (
   id                TEXT PRIMARY KEY,            -- random id (also the manage-token subject)
-  channel           TEXT NOT NULL DEFAULT 'kakao', -- kakao | email
+  channel           TEXT NOT NULL DEFAULT 'email', -- email (legacy rows may say kakao)
   kakao_uid         TEXT UNIQUE,                 -- 카카오 회원번호 (kakao only)
   refresh_token_enc TEXT,                        -- AES-GCM(SIGNING_KEY) · never stored in clear (kakao only)
   email             TEXT UNIQUE,                 -- lower-cased address (email only)

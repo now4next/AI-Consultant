@@ -143,11 +143,6 @@
   .subscribe .btn{background:#fff;color:#0a0a0a;padding:13px 22px;white-space:nowrap}
   .subscribe .btn:hover{background:#dcdcdc}
   .foothero .note{margin-top:12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted-2)}
-  .channels{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-  .btn.kakao{background:#FEE500;color:#191919;border:1px solid #FEE500}
-  .btn.kakao:hover{background:#f3da00}
-  .btn.ghost.light{color:#fff;border-color:rgba(255,255,255,.55)}
-  .btn.ghost.light:hover{background:#fff;color:#0a0a0a;border-color:#fff}
   .subscribe[hidden]{display:none}
   .mascot{justify-self:center;text-align:center}
   .mascot img{width:min(260px,64vw);height:auto;display:block;margin:0 auto;filter:drop-shadow(0 14px 30px rgba(0,0,0,.45))}
@@ -645,14 +640,10 @@
     <div>
       <div class="eyebrow">매주 · 리더십 인사이트 알림 받기</div>
       <h1>리더는 시간이 없지,<br><em>통찰</em>이 필요 없는 건 아니니까</h1>
-      <p class="sub">원하는 요일·시간에, 아직 읽지 않은 편을 한 편씩 보내드려요. 이 편지를 읽는 당신은 <strong><em>플리더</em></strong>. 회원가입 없이, <strong>플리</strong>가 당신의 카카오톡 문 앞에 둘게요.</p>
-      <div class="channels">
-        <a class="btn kakao" id="kakaoBtn" href="https://notify.projectleadership.cc/kakao/start" hidden>카카오톡 알림 받기</a>
-        <button class="btn ghost light" type="button" id="emailToggle" hidden>이메일 알림 받기</button>
-      </div>
-      <form class="subscribe" id="subForm" method="post" action="https://notify.projectleadership.cc/email/start" onsubmit="return subMock(event)" hidden>
+      <p class="sub">원하는 요일·시간에, 아직 읽지 않은 편을 한 편씩 보내드려요. 이 편지를 읽는 당신은 <strong><em>플리더</em></strong>. 회원가입 없이, <strong>플리</strong>가 당신의 메일함 앞에 둘게요.</p>
+      <form class="subscribe" id="subForm" method="post" action="https://notify.projectleadership.cc/email/start" onsubmit="return subMock(event)">
         <input id="email" name="email" type="email" placeholder="이메일 주소" aria-label="이메일 주소" required>
-        <button class="btn" type="submit">구독</button>
+        <button class="btn" type="submit">이메일 알림 받기</button>
       </form>
       <div class="note" id="subNote">무료 · 요일과 시간은 내가 정해요 · 언제든 그만 받기 · <a href="https://notify.projectleadership.cc/me" style="color:inherit;text-decoration:underline;text-underline-offset:3px">내 알림 설정</a></div>
     </div>
@@ -710,18 +701,16 @@
   })();
   const NOTIFY="https://notify.projectleadership.cc";
   (function(){
-    const k=document.getElementById('kakaoBtn'), t=document.getElementById('emailToggle'), f=document.getElementById('subForm');
-    t.addEventListener('click', function(){ f.hidden=false; t.hidden=true; document.getElementById('email').focus(); });
-    // show the Kakao option only when the notify worker is live; otherwise go straight to email
+    // the worker takes the address straight to its settings page; if it doesn't answer, subMock falls back to the sheet
     const ac=new AbortController(); const timer=setTimeout(()=>ac.abort(), 3000);
     fetch(NOTIFY+'/health', {mode:'cors', signal:ac.signal, cache:'no-store'})
-      .then(r=>r.ok?r.json():Promise.reject()).then(j=>{ if(!j.ok||!j.ready) throw 0; window.__notifyEmail=!!j.email; k.hidden=false; t.hidden=false; })
-      .catch(()=>{ f.hidden=false; })
+      .then(r=>r.ok?r.json():Promise.reject()).then(j=>{ window.__notifyEmail=!!(j.ok&&j.email); })
+      .catch(()=>{})
       .finally(()=>clearTimeout(timer));
   })();
   const SUB_ENDPOINT="https://script.google.com/macros/s/AKfycbxWmwn531V2RO8UCCcI8JiMaQlNYQ77Oni6mEiBlcTXSaugsAkDpeUvN6UYfl8duA0O/exec";
   function subMock(ev){
-    // worker live → plain form POST: the worker opens the settings page (요일·시간·주제, same page as Kakao);
+    // worker live → plain form POST: the worker opens the settings page (요일·시간·주제);
     // saving there sends a confirmation mail plus the first issue right away
     if(window.__notifyEmail){ const b=ev.target.querySelector('button'); b.disabled=true; b.textContent='이동 중…'; return true; }
     ev.preventDefault();

@@ -10,7 +10,7 @@
  * Session: HMAC-signed cookie (SIGNING_KEY), 12h, HttpOnly/Secure/SameSite=Strict, Path=/admin. CSRF: signed token bound to the session nonce.
  * Every admin action is written to access_log (event admin_action).
  */
-import { DAYS, CATS, esc, json, html, rand, makeToken, readToken, pbkdf2Hash, pbkdf2Verify, kst, kstNow, kstDate, track } from './lib.js';
+import { DAYS, CATS, SLOTS, esc, json, html, rand, makeToken, readToken, pbkdf2Hash, pbkdf2Verify, kst, kstNow, kstDate, track } from './lib.js';
 
 const SESSION_HOURS = 12, LOCK_MAX = 5, LOCK_MIN = 15, PAGE = 50, PAGE_LOG = 100;
 const COOKIE = 'pli_admin';
@@ -41,8 +41,10 @@ export async function adminRoute(request, env, ctx, url, api) {
   if (p === '/admin/logout' && m === 'POST') return redirect(`${env.SELF}/admin/login`, `${COOKIE}=; Max-Age=0; Path=/admin; Secure; HttpOnly; SameSite=Strict`);
   if (p === '/admin') return overview(A);
   if (p === '/admin/subscribers') return url.searchParams.get('format') === 'csv' ? subscribersCsv(A) : subscribers(A);
+  if (p === '/admin/subscribers/new' && m === 'POST') return subscriberNew(A);
   let mm;
   if ((mm = p.match(/^\/admin\/subscribers\/([A-Za-z0-9_-]+)\/action$/)) && m === 'POST') return subscriberAction(A, mm[1]);
+  if ((mm = p.match(/^\/admin\/subscribers\/([A-Za-z0-9_-]+)\/edit$/)) && m === 'POST') return subscriberEdit(A, mm[1]);
   if ((mm = p.match(/^\/admin\/subscribers\/([A-Za-z0-9_-]+)$/))) return subscriber(A, mm[1]);
   if (p === '/admin/sends') return sends(A);
   if ((mm = p.match(/^\/admin\/sends\/(\d+)\/retry$/)) && m === 'POST') return sendRetry(A, Number(mm[1]));
@@ -155,9 +157,13 @@ async function subscribers(A) {
   const total = (await env.DB.prepare(`SELECT COUNT(*) n FROM subscribers ${f.where}`).bind(...f.binds).first()).n;
   const rows = (await env.DB.prepare(`SELECT * FROM subscribers ${f.where} ORDER BY created_at DESC LIMIT ? OFFSET ?`).bind(...f.binds, PAGE, (pg - 1) * PAGE).all()).results;
   const sel = (name, opts, cur) => `<select name="${name}"><option value="">${name === 'channel' ? '채널 전체' : '상태 전체'}</option>${opts.map(o => `<option ${o === cur ? 'selected' : ''}>${o}</option>`).join('')}</select>`;
-  const body = `<h1>신청자 <small>${total}명</small></h1>
+  const legacy = (await env.DB.prepare("SELECT COUNT(*) n FROM subscribers WHERE email IS NULL").first()).n;
+  const flash = url.searchParams.get('msg') ? `<div class="flash${url.searchParams.get('err') ? ' err' : ''}">${esc(url.searchParams.get('msg'))}</div>` : '';
+  const body = `${flash}<h1>신청자 <small>${total}명</small></h1>
+  ${addForm(A)}
+  ${legacy ? `<p class="fine" style="margin:0 0 14px">주소가 없는 카카오 신청자 <b>${legacy}명</b>이 남아 있어요. 카카오 알림은 중단돼 발송되지 않습니다. 각 신청자 화면에서 이메일 주소를 넣으면 이메일 알림으로 바뀌고, 필요 없으면 삭제하면 돼요.</p>` : ''}
   <form class="filters" method="get" action="/admin/subscribers">
-    ${sel('channel', ['kakao', 'email'], f.q('channel'))} ${sel('status', ['active', 'paused', 'pending', 'exhausted'], f.q('status'))}
+    ${sel('channel', ['email', 'kakao'], f.q('channel'))} ${sel('status', ['active', 'paused', 'pending', 'exhausted'], f.q('status'))}
     <input name="q" placeholder="이메일 · 회원번호 · ID" value="${esc(f.q('q'))}">
     <button class="btn small" type="submit">검색</button>
     <a class="btn small ghost" href="/admin/subscribers?${new URLSearchParams({ channel: f.q('channel'), status: f.q('status'), q: f.q('q'), format: 'csv' })}">CSV 내보내기</a>
@@ -187,31 +193,25 @@ async function subscriber(A, id) {
     api.loadVolumes(env).catch(() => []),
   ]);
   const got = (u.sent_vols || '').split(',').filter(Boolean).map(Number);
-  let scopeRow = '';
-  if (u.channel === 'kakao') {   // live check with Kakao: without this consent every send fails with "insufficient scopes"
-    try {
-      const tm = (await api.kakaoScopes(await api.freshAccessToken(env, u))).find(x => x.id === 'talk_message');
-      scopeRow = `<dt>메시지 전송 동의</dt><dd>${tm?.agreed ? '<span class="ok">동의함</span>' : '<span class="fail">동의 안 함 · 발송 불가</span>'}</dd>`;
-    } catch (e) { scopeRow = `<dt>메시지 전송 동의</dt><dd class="fail">확인 실패: ${esc(e.message || e)}</dd>`; }
-  }
   const flash = url.searchParams.get('msg') ? `<div class="flash">${esc(url.searchParams.get('msg'))}</div>` : '';
   const act = (a, label, cls = 'ghost', confirm = '') => `<form method="post" action="/admin/subscribers/${u.id}/action" ${confirm ? `onsubmit="return confirm('${esc(confirm)}')"` : ''}><input type="hidden" name="_csrf" value="${A.csrf}"><input type="hidden" name="act" value="${a}"><button class="btn small ${cls}">${label}</button></form>`;
   const body = `${flash}<p class="crumb"><a href="/admin/subscribers">← 신청자</a></p>
   <h1>${esc(contact(u))} <small>${chan(u.channel)} ${badge(u.status)}</small></h1>
   <div class="grid2">
-    <div class="box"><h3>설정</h3><dl>
-      <dt>ID</dt><dd><code>${esc(u.id)}</code></dd>
-      ${u.channel === 'kakao' ? `<dt>카카오 회원번호</dt><dd><code>${esc(u.kakao_uid)}</code></dd>${scopeRow}` : `<dt>이메일</dt><dd>${esc(u.email)}</dd>`}
-      <dt>요일 · 시간</dt><dd>${esc(daysText(u.days))} ${esc(u.slot)}</dd>
-      <dt>주제</dt><dd>${esc(u.cats || '전체')}</dd><dt>순서</dt><dd>${u.mode === 'latest' ? '최신 편부터' : '무작위'}</dd>
-      <dt>받은 편</dt><dd>${got.length}편 · 마지막 ${esc(u.last_sent_date || '없음')}</dd>
-      <dt>실패 횟수</dt><dd>${u.fail_count || 0}</dd>
-      <dt>신청 · 수정</dt><dd>${kst(u.created_at, true)} · ${kst(u.updated_at, true)}</dd>
-    </dl></div>
+    <div class="box"><h3>알림 설정 <small>${u.email ? '' : '· 주소를 넣으면 이메일 알림으로 바뀝니다'}</small></h3>
+      ${prefsForm(A, `/admin/subscribers/${u.id}/edit`, u, '저장')}
+      <dl style="margin-top:14px">
+        <dt>ID</dt><dd><code>${esc(u.id)}</code></dd>
+        ${u.kakao_uid ? `<dt>카카오 회원번호</dt><dd><code>${esc(u.kakao_uid)}</code> <span class="fail">발송 중단</span></dd>` : ''}
+        <dt>받은 편</dt><dd>${got.length}편 · 마지막 ${esc(u.last_sent_date || '없음')}</dd>
+        <dt>실패 횟수</dt><dd>${u.fail_count || 0}</dd>
+        <dt>신청 · 수정</dt><dd>${kst(u.created_at, true)} · ${kst(u.updated_at, true)}</dd>
+      </dl>
+    </div>
     <div class="box"><h3>조치</h3><div class="actions">
       ${u.status === 'paused' ? act('resume', '다시 받기') : u.status === 'active' ? act('pause', '일시정지') : ''}
-      ${act('send_now', '지금 1편 보내기', 'ghost', '지금 바로 한 편을 보낼까요? (받은 편 기록에 남습니다)')}
-      ${act('test', u.channel === 'email' ? '테스트 메일' : '테스트 메시지')}
+      ${u.email ? act('send_now', '지금 1편 보내기', 'ghost', '지금 바로 한 편을 보낼까요? (받은 편 기록에 남습니다)') : ''}
+      ${u.email ? act('test', '테스트 메일') : ''}
       ${act('reset', '받은 편 기록 지우기', 'ghost', '받은 편 기록을 지울까요?')}
       ${act('delete', '해지 · 삭제', 'danger', '이 신청자와 모든 기록을 삭제할까요? 되돌릴 수 없어요.')}
     </div></div>
@@ -236,10 +236,11 @@ async function subscriberAction(A, id) {
     else if (act === 'reset') { await env.DB.prepare("UPDATE subscribers SET sent_vols='', status=CASE WHEN status='exhausted' THEN 'active' ELSE status END, updated_at=datetime('now') WHERE id=?").bind(id).run(); msg = '받은 편 기록을 지웠어요.'; }
     else if (act === 'send_now') { const r = await api.tick(env, { id, force: true }); msg = r.sent ? '한 편을 보냈어요.' : r.exhausted ? '보낼 편이 없어 완독 안내를 보냈어요.' : `실패: ${r.errors?.[0]?.error || '알 수 없음'}`; }
     else if (act === 'test') {
+      if (!u.email) throw new Error('이메일 주소가 없어요.');
       const t = await makeToken(env, { id });
-      if (u.channel === 'email') { const r = await api.sendEmail(env, api.welcomeEmail(env, u, t, true)); await api.log(env, id, null, 'test', true, r.from !== env.MAIL_FROM ? `via ${r.from}` : null); }
-      else { const at = await api.freshAccessToken(env, u); await api.sendToMe(at, api.textTemplate('테스트 메시지예요 🦉 알림 연결이 정상이에요.', `${env.SELF}/settings?t=${t}`, '설정 열기')); await api.log(env, id, null, 'test', true); }
-      msg = '테스트를 보냈어요.';
+      const r = await api.sendEmail(env, api.welcomeEmail(env, u, t, true));
+      await api.log(env, id, null, 'test', true, r.from !== env.MAIL_FROM ? `via ${r.from}` : null);
+      msg = '테스트 메일을 보냈어요.';
     }
     else if (act === 'delete') {
       await env.DB.batch([env.DB.prepare('DELETE FROM subscribers WHERE id = ?').bind(id), env.DB.prepare('DELETE FROM sends WHERE subscriber_id = ?').bind(id), env.DB.prepare('DELETE FROM access_log WHERE subscriber_id = ?').bind(id)]);
@@ -250,6 +251,96 @@ async function subscriberAction(A, id) {
   } catch (e) { msg = `실패: ${e.message || e}`; if (act === 'test') await api.log(env, id, null, 'test', false, e.message || String(e)); }
   audit(A, act, id, msg);
   return redirect(`${env.SELF}/admin/subscribers/${id}?msg=${encodeURIComponent(msg)}`);
+}
+
+// ───────────────────────────────────────────── add · edit (admin enters the address and the schedule)
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const STATUSES = ['active', 'paused', 'pending', 'exhausted'];
+const STATUS_KO = { active: '활성', paused: '일시정지', pending: '대기(첫 저장 전)', exhausted: '완독' };
+
+function prefsForm(A, action, u, label, extra = '') {
+  const days = new Set(String(u.days ?? '1').split(',').filter(Boolean).map(Number));
+  const cats = new Set(String(u.cats ?? '').split(',').filter(Boolean));
+  const slot = u.slot || '08:00', mode = u.mode || 'random', status = u.status || 'active';
+  return `<form method="post" action="${action}" class="prefs">
+    <input type="hidden" name="_csrf" value="${A.csrf}">
+    <label class="f"><span>이메일</span><input type="email" name="email" value="${esc(u.email || '')}" placeholder="name@example.com" required maxlength="254"></label>
+    <div class="f"><span>요일</span><span class="opts">${DAYS.map((d, i) => `<label><input type="checkbox" name="days" value="${i}" ${days.has(i) ? 'checked' : ''}>${d}</label>`).join('')}</span></div>
+    <label class="f"><span>시간</span><select name="slot">${SLOTS.map(x => `<option ${x === slot ? 'selected' : ''}>${x}</option>`).join('')}</select></label>
+    <div class="f"><span>주제</span><span class="opts">${CATS.map(c => `<label><input type="checkbox" name="cats" value="${esc(c)}" ${cats.has(c) ? 'checked' : ''}>${esc(c)}</label>`).join('')}<small>비우면 전체</small></span></div>
+    <div class="f"><span>순서</span><span class="opts">
+      <label><input type="radio" name="mode" value="random" ${mode !== 'latest' ? 'checked' : ''}>무작위</label>
+      <label><input type="radio" name="mode" value="latest" ${mode === 'latest' ? 'checked' : ''}>최신 편부터</label></span></div>
+    <label class="f"><span>상태</span><select name="status">${STATUSES.map(x => `<option value="${x}" ${x === status ? 'selected' : ''}>${STATUS_KO[x]}</option>`).join('')}</select></label>
+    ${extra}
+    <div class="f"><span></span><span><button class="btn small">${label}</button></span></div>
+  </form>`;
+}
+
+function addForm(A) {
+  const extra = `<div class="f"><span>가입 안내</span><span class="opts"><label><input type="checkbox" name="welcome" checked>환영 메일을 바로 보내기</label></span></div>`;
+  return `<details class="box add" ${A.url.searchParams.get('add') ? 'open' : ''}><summary>+ 신청자 직접 추가</summary>
+    <p class="fine" style="margin:10px 0 12px">이메일 주소와 받을 요일·시간을 관리자가 대신 등록해요. 환영 메일에는 본인이 설정을 바꾸거나 그만 받을 수 있는 링크가 들어갑니다.</p>
+    ${prefsForm(A, '/admin/subscribers/new', { days: '1', slot: '08:00', status: 'active' }, '추가하기', extra)}
+  </details>`;
+}
+
+function readPrefs(form) {
+  const days = form.getAll('days').map(Number).filter(d => d >= 0 && d <= 6).sort((a, b) => a - b);
+  return {
+    email: String(form.get('email') || '').trim().toLowerCase(),
+    days: days.join(','),
+    slot: SLOTS.includes(form.get('slot')) ? form.get('slot') : '08:00',
+    cats: form.getAll('cats').filter(c => CATS.includes(c)).join(','),
+    mode: form.get('mode') === 'latest' ? 'latest' : 'random',
+    status: STATUSES.includes(form.get('status')) ? form.get('status') : 'active',
+  };
+}
+
+async function subscriberNew(A) {
+  const { env, form, api } = A;
+  const v = readPrefs(form);
+  const back = (msg, err) => redirect(`${env.SELF}/admin/subscribers?add=1&msg=${encodeURIComponent(msg)}${err ? '&err=1' : ''}`);
+  if (!EMAIL_RE.test(v.email) || v.email.length > 254) return back('이메일 주소를 다시 확인해 주세요.', 1);
+  if (!v.days) return back('요일을 하나 이상 골라 주세요.', 1);
+  const dup = await env.DB.prepare('SELECT id FROM subscribers WHERE email = ?').bind(v.email).first();
+  if (dup) return redirect(`${env.SELF}/admin/subscribers/${dup.id}?msg=${encodeURIComponent('이미 등록된 주소예요. 아래에서 설정을 바꿀 수 있어요.')}`);
+
+  const id = rand(16);
+  await env.DB.prepare("INSERT INTO subscribers (id, channel, email, days, slot, cats, mode, status) VALUES (?, 'email', ?, ?, ?, ?, ?, ?)")
+    .bind(id, v.email, v.days, v.slot, v.cats, v.mode, v.status).run();
+  let msg = `${v.email} 을 추가했어요.`;
+  if (form.get('welcome')) {
+    try {
+      const t = await makeToken(env, { id });
+      const r = await api.sendEmail(env, api.welcomeEmail(env, { id, ...v }, t));
+      await api.log(env, id, null, 'welcome', true, r.from !== env.MAIL_FROM ? `via ${r.from}` : null);
+      msg += ' 환영 메일도 보냈어요.';
+    } catch (e) {
+      await api.log(env, id, null, 'welcome', false, e.message || String(e));
+      msg += ` 다만 환영 메일은 실패했어요: ${e.message || e}`;
+    }
+  }
+  audit(A, 'create', id, 'ok');
+  return redirect(`${env.SELF}/admin/subscribers/${id}?msg=${encodeURIComponent(msg)}`);
+}
+
+async function subscriberEdit(A, id) {
+  const { env, form } = A;
+  const u = await env.DB.prepare('SELECT * FROM subscribers WHERE id = ?').bind(id).first();
+  if (!u) return page('없음', '<p class="err">신청자를 찾을 수 없어요.</p>', A, 404);
+  const v = readPrefs(form);
+  const back = msg => redirect(`${env.SELF}/admin/subscribers/${id}?msg=${encodeURIComponent(msg)}`);
+  if (!EMAIL_RE.test(v.email) || v.email.length > 254) return back('이메일 주소를 다시 확인해 주세요.');
+  if (!v.days) return back('요일을 하나 이상 골라 주세요.');
+  if (v.email !== (u.email || '')) {
+    const dup = await env.DB.prepare('SELECT id FROM subscribers WHERE email = ? AND id <> ?').bind(v.email, id).first();
+    if (dup) return back('다른 신청자가 이미 쓰고 있는 주소예요.');
+  }
+  await env.DB.prepare("UPDATE subscribers SET channel='email', email=?, days=?, slot=?, cats=?, mode=?, status=?, updated_at=datetime('now') WHERE id=?")
+    .bind(v.email, v.days, v.slot, v.cats, v.mode, v.status, id).run();
+  audit(A, 'edit', id, 'ok');
+  return back(u.email ? '설정을 저장했어요.' : '주소를 등록했어요. 이제 이메일로 발송됩니다.');
 }
 
 // ───────────────────────────────────────────── sends
@@ -410,9 +501,9 @@ export async function maybePrune(env) {
 }
 
 // ───────────────────────────────────────────── small helpers
-const chan = c => c === 'kakao' ? '<span class="pill k">카카오</span>' : '<span class="pill e">이메일</span>';
+const chan = c => c === 'kakao' ? '<span class="pill k">카카오(중단)</span>' : '<span class="pill e">이메일</span>';
 const badge = st => `<span class="pill s-${esc(st)}">${{ active: '활성', paused: '일시정지', pending: '대기', exhausted: '완독' }[st] || esc(st)}</span>`;
-const contact = u => u.channel === 'kakao' || (!u.email && u.kakao_uid) ? `카카오 ${String(u.kakao_uid || '').slice(0, 4)}…` : (u.email || '-');
+const contact = u => u.email || (u.kakao_uid ? `카카오 ${String(u.kakao_uid).slice(0, 4)}…` : '-');
 const daysText = d => { const a = String(d || '').split(',').filter(Boolean).map(Number); return a.length === 7 ? '매일' : a.map(x => DAYS[x]).join('·'); };
 const cntVols = s => String(s || '').split(',').filter(Boolean).length;
 const uaShort = ua => { ua = ua || ''; const os = /iPhone|iPad/.test(ua) ? 'iOS' : /Android/.test(ua) ? 'Android' : /Windows/.test(ua) ? 'Windows' : /Mac OS/.test(ua) ? 'Mac' : /Linux/.test(ua) ? 'Linux' : ''; const br = /KAKAOTALK/i.test(ua) ? '카카오톡' : /Edg\//.test(ua) ? 'Edge' : /Chrome\//.test(ua) ? 'Chrome' : /Safari\//.test(ua) ? 'Safari' : /Firefox\//.test(ua) ? 'Firefox' : /curl/i.test(ua) ? 'curl' : ''; return [os, br].filter(Boolean).join(' · ') || ua.slice(0, 24); };
@@ -459,5 +550,10 @@ dl{display:grid;grid-template-columns:110px 1fr;gap:6px 12px;margin:0;font-size:
 .inline{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13.5px}.w4{width:80px}.status{list-style:none;padding:0;margin:0 0 18px;font-size:13.5px;line-height:1.9}
 .pager{display:flex;gap:14px;align-items:center;justify-content:center;margin-top:14px;color:var(--muted)}.crumb{margin:0 0 8px;font-size:13px}.crumb a{color:var(--muted);text-decoration:none}
 .fine{font-size:12.5px;color:var(--muted);line-height:1.6}code{font-family:'JetBrains Mono',monospace;font-size:12px}
+.add{margin-bottom:16px}.add summary{cursor:pointer;font-weight:600;font-size:13.5px}.add[open] summary{margin-bottom:4px}
+.prefs{display:grid;gap:9px;max-width:560px}.prefs .f{display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:center;font-size:13px;color:var(--muted)}
+.prefs input[type=email],.prefs select{font:inherit;font-size:13.5px;padding:8px 11px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink);width:100%;max-width:300px}
+.opts{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center}.opts label{display:inline-flex;gap:4px;align-items:center;color:var(--ink-2);font-size:13px;white-space:nowrap}
+.opts small{color:var(--muted);font-size:12px}
 </style></head><body><div class="wrap">${nav}${body}</div></body></html>`, status, NOINDEX);
 }
