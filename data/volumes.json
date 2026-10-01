@@ -1220,6 +1220,27 @@
         "motif": "span",
         "sub": "자리는 줄고<br>일은 내려온다"
       }
+    },
+    {
+      "vol": 60,
+      "file": "insight-vol-60.html",
+      "dir": "vol-60",
+      "title": "틈이 사라졌다",
+      "sub": "회사는 AI를 쓰라고 하지 않았다. 그런데 일은 늘었다. 늘어난 것은 시간이 아니라 같은 시간 안의 밀도였다.",
+      "eyebrow": "Vol. 60 · Work Intensification",
+      "source": "Ranganathan & Ye, AI Doesn't Reduce Work—It Intensifies It(HBR, 2026)",
+      "cat": "균형",
+      "tag": "#균형 · Work Intensification",
+      "readTime": "9분",
+      "desc": "회사는 시키지 않았는데 일이 늘었다. 늘어난 것은 시간이 아니라 밀도이고, 사라진 것은 하루 안의 틈이다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#15262b",
+        "c2": "#070f12",
+        "accent": "#d9c48f",
+        "motif": "packed",
+        "sub": "줄어든 것은<br>일이 아닌 틈"
+      }
     }
   ]
 }
