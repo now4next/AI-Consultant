@@ -60,6 +60,9 @@ def prose_of(s):
     # in a title="", so without this a title containing a counted phrase inflates
     # the count on all 60-odd pages at once.
     body = re.sub(r'\s(?:title|aria-label)="[^"]*"', "", body)
+    # Neighbouring volumes' titles and subtitles ride along in the navigation blocks.
+    # They were written for those volumes and cannot be fixed on the page they are flagged on.
+    body = re.sub(r'<div class="(?:series|next-teaser)">.*?</div>\s*</div>', "", body, flags=re.S)
     return body
 
 
