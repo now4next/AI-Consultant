@@ -16,7 +16,7 @@ Usage:
     python scripts/new_volume.py 12
     python scripts/new_volume.py 12 --dry-run     # build the page only, touch nothing else
 """
-import os, re, sys, json, shutil, importlib.util
+import os, re, sys, json, glob, shutil, importlib.util
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SPEC_DIR = os.path.join(ROOT, "data", "volumes")
@@ -98,9 +98,10 @@ def render_page(spec, body, prev, prev2, shell_src):
     pillars = "\n".join(
         f'      <div class="pillar"><span class="n">{a}</span><span class="t">{b}</span></div>'
         for a, b in spec["pillars"])
-    footer_links = "\n".join(
-        f'    <a href="{vol_file(v)}">{"Vol. %02d" % v if v == 1 else "%02d" % v}</a>'
-        for v in range(1, n + 1))
+    reg_now = reg_load()
+    if not any(int(v["vol"]) == n for v in reg_now["volumes"]):
+        reg_now["volumes"].append({"vol": n, "file": vol_file(n), "title": spec["title"]})
+    footer_links = footer_index(n, reg_now)
     tk = spec["takeaway"]
 
     teaser = ""
@@ -212,6 +213,7 @@ def render_page(spec, body, prev, prev2, shell_src):
   <div class="lnks">
 {footer_links}
   </div>
+  <div class="arch"><a href="index.html#archive">아카이브에서 분류별로 보기 →</a></div>
 </footer>
 
 </div><!-- .app -->
@@ -220,15 +222,45 @@ def render_page(spec, body, prev, prev2, shell_src):
 
 
 # ---------------------------------------------------------------- wiring
+LNKS_RE = re.compile(r'(<div class="lnks">)(.*?)(\n?  </div>)', re.S)
+
+
+def footer_index(current, reg):
+    """푸터의 전체 편 색인. 제목은 title 속성으로, 현재 편은 .on 으로 표시한다."""
+    rows = []
+    for v in sorted(reg["volumes"], key=lambda x: int(x["vol"])):
+        num = int(v["vol"])
+        label = f'{num:02d}'
+        cur = ' class="on" aria-current="page"' if num == current else ''
+        rows.append(f'    <a href="{v["file"]}"{cur} title="Vol. {num:02d} · {v["title"]}">{label}</a>')
+    return "\n".join(rows)
+
+
+def refresh_footer_index(reg):
+    """모든 글 페이지의 색인을 다시 쓴다.
+
+    예전에는 wire_prev가 직전 페이지에만 새 링크를 덧붙여서, 나머지 페이지의 색인이
+    발행 시점에 멈춰 있었다(Vol.30은 31편까지만 보였다). 매번 전체를 다시 쓴다.
+    """
+    done = 0
+    for f in sorted(glob.glob("insight-vol-*.html")) + ["insight.html"]:
+        m = re.search(r"insight-vol-(\d+)", f)
+        cur = int(m.group(1)) if m else 1
+        s = open(f, encoding="utf-8").read()
+        mm = LNKS_RE.search(s)
+        if not mm:
+            continue
+        new = s[:mm.start(2)] + "\n" + footer_index(cur, reg) + mm.group(3) + s[mm.end(3):]
+        if new != s:
+            open(f, "w", encoding="utf-8").write(new); done += 1
+    return done
+
+
 def wire_prev(prev_path, n):
     s = open(prev_path, encoding="utf-8").read()
     pn = int(re.search(r"insight(?:-vol-(\d+))?\.html", os.path.basename(prev_path)).group(1) or 1)
     s = s.replace(f'<div class="R">Vol. {pn:02d}</div>',
                   f'<div class="R"><a href="{vol_file(n)}">Vol. {n:02d} →</a></div>', 1)
-    m = re.search(r'(<div class="lnks">)(.*?)(</div>)', s, re.S)
-    if m and vol_file(n) not in m.group(2):
-        inner = m.group(2).rstrip() + f'\n    <a href="{vol_file(n)}">{n:02d}</a>\n  '
-        s = s[:m.start(2)] + inner + s[m.end(2):]
     open(prev_path, "w", encoding="utf-8").write(s)
 
 
@@ -363,8 +395,9 @@ def main():
     make_redirect(spec)
     update_readme(spec)
     update_registry(spec)
+    touched = refresh_footer_index(reg_load())
     gen_og.build_one(n)
-    print("wired: prev nav · home · redirect · README · registry · og image+meta")
+    print(f"wired: prev nav · home · redirect · README · registry · footer index ({touched} pages) · og image+meta")
     print("next:  python scripts/lint_volume.py")
 
 

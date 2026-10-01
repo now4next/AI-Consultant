@@ -562,8 +562,16 @@
     font-size:26px;color:var(--ink);text-transform:none;letter-spacing:-.01em;
     margin-bottom:16px;line-height:1.2;
   }
-  footer .lnks{margin-top:14px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
-  footer .lnks a{color:var(--muted)}
+  footer .lnks{margin-top:18px;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));
+    gap:7px 4px;max-width:430px;margin-left:auto;margin-right:auto}
+  footer .lnks a{color:var(--muted);text-decoration:none;padding:4px 0;border-radius:7px;transition:.14s}
+  footer .lnks a:visited{color:var(--muted)}
+  footer .lnks a:hover{color:var(--ink);background:color-mix(in srgb,var(--ink) 9%,transparent)}
+  footer .lnks a.on{color:var(--bg);background:var(--ink)}
+  footer .arch{margin-top:18px}
+  footer .arch a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+  footer .arch a:hover{color:var(--ink)}
+  @media(max-width:460px){footer .lnks{grid-template-columns:repeat(8,minmax(0,1fr));max-width:320px;gap:6px 3px}}
 
   .prog{position:fixed;top:0;left:0;right:0;height:2px;background:transparent;z-index:200;pointer-events:none}
   .prog .bar{height:100%;background:var(--accent);width:0%}
@@ -941,13 +949,72 @@
   <div class="big">Leadership Insight</div>
   <div>Vol. 05 · 가치가 사는 곳 · 2026</div>
   <div class="lnks">
-    <a href="insight.html">Vol. 01</a>
-    <a href="insight-vol-02.html">02</a>
-    <a href="insight-vol-03.html">03</a>
-    <a href="insight-vol-04.html">04</a>
-    <a href="insight-vol-05.html">05</a>
-    <a href="insight-vol-06.html">06</a>
+    <a href="insight.html" title="Vol. 01 · AI 시대 리더십의 사각지대">01</a>
+    <a href="insight-vol-02.html" title="Vol. 02 · 리더십의 역설">02</a>
+    <a href="insight-vol-03.html" title="Vol. 03 · 질문의 주권">03</a>
+    <a href="insight-vol-04.html" title="Vol. 04 · 결단력의 부재">04</a>
+    <a href="insight-vol-05.html" class="on" aria-current="page" title="Vol. 05 · 가치가 사는 곳">05</a>
+    <a href="insight-vol-06.html" title="Vol. 06 · 사람에 대한 더 깊은 이해">06</a>
+    <a href="insight-vol-07.html" title="Vol. 07 · 인간의 자리">07</a>
+    <a href="insight-vol-08.html" title="Vol. 08 · 브레인 캐피탈">08</a>
+    <a href="insight-vol-09.html" title="Vol. 09 · 분별의 값">09</a>
+    <a href="insight-vol-10.html" title="Vol. 10 · 신뢰의 화폐">10</a>
+    <a href="insight-vol-11.html" title="Vol. 11 · 사라진 사다리">11</a>
+    <a href="insight-vol-12.html" title="Vol. 12 · 곁에 있다는 것">12</a>
+    <a href="insight-vol-13.html" title="Vol. 13 · 좋은 실패">13</a>
+    <a href="insight-vol-14.html" title="Vol. 14 · 나누어 기르다">14</a>
+    <a href="insight-vol-15.html" title="Vol. 15 · 일을 다시 짜다">15</a>
+    <a href="insight-vol-16.html" title="Vol. 16 · 만드는 동안">16</a>
+    <a href="insight-vol-17.html" title="Vol. 17 · 되돌릴 수 있는가">17</a>
+    <a href="insight-vol-18.html" title="Vol. 18 · 고쳐 생각하다">18</a>
+    <a href="insight-vol-19.html" title="Vol. 19 · 배우는 속도">19</a>
+    <a href="insight-vol-20.html" title="Vol. 20 · 방향을 고르다">20</a>
+    <a href="insight-vol-21.html" title="Vol. 21 · 지도가 없을 때">21</a>
+    <a href="insight-vol-22.html" title="Vol. 22 · 평균으로 끌리다">22</a>
+    <a href="insight-vol-23.html" title="Vol. 23 · 느림의 값">23</a>
+    <a href="insight-vol-24.html" title="Vol. 24 · 초안 너머">24</a>
+    <a href="insight-vol-25.html" title="Vol. 25 · 숙련의 재발명">25</a>
+    <a href="insight-vol-26.html" title="Vol. 26 · 떠넘길 수 없는 것">26</a>
+    <a href="insight-vol-27.html" title="Vol. 27 · 집중력이라는 자원">27</a>
+    <a href="insight-vol-28.html" title="Vol. 28 · 말할 수 있는 위계">28</a>
+    <a href="insight-vol-29.html" title="Vol. 29 · 빨리빨리">29</a>
+    <a href="insight-vol-30.html" title="Vol. 30 · AI 1:1 설계도">30</a>
+    <a href="insight-vol-31.html" title="Vol. 31 · 감시가 된 편의">31</a>
+    <a href="insight-vol-32.html" title="Vol. 32 · 끄는 자리">32</a>
+    <a href="insight-vol-33.html" title="Vol. 33 · 꺼두는 시간">33</a>
+    <a href="insight-vol-34.html" title="Vol. 34 · 다시 짜는 법">34</a>
+    <a href="insight-vol-35.html" title="Vol. 35 · 위로를 맡기면">35</a>
+    <a href="insight-vol-36.html" title="Vol. 36 · 거꾸로 배우기">36</a>
+    <a href="insight-vol-37.html" title="Vol. 37 · 어제를 배운 기계">37</a>
+    <a href="insight-vol-38.html" title="Vol. 38 · 밝히면 잃는다">38</a>
+    <a href="insight-vol-39.html" title="Vol. 39 · 보이지 않는 청구서">39</a>
+    <a href="insight-vol-40.html" title="Vol. 40 · 조선 정조 대왕의 프로젝트 리더십">40</a>
+    <a href="insight-vol-41.html" title="Vol. 41 · 사람이 있다는 착각">41</a>
+    <a href="insight-vol-42.html" title="Vol. 42 · 부끄러우면 숨긴다">42</a>
+    <a href="insight-vol-43.html" title="Vol. 43 · 감정의 출처">43</a>
+    <a href="insight-vol-44.html" title="Vol. 44 · 이미 기운 배">44</a>
+    <a href="insight-vol-45.html" title="Vol. 45 · 만든 뒤의 3년">45</a>
+    <a href="insight-vol-46.html" title="Vol. 46 · 먼저 파지 않았다">46</a>
+    <a href="insight-vol-47.html" title="Vol. 47 · 인사이트 대신 아웃사이트">47</a>
+    <a href="insight-vol-48.html" title="Vol. 48 · 말하기 전에 묻는다">48</a>
+    <a href="insight-vol-49.html" title="Vol. 49 · 말로만 막았다">49</a>
+    <a href="insight-vol-50.html" title="Vol. 50 · 믿을수록 덜 따진다">50</a>
+    <a href="insight-vol-51.html" title="Vol. 51 · 두 번 묻지 않는다">51</a>
+    <a href="insight-vol-52.html" title="Vol. 52 · 쓰면서 숨긴다">52</a>
+    <a href="insight-vol-53.html" title="Vol. 53 · 목표를 바꾼 날">53</a>
+    <a href="insight-vol-54.html" title="Vol. 54 · 오래 했다는 말">54</a>
+    <a href="insight-vol-55.html" title="Vol. 55 · 혼자가 팀만큼 했다">55</a>
+    <a href="insight-vol-56.html" title="Vol. 56 · 무엇과 비교했는가">56</a>
+    <a href="insight-vol-57.html" title="Vol. 57 · 재는 순간 망가진다">57</a>
+    <a href="insight-vol-58.html" title="Vol. 58 · 같은 사람들이었다">58</a>
+    <a href="insight-vol-59.html" title="Vol. 59 · 모두가 관리자가 된다">59</a>
+    <a href="insight-vol-60.html" title="Vol. 60 · 틈이 사라졌다">60</a>
+    <a href="insight-vol-61.html" title="Vol. 61 · 빨라지고 더 깨진다">61</a>
+    <a href="insight-vol-62.html" title="Vol. 62 · 늦는 것인가 작은 것인가">62</a>
+    <a href="insight-vol-63.html" title="Vol. 63 · 더 많이 묻게 됐다">63</a>
+    <a href="insight-vol-64.html" title="Vol. 64 · 손잡이는 다시 달렸다">64</a>
   </div>
+  <div class="arch"><a href="index.html#archive">아카이브에서 분류별로 보기 →</a></div>
 </footer>
 
 </div><!-- .app -->
