@@ -1199,6 +1199,27 @@
         "motif": "cord",
         "sub": "줄 하나가<br>문화를 바꿨다"
       }
+    },
+    {
+      "vol": 59,
+      "file": "insight-vol-59.html",
+      "dir": "vol-59",
+      "title": "모두가 관리자가 된다",
+      "sub": "에이전트를 여럿 돌리는 사람은 목표를 세우고 일을 나누고 결과를 검수한다. 관리라는 일은 사라지지 않는다. 아래로 퍼진다.",
+      "eyebrow": "Vol. 59 · The Renaissance of Management",
+      "source": "Van Quaquebeke 외(Leadership Quarterly 2026) · Rajan & Wulf(2006) · Wulf(2012)",
+      "cat": "사람",
+      "tag": "#사람 · Renaissance of Management",
+      "readTime": "9분",
+      "desc": "자리는 줄어도 관리라는 일은 아래로 퍼진다. 층을 없애는 것과 권한을 내려보내는 것은 다른 일이다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#2a2330",
+        "c2": "#110e15",
+        "accent": "#d9c48f",
+        "motif": "span",
+        "sub": "자리는 줄고<br>일은 내려온다"
+      }
     }
   ]
 }
