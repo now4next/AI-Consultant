@@ -1262,6 +1262,27 @@
         "motif": "amp",
         "sub": "강점도 역기능도<br>함께 커진다"
       }
+    },
+    {
+      "vol": 62,
+      "file": "insight-vol-62.html",
+      "dir": "vol-62",
+      "title": "늦는 것인가 작은 것인가",
+      "sub": "AI에 쓴 돈이 아직 값으로 돌아오지 않는다. 그 이유가 '아직 이르다'인지 '원래 작다'인지에 따라 다음 결정이 갈린다.",
+      "eyebrow": "Vol. 62 · The Productivity J-Curve",
+      "source": "Brynjolfsson, Rock & Syverson, The Productivity J-Curve(AEJ: Macro 13-1, 2021)",
+      "cat": "전략",
+      "tag": "#전략 · J-Curve",
+      "readTime": "9분",
+      "desc": "값이 안 보이는 이유가 '아직 이르다'인지 '원래 작다'인지는 숫자만으로 구분되지 않는다. 구분은 보완 투자에서 한다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1b2538",
+        "c2": "#090d16",
+        "accent": "#d9c48f",
+        "motif": "jcurve",
+        "sub": "먼저 내려갔다<br>나중에 올라온다"
+      }
     }
   ]
 }

@@ -659,6 +659,24 @@ def motif_gate(accent="#d9c48f"):
     </svg>'''
 
 
+def motif_jcurve(accent="#d9c48f"):
+    """Measured productivity dipping below the line before it rises above it."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="{accent}" stroke-linecap="round" stroke-linejoin="round">
+        <g stroke-dasharray="4 6" opacity=".4" stroke-width="1.5">
+          <line x1="14" y1="62" x2="108" y2="62"/>
+        </g>
+        <line x1="20" y1="18" x2="20" y2="100" stroke-width="1.6" opacity=".4"/>
+        <line x1="20" y1="100" x2="108" y2="100" stroke-width="1.6" opacity=".4"/>
+        <path d="M24 56 C36 76 48 88 62 86 C78 84 90 56 102 26" stroke-width="2.7"/>
+        <path d="M96 28 L103 25 L104 33" stroke-width="2.3"/>
+      </g>
+      <g fill="{accent}" stroke="none">
+        <circle cx="62" cy="86" r="2.8" opacity=".85"/>
+      </g>
+    </svg>'''
+
+
 def motif_amp(accent="#d9c48f"):
     """A small signal entering an amplifier and leaving much larger."""
     return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -921,7 +939,7 @@ def motif_offload(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "none": lambda accent=None: ""}
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
