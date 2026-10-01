@@ -1241,6 +1241,27 @@
         "motif": "packed",
         "sub": "줄어든 것은<br>일이 아닌 틈"
       }
+    },
+    {
+      "vol": 61,
+      "file": "insight-vol-61.html",
+      "dir": "vol-61",
+      "title": "빨라지고 더 깨진다",
+      "sub": "올해 처음으로 AI가 처리량을 올렸다. 그런데 불안정성은 작년처럼 함께 올랐다. 결과를 가른 것은 도구가 아니었다.",
+      "eyebrow": "Vol. 61 · AI as Amplifier",
+      "source": "DORA, State of AI-assisted Software Development(Google Cloud, 2025)",
+      "cat": "조직운영",
+      "tag": "#조직운영 · DORA 2025",
+      "readTime": "9분",
+      "desc": "AI는 처리량을 올리면서 불안정성도 올린다. 같은 도구가 조직마다 다른 결과를 내는 이유는 들이기 전에 있던 기반이다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1e2a26",
+        "c2": "#0a110e",
+        "accent": "#d9c48f",
+        "motif": "amp",
+        "sub": "강점도 역기능도<br>함께 커진다"
+      }
     }
   ]
 }

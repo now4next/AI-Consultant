@@ -71,6 +71,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-58.html](insight-vol-58.html) — "같은 사람들이었다" 리더십 인사이트 Vol. 58 (Shook, How to Change a Culture: Lessons From NUMMI(MIT SMR, 2010)) · <https://projectleadership.cc/insight-vol-58.html>
 - [insight-vol-59.html](insight-vol-59.html) — "모두가 관리자가 된다" 리더십 인사이트 Vol. 59 (Van Quaquebeke 외(Leadership Quarterly 2026) · Rajan & Wulf(2006) · Wulf(2012)) · <https://projectleadership.cc/insight-vol-59.html>
 - [insight-vol-60.html](insight-vol-60.html) — "틈이 사라졌다" 리더십 인사이트 Vol. 60 (Ranganathan & Ye, AI Doesn't Reduce Work—It Intensifies It(HBR, 2026)) · <https://projectleadership.cc/insight-vol-60.html>
+- [insight-vol-61.html](insight-vol-61.html) — "빨라지고 더 깨진다" 리더십 인사이트 Vol. 61 (DORA, State of AI-assisted Software Development(Google Cloud, 2025)) · <https://projectleadership.cc/insight-vol-61.html>
 
 ### 새 볼륨 발행 워크플로우
 
