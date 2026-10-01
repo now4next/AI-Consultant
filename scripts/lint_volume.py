@@ -141,6 +141,30 @@ def check(path, reg_by_file):
     return errors, warns
 
 
+def check_notify_cats(reg):
+    """The notify worker hardcodes the category list; the taxonomy has outgrown it twice.
+
+    A category missing there cannot be picked by a subscriber, and one that is picked and
+    later dropped from the list is silently stripped the next time they save their settings.
+    """
+    p = os.path.join(ROOT, "notify", "src", "lib.js")
+    if not os.path.exists(p) or not reg:
+        return []
+    m = re.search(r"export const CATS = \[(.*?)\];", open(p, encoding="utf-8").read(), re.S)
+    if not m:
+        return ["notify/src/lib.js: CATS not found"]
+    worker = [x.strip().strip("'\"") for x in m.group(1).split(",") if x.strip()]
+    live = {v["cat"] for v in reg}
+    missing = [c for c in sorted(live) if c not in worker]
+    extra = [c for c in worker if c not in live]
+    out = []
+    if missing:
+        out.append("notify/src/lib.js: subscribers cannot pick " + ", ".join(missing))
+    if extra:
+        out.append("notify/src/lib.js: no volume uses " + ", ".join(extra))
+    return out
+
+
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     strict = "--strict" in sys.argv
@@ -156,6 +180,13 @@ def main():
         files = sorted(glob.glob(os.path.join(ROOT, "insight*.html")))
 
     total_e = total_w = 0
+
+    # project-wide: the notify worker's category list must match the taxonomy
+    for m in check_notify_cats(reg):
+        print(f"{'notify/src/lib.js':22} WARN")
+        print(f"    warn   {m}")
+        total_w += 1
+
     for f in files:
         if not os.path.exists(f):
             print(f"{os.path.basename(f):22} MISSING")

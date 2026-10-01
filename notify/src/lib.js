@@ -1,7 +1,10 @@
 // shared helpers for index.js (public routes) and admin.js (dashboard)
 
 export const DAYS = ['일', '월', '화', '수', '목', '금', '토'];
-export const CATS = ['전략', '사람', '문화', '판단', '평가', '책임', '성장', '성찰', '역사'];
+// 사이트 분류와 같은 순서로 유지한다. data/volumes.json 의 cat 값과 어긋나면
+// 구독자가 그 분류를 고를 수 없고, 고른 분류는 저장 때 걸러져 사라진다.
+// scripts/lint_volume.py 가 발행할 때마다 대조한다.
+export const CATS = ['전략', '조직운영', '사람', '문화', '판단', '평가', '책임', '성장', '숙련', '성찰', '균형', '역사'];
 export const SLOTS = (() => { const a = []; for (let h = 7; h <= 22; h++) for (const m of ['00', '30']) if (!(h === 22 && m === '30')) a.push(`${String(h).padStart(2, '0')}:${m}`); return a; })();
 
 // ───────────────────────────────────────────── crypto (Web Crypto only)
