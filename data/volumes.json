@@ -1283,6 +1283,27 @@
         "motif": "jcurve",
         "sub": "먼저 내려갔다<br>나중에 올라온다"
       }
+    },
+    {
+      "vol": 63,
+      "file": "insight-vol-63.html",
+      "dir": "vol-63",
+      "title": "더 많이 묻게 됐다",
+      "sub": "AI를 쓰면 동료에게 덜 묻게 될 것 같다. 무작위 실험의 결과는 그 반대였다. 다만 조건이 하나 붙는다.",
+      "eyebrow": "Vol. 63 · Rewiring the Network",
+      "source": "Büchsenschuss 외, The Impact of Generative AI Adoption on Organizational Networks(INSEAD WP 2026/01/STR)",
+      "cat": "문화",
+      "tag": "#문화 · Organizational Networks",
+      "readTime": "9분",
+      "desc": "AI를 쓰면 동료에게 덜 물을 것 같지만 실험 결과는 반대였다. 연결이 늘지 줄지는 도구보다 설계가 정한다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#2a1f2e",
+        "c2": "#110b14",
+        "accent": "#d9c48f",
+        "motif": "ties",
+        "sub": "연결은 줄지 않고<br>늘어났다"
+      }
     }
   ]
 }

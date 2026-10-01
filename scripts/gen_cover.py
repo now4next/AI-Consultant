@@ -659,6 +659,24 @@ def motif_gate(accent="#d9c48f"):
     </svg>'''
 
 
+def motif_ties(accent="#d9c48f"):
+    """The same people, with more lines running between them after."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="60" y1="18" x2="60" y2="102" stroke="{accent}" stroke-width="1.3" opacity=".22" stroke-dasharray="3 6"/>
+      <g fill="none" stroke="{accent}" stroke-linecap="round">
+        <path d="M22 38 L42 54" stroke-width="1.5" opacity=".5"/>
+        <path d="M22 82 L18 58" stroke-width="1.5" opacity=".5"/>
+        <path d="M74 32 L96 44 M74 32 L70 62 M96 44 L70 62 M70 62 L92 82 M96 44 L92 82 M74 32 L92 82 M70 62 L104 66" stroke-width="1.6" opacity=".8"/>
+      </g>
+      <g fill="{accent}" stroke="none" opacity=".75">
+        <circle cx="22" cy="38" r="3.2"/><circle cx="42" cy="54" r="3.2"/><circle cx="18" cy="58" r="3.2"/><circle cx="22" cy="82" r="3.2"/><circle cx="44" cy="86" r="3.2"/>
+      </g>
+      <g fill="{accent}" stroke="none">
+        <circle cx="74" cy="32" r="3.6"/><circle cx="96" cy="44" r="3.6"/><circle cx="70" cy="62" r="3.6"/><circle cx="92" cy="82" r="3.6"/><circle cx="104" cy="66" r="3.6"/>
+      </g>
+    </svg>'''
+
+
 def motif_jcurve(accent="#d9c48f"):
     """Measured productivity dipping below the line before it rises above it."""
     return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -939,7 +957,7 @@ def motif_offload(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "none": lambda accent=None: ""}
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "ties": motif_ties, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
