@@ -32,6 +32,5 @@ ADMIN_USER = "admin"
 #   RESEND_API_KEY       resend.com > API Keys (이메일 발송)
 #   SIGNING_KEY          32+ random bytes (openssl rand -hex 32) — HMAC for manage tokens
 #   ADMIN_PASS_HASH      node scripts/hash-password.js <password> (see SETUP.md)
-# KAKAO_REST_API_KEY / KAKAO_CLIENT_SECRET are no longer read (channel removed 2026-09-27);
-# delete them with: npx wrangler secret delete KAKAO_REST_API_KEY
+# the Kakao channel was removed 2026-09-27; its two secrets were deleted from the Worker on 2026-10-01.
 #   CRON_SECRET          random string — protects POST /cron/run (manual trigger / tests)

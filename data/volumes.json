@@ -1115,6 +1115,27 @@
         "motif": "strata",
         "sub": "시간은 저절로<br>깊어지지 않는다"
       }
+    },
+    {
+      "vol": 55,
+      "file": "insight-vol-55.html",
+      "dir": "vol-55",
+      "title": "혼자가 팀만큼 했다",
+      "sub": "AI를 쓴 한 사람이 AI 없는 두 사람 팀과 같은 품질을 냈다. 그러면 팀은 무엇을 위해 남는가.",
+      "eyebrow": "Vol. 55 · The Cybernetic Teammate",
+      "source": "Dell'Acqua 외, The Cybernetic Teammate(NBER w33641, 2025)",
+      "cat": "문화",
+      "tag": "#문화 · Cybernetic Teammate",
+      "readTime": "9분",
+      "desc": "AI를 쓴 한 사람이 2인 팀만큼 해냈다. 그래도 상위 10%는 팀에서만 나왔다. 팀을 꾸리는 기준이 바뀐다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1b2630",
+        "c2": "#0a0f14",
+        "accent": "#d9c48f",
+        "motif": "pair",
+        "sub": "혼자와 둘이<br>같은 자리에 섰다"
+      }
     }
   ]
 }

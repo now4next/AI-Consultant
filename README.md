@@ -65,6 +65,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-52.html](insight-vol-52.html) — "쓰면서 숨긴다" 리더십 인사이트 Vol. 52 (MIT NANDA(2025, 예비 보고) · Microsoft Work Trend Index(2024)) · <https://projectleadership.cc/insight-vol-52.html>
 - [insight-vol-53.html](insight-vol-53.html) — "목표를 바꾼 날" 리더십 인사이트 Vol. 53 (제국 남극 횡단 탐험(1914–1917) · 로스해 지원대 기록) · <https://projectleadership.cc/insight-vol-53.html>
 - [insight-vol-54.html](insight-vol-54.html) — "오래 했다는 말" 리더십 인사이트 Vol. 54 (Ericsson 외(1993) · Macnamara 외(2014) 메타분석) · <https://projectleadership.cc/insight-vol-54.html>
+- [insight-vol-55.html](insight-vol-55.html) — "혼자가 팀만큼 했다" 리더십 인사이트 Vol. 55 (Dell'Acqua 외, The Cybernetic Teammate(NBER w33641, 2025)) · <https://projectleadership.cc/insight-vol-55.html>
 
 ### 새 볼륨 발행 워크플로우
 

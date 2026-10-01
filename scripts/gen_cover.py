@@ -659,6 +659,29 @@ def motif_gate(accent="#d9c48f"):
     </svg>'''
 
 
+def motif_pair(accent="#d9c48f"):
+    """A pair of people and a single person with a dashed companion, standing level."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="10" y1="100" x2="110" y2="100" stroke="{accent}" stroke-width="1.6" opacity=".35"/>
+      <g stroke-dasharray="4 6" opacity=".3">
+        <line x1="10" y1="58" x2="110" y2="58" stroke="{accent}" stroke-width="1.4"/>
+      </g>
+      <g fill="none" stroke="{accent}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2">
+        <circle cx="26" cy="48" r="7"/><path d="M15 90 C15 74 20 66 26 66 C32 66 37 74 37 90"/>
+        <circle cx="48" cy="48" r="7"/><path d="M37 90 C37 74 42 66 48 66 C54 66 59 74 59 90"/>
+        <circle cx="84" cy="48" r="7"/><path d="M73 90 C73 74 78 66 84 66 C90 66 95 74 95 90"/>
+      </g>
+      <g fill="none" stroke="{accent}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke-dasharray="4 5" opacity=".5">
+        <rect x="99" y="42" width="14" height="14" rx="4"/>
+        <line x1="106" y1="56" x2="106" y2="66"/>
+        <line x1="99" y1="66" x2="113" y2="66"/>
+      </g>
+      <g fill="{accent}" stroke="none" opacity=".55">
+        <circle cx="103" cy="49" r="1.5"/><circle cx="109" cy="49" r="1.5"/>
+      </g>
+    </svg>'''
+
+
 def motif_strata(accent="#d9c48f"):
     """Many shallow strokes stopped at the first layer; one shaft cutting through."""
     return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -776,7 +799,7 @@ def motif_offload(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "none": lambda accent=None: ""}
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
