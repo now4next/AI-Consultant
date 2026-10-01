@@ -41,6 +41,7 @@
   body{overflow-x:hidden}
   a{color:inherit;text-decoration:none}
   img{display:block;max-width:100%}
+  [hidden]{display:none!important}
   .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
 
   .concept{background:var(--ink);color:var(--bg);text-align:center;
@@ -79,6 +80,7 @@
   .search .clr{position:absolute;right:7px;display:none;width:21px;height:21px;padding:0;border:0;border-radius:50%;
     background:none;color:var(--muted);font:inherit;font-size:15px;line-height:1;cursor:pointer}
   .search .clr:hover{color:var(--ink)}
+  .search input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;display:none}
   .search.has .clr{display:block}
   .res{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:-10px 0 20px}
   @media(max-width:560px){.search input{width:100%}.search{flex:1 1 100%}}
@@ -155,7 +157,6 @@
   .subscribe .btn:hover{background:#dcdcdc}
   @media(max-width:430px){.subscribe .btn{width:100%;justify-content:center}}
   .foothero .note{margin-top:12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted-2)}
-  .subscribe[hidden]{display:none}
   .mascot{justify-self:center;text-align:center}
   .mascot img{width:min(260px,64vw);height:auto;display:block;margin:0 auto;filter:drop-shadow(0 14px 30px rgba(0,0,0,.45))}
   .mascot .cap{margin-top:12px;font-family:var(--serif-display);font-style:italic;font-size:16px;color:var(--muted-2)}
