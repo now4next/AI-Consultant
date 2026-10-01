@@ -7,7 +7,20 @@
   "koLead": "산출은 보이고<br>일거리는<br><em>보이지 않는다</em>",
   "koSub": "AI가 만든 산출은 눈에 띄고, AI가 만든 수습·검증·통합의 일은 장부 밖에 쌓인다.",
   "deck": "AI를 들이면 개인의 생산성은 오른다. 그런데 조직의 전달 성과는 오히려 내려간 데이터가 있다. 늘어난 산출을 검증하고 통합하고 수습하는 일이 사람에게 돌아오기 때문이다. <em>보이지 않는 청구서</em>는 그렇게 쌓인다.",
-  "pillars": [["The Paradox", "개인은 빨라지고"], ["Three Bills", "청구서 세 장"], ["Budget It", "미리 예산에 넣기"]],
+  "pillars": [
+    [
+      "The Paradox",
+      "개인은 빨라지고"
+    ],
+    [
+      "Three Bills",
+      "청구서 세 장"
+    ],
+    [
+      "Budget It",
+      "미리 예산에 넣기"
+    ]
+  ],
   "sourceTitle": "Accelerate State of DevOps · The Widening AI Value Gap",
   "source": "DORA (2024) · BCG (2025) · MIT (2025)",
   "cover": {
@@ -32,8 +45,8 @@
     ],
     "readTime": "6분",
     "tags": "#통합부채 #DORA #BCG",
-    "cat": "전략",
-    "tag": "#전략 · DORA·BCG",
+    "cat": "조직운영",
+    "tag": "#조직운영 · DORA·BCG",
     "desc": "AI가 만들어 낸 산출은 보이고, AI가 만들어 낸 일거리는 보이지 않는다. 그 청구서는 사람에게 온다."
   }
 }

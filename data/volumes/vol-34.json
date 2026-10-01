@@ -7,7 +7,20 @@
   "koLead": "얹지 말고<br>다시 짜라,<br><em>이렇게</em>",
   "koSub": "값은 도구를 얹는 데서 나지 않는다. 흐름을 다시 그리는 실습에서 난다.",
   "deck": "Vol. 15에서 값은 도구를 얹는 데서 나지 않고 흐름을 다시 짜는 데서 난다고 했다. 그런데 '다시 짜라'는 말은 실행 앞에서 자주 멈춘다. 이 편은 그 다음 문장, 곧 <em>어떻게</em> 다시 짜는지를 네 단계 실습으로 옮긴다.",
-  "pillars": [["Focus", "초점을 고른다"], ["Reinvent", "처음부터 다시 그린다"], ["Govern", "감독을 설계한다"]],
+  "pillars": [
+    [
+      "Focus",
+      "초점을 고른다"
+    ],
+    [
+      "Reinvent",
+      "처음부터 다시 그린다"
+    ],
+    [
+      "Govern",
+      "감독을 설계한다"
+    ]
+  ],
   "sourceTitle": "Seizing the Agentic AI Advantage",
   "source": "McKinsey (2025) · Gartner (2025)",
   "cover": {
@@ -32,8 +45,8 @@
     ],
     "readTime": "6분",
     "tags": "#워크플로재설계 #McKinsey #Gartner",
-    "cat": "전략",
-    "tag": "#전략 · McKinsey·Gartner",
+    "cat": "조직운영",
+    "tag": "#조직운영 · McKinsey·Gartner",
     "desc": "얹지 말고 다시 짜라 했다(Vol. 15). 이번 편은 그 다시 짜기를 네 단계 실습으로 옮긴다."
   }
 }

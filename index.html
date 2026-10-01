@@ -192,11 +192,11 @@
   }
   /* dark:end */
   /* cat:start */
-  :root{--c-strategy:#2b6cb0;--c-people:#c2410c;--c-judgment:#6b21a8;--c-duty:#b45309;--c-growth:#15803d;--c-reflect:#0e7490;--c-history:#7c2d12;--c-culture:#9d174d;--c-eval:#4338ca}
-  @media (prefers-color-scheme: dark){:root{--c-strategy:#7fb3ff;--c-people:#ffa27a;--c-judgment:#c9a0ff;--c-duty:#f6bd5c;--c-growth:#5ce08c;--c-reflect:#5ccdf5;--c-history:#dca877;--c-culture:#ff9ec4;--c-eval:#a5b4fc}}
+  :root{--c-strategy:#2b6cb0;--c-people:#c2410c;--c-judgment:#6b21a8;--c-duty:#b45309;--c-growth:#15803d;--c-reflect:#0e7490;--c-history:#7c2d12;--c-culture:#9d174d;--c-eval:#4338ca;--c-ops:#4d7c0f}
+  @media (prefers-color-scheme: dark){:root{--c-strategy:#7fb3ff;--c-people:#ffa27a;--c-judgment:#c9a0ff;--c-duty:#f6bd5c;--c-growth:#5ce08c;--c-reflect:#5ccdf5;--c-history:#dca877;--c-culture:#ff9ec4;--c-eval:#a5b4fc;--c-ops:#b5dd6a}}
   [data-cat="전략"],[data-f="전략"]{--cc:var(--c-strategy)} [data-cat="사람"],[data-f="사람"]{--cc:var(--c-people)}
   [data-cat="판단"],[data-f="판단"]{--cc:var(--c-judgment)} [data-cat="책임"],[data-f="책임"]{--cc:var(--c-duty)}
-  [data-cat="성장"],[data-f="성장"]{--cc:var(--c-growth)} [data-cat="성찰"],[data-f="성찰"]{--cc:var(--c-reflect)} [data-cat="역사"],[data-f="역사"]{--cc:var(--c-history)} [data-cat="문화"],[data-f="문화"]{--cc:var(--c-culture)} [data-cat="평가"],[data-f="평가"]{--cc:var(--c-eval)}
+  [data-cat="성장"],[data-f="성장"]{--cc:var(--c-growth)} [data-cat="성찰"],[data-f="성찰"]{--cc:var(--c-reflect)} [data-cat="역사"],[data-f="역사"]{--cc:var(--c-history)} [data-cat="문화"],[data-f="문화"]{--cc:var(--c-culture)} [data-cat="평가"],[data-f="평가"]{--cc:var(--c-eval)} [data-cat="조직운영"],[data-f="조직운영"]{--cc:var(--c-ops)}
   .chip::before,.card .tag::before,.spot .no::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--cc);margin-right:7px;vertical-align:1px}
   .chip[data-f="all"]::before{display:none}
   .chip.on::before{box-shadow:0 0 0 2px rgba(255,255,255,.35)}
@@ -291,6 +291,7 @@
     <div class="filter" id="filter">
       <button class="chip on" data-f="all">전체</button>
       <button class="chip" data-f="전략">전략</button>
+      <button class="chip" data-f="조직운영">조직운영</button>
       <button class="chip" data-f="사람">사람</button>
       <button class="chip" data-f="문화">문화</button>
       <button class="chip" data-f="판단">판단</button>
@@ -416,11 +417,11 @@
           <p>10년 걸릴 공사를 2년 8개월에. 사람을 압박하지 않고 설계와 기술로 이룬 조선의 프로젝트 리더십.</p>
           <div class="foot"><span class="tag">#역사 · 정조·화성</span><span class="rt">⏱ 7분</span></div></div>
       </a>
-      <a class="card" data-cat="전략" href="insight-vol-39.html">
+      <a class="card" data-cat="조직운영" href="insight-vol-39.html">
         <div class="thumb ph" data-n="39" style="--c1:#1f1c25;--c2:#0e0c12"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <line x1="14" y1="60" x2="106" y2="60" stroke="#d9c48f" stroke-width="1.6" opacity=".45"/> <g fill="#d9c48f"> <rect x="26" y="44" width="13" height="16" rx="2" opacity=".9"/> <rect x="48" y="34" width="13" height="26" rx="2" opacity=".9"/> <rect x="70" y="26" width="13" height="34" rx="2" opacity=".9"/> </g> <g fill="#d9c48f" opacity=".32"> <rect x="26" y="60" width="13" height="14" rx="2"/> <rect x="48" y="60" width="13" height="26" rx="2"/> <rect x="70" y="60" width="13" height="38" rx="2"/> </g> <path d="M92 66 L92 96" stroke="#d9c48f" stroke-width="2" stroke-dasharray="3 4" opacity=".5" stroke-linecap="round"/> <path d="M87 90 L92 98 L97 90" stroke="#d9c48f" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/> </svg></span><span class="kw">보이지 않는 청구서</span><span class="src">DORA (2024) · BCG (2025) · MIT (2025)</span></div>
         <div class="body"><div class="no">Vol. 39</div><h3>보이지 않는 청구서</h3>
           <p>AI가 만들어 낸 산출은 보이고, AI가 만들어 낸 일거리는 보이지 않는다. 그 청구서는 사람에게 온다.</p>
-          <div class="foot"><span class="tag">#전략 · DORA·BCG</span><span class="rt">⏱ 6분</span></div></div>
+          <div class="foot"><span class="tag">#조직운영 · DORA·BCG</span><span class="rt">⏱ 6분</span></div></div>
       </a>
       <a class="card" data-cat="책임" href="insight-vol-38.html">
         <div class="thumb ph" data-n="38" style="--c1:#1a2226;--c2:#0b0f11"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <g stroke="#d9c48f" stroke-width="2.4" fill="none" stroke-linejoin="round"> <path d="M20 26 L52 26 L52 88 L20 88 Z"/> <path d="M68 26 L100 26 L100 88 L68 88 Z" opacity=".45"/> </g> <g stroke="#d9c48f" stroke-width="1.6" stroke-linecap="round" opacity=".5"> <line x1="27" y1="38" x2="45" y2="38"/> <line x1="27" y1="46" x2="45" y2="46"/> <line x1="75" y1="38" x2="93" y2="38" opacity=".6"/> <line x1="75" y1="46" x2="93" y2="46" opacity=".6"/> </g> <rect x="26" y="66" width="20" height="12" rx="3" fill="#d9c48f"/> <rect x="74" y="66" width="20" height="12" rx="3" fill="none" stroke="#d9c48f" stroke-width="1.6" stroke-dasharray="3 4" opacity=".4"/> </svg></span><span class="kw">밝히면 잃는다</span><span class="src">Schilke & Reimann · OBHDP (2025) · EU AI Act</span></div>
@@ -446,11 +447,11 @@
           <p>덜 외로우려다 더 외로워진다. AI에게 곁을 맡길수록, 사람에게 가는 길이 조금씩 멀어진다.</p>
           <div class="foot"><span class="tag">#사람 · OpenAI·Turkle</span><span class="rt">⏱ 6분</span></div></div>
       </a>
-      <a class="card" data-cat="전략" href="insight-vol-34.html">
+      <a class="card" data-cat="조직운영" href="insight-vol-34.html">
         <div class="thumb ph" data-n="34" style="--c1:#1c2130;--c2:#0c0e16"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <g stroke="#d9c48f" stroke-width="1.4" stroke-dasharray="2 5" opacity=".3" fill="none"> <path d="M14 34 L38 34 L38 52 L62 52 L62 34 L86 34 L86 52 L106 52"/> </g> <g fill="#d9c48f" opacity=".3"> <circle cx="14" cy="34" r="3"/><circle cx="38" cy="34" r="3"/><circle cx="38" cy="52" r="3"/> <circle cx="62" cy="52" r="3"/><circle cx="62" cy="34" r="3"/><circle cx="86" cy="34" r="3"/> <circle cx="86" cy="52" r="3"/><circle cx="106" cy="52" r="3"/> </g> <path d="M14 80 L50 80 L50 96 L90 96" stroke="#d9c48f" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/> <circle cx="14" cy="80" r="4" fill="#d9c48f"/> <rect x="46" y="72" width="8" height="16" rx="2" fill="none" stroke="#d9c48f" stroke-width="2.2"/> <circle cx="90" cy="96" r="4.4" fill="#d9c48f"/> </svg></span><span class="kw">다시 짜는 법</span><span class="src">McKinsey (2025) · Gartner (2025)</span></div>
         <div class="body"><div class="no">Vol. 34</div><h3>다시 짜는 법</h3>
           <p>얹지 말고 다시 짜라 했다(Vol. 15). 이번 편은 그 다시 짜기를 네 단계 실습으로 옮긴다.</p>
-          <div class="foot"><span class="tag">#전략 · McKinsey·Gartner</span><span class="rt">⏱ 6분</span></div></div>
+          <div class="foot"><span class="tag">#조직운영 · McKinsey·Gartner</span><span class="rt">⏱ 6분</span></div></div>
       </a>
       <a class="card" data-cat="성찰" href="insight-vol-33.html">
         <div class="thumb ph" data-n="33" style="--c1:#1c1830;--c2:#0d0b18"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <g stroke="#d9c48f" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"> <path d="M14 84 C30 84 30 60 44 60 L52 60"/> <rect x="52" y="52" width="12" height="16" rx="3"/> <line x1="64" y1="56" x2="70" y2="56"/> <line x1="64" y1="64" x2="70" y2="64"/> <path d="M88 46 L88 74 L106 74 L106 46 Z" opacity=".55"/> <circle cx="94" cy="60" r="1.6" fill="#d9c48f" opacity=".55"/> <circle cx="100" cy="60" r="1.6" fill="#d9c48f" opacity=".55"/> </g> <path d="M79 40 A21 21 0 0 1 79 80" stroke="#d9c48f" stroke-width="1.2" fill="none" stroke-dasharray="3 5" opacity=".4"/> </svg></span><span class="kw">꺼두는 시간</span><span class="src">Sonnentag & Fritz (2007·2015) · Sonnentag (2018)</span></div>
@@ -476,11 +477,11 @@
           <p>상태 보고는 도구가 대신할 수 있다. 그러면 1:1은 원래 목적, 곧 사람에게로 돌아간다.</p>
           <div class="foot"><span class="tag">#성장 · Andy Grove</span><span class="rt">⏱ 5분</span></div></div>
       </a>
-      <a class="card" data-cat="전략" href="insight-vol-29.html">
+      <a class="card" data-cat="조직운영" href="insight-vol-29.html">
         <div class="thumb ph" data-n="29" style="--c1:#241a12;--c2:#120a06"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <g stroke="#d9c48f" stroke-width="2.6" stroke-linecap="round"> <line x1="14" y1="60" x2="40" y2="60"/> <line x1="10" y1="50" x2="28" y2="50" opacity=".38"/> <line x1="10" y1="70" x2="28" y2="70" opacity=".38"/> </g> <circle cx="46" cy="60" r="4" fill="#d9c48f"/> <path d="M46 60 L96 34" stroke="#d9c48f" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/> <path d="M88 33 L96 34 L93 42" stroke="#d9c48f" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/> <path d="M46 60 L60 72 L54 80 L68 88 L62 96" stroke="#d9c48f" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/> </svg></span><span class="kw">빨리빨리</span><span class="src">한국의 속도 문화 · 성수(1994)·삼풍(1995)</span></div>
         <div class="body"><div class="no">Vol. 29</div><h3>빨리빨리</h3>
           <p>빨리빨리는 나라를 세운 강점이자 다리를 무너뜨린 약점이었다. AI 시대엔 늦추지 말고 속도를 가른다.</p>
-          <div class="foot"><span class="tag">#전략 · 빨리빨리</span><span class="rt">⏱ 6분</span></div></div>
+          <div class="foot"><span class="tag">#조직운영 · 빨리빨리</span><span class="rt">⏱ 6분</span></div></div>
       </a>
       <a class="card" data-cat="문화" href="insight-vol-28.html">
         <div class="thumb ph" data-n="28" style="--c1:#1e2622;--c2:#0d120f"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <g stroke="#d9c48f" stroke-width="2.4" stroke-linecap="round" opacity=".45"> <line x1="32" y1="30" x2="88" y2="30"/> <line x1="32" y1="52" x2="88" y2="52"/> <line x1="32" y1="74" x2="88" y2="74"/> <line x1="32" y1="96" x2="88" y2="96"/> </g> <path d="M60 92 L60 34" stroke="#d9c48f" stroke-width="2.6" fill="none" stroke-linecap="round"/> <path d="M53 41 L60 32 L67 41" stroke="#d9c48f" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/> <circle cx="60" cy="96" r="4" fill="#d9c48f"/> </svg></span><span class="kw">말할 수 있는 위계</span><span class="src">Hofstede · Edmondson · 권력거리 연구</span></div>
@@ -560,11 +561,11 @@
           <p>사람을 움직이는 건 진척의 감각. AI가 만드는 과정을 대신할 때 의미는 어디서 오는가.</p>
           <div class="foot"><span class="tag">#사람 · Amabile·Pink</span><span class="rt">⏱ 6분</span></div></div>
       </a>
-      <a class="card" data-cat="전략" href="insight-vol-15.html">
+      <a class="card" data-cat="조직운영" href="insight-vol-15.html">
         <div class="thumb ph" data-n="15" style="--c1:#1b2338;--c2:#0a0e18"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <g stroke="#d9c48f" stroke-width="1.2" opacity=".24" stroke-dasharray="3 5" fill="none"> <line x1="60" y1="60" x2="24" y2="30"/> <line x1="60" y1="60" x2="96" y2="34"/> <line x1="60" y1="60" x2="30" y2="94"/> </g> <g stroke="#d9c48f" stroke-width="2.2" fill="none" stroke-linecap="round"> <line x1="60" y1="60" x2="90" y2="88"/> <line x1="60" y1="60" x2="34" y2="46"/> <line x1="60" y1="60" x2="74" y2="24"/> </g> <g fill="#d9c48f"> <circle cx="60" cy="60" r="7"/> <circle cx="90" cy="88" r="4.2"/> <circle cx="34" cy="46" r="4.2"/> <circle cx="74" cy="24" r="4.2"/> </g> <g fill="none" stroke="#d9c48f" stroke-width="1.2" opacity=".4"> <circle cx="24" cy="30" r="3.4"/> <circle cx="96" cy="34" r="3.4"/> <circle cx="30" cy="94" r="3.4"/> </g> </svg></span><span class="kw">일을 다시 짜다</span><span class="src">McKinsey · State of AI 2025 · Superagency</span></div>
         <div class="body"><div class="no">Vol. 15</div><h3>일을 다시 짜다</h3>
           <p>88%가 AI를 쓰지만 값이 남는 곳은 6%. 차이는 도구가 아니라 다시 짠 조직에 있다.</p>
-          <div class="foot"><span class="tag">#전략 · McKinsey</span><span class="rt">⏱ 6분</span></div></div>
+          <div class="foot"><span class="tag">#조직운영 · McKinsey</span><span class="rt">⏱ 6분</span></div></div>
       </a>
       <a class="card" data-cat="성장" href="insight-vol-14.html">
         <div class="thumb ph" data-n="14" style="--c1:#17281d;--c2:#0b130e"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <g stroke="#d9c48f" stroke-width="1.1" opacity=".30"> <line x1="30" y1="26" x2="78" y2="74"/> <line x1="54" y1="26" x2="96" y2="68"/> <line x1="90" y1="26" x2="42" y2="74"/> <line x1="66" y1="26" x2="24" y2="68"/> </g> <g stroke="#d9c48f" stroke-width="2.8" fill="none" stroke-linecap="round"> <path d="M60 102 C60 86 60 74 60 48"/> </g> <path d="M60 74 C50 71 45 63 47 54 C57 56 62 65 60 74Z" fill="#d9c48f" stroke="none"/> <path d="M60 64 C70 60 75 52 73 43 C63 46 58 55 60 64Z" fill="#d9c48f" stroke="none"/> <circle cx="60" cy="46" r="3.4" fill="#d9c48f"/> </svg></span><span class="kw">나누어 기르다</span><span class="src">Terblanche · ICF · Passmore et al. · 2022–2026</span></div>
