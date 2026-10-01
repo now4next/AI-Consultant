@@ -1178,6 +1178,27 @@
         "motif": "bend",
         "sub": "눌러서 재면<br>자가 휜다"
       }
+    },
+    {
+      "vol": 58,
+      "file": "insight-vol-58.html",
+      "dir": "vol-58",
+      "title": "같은 사람들이었다",
+      "sub": "GM 최악의 공장이 2년 뒤 최고가 됐다. 사람은 대부분 그대로였고, 바뀐 것은 일하는 구조였다.",
+      "eyebrow": "Vol. 58 · NUMMI, 1984",
+      "source": "Shook, How to Change a Culture: Lessons From NUMMI(MIT SMR, 2010)",
+      "cat": "역사",
+      "tag": "#역사 · NUMMI",
+      "readTime": "9분",
+      "desc": "최악의 공장이 같은 사람들로 최고가 됐다. 바뀐 것은 사람이 아닌 구조, 곧 멈출 수 있게 만든 설계였다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#272019",
+        "c2": "#100c08",
+        "accent": "#d9c48f",
+        "motif": "cord",
+        "sub": "줄 하나가<br>문화를 바꿨다"
+      }
     }
   ]
 }

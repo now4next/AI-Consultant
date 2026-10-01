@@ -659,6 +659,25 @@ def motif_gate(accent="#d9c48f"):
     </svg>'''
 
 
+def motif_cord(accent="#d9c48f"):
+    """An andon cord hanging over the line, with the signal lamp lit above it."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="10" y1="104" x2="110" y2="104" stroke="{accent}" stroke-width="1.6" opacity=".35"/>
+      <g fill="none" stroke="{accent}" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="44" y="12" width="32" height="16" rx="4" stroke-width="2"/>
+        <line x1="24" y1="34" x2="96" y2="34" stroke-width="1.8" opacity=".5"/>
+        <line x1="60" y1="34" x2="60" y2="62" stroke-width="2.2"/>
+        <circle cx="60" cy="68" r="6" stroke-width="2.2"/>
+        <line x1="14" y1="84" x2="106" y2="84" stroke-width="2.4"/>
+        <rect x="26" y="70" width="14" height="14" rx="3" stroke-width="1.8" opacity=".55"/>
+        <rect x="80" y="70" width="14" height="14" rx="3" stroke-width="1.8" opacity=".55"/>
+      </g>
+      <g fill="{accent}" stroke="none">
+        <circle cx="54" cy="20" r="2.2"/><circle cx="60" cy="20" r="2.2" opacity=".35"/><circle cx="66" cy="20" r="2.2" opacity=".35"/>
+      </g>
+    </svg>'''
+
+
 def motif_bend(accent="#d9c48f"):
     """A measuring stick that bows the moment you press on it."""
     return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -840,7 +859,7 @@ def motif_offload(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "none": lambda accent=None: ""}
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
