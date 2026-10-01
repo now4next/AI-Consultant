@@ -74,6 +74,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-61.html](insight-vol-61.html) — "빨라지고 더 깨진다" 리더십 인사이트 Vol. 61 (DORA, State of AI-assisted Software Development(Google Cloud, 2025)) · <https://projectleadership.cc/insight-vol-61.html>
 - [insight-vol-62.html](insight-vol-62.html) — "늦는 것인가 작은 것인가" 리더십 인사이트 Vol. 62 (Brynjolfsson, Rock & Syverson, The Productivity J-Curve(AEJ: Macro 13-1, 2021)) · <https://projectleadership.cc/insight-vol-62.html>
 - [insight-vol-63.html](insight-vol-63.html) — "더 많이 묻게 됐다" 리더십 인사이트 Vol. 63 (Büchsenschuss 외, The Impact of Generative AI Adoption on Organizational Networks(INSEAD WP 2026/01/STR)) · <https://projectleadership.cc/insight-vol-63.html>
+- [insight-vol-64.html](insight-vol-64.html) — "손잡이는 다시 달렸다" 리더십 인사이트 Vol. 64 (1854년 브로드가 콜레라 유행 · Snow · Whitehead · 보건위원회 기록) · <https://projectleadership.cc/insight-vol-64.html>
 
 ### 새 볼륨 발행 워크플로우
 

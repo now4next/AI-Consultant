@@ -1304,6 +1304,27 @@
         "motif": "ties",
         "sub": "연결은 줄지 않고<br>늘어났다"
       }
+    },
+    {
+      "vol": 64,
+      "file": "insight-vol-64.html",
+      "dir": "vol-64",
+      "title": "손잡이는 다시 달렸다",
+      "sub": "1854년 런던, 존 스노우는 지도로 펌프를 지목했고 당국은 손잡이를 뺐다. 유행이 지나자 손잡이는 제자리로 돌아갔다.",
+      "eyebrow": "Vol. 64 · Broad Street, 1854",
+      "source": "1854년 브로드가 콜레라 유행 · Snow · Whitehead · 보건위원회 기록",
+      "cat": "역사",
+      "tag": "#역사 · Broad Street",
+      "readTime": "9분",
+      "desc": "지도는 펌프를 지목했고 손잡이는 빠졌다. 그러나 설명은 받아들여지지 않았고, 유행이 지나자 손잡이는 돌아갔다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#232a2e",
+        "c2": "#0c1013",
+        "accent": "#d9c48f",
+        "motif": "pump",
+        "sub": "증거는 닿았지만<br>설명은 남지 않았다"
+      }
     }
   ]
 }
