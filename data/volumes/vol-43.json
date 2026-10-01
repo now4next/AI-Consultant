@@ -7,7 +7,20 @@
   "koLead": "그 감정은<br>어디서<br><em>왔는가</em>",
   "koSub": "화난 사람의 위험 추정은 두려운 사람보다 기쁜 사람에 가까웠다.",
   "deck": "감정은 데이터지 명령이 아니다. 수전 데이비드의 이 문장에 리더가 덧붙일 것이 있다. 데이터에는 <em>출처</em>가 있다. 앞 회의에서 생긴 화는 다음 결재로 흘러가고, 리더가 감춘 긴장은 맞은편 사람의 혈압으로 옮겨 간다.",
-  "pillars": [["With a Source", "데이터에는 출처가 있다"], ["Carryover", "앞 회의가 뒤 결정에 남는다"], ["Broadcast", "리더의 감정은 번진다"]],
+  "pillars": [
+    [
+      "With a Source",
+      "데이터에는 출처가 있다"
+    ],
+    [
+      "Carryover",
+      "앞 회의가 뒤 결정에 남는다"
+    ],
+    [
+      "Broadcast",
+      "리더의 감정은 번진다"
+    ]
+  ],
   "sourceTitle": "Mood, Misattribution, and Judgments of Well-Being: Informative and Directive Functions of Affective States",
   "source": "Susan David (2017) · Schwarz & Clore (1983) · Lerner & Keltner (2001) · Barsade (2002)",
   "cover": {
@@ -32,8 +45,8 @@
     ],
     "readTime": "7분",
     "tags": "#감정 #의사결정 #감정전염",
-    "cat": "성찰",
-    "tag": "#성찰 · Susan David",
+    "cat": "균형",
+    "tag": "#균형 · Susan David",
     "desc": "감정은 데이터지 명령이 아니다. 다만 데이터에는 출처가 있다. 앞 회의의 화는 다음 결재로 흘러간다."
   }
 }

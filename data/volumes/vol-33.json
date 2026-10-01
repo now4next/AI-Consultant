@@ -7,7 +7,20 @@
   "koLead": "일이 꺼지지 않으면<br>사람이<br><em>꺼진다</em>",
   "koSub": "회복은 쉬는 시간의 길이보다, 마음이 일에서 떨어져 있는 동안 일어난다.",
   "deck": "AI는 일의 경계를 지운다. 알림은 밤에도 오고, 에이전트는 자는 동안도 일하며, 확인하고픈 유혹은 24시간 켜져 있다. 그런데 회복 연구의 결론은 반대쪽을 가리킨다. 사람을 다시 채우는 것은 <em>마음이 일에서 떨어져 있는 시간</em>이다.",
-  "pillars": [["Always On", "꺼지지 않는 일"], ["Four Ways", "회복의 네 경험"], ["Switch Off", "꺼두는 시간을 설계한다"]],
+  "pillars": [
+    [
+      "Always On",
+      "꺼지지 않는 일"
+    ],
+    [
+      "Four Ways",
+      "회복의 네 경험"
+    ],
+    [
+      "Switch Off",
+      "꺼두는 시간을 설계한다"
+    ]
+  ],
   "sourceTitle": "The Recovery Experience Questionnaire · The Recovery Paradox",
   "source": "Sonnentag & Fritz (2007·2015) · Sonnentag (2018)",
   "cover": {
@@ -32,8 +45,8 @@
     ],
     "readTime": "5분",
     "tags": "#회복 #심리적분리 #Sonnentag",
-    "cat": "성찰",
-    "tag": "#성찰 · Sonnentag",
+    "cat": "균형",
+    "tag": "#균형 · Sonnentag",
     "desc": "일이 꺼지지 않으면 사람이 꺼진다. 회복은 마음이 일에서 떨어져 있는 동안 일어난다."
   }
 }
