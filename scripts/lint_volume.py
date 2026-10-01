@@ -14,7 +14,7 @@ Usage:
 
 Exit code 0 = clean, 1 = at least one ERROR (or WARN with --strict).
 """
-import os, re, sys, json, glob
+import os, re, sys, json, glob, html
 from collections import Counter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,6 +23,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MAX_PROSE_EMDASH = 2      # citations/signature live outside the prose scan
 MAX_ANIRA        = 8      # "A가 아니라 B다" repetitions
 BANNED = ["단 하나", "핵심은", "피터드러커소사이어티"]
+
+# .g-src is absolutely positioned at the cover's bottom, so a source that wraps to a
+# second line grows upward and lands on top of .g-sub. Measured across all volumes the
+# break is between 78 and 79 (CJK counted double). Keep it short with cover.src.
+MAX_COVER_SRC = 78
 
 PAIRED_TAGS = ["article", "blockquote", "figure", "footer", "section", "style", "script", "body"]
 
@@ -51,6 +56,10 @@ def prose_of(s):
     body = re.sub(r"<b>— Leadership Insight</b>", "", body)
     body = re.sub(r"<!--.*?-->", "", body, flags=re.S)
     body = re.sub(r"<svg.*?</svg>", "", body, flags=re.S)
+    # Attribute text is not prose. The footer index carries every volume's title
+    # in a title="", so without this a title containing a counted phrase inflates
+    # the count on all 60-odd pages at once.
+    body = re.sub(r'\s(?:title|aria-label)="[^"]*"', "", body)
     return body
 
 
@@ -119,6 +128,15 @@ def check(path, reg_by_file):
     if reg and reg["vol"] >= 6:
         if not re.search(r'class="(cover-bleed|issue-cover|gcover)"', s):
             warns.append("no cover found")
+
+    # ---- cover source fits on one line
+    m = re.search(r'<div class="g-src">(.*?)</div>', s, re.S)
+    if m:
+        txt = html.unescape(re.sub(r"<[^>]+>", "", m.group(1))).strip()
+        w = sum(2 if ord(ch) > 0x2E80 else 1 for ch in txt)
+        if w > MAX_COVER_SRC:
+            warns.append(f"cover source wraps and covers the subtitle: width {w} "
+                         f"(limit {MAX_COVER_SRC}); shorten it with cover.src")
 
     return errors, warns
 

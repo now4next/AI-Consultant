@@ -75,6 +75,11 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-62.html](insight-vol-62.html) — "늦는 것인가 작은 것인가" 리더십 인사이트 Vol. 62 (Brynjolfsson, Rock & Syverson, The Productivity J-Curve(AEJ: Macro 13-1, 2021)) · <https://projectleadership.cc/insight-vol-62.html>
 - [insight-vol-63.html](insight-vol-63.html) — "더 많이 묻게 됐다" 리더십 인사이트 Vol. 63 (Büchsenschuss 외, The Impact of Generative AI Adoption on Organizational Networks(INSEAD WP 2026/01/STR)) · <https://projectleadership.cc/insight-vol-63.html>
 - [insight-vol-64.html](insight-vol-64.html) — "손잡이는 다시 달렸다" 리더십 인사이트 Vol. 64 (1854년 브로드가 콜레라 유행 · Snow · Whitehead · 보건위원회 기록) · <https://projectleadership.cc/insight-vol-64.html>
+- [insight-vol-65.html](insight-vol-65.html) — "아무도 내보내지 않았다" 리더십 인사이트 Vol. 65 (Brynjolfsson, Chandar & Chen, Canaries in the Coal Mine?(2026) · ADP 급여 데이터 · Anthropic Economic Index) · <https://projectleadership.cc/insight-vol-65.html>
+- [insight-vol-66.html](insight-vol-66.html) — "아니라고 하지 않는다" 리더십 인사이트 Vol. 66 (Cheng 외, Sycophantic AI Decreases Prosocial Intentions and Promotes Dependence(Science, 2026) · ELEPHANT 벤치마크(2025)) · <https://projectleadership.cc/insight-vol-66.html>
+- [insight-vol-67.html](insight-vol-67.html) — "사람을 고치려 했다" 리더십 인사이트 Vol. 67 (Maslach & Leiter, Understanding the Burnout Experience(World Psychiatry, 2016) · Leiter & Maslach, Areas of Worklife · WHO ICD-11(2019)) · <https://projectleadership.cc/insight-vol-67.html>
+- [insight-vol-68.html](insight-vol-68.html) — "기본값이 바뀌었다" 리더십 인사이트 Vol. 68 (Sackett, Zhang, Berry & Lievens, Revisiting Meta-analytic Estimates of Validity in Personnel Selection(JAP, 2022) · 같은 저자, Industrial and Organizational Psychology(2023)) · <https://projectleadership.cc/insight-vol-68.html>
+- [insight-vol-69.html](insight-vol-69.html) — "천재를 찾는 동안" 리더십 인사이트 Vol. 69 (Canning, Murphy, Emerson, Chatman, Dweck & Kray, Cultures of Genius at Work(Personality and Social Psychology Bulletin, 2020)) · <https://projectleadership.cc/insight-vol-69.html>
 
 ### 새 볼륨 발행 워크플로우
 

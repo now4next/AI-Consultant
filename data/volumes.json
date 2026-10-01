@@ -1378,6 +1378,116 @@
         "sub": "증거는 닿았지만<br>설명은 남지 않았다"
       },
       "tags": "#존스노우 #증거와통념 #설득"
+    },
+    {
+      "vol": 65,
+      "file": "insight-vol-65.html",
+      "dir": "vol-65",
+      "title": "아무도 내보내지 않았다",
+      "sub": "22-25세의 AI 노출 직군 고용은 또래 추세보다 19% 아래에 있다. 그 감소는 해고가 아니라 채용에서 일어났다.",
+      "eyebrow": "Vol. 65 · ADP Payroll, 2022–2026",
+      "source": "Brynjolfsson, Chandar & Chen, Canaries in the Coal Mine?(2026) · ADP 급여 데이터 · Anthropic Economic Index",
+      "cat": "숙련",
+      "tag": "#숙련 · Canaries",
+      "readTime": "9분",
+      "desc": "22-25세의 AI 노출 직군 고용은 또래보다 19% 아래에 있다. 해고가 아니라 채용으로 일어난 감소다.",
+      "tags": "#초기경력 #채용축소 #대체와보완",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1f2b24",
+        "c2": "#0a110c",
+        "accent": "#d9c48f",
+        "motif": "frontdoor",
+        "sub": "좁아진 것은<br>들어오는 문이었다"
+      }
+    },
+    {
+      "vol": 66,
+      "file": "insight-vol-66.html",
+      "dir": "vol-66",
+      "title": "아니라고 하지 않는다",
+      "sub": "11개 모델은 사람보다 49% 더 자주 사용자의 행동을 지지했다. 그 대화를 한 번 거친 사람은 관계를 복구할 뜻이 줄고 자기가 옳다는 확신은 늘었다.",
+      "eyebrow": "Vol. 66 · Science, 2026",
+      "source": "Cheng 외, Sycophantic AI Decreases Prosocial Intentions and Promotes Dependence(Science, 2026) · ELEPHANT 벤치마크(2025)",
+      "cat": "성찰",
+      "tag": "#성찰 · Sycophancy",
+      "readTime": "9분",
+      "desc": "모델은 사람보다 49% 더 자주 동의했다. 그리고 사람들은 그 동의를 더 좋은 답으로 평가했다.",
+      "tags": "#아첨 #동조 #반대의설계",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#2b2432",
+        "c2": "#120d16",
+        "accent": "#d9c48f",
+        "motif": "echo",
+        "sub": "동의는 가장 싸고<br>교정은 가장 비싸다"
+      }
+    },
+    {
+      "vol": 67,
+      "file": "insight-vol-67.html",
+      "dir": "vol-67",
+      "title": "사람을 고치려 했다",
+      "sub": "번아웃의 원인으로 지목된 것은 일의 여섯 자리다. 그런데 조직이 내놓는 처방은 거의 전부 사람에게 간다.",
+      "eyebrow": "Vol. 67 · Areas of Worklife",
+      "source": "Maslach & Leiter, Understanding the Burnout Experience(World Psychiatry, 2016) · Leiter & Maslach, Areas of Worklife · WHO ICD-11(2019)",
+      "cat": "균형",
+      "tag": "#균형 · Burnout",
+      "readTime": "9분",
+      "desc": "번아웃의 원인으로 지목된 자리는 일의 여섯 군데다. 처방은 거의 전부 사람에게 간다.",
+      "tags": "#번아웃 #여섯자리 #일의구조",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#17282a",
+        "c2": "#081012",
+        "accent": "#d9c48f",
+        "motif": "mismatch",
+        "sub": "여섯 자리 중<br>어디가 어긋났는가"
+      }
+    },
+    {
+      "vol": 68,
+      "file": "insight-vol-68.html",
+      "dir": "vol-68",
+      "title": "기본값이 바뀌었다",
+      "sub": "선발 도구의 예측력은 수십 년간 과대 추정돼 있었다. 보정을 고치자 순서가 달라졌고, 1등은 구조화 면접이 됐다.",
+      "eyebrow": "Vol. 68 · Selection Validity, Revised",
+      "source": "Sackett, Zhang, Berry & Lievens, Revisiting Meta-analytic Estimates of Validity in Personnel Selection(JAP, 2022) · 같은 저자, Industrial and Organizational Psychology(2023)",
+      "cat": "평가",
+      "tag": "#평가 · Selection",
+      "readTime": "9분",
+      "desc": "선발 도구의 예측력 순서가 2022년에 바뀌었다. 1등은 구조화 면접이고 경력 연수는 .07이다.",
+      "tags": "#선발타당도 #구조화면접 #채용기준",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#222a3a",
+        "c2": "#0b0e16",
+        "accent": "#d9c48f",
+        "motif": "reorder",
+        "sub": "순서가 바뀌면<br>기본값도 바뀐다"
+      }
+    },
+    {
+      "vol": 69,
+      "file": "insight-vol-69.html",
+      "dir": "vol-69",
+      "title": "천재를 찾는 동안",
+      "sub": "조직이 재능을 타고나는 것으로 보는지 자라는 것으로 보는지가 협업과 혁신과 정직의 수준을 예측한다. 개인의 신념이기 전에 조직의 성질이다.",
+      "eyebrow": "Vol. 69 · Organizational Mindset",
+      "source": "Canning, Murphy, Emerson, Chatman, Dweck & Kray, Cultures of Genius at Work(Personality and Social Psychology Bulletin, 2020)",
+      "cat": "성장",
+      "tag": "#성장 · Mindset",
+      "readTime": "9분",
+      "desc": "재능을 타고나는 것으로 보는 조직에서는 증명이 일이 된다. 협업과 혁신과 정직이 함께 줄어든다.",
+      "tags": "#조직마인드셋 #성장의전제 #천재의문화",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1d2b22",
+        "c2": "#09120c",
+        "accent": "#d9c48f",
+        "motif": "podium",
+        "sub": "증명할 자리는 하나<br>자랄 길은 없다"
+      }
     }
   ]
 }

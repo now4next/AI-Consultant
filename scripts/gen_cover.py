@@ -977,7 +977,119 @@ def motif_offload(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "ties": motif_ties, "pump": motif_pump, "none": lambda accent=None: ""}
+def motif_frontdoor(accent="#d9c48f"):
+    """The people inside unchanged; the doorway they came through narrowing."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="{accent}" stroke-linecap="round">
+        <path d="M46 14 L46 106" stroke-width="1.6" opacity=".85"/>
+        <path d="M46 14 L104 14 M46 106 L104 106" stroke-width="1.4" opacity=".45"/>
+        <path d="M20 22 L46 40" stroke-width="1.6" opacity=".8"/>
+        <path d="M20 98 L46 72" stroke-width="1.6" opacity=".8"/>
+        <path d="M20 22 L20 98" stroke-width="1.3" opacity=".3" stroke-dasharray="3 6"/>
+      </g>
+      <g fill="{accent}" stroke="none">
+        <circle cx="62" cy="34" r="3.6"/><circle cx="80" cy="34" r="3.6"/><circle cx="98" cy="34" r="3.6"/>
+        <circle cx="62" cy="60" r="3.6"/><circle cx="80" cy="60" r="3.6"/><circle cx="98" cy="60" r="3.6"/>
+        <circle cx="62" cy="86" r="3.6"/><circle cx="80" cy="86" r="3.6"/><circle cx="98" cy="86" r="3.6"/>
+      </g>
+      <g fill="{accent}" stroke="none" opacity=".26">
+        <circle cx="12" cy="44" r="3.2"/><circle cx="12" cy="60" r="3.2"/><circle cx="12" cy="76" r="3.2"/>
+      </g>
+      <path d="M30 60 L41 60" fill="none" stroke="{accent}" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+    </svg>'''
+
+
+def motif_echo(accent="#d9c48f"):
+    """What was sent out comes back in the same shape."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="92" y1="16" x2="92" y2="104" stroke="{accent}" stroke-width="1.3" opacity=".3" stroke-dasharray="3 6"/>
+      <g fill="none" stroke="{accent}" stroke-linecap="round" opacity=".85">
+        <path d="M38 44 A 22 22 0 0 1 38 76" stroke-width="1.6"/>
+        <path d="M50 36 A 32 32 0 0 1 50 84" stroke-width="1.5" opacity=".72"/>
+        <path d="M62 28 A 42 42 0 0 1 62 92" stroke-width="1.4" opacity=".55"/>
+      </g>
+      <g fill="none" stroke="{accent}" stroke-linecap="round">
+        <path d="M80 44 A 22 22 0 0 0 80 76" stroke-width="1.6" opacity=".85"/>
+        <path d="M68 36 A 32 32 0 0 0 68 84" stroke-width="1.5" opacity=".72"/>
+        <path d="M56 28 A 42 42 0 0 0 56 92" stroke-width="1.4" opacity=".55"/>
+      </g>
+      <circle cx="26" cy="60" r="4.2" fill="{accent}" stroke="none"/>
+    </svg>'''
+
+
+def motif_mismatch(accent="#d9c48f"):
+    """Six pairs. Four meet; two do not."""
+    rows = [(0, True), (1, True), (2, False), (3, True), (4, False), (5, True)]
+    out = []
+    for i, ok in rows:
+        y = 24 + i * 14.4
+        if ok:
+            out.append(f'<circle cx="52" cy="{y:.1f}" r="3.4"/><circle cx="68" cy="{y:.1f}" r="3.4"/>')
+        else:
+            out.append(f'<circle cx="30" cy="{y:.1f}" r="3.4"/><circle cx="90" cy="{y:.1f}" r="3.4"/>')
+    dots = "".join(out)
+    gaps = "".join(
+        f'<path d="M35 {24 + i * 14.4:.1f} L85 {24 + i * 14.4:.1f}"/>'
+        for i, ok in rows if not ok
+    )
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="{accent}" stroke-width="1.3" opacity=".3" stroke-dasharray="3 5" stroke-linecap="round">
+        {gaps}
+      </g>
+      <g fill="{accent}" stroke="none" opacity=".9">
+        {dots}
+      </g>
+      <line x1="60" y1="14" x2="60" y2="106" stroke="{accent}" stroke-width="1.2" opacity=".22"/>
+    </svg>'''
+
+
+def motif_reorder(accent="#d9c48f"):
+    """The same four items, ranked again. One falls from the top; one rises."""
+    old = [38, 30, 24, 18]          # bar widths, left column, descending
+    new = [30, 24, 38, 18]          # same bars, re-ranked
+    left = "".join(
+        f'<rect x="{10}" y="{24 + i * 22}" width="{w}" height="6" rx="3"/>'
+        for i, w in enumerate(old)
+    )
+    right = "".join(
+        f'<rect x="{110 - w}" y="{24 + i * 22}" width="{w}" height="6" rx="3"/>'
+        for i, w in enumerate(new)
+    )
+    # old index -> new index for each bar width
+    links = "".join(
+        f'<path d="M{10 + old[i] + 4} {27 + i * 22} C 60 {27 + i * 22}, 60 {27 + j * 22}, {106 - new[j] - 4} {27 + j * 22}"/>'
+        for i, j in ((0, 2), (1, 0), (2, 1), (3, 3))
+    )
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="{accent}" stroke-width="1.3" opacity=".5" stroke-linecap="round">
+        {links}
+      </g>
+      <g fill="{accent}" stroke="none" opacity=".58">
+        {left}
+      </g>
+      <g fill="{accent}" stroke="none">
+        {right}
+      </g>
+    </svg>'''
+
+
+def motif_podium(accent="#d9c48f"):
+    """One place to stand on, and a climb that stops at its wall."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="12" y1="96" x2="108" y2="96" stroke="{accent}" stroke-width="1.4" opacity=".45" stroke-linecap="round"/>
+      <rect x="50" y="42" width="20" height="54" fill="{accent}" opacity=".16"/>
+      <rect x="50" y="42" width="20" height="54" fill="none" stroke="{accent}" stroke-width="1.5" opacity=".7"/>
+      <circle cx="60" cy="32" r="5" fill="{accent}" stroke="none"/>
+      <g fill="{accent}" stroke="none" opacity=".3">
+        <circle cx="22" cy="88" r="3.4"/><circle cx="36" cy="88" r="3.4"/>
+        <circle cx="84" cy="88" r="3.4"/><circle cx="98" cy="88" r="3.4"/>
+      </g>
+      <path d="M38 83 L46 66" fill="none" stroke="{accent}" stroke-width="1.4" opacity=".5"
+        stroke-linecap="round" stroke-dasharray="4 5"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "ties": motif_ties, "pump": motif_pump, "frontdoor": motif_frontdoor, "echo": motif_echo, "mismatch": motif_mismatch, "reorder": motif_reorder, "podium": motif_podium, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [

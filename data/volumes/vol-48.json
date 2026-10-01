@@ -7,7 +7,20 @@
   "koLead": "이미 아는 말을<br>들을 때,<br><em>대화는 닫힌다</em>",
   "koSub": "누군가 내가 이미 알고 있는 것을 알려 준다고 해 보자. 고맙기보다 머쓱하고, 그다음 말을 잇기가 어려워진다. 좋은 뜻으로 한 말이 관계를 닫는 순간이다.",
   "deck": "에드거 샤인은 산책길에서 버섯을 보다가 낯선 사람에게서 '그 버섯은 독이 있다'는 말을 들었다. 이미 알고 있는 사실이었다. 그는 고마움 대신 불편함을 느꼈고, 그 뒤로 대화를 잇기 어려웠다. 그래서 그는 <em>말해 주기</em> 대신 <em>물어보기</em>를 권한다. AI가 답을 즉시 내주는 시대에, 리더가 가장 쉽게 놓치는 것이 이 순서다.",
-  "pillars": [["The Telling Reflex", "말해 주려는 반사"], ["Here-and-Now Humility", "지금 이 순간의 겸손"], ["Ask First", "묻고 나서 말한다"]],
+  "pillars": [
+    [
+      "The Telling Reflex",
+      "말해 주려는 반사"
+    ],
+    [
+      "Here-and-Now Humility",
+      "지금 이 순간의 겸손"
+    ],
+    [
+      "Ask First",
+      "묻고 나서 말한다"
+    ]
+  ],
   "sourceTitle": "Humble Inquiry: The Gentle Art of Asking Instead of Telling",
   "source": "Edgar Schein (2013) · Huang et al., JPSP (2017) · Kluger & DeNisi (1996)",
   "cover": {
@@ -16,7 +29,8 @@
     "c2": "#0c1119",
     "accent": "#d9c48f",
     "motif": "inquiry",
-    "sub": "말해 주기 전에<br>물어보기"
+    "sub": "말해 주기 전에<br>물어보기",
+    "src": "원전 · Edgar Schein(2013) · Huang 외, JPSP(2017)"
   },
   "takeaway": {
     "h3": "말해 주는 순간,<br>나는 상대가 <em>모른다고</em> 가정한다",
