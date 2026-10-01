@@ -1136,6 +1136,27 @@
         "motif": "pair",
         "sub": "혼자와 둘이<br>같은 자리에 섰다"
       }
+    },
+    {
+      "vol": 56,
+      "file": "insight-vol-56.html",
+      "dir": "vol-56",
+      "title": "무엇과 비교했는가",
+      "sub": "AI를 쓴 사람은 혼자일 때보다 나아졌다. 그런데 둘 중 더 나은 쪽과 견주면 평균적으로 못했다. 기준선이 답을 바꾼다.",
+      "eyebrow": "Vol. 56 · Synergy or Augmentation",
+      "source": "Vaccaro, Almaatouq & Malone, Nature Human Behaviour 8(2024) 2293–2303",
+      "cat": "판단",
+      "tag": "#판단 · Synergy",
+      "readTime": "9분",
+      "desc": "AI를 쓴 사람은 혼자일 때보다 나아졌다. 둘 중 나은 쪽과 견주면 평균적으로 못했다. 기준선이 답을 바꾼다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1a222c",
+        "c2": "#090d12",
+        "accent": "#d9c48f",
+        "motif": "baseline",
+        "sub": "기준선을 바꾸면<br>답이 바뀐다"
+      }
     }
   ]
 }
