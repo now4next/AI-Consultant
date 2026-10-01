@@ -276,7 +276,8 @@ def home_card(v):
         motif = f'<span class="motif">{svg}</span>' if svg else ""
         thumb = (f'<div class="thumb ph" data-n="{v["vol"]:02d}" style="--c1:{c1};--c2:{c2}">{motif}'
                  f'<span class="kw">{kw}</span><span class="src">{cov.get("src", v["source"])}</span></div>')
-    return (f'      <a class="card" data-cat="{v["cat"]}" href="{v["file"]}">\n'
+    kw = v.get("tags", "")
+    return (f'      <a class="card" data-cat="{v["cat"]}"{f' data-kw="{kw}"' if kw else ""} href="{v["file"]}">\n'
             f'        {thumb}\n'
             f'        <div class="body"><div class="no">Vol. {v["vol"]:02d}</div><h3>{v["title"]}</h3>\n'
             f'          <p>{v["desc"]}</p>\n'
@@ -352,7 +353,8 @@ def update_registry(spec):
         "vol": n, "file": vol_file(n), "dir": f"vol-{n:02d}",
         "title": spec["title"], "sub": spec["sub"], "eyebrow": spec["eyebrow"],
         "source": spec["source"], "cat": spec["home"]["cat"], "tag": spec["home"]["tag"],
-        "readTime": spec["home"]["readTime"], "desc": spec["home"]["desc"], "cover": spec["cover"],
+        "readTime": spec["home"]["readTime"], "desc": spec["home"]["desc"],
+        "tags": spec["home"].get("tags", ""), "cover": spec["cover"],
     })
     json.dump(reg, open(REG_PATH, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 
