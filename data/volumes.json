@@ -1157,6 +1157,27 @@
         "motif": "baseline",
         "sub": "기준선을 바꾸면<br>답이 바뀐다"
       }
+    },
+    {
+      "vol": 57,
+      "file": "insight-vol-57.html",
+      "dir": "vol-57",
+      "title": "재는 순간 망가진다",
+      "sub": "AI를 얼마나 쓰는지를 평가에 넣는 회사가 늘었다. 지표가 목표가 되면 그 지표는 더 이상 쓸 만한 지표가 아니게 된다.",
+      "eyebrow": "Vol. 57 · Goodhart's Law",
+      "source": "굿하트의 법칙 · Reif 외(PNAS 2025) · 기업 사례(2025–2026)",
+      "cat": "평가",
+      "tag": "#평가 · Goodhart",
+      "readTime": "9분",
+      "desc": "AI 사용률을 평가에 넣는 순간 그 숫자는 실력을 재지 못한다. 쓰라고 하면서 쓴 티를 내면 깎는 조직에서는 숨기는 법만 는다.",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#202440",
+        "c2": "#0b0d18",
+        "accent": "#d9c48f",
+        "motif": "bend",
+        "sub": "눌러서 재면<br>자가 휜다"
+      }
     }
   ]
 }
