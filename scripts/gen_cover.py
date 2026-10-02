@@ -1089,7 +1089,117 @@ def motif_podium(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "ties": motif_ties, "pump": motif_pump, "frontdoor": motif_frontdoor, "echo": motif_echo, "mismatch": motif_mismatch, "reorder": motif_reorder, "podium": motif_podium, "none": lambda accent=None: ""}
+def motif_fattail(accent="#d9c48f"):
+    """A bulk of small values, a mean marker, and a tail that keeps going."""
+    bars = [(16, 10), (24, 26), (32, 44), (40, 34), (48, 22), (56, 14), (64, 9),
+            (72, 6), (80, 5), (88, 4), (96, 4), (104, 3)]
+    rects = "".join(
+        f'<rect x="{x - 3}" y="{96 - h}" width="6" height="{h}" rx="1.5"/>'
+        for x, h in bars
+    )
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="10" y1="96" x2="112" y2="96" stroke="{accent}" stroke-width="1.4" opacity=".45" stroke-linecap="round"/>
+      <g fill="{accent}" stroke="none" opacity=".82">
+        {rects}
+      </g>
+      <line x1="38" y1="22" x2="38" y2="100" stroke="{accent}" stroke-width="1.4" opacity=".9" stroke-dasharray="4 4"/>
+      <circle cx="38" cy="20" r="3" fill="{accent}" stroke="none"/>
+      <path d="M100 74 L112 74" fill="none" stroke="{accent}" stroke-width="1.3" opacity=".5" stroke-linecap="round" stroke-dasharray="3 4"/>
+    </svg>'''
+
+
+def motif_retain(accent="#d9c48f"):
+    """Two groups split by a coin. One keeps more of its people."""
+    def col(x, lost):
+        out = []
+        for i in range(9):
+            cx = x + (i % 3) * 13
+            cy = 34 + (i // 3) * 16
+            faded = i >= 9 - lost
+            o = '.22' if faded else '.9'
+            out.append(f'<circle cx="{cx}" cy="{cy}" r="3.6" opacity="{o}"/>')
+        return "".join(out)
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="60" y1="14" x2="60" y2="106" stroke="{accent}" stroke-width="1.3" opacity=".3" stroke-dasharray="3 6"/>
+      <g fill="{accent}" stroke="none">
+        {col(13, 3)}
+      </g>
+      <g fill="{accent}" stroke="none">
+        {col(70, 1)}
+      </g>
+      <g fill="none" stroke="{accent}" stroke-width="1.4" stroke-linecap="round" opacity=".55">
+        <path d="M20 92 L46 92"/>
+        <path d="M77 92 L103 92"/>
+      </g>
+    </svg>'''
+
+
+def motif_tipping(accent="#d9c48f"):
+    """Below the line almost nothing moves; above it, the whole row goes over."""
+    def row(y, committed, converted):
+        out = []
+        for i in range(20):
+            cx = 12 + i * 5.1
+            if i < committed:
+                out.append(f'<circle cx="{cx:.1f}" cy="{y}" r="2.6" opacity="1"/>')
+            elif i < committed + converted:
+                out.append(f'<circle cx="{cx:.1f}" cy="{y}" r="2.6" opacity=".72"/>')
+            else:
+                out.append(f'<circle cx="{cx:.1f}" cy="{y}" r="2.2" opacity=".2"/>')
+        return "".join(out)
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="{accent}" stroke="none">
+        {row(40, 4, 1)}
+      </g>
+      <g fill="{accent}" stroke="none">
+        {row(80, 5, 15)}
+      </g>
+      <line x1="10" y1="60" x2="110" y2="60" stroke="{accent}" stroke-width="1.3" opacity=".4" stroke-dasharray="4 5"/>
+      <g fill="none" stroke="{accent}" stroke-width="1.4" stroke-linecap="round" opacity=".75">
+        <path d="M34 50 L34 70"/>
+        <path d="M30 66 L34 70 L38 66"/>
+      </g>
+    </svg>'''
+
+
+def motif_untallied(accent="#d9c48f"):
+    """Six pieces of work; four get a mark in the ledger, two do not."""
+    rows = [True, True, False, True, False, True]
+    out = []
+    for i, counted in enumerate(rows):
+        y = 26 + i * 14
+        out.append(f'<rect x="18" y="{y - 3}" width="54" height="6" rx="3" '
+                   f'fill="{accent}" opacity="{".85" if counted else ".38"}"/>')
+        if counted:
+            out.append(f'<path d="M84 {y} l4 4 l8 -9" fill="none" stroke="{accent}" '
+                       f'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>')
+        else:
+            out.append(f'<path d="M84 {y} l12 0" fill="none" stroke="{accent}" stroke-width="1.4" '
+                       f'stroke-linecap="round" opacity=".22" stroke-dasharray="2 4"/>')
+    body = "".join(out)
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="78" y1="16" x2="78" y2="104" stroke="{accent}" stroke-width="1.2" opacity=".25"/>
+      {body}
+    </svg>'''
+
+
+def motif_twopaths(accent="#d9c48f"):
+    """Two entry paths to the same job. One starts higher and the lines never meet."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="14" y1="100" x2="110" y2="100" stroke="{accent}" stroke-width="1.3" opacity=".4" stroke-linecap="round"/>
+      <path d="M22 38 L104 30" fill="none" stroke="{accent}" stroke-width="2" stroke-linecap="round"/>
+      <path d="M22 78 L104 56" fill="none" stroke="{accent}" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+      <circle cx="22" cy="38" r="4" fill="{accent}" stroke="none"/>
+      <circle cx="22" cy="78" r="4" fill="{accent}" stroke="none" opacity=".55"/>
+      <g stroke="{accent}" stroke-width="1.3" fill="none" opacity=".6" stroke-linecap="round">
+        <path d="M92 32 L92 54" stroke-dasharray="3 4"/>
+        <path d="M88 36 L92 32 L96 36"/>
+        <path d="M88 50 L92 54 L96 50"/>
+      </g>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "ties": motif_ties, "pump": motif_pump, "frontdoor": motif_frontdoor, "echo": motif_echo, "mismatch": motif_mismatch, "reorder": motif_reorder, "podium": motif_podium, "fattail": motif_fattail, "retain": motif_retain, "tipping": motif_tipping, "untallied": motif_untallied, "twopaths": motif_twopaths, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [

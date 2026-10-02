@@ -1488,6 +1488,121 @@
         "motif": "podium",
         "sub": "증명할 자리는 하나<br>자랄 길은 없다"
       }
+    },
+    {
+      "vol": 70,
+      "file": "insight-vol-70.html",
+      "dir": "vol-70",
+      "title": "평균으로 계획했다",
+      "sub": "IT 프로젝트 1,471건의 평균 비용 초과율은 27%였다. 그 뒤에 여섯 중 하나가 평균 200%로 서 있다.",
+      "eyebrow": "Vol. 70 · Fat Tails",
+      "source": "Flyvbjerg & Budzier, Why Your IT Project May Be Riskier than You Think(2011) · Flyvbjerg, Budzier, Lee, Keil, Lunn & Bester, The Empirical Reality of IT Project Cost Overruns(JMIS 39-3, 2022)",
+      "cat": "전략",
+      "tag": "#전략 · Fat Tails",
+      "readTime": "9분",
+      "desc": "IT 프로젝트의 평균 초과율은 27%다. 그 뒤에 여섯 중 하나가 200%로 서 있다.",
+      "tags": "#꼬리위험 #멱법칙 #프로젝트계획",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#21283a",
+        "c2": "#0a0d16",
+        "accent": "#d9c48f",
+        "motif": "fattail",
+        "sub": "작은 초과가 많고<br>꼬리가 두껍다",
+        "src": "원전 · Flyvbjerg & Budzier(2011) · JMIS(2022)"
+      }
+    },
+    {
+      "vol": 71,
+      "file": "insight-vol-71.html",
+      "dir": "vol-71",
+      "title": "정하는 사람이 가장 싫어했다",
+      "sub": "생일 홀짝으로 1,612명을 나눠 여섯 달을 봤다. 이직은 3분의 1 줄었고 성과와 승진에는 차이가 없었다.",
+      "eyebrow": "Vol. 71 · A Randomized Trial",
+      "source": "Bloom, Han & Liang, Hybrid Working from Home Improves Retention without Damaging Performance(Nature, 2024) · 같은 저자, NBER Working Paper 30292(2022·2023 개정)",
+      "cat": "조직운영",
+      "tag": "#조직운영 · Hybrid",
+      "readTime": "9분",
+      "desc": "이직은 3분의 1 줄었고 성과와 승진에는 차이가 없었다. 관리자들은 반대로 예측했다.",
+      "tags": "#하이브리드 #무작위실험 #근무제도",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1a2630",
+        "c2": "#080e13",
+        "accent": "#d9c48f",
+        "motif": "retain",
+        "sub": "같은 자리에서<br>셋 중 하나가 남았다",
+        "src": "원전 · Bloom, Han & Liang(Nature, 2024) · NBER w30292"
+      }
+    },
+    {
+      "vol": 72,
+      "file": "insight-vol-72.html",
+      "dir": "vol-72",
+      "title": "전원을 설득하지 않는다",
+      "sub": "관습을 뒤집지 못한 가장 큰 소수가 21%, 뒤집은 가장 작은 소수가 25%였다. 그 사이에 경계가 있었다.",
+      "eyebrow": "Vol. 72 · Tipping Points",
+      "source": "Centola, Becker, Brackbill & Baronchelli, Experimental Evidence for Tipping Points in Social Convention(Science 360-6393, 2018)",
+      "cat": "문화",
+      "tag": "#문화 · Tipping Point",
+      "readTime": "9분",
+      "desc": "21%는 관습을 못 바꿨고 25%는 뒤집었다. 필요한 것은 과반이 아니라 경계다.",
+      "tags": "#임계점 #규범변화 #문화전환",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#2a1f2c",
+        "c2": "#110b13",
+        "accent": "#d9c48f",
+        "motif": "tipping",
+        "sub": "조금 더 설득하는 문제가<br>아니었다",
+        "src": "원전 · Centola 외, Science 360-6393(2018)"
+      }
+    },
+    {
+      "vol": 73,
+      "file": "insight-vol-73.html",
+      "dir": "vol-73",
+      "title": "누가 하겠지",
+      "sub": "조직을 굴러가게 하는 일 중에 평가에 잡히지 않는 몫이 있다. 그 일이 누구에게 가는지는 선호로 설명되지 않았다.",
+      "eyebrow": "Vol. 73 · Non-Promotable Work",
+      "source": "Babcock, Recalde, Vesterlund & Weingart, Gender Differences in Accepting and Receiving Requests for Tasks with Low Promotability(American Economic Review 107-3, 2017)",
+      "cat": "평가",
+      "tag": "#평가 · Invisible Work",
+      "readTime": "9분",
+      "desc": "평가에 안 잡히는 일이 누구에게 가는지는 선호가 정하지 않는다. 예상이 정하고, 예상은 바뀐다.",
+      "tags": "#비승진과제 #보이지않는일 #배분설계",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#26222c",
+        "c2": "#100e13",
+        "accent": "#d9c48f",
+        "motif": "untallied",
+        "sub": "한 일은 남았고<br>기록은 비었다",
+        "src": "원전 · Babcock 외, AER 107-3(2017)"
+      }
+    },
+    {
+      "vol": 74,
+      "file": "insight-vol-74.html",
+      "dir": "vol-74",
+      "title": "더 주고 덜 받는다",
+      "sub": "같은 자리에 밖에서 온 사람은 18% 더 받았고, 안에서 올라온 사람은 첫 2년 성과가 더 높았다.",
+      "eyebrow": "Vol. 74 · Hire or Promote",
+      "source": "Matthew Bidwell, Paying More to Get Less: Specific Skills, Incomplete Information and the Effects of External Hiring versus Internal Mobility(Administrative Science Quarterly 56-3, 2011)",
+      "cat": "성장",
+      "tag": "#성장 · Hire or Promote",
+      "readTime": "9분",
+      "desc": "밖에서 온 사람에게 18% 더 주고 첫 2년은 덜 받는다. 그리고 보수는 끝내 수렴하지 않는다.",
+      "tags": "#외부영입 #내부승진 #경력설계",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1e2a21",
+        "c2": "#0a110b",
+        "accent": "#d9c48f",
+        "motif": "twopaths",
+        "sub": "두 선은<br>만나지 않는다",
+        "src": "원전 · Matthew Bidwell, ASQ 56-3(2011)"
+      }
     }
   ]
 }
