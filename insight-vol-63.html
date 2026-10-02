@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
+<script data-theme-init>/* 저장된 테마를 그리기 전에 적용해 깜빡임을 막는다 */(function(){try{var t=localStorage.getItem("pli-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}})();</script>
 <meta name="theme-color" content="#fbf7f0" media="(prefers-color-scheme: light)">
 <!-- og:start -->
 <meta name="description" content="AI를 쓰면 동료에게 덜 물을 것 같지만 실험 결과는 반대였다. 연결이 늘지 줄지는 도구보다 설계가 정한다.">
@@ -80,7 +81,7 @@
     text-transform:none;
     font-style:italic;
   }
-  .mast .R{justify-self:end;color:var(--muted);font-size:12px}
+  .mast .R{justify-self:end;color:var(--muted);font-size:12px;display:flex;align-items:center;gap:12px}
   .mast .L{color:var(--muted);font-size:12px}
   .mast .L a{color:inherit}
   .mast .L a:hover{color:var(--accent)}
@@ -629,20 +630,29 @@
 
   /* dark:start */
   @media (prefers-color-scheme: dark){
-    :root{
-      --ink:#e9e3d8; --ink-2:#d3ccc0;
+    :root:not([data-theme="light"]){--ink:#e9e3d8; --ink-2:#d3ccc0;
       --paper:#141312; --paper-2:#1c1a18; --paper-3:#26231f;
       --rule:#e9e3d8; --accent:#8fb3e6; --accent-2:#a9c4ee;
       --muted:#9b9286; --muted-2:#6f6860;
-      --ink-rgb:233,227,216; --accent-rgb:143,179,230;
-    }
-    body::before{mix-blend-mode:screen;opacity:.22}
-    .hero-img .cap{color:#f3eee3}
-    .share .btn.dark{background:var(--ink);color:var(--paper)}
-    .pb-phase,.pb-col,.pb-template{background:rgba(255,255,255,.04)}
-    .pb-ph-tag{color:var(--paper)}
-    .pb-col.ai h4,.pb-scripts .sh,.pb-template .tt,.pb-ph-when{color:var(--muted)}
+      --ink-rgb:233,227,216; --accent-rgb:143,179,230;}
+    :root:not([data-theme="light"]) body::before{mix-blend-mode:screen;opacity:.22}
+    :root:not([data-theme="light"]) .hero-img .cap{color:#f3eee3}
+    :root:not([data-theme="light"]) .share .btn.dark{background:var(--ink);color:var(--paper)}
+    :root:not([data-theme="light"]) .pb-phase, :root:not([data-theme="light"]) .pb-col, :root:not([data-theme="light"]) .pb-template{background:rgba(255,255,255,.04)}
+    :root:not([data-theme="light"]) .pb-ph-tag{color:var(--paper)}
+    :root:not([data-theme="light"]) .pb-col.ai h4, :root:not([data-theme="light"]) .pb-scripts .sh, :root:not([data-theme="light"]) .pb-template .tt, :root:not([data-theme="light"]) .pb-ph-when{color:var(--muted)}
   }
+:root[data-theme="dark"]{--ink:#e9e3d8; --ink-2:#d3ccc0;
+    --paper:#141312; --paper-2:#1c1a18; --paper-3:#26231f;
+    --rule:#e9e3d8; --accent:#8fb3e6; --accent-2:#a9c4ee;
+    --muted:#9b9286; --muted-2:#6f6860;
+    --ink-rgb:233,227,216; --accent-rgb:143,179,230;}
+  :root[data-theme="dark"] body::before{mix-blend-mode:screen;opacity:.22}
+  :root[data-theme="dark"] .hero-img .cap{color:#f3eee3}
+  :root[data-theme="dark"] .share .btn.dark{background:var(--ink);color:var(--paper)}
+  :root[data-theme="dark"] .pb-phase, :root[data-theme="dark"] .pb-col, :root[data-theme="dark"] .pb-template{background:rgba(255,255,255,.04)}
+  :root[data-theme="dark"] .pb-ph-tag{color:var(--paper)}
+  :root[data-theme="dark"] .pb-col.ai h4, :root[data-theme="dark"] .pb-scripts .sh, :root[data-theme="dark"] .pb-template .tt, :root[data-theme="dark"] .pb-ph-when{color:var(--muted)}
   /* dark:end */
 
   /* related:start */
@@ -669,7 +679,10 @@
 
   /* cat:start */
   :root{--c-strategy:#1d4ed8;--c-people:#be123c;--c-judgment:#6d28d9;--c-duty:#b45309;--c-growth:#15803d;--c-reflect:#0f766e;--c-history:#78716c;--c-culture:#c026d3;--c-eval:#4f46e5;--c-ops:#0ea5e9;--c-balance:#06b6d4;--c-skill:#65a30d}
-  @media (prefers-color-scheme: dark){:root{--c-strategy:#60a5fa;--c-people:#fb7185;--c-judgment:#a78bfa;--c-duty:#fbbf24;--c-growth:#4ade80;--c-reflect:#2dd4bf;--c-history:#c9c2bb;--c-culture:#e879f9;--c-eval:#818cf8;--c-ops:#7dd3fc;--c-balance:#67e8f9;--c-skill:#bef264}}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){--c-strategy:#60a5fa;--c-people:#fb7185;--c-judgment:#a78bfa;--c-duty:#fbbf24;--c-growth:#4ade80;--c-reflect:#2dd4bf;--c-history:#c9c2bb;--c-culture:#e879f9;--c-eval:#818cf8;--c-ops:#7dd3fc;--c-balance:#67e8f9;--c-skill:#bef264}
+  }
+:root[data-theme="dark"]{--c-strategy:#60a5fa;--c-people:#fb7185;--c-judgment:#a78bfa;--c-duty:#fbbf24;--c-growth:#4ade80;--c-reflect:#2dd4bf;--c-history:#c9c2bb;--c-culture:#e879f9;--c-eval:#818cf8;--c-ops:#7dd3fc;--c-balance:#67e8f9;--c-skill:#bef264}
   .hero[data-cat="전략"]{--cc:var(--c-strategy)} .hero[data-cat="사람"]{--cc:var(--c-people)} .hero[data-cat="판단"]{--cc:var(--c-judgment)}
   .hero[data-cat="책임"]{--cc:var(--c-duty)} .hero[data-cat="성장"]{--cc:var(--c-growth)} .hero[data-cat="성찰"]{--cc:var(--c-reflect)} .hero[data-cat="역사"]{--cc:var(--c-history)} .hero[data-cat="문화"]{--cc:var(--c-culture)} .hero[data-cat="평가"]{--cc:var(--c-eval)} .hero[data-cat="조직운영"]{--cc:var(--c-ops)} .hero[data-cat="균형"]{--cc:var(--c-balance)} .hero[data-cat="숙련"]{--cc:var(--c-skill)}
   .hero .eyebrow-row .r::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--cc,var(--muted));margin-right:8px;vertical-align:1px}
@@ -691,7 +704,26 @@
   .reading{background:rgba(26,62,107,.10);border-radius:2px;
     box-shadow:0 0 0 4px rgba(26,62,107,.10);transition:background .2s}
   /* pli-listen:end */
-</style>
+
+  /* ── 테마 전환 (자동 · 라이트 · 다크) ── */
+  .thm{appearance:none;-webkit-appearance:none;background:none;border:0;padding:4px;margin:0;
+    cursor:pointer;color:var(--muted);line-height:0;border-radius:6px;transition:color .14s}
+  .thm:hover{color:var(--ink)}
+  .thm:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+  .thm svg{width:17px;height:17px;display:none}
+  :root:not([data-theme]) .thm .i-auto{display:block}
+  :root[data-theme="light"] .thm .i-light{display:block}
+  :root[data-theme="dark"] .thm .i-dark{display:block}
+  
+  @media(max-width:480px){
+    .mast{padding:12px 16px;font-size:10px;letter-spacing:.1em}
+    .mast .L,.mast .R{font-size:10px}
+    .mast .R{gap:8px}
+    .mast .C{font-size:15px}
+    .mast .vn{white-space:nowrap}
+    .thm svg{width:16px;height:16px}
+  }
+  </style>
 </head>
 <body id="top">
 <div class="prog"><div class="bar" id="progBar63"></div></div>
@@ -701,7 +733,7 @@
 <header class="mast">
   <div class="L"><a href="insight-vol-62.html">← Vol. 62</a></div>
   <div class="C"><a href="https://projectleadership.cc/" aria-label="Leadership Insight 홈으로">Leadership Insight</a></div>
-  <div class="R"><a href="insight-vol-64.html">Vol. 64 →</a></div>
+  <div class="R"><a class="vn" href="insight-vol-64.html">Vol. 64 →</a><button class="thm" id="thm" type="button" aria-label="테마 바꾸기" title="테마: 자동"><svg class="i-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.2"/><path d="M12 3.8a8.2 8.2 0 0 1 0 16.4z" fill="currentColor" stroke="none"/></svg><svg class="i-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.3M12 19.1v2.3M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.6 12h2.3M19.1 12h2.3M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg><svg class="i-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 14.6A8.3 8.3 0 0 1 9.4 3.8a8.4 8.4 0 1 0 10.8 10.8z"/></svg></button></div>
 </header>
 
 <section class="hero" data-cat="문화">
@@ -1275,6 +1307,29 @@
                          chunks: function(){ return queue.length; }, voice: function(){ return voice && voice.name; } };
 })();
 /* pli-listen:end */
+</script>
+<script>
+/* 테마 전환: 자동 → 라이트 → 다크 → 자동. 자동은 data-theme 을 지워 기기 설정을 따른다 */
+(function(){
+  var b=document.getElementById('thm'); if(!b) return;
+  var R=document.documentElement, M=['auto','light','dark'],
+      L={auto:'자동',light:'라이트',dark:'다크'};
+  function cur(){ return R.getAttribute('data-theme')||'auto'; }
+  function chrome(c){
+    var q='meta[name="theme-color"]:not([media])', m=document.head.querySelector(q);
+    if(c==='auto'){ if(m) m.remove(); return; }
+    if(!m){ m=document.createElement('meta'); m.setAttribute('name','theme-color'); document.head.appendChild(m); }
+    m.setAttribute('content', c==='dark' ? '#0f0f0f' : '#ffffff');
+  }
+  function paint(){ var c=cur(); b.title='테마: '+L[c]; b.setAttribute('aria-label','테마 바꾸기 (현재 '+L[c]+')'); chrome(c); }
+  b.addEventListener('click',function(){
+    var next=M[(M.indexOf(cur())+1)%3];
+    if(next==='auto'){ R.removeAttribute('data-theme'); try{localStorage.removeItem('pli-theme')}catch(e){} }
+    else{ R.setAttribute('data-theme',next); try{localStorage.setItem('pli-theme',next)}catch(e){} }
+    paint();
+  });
+  paint();
+})();
 </script>
 </body>
 </html>

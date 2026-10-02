@@ -78,6 +78,10 @@ def related_html(n, body, reg=None):
             '  <div class="ti">이 글에서 언급한 편들</div>\n' + items + '</section>\n')
 
 
+# 헤더 오른쪽 테마 전환 버튼. 스타일과 동작은 직전 편 셸에서 함께 복사된다.
+THEME_BTN = ('<button class="thm" id="thm" type="button" aria-label="테마 바꾸기" title="테마: 자동"><svg class="i-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.2"/><path d="M12 3.8a8.2 8.2 0 0 1 0 16.4z" fill="currentColor" stroke="none"/></svg><svg class="i-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.3M12 19.1v2.3M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.6 12h2.3M19.1 12h2.3M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg><svg class="i-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 14.6A8.3 8.3 0 0 1 9.4 3.8a8.4 8.4 0 1 0 10.8 10.8z"/></svg></button>')
+
+
 def render_page(spec, body, prev, prev2, shell_src):
     n = spec["vol"]
     shell = open(os.path.join(ROOT, shell_src), encoding="utf-8").read()
@@ -121,7 +125,7 @@ def render_page(spec, body, prev, prev2, shell_src):
 <header class="mast">
   <div class="L"><a href="{prev["file"]}">← Vol. {prev["vol"]:02d}</a></div>
   <div class="C"><a href="https://projectleadership.cc/" aria-label="Leadership Insight 홈으로">Leadership Insight</a></div>
-  <div class="R">Vol. {n:02d}</div>
+  <div class="R"><span class="vn">Vol. {n:02d}</span>{THEME_BTN}</div>
 </header>
 
 <section class="hero" data-cat="{spec["home"]["cat"]}">
@@ -259,8 +263,8 @@ def refresh_footer_index(reg):
 def wire_prev(prev_path, n):
     s = open(prev_path, encoding="utf-8").read()
     pn = int(re.search(r"insight(?:-vol-(\d+))?\.html", os.path.basename(prev_path)).group(1) or 1)
-    s = s.replace(f'<div class="R">Vol. {pn:02d}</div>',
-                  f'<div class="R"><a href="{vol_file(n)}">Vol. {n:02d} →</a></div>', 1)
+    s = s.replace(f'<span class="vn">Vol. {pn:02d}</span>',
+                  f'<a class="vn" href="{vol_file(n)}">Vol. {n:02d} →</a>', 1)
     open(prev_path, "w", encoding="utf-8").write(s)
 
 

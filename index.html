@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
+<script data-theme-init>/* 저장된 테마를 그리기 전에 적용해 깜빡임을 막는다 */(function(){try{var t=localStorage.getItem("pli-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}})();</script>
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0f0f0f" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='84'>🦉</text></svg>">
@@ -192,21 +193,30 @@
   .spot .cover .gcover{width:100%;height:100%}
   /* dark:start */
   @media (prefers-color-scheme: dark){
-    :root{
-      --bg:#0f0f0f; --surface:#171717; --surface-2:#222222;
+    :root:not([data-theme="light"]){--bg:#0f0f0f; --surface:#171717; --surface-2:#222222;
       --ink:#f2f2f2; --ink-2:#d6d6d6;
       --muted:#9a9a9a; --muted-2:#6e6e6e;
       --line:rgba(255,255,255,.14); --line-strong:rgba(255,255,255,.3);
       --top-bg:rgba(15,15,15,.88); --btn-hover:#dcdcdc;
-      --shadow:0 8px 26px rgba(0,0,0,.4);
-    }
-    .card:hover{box-shadow:0 16px 40px rgba(0,0,0,.55)}
-    .mascot img{filter:drop-shadow(0 14px 30px rgba(0,0,0,.7))}
+      --shadow:0 8px 26px rgba(0,0,0,.4);}
+    :root:not([data-theme="light"]) .card:hover{box-shadow:0 16px 40px rgba(0,0,0,.55)}
+    :root:not([data-theme="light"]) .mascot img{filter:drop-shadow(0 14px 30px rgba(0,0,0,.7))}
   }
+:root[data-theme="dark"]{--bg:#0f0f0f; --surface:#171717; --surface-2:#222222;
+    --ink:#f2f2f2; --ink-2:#d6d6d6;
+    --muted:#9a9a9a; --muted-2:#6e6e6e;
+    --line:rgba(255,255,255,.14); --line-strong:rgba(255,255,255,.3);
+    --top-bg:rgba(15,15,15,.88); --btn-hover:#dcdcdc;
+    --shadow:0 8px 26px rgba(0,0,0,.4);}
+  :root[data-theme="dark"] .card:hover{box-shadow:0 16px 40px rgba(0,0,0,.55)}
+  :root[data-theme="dark"] .mascot img{filter:drop-shadow(0 14px 30px rgba(0,0,0,.7))}
   /* dark:end */
   /* cat:start */
   :root{--c-strategy:#1d4ed8;--c-people:#be123c;--c-judgment:#6d28d9;--c-duty:#b45309;--c-growth:#15803d;--c-reflect:#0f766e;--c-history:#78716c;--c-culture:#c026d3;--c-eval:#4f46e5;--c-ops:#0ea5e9;--c-balance:#06b6d4;--c-skill:#65a30d}
-  @media (prefers-color-scheme: dark){:root{--c-strategy:#60a5fa;--c-people:#fb7185;--c-judgment:#a78bfa;--c-duty:#fbbf24;--c-growth:#4ade80;--c-reflect:#2dd4bf;--c-history:#c9c2bb;--c-culture:#e879f9;--c-eval:#818cf8;--c-ops:#7dd3fc;--c-balance:#67e8f9;--c-skill:#bef264}}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){--c-strategy:#60a5fa;--c-people:#fb7185;--c-judgment:#a78bfa;--c-duty:#fbbf24;--c-growth:#4ade80;--c-reflect:#2dd4bf;--c-history:#c9c2bb;--c-culture:#e879f9;--c-eval:#818cf8;--c-ops:#7dd3fc;--c-balance:#67e8f9;--c-skill:#bef264}
+  }
+:root[data-theme="dark"]{--c-strategy:#60a5fa;--c-people:#fb7185;--c-judgment:#a78bfa;--c-duty:#fbbf24;--c-growth:#4ade80;--c-reflect:#2dd4bf;--c-history:#c9c2bb;--c-culture:#e879f9;--c-eval:#818cf8;--c-ops:#7dd3fc;--c-balance:#67e8f9;--c-skill:#bef264}
   [data-cat="전략"],[data-f="전략"]{--cc:var(--c-strategy)} [data-cat="사람"],[data-f="사람"]{--cc:var(--c-people)}
   [data-cat="판단"],[data-f="판단"]{--cc:var(--c-judgment)} [data-cat="책임"],[data-f="책임"]{--cc:var(--c-duty)}
   [data-cat="성장"],[data-f="성장"]{--cc:var(--c-growth)} [data-cat="성찰"],[data-f="성찰"]{--cc:var(--c-reflect)} [data-cat="역사"],[data-f="역사"]{--cc:var(--c-history)} [data-cat="문화"],[data-f="문화"]{--cc:var(--c-culture)} [data-cat="평가"],[data-f="평가"]{--cc:var(--c-eval)} [data-cat="조직운영"],[data-f="조직운영"]{--cc:var(--c-ops)} [data-cat="균형"],[data-f="균형"]{--cc:var(--c-balance)} [data-cat="숙련"],[data-f="숙련"]{--cc:var(--c-skill)}
@@ -214,7 +224,17 @@
   .chip[data-f="all"]::before{display:none}
   .chip.on::before{box-shadow:0 0 0 2px rgba(255,255,255,.35)}
   /* cat:end */
-</style>
+
+  /* ── 테마 전환 (자동 · 라이트 · 다크) ── */
+  .thm{appearance:none;-webkit-appearance:none;background:none;border:0;padding:4px;margin:0;
+    cursor:pointer;color:var(--muted);line-height:0;border-radius:6px;transition:color .14s}
+  .thm:hover{color:var(--ink)}
+  .thm:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+  .thm svg{width:17px;height:17px;display:none}
+  :root:not([data-theme]) .thm .i-auto{display:block}
+  :root[data-theme="light"] .thm .i-light{display:block}
+  :root[data-theme="dark"] .thm .i-dark{display:block}
+  </style>
 </head>
 <body>
 
@@ -232,6 +252,7 @@
       <a href="#latest">Weekly</a>
       <a href="#archive">아카이브</a>
       <a href="#subscribe" class="btn">알림 받기</a>
+          <button class="thm" id="thm" type="button" aria-label="테마 바꾸기" title="테마: 자동"><svg class="i-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.2"/><path d="M12 3.8a8.2 8.2 0 0 1 0 16.4z" fill="currentColor" stroke="none"/></svg><svg class="i-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.3M12 19.1v2.3M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.6 12h2.3M19.1 12h2.3M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg><svg class="i-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 14.6A8.3 8.3 0 0 1 9.4 3.8a8.4 8.4 0 1 0 10.8 10.8z"/></svg></button>
     </nav>
   </div>
 </header>
@@ -951,6 +972,29 @@
     done('곧 만나요, <strong>플리더</strong>! 🦉 구독 신청이 접수되었어요.', '매주 금요일, 플리가 고른 한 편을 보내드릴게요.');
     return false;
   }
+</script>
+<script>
+/* 테마 전환: 자동 → 라이트 → 다크 → 자동. 자동은 data-theme 을 지워 기기 설정을 따른다 */
+(function(){
+  var b=document.getElementById('thm'); if(!b) return;
+  var R=document.documentElement, M=['auto','light','dark'],
+      L={auto:'자동',light:'라이트',dark:'다크'};
+  function cur(){ return R.getAttribute('data-theme')||'auto'; }
+  function chrome(c){
+    var q='meta[name="theme-color"]:not([media])', m=document.head.querySelector(q);
+    if(c==='auto'){ if(m) m.remove(); return; }
+    if(!m){ m=document.createElement('meta'); m.setAttribute('name','theme-color'); document.head.appendChild(m); }
+    m.setAttribute('content', c==='dark' ? '#0f0f0f' : '#ffffff');
+  }
+  function paint(){ var c=cur(); b.title='테마: '+L[c]; b.setAttribute('aria-label','테마 바꾸기 (현재 '+L[c]+')'); chrome(c); }
+  b.addEventListener('click',function(){
+    var next=M[(M.indexOf(cur())+1)%3];
+    if(next==='auto'){ R.removeAttribute('data-theme'); try{localStorage.removeItem('pli-theme')}catch(e){} }
+    else{ R.setAttribute('data-theme',next); try{localStorage.setItem('pli-theme',next)}catch(e){} }
+    paint();
+  });
+  paint();
+})();
 </script>
 </body>
 </html>
