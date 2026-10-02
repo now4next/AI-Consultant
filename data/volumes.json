@@ -1603,6 +1603,121 @@
         "sub": "두 선은<br>만나지 않는다",
         "src": "원전 · Matthew Bidwell, ASQ 56-3(2011)"
       }
+    },
+    {
+      "vol": 75,
+      "file": "insight-vol-75.html",
+      "dir": "vol-75",
+      "title": "잘하던 사람을 올렸다",
+      "sub": "131개 기업의 영업 인사 자료에서, 승진 결정은 현재 성과를 우선했고 그 성과는 관리 성과를 잘 예측하지 못했다.",
+      "eyebrow": "Vol. 75 · The Peter Principle, Measured",
+      "source": "Alan Benson, Danielle Li & Kelly Shue, Promotions and the Peter Principle(Quarterly Journal of Economics 134-4, 2019, 2085–2134)",
+      "cat": "평가",
+      "tag": "#평가 · Promotion",
+      "readTime": "9분",
+      "desc": "승진은 상이면서 배치다. 두 일이 같은 기준을 쓰지 않는데 제도는 하나뿐이다.",
+      "tags": "#승진기준 #피터의원리 #관리자선발",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#262033",
+        "c2": "#100d16",
+        "accent": "#d9c48f",
+        "motif": "promote",
+        "sub": "가장 높던 막대가<br>가장 낮아진다",
+        "src": "원전 · Benson, Li & Shue, QJE 134-4(2019)"
+      }
+    },
+    {
+      "vol": 76,
+      "file": "insight-vol-76.html",
+      "dir": "vol-76",
+      "title": "할 줄 알면 가르칠 줄 아는가",
+      "sub": "숙련자는 초심자가 걸리는 시간을 과소평가했고, 그 편향을 줄이려고 만든 기법에도 교정되지 않았다.",
+      "eyebrow": "Vol. 76 · The Curse of Expertise",
+      "source": "Pamela J. Hinds, The Curse of Expertise(Journal of Experimental Psychology: Applied 5-2, 1999, 205–221) · Kalyuga, Ayres, Chandler & Sweller, The Expertise Reversal Effect(Educational Psychologist 38-1, 2003)",
+      "cat": "숙련",
+      "tag": "#숙련 · Curse of Expertise",
+      "readTime": "9분",
+      "desc": "숙련자는 초심자가 걸리는 시간을 과소평가하고, 그 편향은 알려 줘도 고쳐지지 않았다.",
+      "tags": "#전문가의저주 #가르치기 #숙련자의사각지대",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1f2922",
+        "c2": "#0a0f0c",
+        "accent": "#d9c48f",
+        "motif": "smoothed",
+        "sub": "막히던 구간이<br>기억에서 지워진다",
+        "src": "원전 · Hinds, JEP: Applied 5-2(1999) · Kalyuga 외(2003)"
+      }
+    },
+    {
+      "vol": 77,
+      "file": "insight-vol-77.html",
+      "dir": "vol-77",
+      "title": "빼는 쪽이 떠오르지 않는다",
+      "sub": "개선하라는 요구를 받으면 사람은 더하는 해법을 먼저 떠올린다. 빼는 쪽이 더 나을 때도 그렇다.",
+      "eyebrow": "Vol. 77 · Additive Bias",
+      "source": "Adams, Converse, Hales & Klotz, People Systematically Overlook Subtractive Changes(Nature 592, 2021, 258–261)",
+      "cat": "조직운영",
+      "tag": "#조직운영 · Subtraction",
+      "readTime": "9분",
+      "desc": "사람은 개선하라는 요구에 더하는 해법을 먼저 찾는다. 빼기는 못 고른 것이 아니라 안 떠오른 것이다.",
+      "tags": "#더하기편향 #절차설계 #빼기",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1b2733",
+        "c2": "#080e14",
+        "accent": "#d9c48f",
+        "motif": "addbias",
+        "sub": "더하는 길은 환하고<br>빼는 길은 어둡다",
+        "src": "원전 · Adams 외, Nature 592(2021)"
+      }
+    },
+    {
+      "vol": 78,
+      "file": "insight-vol-78.html",
+      "dir": "vol-78",
+      "title": "한 시간을 덜 잤다",
+      "sub": "서머타임 전환 직후 월요일, 사람들은 평소보다 40분 덜 잤다. 그날 재해는 5.7% 늘었고 손실 작업일수는 67.6% 늘었다.",
+      "eyebrow": "Vol. 78 · One Hour, Measured",
+      "source": "Barnes & Wagner, Changing to Daylight Saving Time Cuts into Sleep and Increases Workplace Injuries(Journal of Applied Psychology, 2009) · Barnes, Lucianetti, Bhave & Christian, AMJ 58-5(2015)",
+      "cat": "균형",
+      "tag": "#균형 · Sleep",
+      "readTime": "9분",
+      "desc": "전환 직후 월요일에 40분을 덜 잤고, 그날 손실 작업일수는 67.6% 늘었다.",
+      "tags": "#수면 #자연실험 #일정설계",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#141f2b",
+        "c2": "#070b10",
+        "accent": "#d9c48f",
+        "motif": "losthour",
+        "sub": "밤에서 잘린 것이<br>다음 날에 나온다",
+        "src": "원전 · Barnes & Wagner, JAP(2009) · AMJ 58-5(2015)"
+      }
+    },
+    {
+      "vol": 79,
+      "file": "insight-vol-79.html",
+      "dir": "vol-79",
+      "title": "과신은 하나가 아니다",
+      "sub": "어려운 일에서는 자기 성과를 높게 보면서 남보다 못하다고 믿는다. 쉬운 일에서는 둘 다 반대다.",
+      "eyebrow": "Vol. 79 · Three Kinds of Overconfidence",
+      "source": "Don A. Moore & Paul J. Healy, The Trouble with Overconfidence(Psychological Review 115-2, 2008, 502–517)",
+      "cat": "성찰",
+      "tag": "#성찰 · Overconfidence",
+      "readTime": "9분",
+      "desc": "과신은 셋이고 서로 반대로 움직인다. 줄이라는 조언은 절반의 경우 틀린 방향이다.",
+      "tags": "#과신 #과대정밀 #보정",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#2b2520",
+        "c2": "#120f0b",
+        "accent": "#d9c48f",
+        "motif": "overprecise",
+        "sub": "좁게 잡은 구간이<br>가장 끈질기다",
+        "src": "원전 · Moore & Healy, Psychological Review 115-2(2008)"
+      }
     }
   ]
 }

@@ -1199,7 +1199,110 @@ def motif_twopaths(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "ties": motif_ties, "pump": motif_pump, "frontdoor": motif_frontdoor, "echo": motif_echo, "mismatch": motif_mismatch, "reorder": motif_reorder, "podium": motif_podium, "fattail": motif_fattail, "retain": motif_retain, "tipping": motif_tipping, "untallied": motif_untallied, "twopaths": motif_twopaths, "none": lambda accent=None: ""}
+def motif_promote(accent="#d9c48f"):
+    """The tallest bar is lifted out of the row, and up there it is the shortest."""
+    bars = [(18, 22), (31, 34), (44, 52), (57, 28), (70, 18)]
+    row = "".join(
+        f'<rect x="{x}" y="{96 - h}" width="9" height="{h}" rx="2" opacity="{".9" if h == 52 else ".4"}"/>'
+        for x, h in bars
+    )
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="12" y1="96" x2="108" y2="96" stroke="{accent}" stroke-width="1.3" opacity=".4" stroke-linecap="round"/>
+      <g fill="{accent}" stroke="none">
+        {row}
+      </g>
+      <line x1="86" y1="52" x2="108" y2="52" stroke="{accent}" stroke-width="1.3" opacity=".45" stroke-linecap="round"/>
+      <rect x="93" y="41" width="9" height="11" rx="2" fill="{accent}" opacity=".9"/>
+      <g fill="none" stroke="{accent}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity=".7">
+        <path d="M53 38 C 66 24, 80 24, 95 32" stroke-dasharray="4 4"/>
+        <path d="M91 27 L96 33 L89 35"/>
+      </g>
+    </svg>'''
+
+
+def motif_smoothed(accent="#d9c48f"):
+    """The same route twice: once with every snag, once remembered as a smooth line."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="{accent}" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 44 L30 44 L30 32 L46 32 L46 50 L62 50 L62 36 L78 36 L78 46 L92 46 L92 38 L104 38"
+              stroke-width="1.9" opacity=".85"/>
+        <path d="M16 84 C 44 84, 76 76, 104 76" stroke-width="1.9" opacity=".85"/>
+      </g>
+      <g fill="{accent}" stroke="none" opacity=".8">
+        <circle cx="30" cy="44" r="2.6"/><circle cx="46" cy="32" r="2.6"/><circle cx="62" cy="50" r="2.6"/>
+        <circle cx="78" cy="36" r="2.6"/><circle cx="92" cy="46" r="2.6"/>
+      </g>
+      <g fill="{accent}" stroke="none" opacity=".2">
+        <circle cx="34" cy="83" r="2.4"/><circle cx="52" cy="81" r="2.4"/><circle cx="70" cy="79" r="2.4"/>
+        <circle cx="88" cy="77" r="2.4"/>
+      </g>
+      <circle cx="16" cy="44" r="3.6" fill="{accent}" stroke="none"/>
+      <circle cx="16" cy="84" r="3.6" fill="{accent}" stroke="none"/>
+    </svg>'''
+
+
+def motif_addbias(accent="#d9c48f"):
+    """Two routes out of the same stack. The one that adds is lit; the one that removes is not."""
+    stack = "".join(
+        f'<rect x="46" y="{84 - i * 11}" width="28" height="9" rx="2"/>' for i in range(4)
+    )
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="{accent}" stroke="none" opacity=".75">
+        {stack}
+      </g>
+      <g fill="none" stroke="{accent}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+        <path d="M78 46 L96 34"/>
+        <path d="M90 34 L97 33 L96 40"/>
+      </g>
+      <rect x="92" y="18" width="22" height="9" rx="2" fill="{accent}" opacity=".9"/>
+      <g fill="none" stroke="{accent}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"
+         opacity=".22" stroke-dasharray="4 4">
+        <path d="M42 70 L22 82"/>
+      </g>
+      <rect x="6" y="84" width="22" height="9" rx="2" fill="none" stroke="{accent}" stroke-width="1.2"
+            opacity=".22" stroke-dasharray="3 3"/>
+    </svg>'''
+
+
+def motif_losthour(accent="#d9c48f"):
+    """A notch cut out of the night, and the spike it leaves in the day."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="12" y="28" width="60" height="12" rx="3" fill="{accent}" opacity=".8"/>
+      <rect x="72" y="28" width="14" height="12" rx="3" fill="none" stroke="{accent}"
+            stroke-width="1.3" stroke-dasharray="3 3" opacity=".3"/>
+      <rect x="86" y="28" width="22" height="12" rx="3" fill="{accent}" opacity=".8"/>
+      <g fill="none" stroke="{accent}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity=".6">
+        <path d="M79 46 L79 62"/>
+        <path d="M75 58 L79 62 L83 58"/>
+      </g>
+      <line x1="12" y1="96" x2="108" y2="96" stroke="{accent}" stroke-width="1.3" opacity=".4" stroke-linecap="round"/>
+      <path d="M12 90 L34 90 L48 88 L62 86 L74 84 L79 70 L86 86 L96 88 L108 88"
+            fill="none" stroke="{accent}" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>'''
+
+
+def motif_overprecise(accent="#d9c48f"):
+    """A narrow claimed interval inside the wide range the answer actually sits in."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="{accent}" stroke-width="1.3" opacity=".28" stroke-linecap="round">
+        <path d="M14 70 L106 70"/>
+        <path d="M14 63 L14 77"/>
+        <path d="M106 63 L106 77"/>
+      </g>
+      <g fill="none" stroke="{accent}" stroke-width="2.1" opacity=".95" stroke-linecap="round">
+        <path d="M50 70 L70 70"/>
+        <path d="M50 62 L50 78"/>
+        <path d="M70 62 L70 78"/>
+      </g>
+      <circle cx="88" cy="70" r="3.6" fill="{accent}" stroke="none" opacity=".85"/>
+      <g fill="none" stroke="{accent}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity=".7">
+        <path d="M40 38 L40 26"/><path d="M36 30 L40 26 L44 30"/>
+        <path d="M80 26 L80 38"/><path d="M76 34 L80 38 L84 34"/>
+      </g>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "ties": motif_ties, "pump": motif_pump, "frontdoor": motif_frontdoor, "echo": motif_echo, "mismatch": motif_mismatch, "reorder": motif_reorder, "podium": motif_podium, "fattail": motif_fattail, "retain": motif_retain, "tipping": motif_tipping, "untallied": motif_untallied, "twopaths": motif_twopaths, "promote": motif_promote, "smoothed": motif_smoothed, "addbias": motif_addbias, "losthour": motif_losthour, "overprecise": motif_overprecise, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
