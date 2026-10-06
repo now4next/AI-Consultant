@@ -754,6 +754,11 @@
   .ins-lnk{appearance:none;background:none;border:0;padding:0;cursor:pointer;color:var(--muted);
     font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-decoration:underline}
   .ins-fine{font-family:var(--serif);font-size:13px;line-height:1.7;color:var(--muted);margin:12px 0 0;word-break:keep-all}
+  .insights{padding-top:22px}
+  .ins-open{appearance:none;font-family:var(--mono);font-size:12px;letter-spacing:.12em;
+    text-transform:uppercase;background:none;color:var(--muted);border:1px solid rgba(var(--ink-rgb),.3);
+    border-radius:999px;padding:9px 18px;cursor:pointer;transition:color .14s,border-color .14s}
+  .ins-open:hover{color:var(--ink);border-color:var(--ink)}
   .ins-cta{font-family:var(--serif);font-size:15px;line-height:1.75;color:var(--muted);
     padding:14px 0 2px;word-break:keep-all}
   .ins-cta a{color:var(--ink)}
@@ -1006,9 +1011,12 @@
 </div>
 
 <section class="insights" id="insight" data-vol="45">
-  <div class="lab">Reader Insights</div>
-  <div class="ti">독자들이 남긴 기록</div>
+  <div id="insHead" hidden>
+    <div class="lab">Reader Insights</div>
+    <div class="ti">독자들이 남긴 기록</div>
+  </div>
   <div id="insList"></div>
+  <button class="ins-open" id="insOpen" type="button" hidden>이 편의 인사이트 남기기</button>
   <div class="ins-write" id="insWrite" hidden>
     <div class="ins-q" id="insQ"></div>
     <div class="ins-nick" id="insNickRow" hidden>
@@ -1387,16 +1395,19 @@
 })();
 </script>
 <script>
-/* 독자 인사이트 — 목록 읽기와 쓰기. 쓰기는 메일의 토큰을 가진 구독자만 */
+/* 독자 인사이트 — 목록 읽기와 쓰기. 쓰기는 메일의 토큰을 가진 구독자만.
+   기록도 없고 쓸 수도 없는 편에서는 영역을 통째로 접는다. */
 (function(){
   var sec=document.getElementById('insight'); if(!sec) return;
   var API='https://notify.projectleadership.cc', VOL=sec.dataset.vol, KEY='pli-wt';
-  var list=document.getElementById('insList'), box=document.getElementById('insWrite'),
+  var head=document.getElementById('insHead'), list=document.getElementById('insList'),
+      open=document.getElementById('insOpen'), box=document.getElementById('insWrite'),
       cta=document.getElementById('insCta'), q=document.getElementById('insQ'),
       nickRow=document.getElementById('insNickRow'), nick=document.getElementById('insNick'),
       body=document.getElementById('insBody'), cnt=document.getElementById('insCnt'),
       msg=document.getElementById('insMsg'), save=document.getElementById('insSave'),
       del=document.getElementById('insDel');
+  var canWrite=false, hasItems=false, checked=false;
 
   function store(v){ try{ v?localStorage.setItem(KEY,v):localStorage.removeItem(KEY); }catch(e){} }
   function token(){ try{ return localStorage.getItem(KEY); }catch(e){ return null; } }
@@ -1410,18 +1421,28 @@
   var esc=function(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
 
+  /* 보일 것과 숨길 것을 한자리에서 정한다 */
+  function layout(){
+    head.hidden=!hasItems;
+    list.hidden=!hasItems;
+    open.hidden=!canWrite||!box.hidden;
+    cta.hidden=!(hasItems&&checked&&!canWrite);   /* 읽을 것이 있어야 안내도 뜻이 있다 */
+    sec.hidden=!hasItems&&!canWrite;
+  }
+
   function draw(items){
-    if(!items.length){ list.innerHTML='<div class="ins-none">아직 남긴 기록이 없어요. 첫 기록이 되어 주세요.</div>'; return; }
+    hasItems=items.length>0;
     list.innerHTML=items.map(function(it){
       return '<div class="ins-card"><div class="ins-who"><b>'+esc(it.nick)+'</b> · '+esc(it.at)+
         (it.edited?' · 고침':'')+'</div><div class="ins-body">'+esc(it.body)+'</div></div>';
     }).join('');
+    layout();
   }
 
   function load(){
     return fetch(API+'/insights?vol='+VOL).then(function(r){ return r.json(); })
       .then(function(d){ if(d&&d.ok) draw(d.items); })
-      .catch(function(){ list.innerHTML=''; });
+      .catch(function(){ draw([]); });
   }
 
   function count(){ cnt.textContent=(body.value||'').trim().length+' / 400'; }
@@ -1431,21 +1452,25 @@
   var first=document.querySelector('.checklist .item .txt');
   q.textContent=first?first.textContent.trim():'이 편에서 당신의 조직에 바로 적용할 수 있는 한 가지는 무엇인가요?';
 
+  open.addEventListener('click',function(){ box.hidden=false; layout(); body.focus(); });
+
   load();
 
   var t=token();
-  if(!t){ cta.hidden=false; return; }
+  if(!t){ checked=true; layout(); return; }
 
   fetch(API+'/insights/mine?vol='+VOL+'&t='+encodeURIComponent(t))
     .then(function(r){ return r.json(); })
     .then(function(d){
-      if(!d||!d.signedIn){ store(null); cta.hidden=false; return; }
-      box.hidden=false;
+      checked=true;
+      if(!d||!d.signedIn){ store(null); layout(); return; }
+      canWrite=true;
       if(!d.nick) nickRow.hidden=false; else nick.value=d.nick;
-      if(d.body){ body.value=d.body; del.hidden=false; save.textContent='고치기'; }
-      count();
+      /* 이미 쓴 편이면 고치러 온 것이니 펼쳐 둔다 */
+      if(d.body){ body.value=d.body; del.hidden=false; save.textContent='고치기'; box.hidden=false; }
+      count(); layout();
     })
-    .catch(function(){ cta.hidden=false; });
+    .catch(function(){ checked=true; layout(); });
 
   body.addEventListener('input',count);
 
@@ -1472,7 +1497,8 @@
       .then(function(r){ return r.json(); })
       .then(function(d){
         if(!d.ok){ say(d.msg||'지우지 못했어요.',1); return; }
-        body.value=''; count(); del.hidden=true; save.textContent='남기기'; say('지웠어요.'); load();
+        body.value=''; count(); del.hidden=true; save.textContent='남기기';
+        box.hidden=true; say(''); load(); layout();
       })
       .catch(function(){ say('연결하지 못했어요.',1); });
   });

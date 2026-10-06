@@ -84,9 +84,12 @@ THEME_BTN = ('<button class="thm" id="thm" type="button" aria-label="테마 바�
 
 # 독자 인사이트 영역. 스타일과 스크립트는 직전 편 셸에서 복사된다.
 INSIGHTS_SEC = """<section class="insights" id="insight" data-vol="{n}">
-  <div class="lab">Reader Insights</div>
-  <div class="ti">독자들이 남긴 기록</div>
+  <div id="insHead" hidden>
+    <div class="lab">Reader Insights</div>
+    <div class="ti">독자들이 남긴 기록</div>
+  </div>
   <div id="insList"></div>
+  <button class="ins-open" id="insOpen" type="button" hidden>이 편의 인사이트 남기기</button>
   <div class="ins-write" id="insWrite" hidden>
     <div class="ins-q" id="insQ"></div>
     <div class="ins-nick" id="insNickRow" hidden>
