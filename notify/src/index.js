@@ -100,7 +100,7 @@ async function route(request, env, ctx) {
   if (p === '/settings' && m === 'GET') return settingsPage(request, url, env, ctx);
   if (p === '/settings' && m === 'POST') return settingsSave(request, env, ctx);
   if (p === '/unsubscribe' && m === 'GET') return unsubscribePage(url, env);
-  if (['/pause', '/resume', '/unsubscribe', '/reset', '/test'].includes(p) && m === 'POST') return settingsAction(p.slice(1), request, env, ctx);
+  if (['/pause', '/resume', '/unsubscribe', '/reset', '/test', '/insight-del'].includes(p) && m === 'POST') return settingsAction(p.slice(1), request, env, ctx);
 
   if (p === '/cron/diag' && m === 'GET') {   // Bearer CRON_SECRET · recent cron runs, Resend delivery events, one subscriber's sends (?id=)
     const auth = request.headers.get('Authorization') || '';
@@ -280,6 +280,44 @@ async function subFromToken(url_or_req, env) {
   return env.DB.prepare('SELECT * FROM subscribers WHERE id = ?').bind(tok.id).first();
 }
 
+// 내 알림 설정에 붙는 '내가 남긴 기록'. 기록이 없으면 아무것도 그리지 않는다.
+async function myInsightsBlock(env, sub, t) {
+  const { results } = await env.DB.prepare(
+    "SELECT vol, body, status, created_at, updated_at FROM insights " +
+    "WHERE subscriber_id = ? AND status <> 'removed' ORDER BY vol DESC LIMIT 100"
+  ).bind(sub.id).all();
+  if (!results || !results.length) return '';
+
+  const titles = {};
+  try { (await loadVolumes(env)).forEach(v => { titles[Number(v.vol)] = v; }); } catch {}
+  const wt = await makeWriteToken(env, sub.id);
+
+  const rows = results.map(r => {
+    const v = titles[Number(r.vol)];
+    const nn = String(r.vol).padStart(2, '0');
+    const href = v ? `${env.SITE}/${v.file}?t=${wt}#insight` : `${env.SITE}/`;
+    const edited = r.updated_at && r.created_at && r.updated_at !== r.created_at;
+    return `<div class="mine-row">
+      <div class="mine-head">
+        <a href="${href}">Vol. ${nn}${v ? ` · ${esc(v.title)}` : ''}</a>
+        <span class="mine-when">${esc((r.created_at || '').slice(0, 10))}${edited ? ' · 고침' : ''}${
+          r.status === 'hidden' ? ' · <b>내려짐</b>' : ''}</span>
+      </div>
+      <p class="mine-body">${esc(r.body)}</p>
+      <form method="post" action="/insight-del" onsubmit="return confirm('이 기록을 지울까요?')">
+        <input type="hidden" name="t" value="${esc(t)}"><input type="hidden" name="vol" value="${r.vol}">
+        <button class="lnk">지우기</button>
+      </form>
+    </div>`;
+  }).join('');
+
+  return `<h2 class="mine-h">내가 남긴 기록 <span>${results.length}건</span></h2>
+  <p class="fine" style="margin:0 0 10px">편 제목을 누르면 그 자리로 가서 고칠 수 있어요.${
+    results.some(r => r.status === 'hidden')
+      ? ' 내려진 기록은 글 아래에 보이지 않아요.' : ''}</p>
+  <div class="mine">${rows}</div>`;
+}
+
 async function settingsPage(request, url, env, ctx) {
   const sub = await subFromToken(url, env);
   if (!sub) return html(page('링크 만료', `<p>이 링크는 더 이상 유효하지 않아요. <a href="/me">내 알림 설정</a>에서 다시 확인해 주세요.</p>` + backLink(env)), 401);
@@ -297,10 +335,11 @@ async function settingsPage(request, url, env, ctx) {
     q('resumed') ? '알림을 다시 켰어요.' :
     q('reset') ? '받은 편 기록을 지웠어요. 다시 처음부터 골라 보내드릴게요.' : '';
   // remember this browser so "내 알림 설정" opens the page directly next time
-  return html(page('알림 설정', settingsForm(sub, t, flash, env)), 200, { 'set-cookie': subCookie(t) });
+  const mine = await myInsightsBlock(env, sub, t).catch(() => '');
+  return html(page('알림 설정', settingsForm(sub, t, flash, env, mine)), 200, { 'set-cookie': subCookie(t) });
 }
 
-function settingsForm(sub, t, flash, env) {
+function settingsForm(sub, t, flash, env, mine = '') {
   const days = new Set((sub.days || '').split(',').filter(Boolean).map(Number));
   const cats = new Set((sub.cats || '').split(',').filter(Boolean));
   const sent = (sub.sent_vols || '').split(',').filter(Boolean).length;
@@ -337,6 +376,7 @@ function settingsForm(sub, t, flash, env) {
     <form method="post" action="/test"><input type="hidden" name="t" value="${esc(t)}"><button class="btn ghost">테스트 메일 다시 보내기</button></form>
     <form method="post" action="/unsubscribe" onsubmit="return confirm('정말 그만 받을까요? 설정과 연결 정보가 모두 삭제돼요.')"><input type="hidden" name="t" value="${esc(t)}"><button class="btn danger">그만 받기</button></form>
   </div>`}
+  ${mine}
   <p class="fine">저장하는 정보는 이메일 주소와 위 설정이에요. 이름·전화번호는 받지 않아요. 글에 인사이트를 남기면 표시에 쓸 별명이 더해지고, 그만 받기를 누르면 남긴 기록까지 즉시 삭제돼요. · <a href="${env.SITE}/">projectleadership.cc</a></p>`;
 }
 
@@ -415,6 +455,15 @@ async function settingsAction(action, request, env, ctx) {
   }
   if (action === 'pause') { await env.DB.prepare("UPDATE subscribers SET status='paused', updated_at=datetime('now') WHERE id=?").bind(tok.id).run(); return Response.redirect(`${env.SELF}/settings?t=${t}`, 302); }
   if (action === 'resume') { await env.DB.prepare("UPDATE subscribers SET status='active', fail_count=0, updated_at=datetime('now') WHERE id=?").bind(tok.id).run(); return Response.redirect(`${env.SELF}/settings?t=${t}&resumed=1`, 302); }
+  if (action === 'insight-del') {
+    const vol = Number(form.get('vol'));
+    if (Number.isInteger(vol)) {
+      await env.DB.prepare("UPDATE insights SET status='removed', updated_at=datetime('now') WHERE vol=? AND subscriber_id=?")
+        .bind(vol, tok.id).run();
+      track(env, ctx, request, 'insight_delete', tok.id, { vol, from: 'settings' });
+    }
+    return Response.redirect(`${env.SELF}/settings?t=${t}&back=1`, 302);
+  }
   if (action === 'reset') { await env.DB.prepare("UPDATE subscribers SET sent_vols='', status=CASE WHEN status='exhausted' THEN 'active' ELSE status END, updated_at=datetime('now') WHERE id=?").bind(tok.id).run(); return Response.redirect(`${env.SELF}/settings?t=${t}&reset=1`, 302); }
   if (action === 'test') {   // a test mail, at most once a minute
     const sub = await env.DB.prepare('SELECT * FROM subscribers WHERE id = ?').bind(tok.id).first();
@@ -736,5 +785,11 @@ select{font:inherit;font-size:15px;padding:10px 14px;border:1px solid var(--line
 .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
 .flash{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:14.5px;margin-bottom:22px}
 .fine{font-size:12.5px;line-height:1.6;color:var(--muted);margin-top:28px;word-break:keep-all}.fine a{color:inherit}.err{color:#c62828}
+.mine-h{font-size:18px;margin:30px 0 4px;padding-top:24px;border-top:1px solid var(--line)}.mine-h span{font-size:13px;color:var(--muted);font-weight:400;margin-left:6px}
+.mine-row{padding:14px 0;border-top:1px solid var(--line)}.mine-row:first-child{border-top:0}
+.mine-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}.mine-head a{color:var(--ink);font-weight:600;font-size:15px;text-decoration:none}.mine-head a:hover{text-decoration:underline}
+.mine-when{font-size:12.5px;color:var(--muted)}
+.mine-body{font-size:15px;line-height:1.75;margin:6px 0 8px;word-break:keep-all;white-space:pre-wrap}
+.lnk{background:none;border:0;padding:0;font:inherit;font-size:12.5px;color:var(--muted);text-decoration:underline;cursor:pointer}.lnk:hover{color:var(--ink)}
 </style></head><body><div class="wrap"><div class="brand">PLI · Weekly Insight 알림</div>${body}</div></body></html>`;
 }
