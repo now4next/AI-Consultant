@@ -108,8 +108,14 @@ INSIGHTS_SEC = """<section class="insights" id="insight" data-vol="{n}">
       여러 사람이 보는 자리이니 회사 이름과 사람 이름은 적지 말아 주세요.</p>
   </div>
   <div class="ins-cta" id="insCta" hidden>
-    메일로 글을 받는 분이 남길 수 있어요. 메일의 <b>인사이트 남기기</b> 링크로 들어오면 바로 쓸 수 있고,
-    아직 구독 전이라면 <a href="https://projectleadership.cc/#subscribe">여기에서 신청</a>할 수 있어요.
+    <p>메일로 글을 받는 분이 남길 수 있어요. 구독하신 주소를 넣으면 이 편의 쓰기 링크를 보내 드려요.</p>
+    <form class="ins-ask" id="insAsk">
+      <input type="email" id="insEmail" required autocomplete="email" inputmode="email"
+             placeholder="name@company.com" aria-label="구독하신 메일 주소">
+      <button class="ins-btn" type="submit" id="insAskBtn">링크 받기</button>
+    </form>
+    <p class="ins-fine" id="insAskMsg">아직 구독 전이라면
+      <a href="https://projectleadership.cc/#subscribe">여기에서 신청</a>할 수 있어요.</p>
   </div>
 </section>"""
 

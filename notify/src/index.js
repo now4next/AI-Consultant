@@ -61,6 +61,7 @@ async function route(request, env, ctx) {
   if (p === '/insights' && m === 'POST') return saveInsight(request, env, ctx);
   if (p === '/insights' && m === 'DELETE') return deleteInsight(request, url, env, ctx);
   if (p === '/insights/mine' && m === 'GET') return myInsight(url, env);
+  if (p === '/insights/link' && m === 'POST') return insightLink(request, env, ctx);
 
   // the site probes this before showing the "카카오톡으로 받기" button, so allow cross-origin reads
   if (p === '/health') {
@@ -196,6 +197,64 @@ async function emailStart(request, env, ctx) {
   const settings = `${env.SELF}/settings?t=${t}`;
   if (wantsJson) return new Response(JSON.stringify({ ok: true, url: settings }), { headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', ...cors } });
   return Response.redirect(settings, 302);
+}
+
+async function insightLink(request, env, ctx) {
+  const cors = { 'access-control-allow-origin': env.SITE || '*' };
+  const reply = (ok, msg, status = ok ? 200 : 400) => new Response(JSON.stringify({ ok, msg }), {
+    status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', ...cors },
+  });
+
+  let b; try { b = await request.json(); } catch { return reply(false, '요청을 읽지 못했어요.'); }
+  const email = String(b.email || '').trim().toLowerCase();
+  if (!EMAIL_RE.test(email)) return reply(false, '메일 주소를 다시 확인해 주세요.');
+  const vol = Number(b.vol);
+
+  // 구독 여부와 무관하게 같은 답을 돌려준다. 이 창구로 가입 여부를 알아낼 수 없어야 한다.
+  const same = () => reply(true, '보냈어요. 구독 중인 주소라면 곧 메일이 도착해요.');
+
+  const sub = await env.DB.prepare(
+    "SELECT * FROM subscribers WHERE email = ? AND status <> 'pending'").bind(email).first();
+  if (!sub) { track(env, ctx, request, 'insight_link_miss', null, { vol }); return same(); }
+
+  // 같은 사람에게 10분에 한 번
+  const recent = await env.DB.prepare(
+    "SELECT 1 AS x FROM sends WHERE subscriber_id = ? AND kind = 'writelink' AND sent_at > datetime('now','-10 minutes')"
+  ).bind(sub.id).first();
+  if (recent) return same();
+
+  let v = null;
+  try { const vols = await loadVolumes(env); v = vols.find(x => Number(x.vol) === vol) || null; } catch {}
+
+  const t = await makeWriteToken(env, sub.id);
+  // 기록을 보내기 전에 남긴다. 발송 결과를 기다려 남기면 연달아 누를 때 제한이 통과된다.
+  const ins = await env.DB.prepare(
+    "INSERT INTO sends (subscriber_id, vol, kind, ok) VALUES (?, ?, 'writelink', 1)"
+  ).bind(sub.id, vol || null).run();
+  const rid = ins?.meta?.last_row_id || null;
+  const mark = (ok, err) => rid
+    ? env.DB.prepare('UPDATE sends SET ok = ?, error = ? WHERE id = ?').bind(ok, err, rid).run()
+    : Promise.resolve();
+  ctx.waitUntil(sendEmail(env, writeLinkEmail(env, sub, v, t))
+    .then(r => mark(1, via(env, r)), e => mark(0, (e && e.message) || String(e))));
+  track(env, ctx, request, 'insight_link', sub.id, { vol });
+  return same();
+}
+
+function writeLinkEmail(env, sub, v, t) {
+  const target = v ? `${env.SITE}/${v.file}?t=${t}#insight` : `${env.SITE}/?t=${t}`;
+  const what = v ? `Vol. ${String(v.vol).padStart(2, '0')} ${v.title}` : '리더십 인사이트';
+  const f = manageFooter(env, sub, t);
+  const rows = [
+    h1Row('인사이트 남기기'),
+    pRow(`<b>${esc(what)}</b> 아래에 생각을 남길 수 있는 링크예요. 눌러서 글 끝으로 가면 입력란이 열려요.`),
+    btnRow(target, '남기러 가기 →'),
+    pRow('이 링크는 60일 동안 쓸 수 있고, 다른 편에서도 그대로 열려요. 한 편에 하나씩 남길 수 있고 언제든 고치거나 지울 수 있어요.', 0),
+  ].join('');
+  const text = `인사이트 남기기\n\n${what} 아래에 생각을 남길 수 있는 링크예요.\n${target}\n\n${f.text}`;
+  return { to: sub.email, subject: `[리더십 인사이트] 인사이트 남기기 링크`,
+           html: emailLayout(env, { preheader: `${what} 아래에 생각을 남겨 보세요`, rows, footer: f.html }),
+           text, unsub: f.unsub };
 }
 
 async function emailPreview(url, env) {

@@ -759,6 +759,13 @@
     text-transform:uppercase;background:none;color:var(--muted);border:1px solid rgba(var(--ink-rgb),.3);
     border-radius:999px;padding:9px 18px;cursor:pointer;transition:color .14s,border-color .14s}
   .ins-open:hover{color:var(--ink);border-color:var(--ink)}
+  .ins-cta p{margin:0}
+  .ins-ask{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 0}
+  .ins-ask input{flex:1 1 200px;min-width:0;box-sizing:border-box;font-family:var(--serif);
+    font-size:15px;color:var(--ink);background:var(--paper);border:1px solid rgba(var(--ink-rgb),.28);
+    border-radius:8px;padding:9px 12px}
+  .ins-ask input:focus{outline:none;border-color:var(--ink)}
+  @media(max-width:430px){.ins-ask .ins-btn{width:100%}}
   .ins-cta{font-family:var(--serif);font-size:15px;line-height:1.75;color:var(--muted);
     padding:14px 0 2px;word-break:keep-all}
   .ins-cta a{color:var(--ink)}
@@ -1024,8 +1031,14 @@
       여러 사람이 보는 자리이니 회사 이름과 사람 이름은 적지 말아 주세요.</p>
   </div>
   <div class="ins-cta" id="insCta" hidden>
-    메일로 글을 받는 분이 남길 수 있어요. 메일의 <b>인사이트 남기기</b> 링크로 들어오면 바로 쓸 수 있고,
-    아직 구독 전이라면 <a href="https://projectleadership.cc/#subscribe">여기에서 신청</a>할 수 있어요.
+    <p>메일로 글을 받는 분이 남길 수 있어요. 구독하신 주소를 넣으면 이 편의 쓰기 링크를 보내 드려요.</p>
+    <form class="ins-ask" id="insAsk">
+      <input type="email" id="insEmail" required autocomplete="email" inputmode="email"
+             placeholder="name@company.com" aria-label="구독하신 메일 주소">
+      <button class="ins-btn" type="submit" id="insAskBtn">링크 받기</button>
+    </form>
+    <p class="ins-fine" id="insAskMsg">아직 구독 전이라면
+      <a href="https://projectleadership.cc/#subscribe">여기에서 신청</a>할 수 있어요.</p>
   </div>
 </section>
 <section class="related">
@@ -1394,7 +1407,7 @@
       body=document.getElementById('insBody'), cnt=document.getElementById('insCnt'),
       msg=document.getElementById('insMsg'), save=document.getElementById('insSave'),
       del=document.getElementById('insDel');
-  var canWrite=false, hasItems=false, checked=false;
+  var canWrite=false, hasItems=false;
 
   function store(v){ try{ v?localStorage.setItem(KEY,v):localStorage.removeItem(KEY); }catch(e){} }
   function token(){ try{ return localStorage.getItem(KEY); }catch(e){ return null; } }
@@ -1412,9 +1425,7 @@
   function layout(){
     head.hidden=!hasItems;
     list.hidden=!hasItems;
-    open.hidden=!canWrite||!box.hidden;
-    cta.hidden=!(hasItems&&checked&&!canWrite);   /* 읽을 것이 있어야 안내도 뜻이 있다 */
-    sec.hidden=!hasItems&&!canWrite;
+    open.hidden=!(box.hidden&&cta.hidden);   /* 무언가 열려 있으면 버튼은 물러난다 */
   }
 
   function draw(items){
@@ -1426,8 +1437,10 @@
     layout();
   }
 
-  function load(){
-    return fetch(API+'/insights?vol='+VOL).then(function(r){ return r.json(); })
+  function load(fresh){
+    /* 목록은 60초 캐시를 둔다. 방금 쓰거나 지운 사람에게는 건너뛰어야 자기 글이 바로 보인다 */
+    var u=API+'/insights?vol='+VOL+(fresh?'&_='+Date.now():'');
+    return fetch(u,fresh?{cache:'no-store'}:undefined).then(function(r){ return r.json(); })
       .then(function(d){ if(d&&d.ok) draw(d.items); })
       .catch(function(){ draw([]); });
   }
@@ -1439,17 +1452,38 @@
   var first=document.querySelector('.checklist .item .txt');
   q.textContent=first?first.textContent.trim():'이 편에서 당신의 조직에 바로 적용할 수 있는 한 가지는 무엇인가요?';
 
-  open.addEventListener('click',function(){ box.hidden=false; layout(); body.focus(); });
+  open.addEventListener('click',function(){
+    if(canWrite){ box.hidden=false; layout(); body.focus(); }
+    else { cta.hidden=false; layout(); var e=document.getElementById('insEmail'); if(e) e.focus(); }
+  });
 
   load();
 
+  /* 토큰 없이 들어온 구독자를 위해, 주소를 넣으면 쓰기 링크를 메일로 보낸다 */
+  var ask=document.getElementById('insAsk'), askMsg=document.getElementById('insAskMsg'),
+      askBtn=document.getElementById('insAskBtn');
+  ask.addEventListener('submit',function(e){
+    e.preventDefault();
+    var em=(document.getElementById('insEmail').value||'').trim();
+    if(!em) return;
+    askBtn.disabled=true; askMsg.textContent='보내는 중…';
+    fetch(API+'/insights/link',{method:'POST',headers:{'content-type':'application/json'},
+      body:JSON.stringify({email:em,vol:Number(VOL)})})
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        askBtn.disabled=false;
+        askMsg.textContent=d&&d.msg?d.msg:'보냈어요. 메일함을 확인해 주세요.';
+        if(d&&d.ok) ask.hidden=true;
+      })
+      .catch(function(){ askBtn.disabled=false; askMsg.textContent='연결하지 못했어요. 잠시 뒤 다시 시도해 주세요.'; });
+  });
+
   var t=token();
-  if(!t){ checked=true; layout(); return; }
+  if(!t){ layout(); return; }
 
   fetch(API+'/insights/mine?vol='+VOL+'&t='+encodeURIComponent(t))
     .then(function(r){ return r.json(); })
     .then(function(d){
-      checked=true;
       if(!d||!d.signedIn){ store(null); layout(); return; }
       canWrite=true;
       if(!d.nick) nickRow.hidden=false; else nick.value=d.nick;
@@ -1457,7 +1491,7 @@
       if(d.body){ body.value=d.body; del.hidden=false; save.textContent='고치기'; box.hidden=false; }
       count(); layout();
     })
-    .catch(function(){ checked=true; layout(); });
+    .catch(function(){ layout(); });
 
   body.addEventListener('input',count);
 
@@ -1473,7 +1507,7 @@
         if(!d.ok){ if(d.needNick) nickRow.hidden=false; say(d.msg||'저장하지 못했어요.',1); return; }
         say('남겼어요.'); del.hidden=false; save.textContent='고치기'; nickRow.hidden=true;
         if(d.nick) nick.value=d.nick;
-        load();
+        load(1);
       })
       .catch(function(){ save.disabled=false; say('연결하지 못했어요. 잠시 뒤 다시 시도해 주세요.',1); });
   });
@@ -1485,7 +1519,7 @@
       .then(function(d){
         if(!d.ok){ say(d.msg||'지우지 못했어요.',1); return; }
         body.value=''; count(); del.hidden=true; save.textContent='남기기';
-        box.hidden=true; say(''); load(); layout();
+        box.hidden=true; say(''); load(1); layout();
       })
       .catch(function(){ say('연결하지 못했어요.',1); });
   });
