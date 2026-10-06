@@ -82,6 +82,35 @@ def related_html(n, body, reg=None):
 THEME_BTN = ('<button class="thm" id="thm" type="button" aria-label="테마 바꾸기" title="테마: 자동"><svg class="i-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.2"/><path d="M12 3.8a8.2 8.2 0 0 1 0 16.4z" fill="currentColor" stroke="none"/></svg><svg class="i-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.3M12 19.1v2.3M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.6 12h2.3M19.1 12h2.3M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg><svg class="i-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 14.6A8.3 8.3 0 0 1 9.4 3.8a8.4 8.4 0 1 0 10.8 10.8z"/></svg></button>')
 
 
+# 독자 인사이트 영역. 스타일과 스크립트는 직전 편 셸에서 복사된다.
+INSIGHTS_SEC = """<section class="insights" id="insight" data-vol="{n}">
+  <div class="lab">Reader Insights</div>
+  <div class="ti">독자들이 남긴 기록</div>
+  <div id="insList"></div>
+  <div class="ins-write" id="insWrite" hidden>
+    <div class="ins-q" id="insQ"></div>
+    <div class="ins-nick" id="insNickRow" hidden>
+      <label for="insNick">표시할 별명</label>
+      <input id="insNick" maxlength="16" autocomplete="off" placeholder="예: 느린결정">
+    </div>
+    <label for="insBody">이 편에서 얻은 생각</label>
+    <textarea id="insBody" maxlength="400" placeholder="조직에 바로 적용할 수 있는 한 가지를 적어 보세요."></textarea>
+    <div class="ins-foot">
+      <span class="ins-cnt" id="insCnt">0 / 400</span>
+      <span class="ins-msg" id="insMsg"></span>
+      <button class="ins-lnk" id="insDel" type="button" hidden>지우기</button>
+      <button class="ins-btn" id="insSave" type="button">남기기</button>
+    </div>
+    <p class="ins-fine">구독자만 남길 수 있고 한 편에 하나예요. 언제든 고치거나 지울 수 있어요.
+      여러 사람이 보는 자리이니 회사 이름과 사람 이름은 적지 말아 주세요.</p>
+  </div>
+  <div class="ins-cta" id="insCta" hidden>
+    메일로 글을 받는 분이 남길 수 있어요. 메일의 <b>인사이트 남기기</b> 링크로 들어오면 바로 쓸 수 있고,
+    아직 구독 전이라면 <a href="https://projectleadership.cc/#subscribe">여기에서 신청</a>할 수 있어요.
+  </div>
+</section>"""
+
+
 def render_page(spec, body, prev, prev2, shell_src):
     n = spec["vol"]
     shell = open(os.path.join(ROOT, shell_src), encoding="utf-8").read()
@@ -194,6 +223,8 @@ def render_page(spec, body, prev, prev2, shell_src):
     <b>— Leadership Insight</b>
   </div>
 </div>
+
+{INSIGHTS_SEC.format(n=n)}
 
 {related_html(n, body)}
 <div class="next-teaser">

@@ -723,6 +723,40 @@
     .mast .vn{white-space:nowrap}
     .thm svg{width:16px;height:16px}
   }
+  
+  /* ── 독자 인사이트 ── */
+  .insights{margin:0 24px 32px;padding:24px 0 4px;border-top:1px solid var(--ink)}
+  .insights .lab{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .insights .ti{font-family:var(--serif);font-weight:700;font-size:19px;margin-bottom:16px;word-break:keep-all}
+  .ins-card{padding:14px 0;border-top:1px solid rgba(var(--ink-rgb),.14)}
+  .ins-card:first-child{border-top:0}
+  .ins-who{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--muted);margin-bottom:6px}
+  .ins-who b{color:var(--ink);font-weight:700;letter-spacing:.04em}
+  .ins-body{font-family:var(--serif);font-size:16px;line-height:1.8;word-break:keep-all;white-space:pre-wrap}
+  .ins-none{font-family:var(--serif);font-size:15px;color:var(--muted);padding:6px 0 2px;word-break:keep-all}
+  .ins-q{font-family:var(--serif);font-size:15.5px;line-height:1.7;color:var(--ink-2);background:var(--paper-2);
+    border-left:3px solid var(--ink);padding:12px 14px;margin:18px 0 12px;word-break:keep-all}
+  .ins-write label{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+  .ins-write input,.ins-write textarea{width:100%;box-sizing:border-box;font-family:var(--serif);font-size:16px;
+    line-height:1.7;color:var(--ink);background:var(--paper);border:1px solid rgba(var(--ink-rgb),.28);
+    border-radius:8px;padding:10px 12px}
+  .ins-write input:focus,.ins-write textarea:focus{outline:none;border-color:var(--ink)}
+  .ins-write textarea{resize:vertical;min-height:96px}
+  .ins-nick{margin-bottom:12px}
+  .ins-foot{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .ins-cnt{font-family:var(--mono);font-size:11.5px;color:var(--muted-2);letter-spacing:.08em}
+  .ins-msg{font-family:var(--sans,var(--serif));font-size:13px;color:var(--muted);flex:1 1 auto;word-break:keep-all}
+  .ins-msg.err{color:#c2410c}
+  .ins-btn{appearance:none;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:9px 18px;cursor:pointer}
+  .ins-btn[disabled]{opacity:.45;cursor:default}
+  .ins-lnk{appearance:none;background:none;border:0;padding:0;cursor:pointer;color:var(--muted);
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-decoration:underline}
+  .ins-fine{font-family:var(--serif);font-size:13px;line-height:1.7;color:var(--muted);margin:12px 0 0;word-break:keep-all}
+  .ins-cta{font-family:var(--serif);font-size:15px;line-height:1.75;color:var(--muted);
+    padding:14px 0 2px;word-break:keep-all}
+  .ins-cta a{color:var(--ink)}
   </style>
 </head>
 <body id="top">
@@ -980,6 +1014,32 @@
   </div>
 </div>
 
+<section class="insights" id="insight" data-vol="50">
+  <div class="lab">Reader Insights</div>
+  <div class="ti">독자들이 남긴 기록</div>
+  <div id="insList"></div>
+  <div class="ins-write" id="insWrite" hidden>
+    <div class="ins-q" id="insQ"></div>
+    <div class="ins-nick" id="insNickRow" hidden>
+      <label for="insNick">표시할 별명</label>
+      <input id="insNick" maxlength="16" autocomplete="off" placeholder="예: 느린결정">
+    </div>
+    <label for="insBody">이 편에서 얻은 생각</label>
+    <textarea id="insBody" maxlength="400" placeholder="조직에 바로 적용할 수 있는 한 가지를 적어 보세요."></textarea>
+    <div class="ins-foot">
+      <span class="ins-cnt" id="insCnt">0 / 400</span>
+      <span class="ins-msg" id="insMsg"></span>
+      <button class="ins-lnk" id="insDel" type="button" hidden>지우기</button>
+      <button class="ins-btn" id="insSave" type="button">남기기</button>
+    </div>
+    <p class="ins-fine">구독자만 남길 수 있고 한 편에 하나예요. 언제든 고치거나 지울 수 있어요.
+      여러 사람이 보는 자리이니 회사 이름과 사람 이름은 적지 말아 주세요.</p>
+  </div>
+  <div class="ins-cta" id="insCta" hidden>
+    메일로 글을 받는 분이 남길 수 있어요. 메일의 <b>인사이트 남기기</b> 링크로 들어오면 바로 쓸 수 있고,
+    아직 구독 전이라면 <a href="https://projectleadership.cc/#subscribe">여기에서 신청</a>할 수 있어요.
+  </div>
+</section>
 <section class="related">
   <div class="lab">Mentioned in this issue</div>
   <div class="ti">이 글에서 언급한 편들</div>
@@ -1333,6 +1393,98 @@
     paint();
   });
   paint();
+})();
+</script>
+<script>
+/* 독자 인사이트 — 목록 읽기와 쓰기. 쓰기는 메일의 토큰을 가진 구독자만 */
+(function(){
+  var sec=document.getElementById('insight'); if(!sec) return;
+  var API='https://notify.projectleadership.cc', VOL=sec.dataset.vol, KEY='pli-wt';
+  var list=document.getElementById('insList'), box=document.getElementById('insWrite'),
+      cta=document.getElementById('insCta'), q=document.getElementById('insQ'),
+      nickRow=document.getElementById('insNickRow'), nick=document.getElementById('insNick'),
+      body=document.getElementById('insBody'), cnt=document.getElementById('insCnt'),
+      msg=document.getElementById('insMsg'), save=document.getElementById('insSave'),
+      del=document.getElementById('insDel');
+
+  function store(v){ try{ v?localStorage.setItem(KEY,v):localStorage.removeItem(KEY); }catch(e){} }
+  function token(){ try{ return localStorage.getItem(KEY); }catch(e){ return null; } }
+
+  /* 메일 링크의 토큰을 거둬들이고 주소에서는 지운다 */
+  (function(){
+    var u=new URL(location.href), t=u.searchParams.get('t');
+    if(t){ store(t); u.searchParams.delete('t'); history.replaceState(null,'',u.pathname+u.search+u.hash); }
+  })();
+
+  var esc=function(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+
+  function draw(items){
+    if(!items.length){ list.innerHTML='<div class="ins-none">아직 남긴 기록이 없어요. 첫 기록이 되어 주세요.</div>'; return; }
+    list.innerHTML=items.map(function(it){
+      return '<div class="ins-card"><div class="ins-who"><b>'+esc(it.nick)+'</b> · '+esc(it.at)+
+        (it.edited?' · 고침':'')+'</div><div class="ins-body">'+esc(it.body)+'</div></div>';
+    }).join('');
+  }
+
+  function load(){
+    return fetch(API+'/insights?vol='+VOL).then(function(r){ return r.json(); })
+      .then(function(d){ if(d&&d.ok) draw(d.items); })
+      .catch(function(){ list.innerHTML=''; });
+  }
+
+  function count(){ cnt.textContent=(body.value||'').trim().length+' / 400'; }
+  function say(t,bad){ msg.textContent=t||''; msg.className='ins-msg'+(bad?' err':''); }
+
+  /* 글감은 이 편의 체크리스트 첫 질문을 그대로 쓴다 */
+  var first=document.querySelector('.checklist .item .txt');
+  q.textContent=first?first.textContent.trim():'이 편에서 당신의 조직에 바로 적용할 수 있는 한 가지는 무엇인가요?';
+
+  load();
+
+  var t=token();
+  if(!t){ cta.hidden=false; return; }
+
+  fetch(API+'/insights/mine?vol='+VOL+'&t='+encodeURIComponent(t))
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(!d||!d.signedIn){ store(null); cta.hidden=false; return; }
+      box.hidden=false;
+      if(!d.nick) nickRow.hidden=false; else nick.value=d.nick;
+      if(d.body){ body.value=d.body; del.hidden=false; save.textContent='고치기'; }
+      count();
+    })
+    .catch(function(){ cta.hidden=false; });
+
+  body.addEventListener('input',count);
+
+  save.addEventListener('click',function(){
+    var text=(body.value||'').trim();
+    if(text.length<30){ say('30자 이상 적어 주세요. 지금 '+text.length+'자예요.',1); return; }
+    save.disabled=true; say('저장하는 중…');
+    fetch(API+'/insights',{method:'POST',headers:{'content-type':'application/json'},
+      body:JSON.stringify({t:token(),vol:Number(VOL),body:text,nickname:nick.value||''})})
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        save.disabled=false;
+        if(!d.ok){ if(d.needNick) nickRow.hidden=false; say(d.msg||'저장하지 못했어요.',1); return; }
+        say('남겼어요.'); del.hidden=false; save.textContent='고치기'; nickRow.hidden=true;
+        if(d.nick) nick.value=d.nick;
+        load();
+      })
+      .catch(function(){ save.disabled=false; say('연결하지 못했어요. 잠시 뒤 다시 시도해 주세요.',1); });
+  });
+
+  del.addEventListener('click',function(){
+    if(!confirm('남긴 기록을 지울까요?')) return;
+    fetch(API+'/insights?vol='+VOL+'&t='+encodeURIComponent(token()),{method:'DELETE'})
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if(!d.ok){ say(d.msg||'지우지 못했어요.',1); return; }
+        body.value=''; count(); del.hidden=true; save.textContent='남기기'; say('지웠어요.'); load();
+      })
+      .catch(function(){ say('연결하지 못했어요.',1); });
+  });
 })();
 </script>
 </body>

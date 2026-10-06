@@ -25,6 +25,7 @@
 
 import { DAYS, CATS, SLOTS, rand, makeToken, readToken, encrypt, decrypt, esc, json, html, log, track } from './lib.js';
 import { adminRoute, recordCron, maybePrune } from './admin.js';
+import { listInsights, saveInsight, deleteInsight, myInsight, purgeInsights, makeWriteToken } from './insights.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -47,6 +48,19 @@ export default {
 async function route(request, env, ctx) {
   const url = new URL(request.url);
   const p = url.pathname, m = request.method;
+
+  // 정적 사이트가 /insights 로 JSON POST 를 보내므로 사전요청을 받아 준다
+  if (m === 'OPTIONS' && p.startsWith('/insights')) return new Response(null, { status: 204, headers: {
+    'access-control-allow-origin': env.SITE || '*',
+    'access-control-allow-methods': 'GET,POST,DELETE,OPTIONS',
+    'access-control-allow-headers': 'content-type',
+    'access-control-max-age': '86400',
+  } });
+
+  if (p === '/insights' && m === 'GET') return listInsights(url, env);
+  if (p === '/insights' && m === 'POST') return saveInsight(request, env, ctx);
+  if (p === '/insights' && m === 'DELETE') return deleteInsight(request, url, env, ctx);
+  if (p === '/insights/mine' && m === 'GET') return myInsight(url, env);
 
   // the site probes this before showing the "카카오톡으로 받기" button, so allow cross-origin reads
   if (p === '/health') {
@@ -264,7 +278,7 @@ function settingsForm(sub, t, flash, env) {
     <form method="post" action="/test"><input type="hidden" name="t" value="${esc(t)}"><button class="btn ghost">테스트 메일 다시 보내기</button></form>
     <form method="post" action="/unsubscribe" onsubmit="return confirm('정말 그만 받을까요? 설정과 연결 정보가 모두 삭제돼요.')"><input type="hidden" name="t" value="${esc(t)}"><button class="btn danger">그만 받기</button></form>
   </div>`}
-  <p class="fine">저장하는 정보는 이메일 주소와 위 설정뿐이에요. 이름·전화번호는 받지 않아요. 그만 받기를 누르면 즉시 삭제돼요. · <a href="${env.SITE}/">projectleadership.cc</a></p>`;
+  <p class="fine">저장하는 정보는 이메일 주소와 위 설정이에요. 이름·전화번호는 받지 않아요. 글에 인사이트를 남기면 표시에 쓸 별명이 더해지고, 그만 받기를 누르면 남긴 기록까지 즉시 삭제돼요. · <a href="${env.SITE}/">projectleadership.cc</a></p>`;
 }
 
 async function settingsSave(request, env, ctx) {
@@ -334,6 +348,7 @@ async function settingsAction(action, request, env, ctx) {
   if (!tok?.id) return html(page('링크 만료', '<p>이 링크는 더 이상 유효하지 않아요.</p>' + backLink(env)), 401);
   track(env, ctx, request, action, tok.id);
   if (action === 'unsubscribe') {
+    await purgeInsights(env, tok.id);   // "즉시 삭제" 약속은 남긴 기록에도 적용된다
     await env.DB.prepare('DELETE FROM subscribers WHERE id = ?').bind(tok.id).run();
     await env.DB.prepare('DELETE FROM sends WHERE subscriber_id = ?').bind(tok.id).run();
     return html(page('그만 받기 완료', '<h1>해지했어요</h1><p class="lead">알림을 해지하고 저장된 정보를 모두 지웠어요. 언제든 다시 신청할 수 있어요.</p>' + backLink(env)), 200,
@@ -540,6 +555,7 @@ async function issueEmail(env, sub, v, t) {
   const f = manageFooter(env, sub, t);
   const ex = await fetchExcerpt(env, v).catch(() => null);
   const meta = [v.cat, v.source, v.readTime ? `${v.readTime} 분량` : ''].filter(Boolean).map(esc).join(' &nbsp;·&nbsp; ');
+  const wurl = `${env.SITE}/${v.file}?t=${await makeWriteToken(env, sub.id)}#insight`;
   const rows = [
     row('padding:0 28px;', `<a href="${url}" style="display:block;"><img src="${env.SITE}/assets/og/vol-${nn}.jpg" width="544" alt="${esc(v.title)}" style="width:100%;max-width:544px;height:auto;display:block;border-radius:12px;border:0;"></a>`),
     row(`padding:22px 28px 0;font-family:${MONO};font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:${C.mute2};`, esc(v.eyebrow || `Vol. ${nn}`)),
@@ -553,8 +569,10 @@ async function issueEmail(env, sub, v, t) {
     ...(ex?.paras || []).map((p, i) => row(`padding:${i ? 14 : 22}px 28px 0;font-family:${SERIF};font-size:16px;line-height:1.85;color:${C.body};word-break:keep-all;`, esc(p))),
     ex?.paras?.length ? row(`padding:10px 28px 0;font-family:${SERIF};font-size:16px;color:${C.muted};`, '…') : '',
     btnRow(url, '이어서 읽기 →'),
+    row(`padding:18px 28px 0;font-family:${F};font-size:13.5px;line-height:1.7;color:${C.muted};word-break:keep-all;`,
+        `다 읽고 나면 <a href="${wurl}" style="color:${C.ink};">이 편에서 얻은 생각을 한 줄 남겨</a> 보세요. 글 아래에 별명으로 쌓입니다.`),
   ].join('');
-  const text = `${v.eyebrow || `Vol. ${nn}`}\n${v.title}\n\n${v.sub || v.desc || ''}\n${[v.cat, v.source, v.readTime].filter(Boolean).join(' · ')}\n\n${(ex?.paras || []).join('\n\n')}\n\n이어서 읽기: ${url}\n\n${f.text}`;
+  const text = `${v.eyebrow || `Vol. ${nn}`}\n${v.title}\n\n${v.sub || v.desc || ''}\n${[v.cat, v.source, v.readTime].filter(Boolean).join(' · ')}\n\n${(ex?.paras || []).join('\n\n')}\n\n이어서 읽기: ${url}\n인사이트 남기기: ${wurl}\n\n${f.text}`;
   return { to: sub.email, subject: `[리더십 인사이트] Vol.${nn} ${v.title}`, html: emailLayout(env, { preheader: v.sub || v.desc, rows, footer: f.html }), text, unsub: f.unsub };
 }
 

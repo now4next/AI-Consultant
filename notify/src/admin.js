@@ -48,6 +48,8 @@ export async function adminRoute(request, env, ctx, url, api) {
   if ((mm = p.match(/^\/admin\/subscribers\/([A-Za-z0-9_-]+)$/))) return subscriber(A, mm[1]);
   if (p === '/admin/sends') return sends(A);
   if ((mm = p.match(/^\/admin\/sends\/(\d+)\/retry$/)) && m === 'POST') return sendRetry(A, Number(mm[1]));
+  if (p === '/admin/insights') return insights(A);
+  if ((mm = p.match(/^\/admin\/insights\/([A-Za-z0-9_-]+)\/action$/)) && m === 'POST') return insightAction(A, mm[1]);
   if (p === '/admin/access') return access(A);
   if (p === '/admin/settings' && m === 'GET') return settings(A);
   if (p === '/admin/settings/password' && m === 'POST') return settingsPassword(A);
@@ -243,7 +245,7 @@ async function subscriberAction(A, id) {
       msg = '테스트 메일을 보냈어요.';
     }
     else if (act === 'delete') {
-      await env.DB.batch([env.DB.prepare('DELETE FROM subscribers WHERE id = ?').bind(id), env.DB.prepare('DELETE FROM sends WHERE subscriber_id = ?').bind(id), env.DB.prepare('DELETE FROM access_log WHERE subscriber_id = ?').bind(id)]);
+      await env.DB.batch([env.DB.prepare('DELETE FROM subscribers WHERE id = ?').bind(id), env.DB.prepare('DELETE FROM sends WHERE subscriber_id = ?').bind(id), env.DB.prepare('DELETE FROM access_log WHERE subscriber_id = ?').bind(id), env.DB.prepare('DELETE FROM insights WHERE subscriber_id = ?').bind(id), env.DB.prepare('DELETE FROM subscriber_profile WHERE subscriber_id = ?').bind(id)]);
       audit(A, act, id, 'ok');
       return redirect(`${env.SELF}/admin/subscribers`);
     }
@@ -386,6 +388,50 @@ function sendsTable(A, rows, withSub = true, withRetry = false) {
 }
 
 // ───────────────────────────────────────────── access log + cron runs
+// ───────────────────────────────────────────── 인사이트
+async function insights(A) {
+  const { env, url } = A;
+  const only = url.searchParams.get('status') || '';
+  const where = only === 'hidden' ? "WHERE i.status='hidden'"
+    : only === 'public' ? "WHERE i.status='public'" : "WHERE i.status<>'removed'";
+  const { results: rows } = await env.DB.prepare(
+    `SELECT i.id, i.vol, i.body, i.status, i.created_at, i.updated_at, i.subscriber_id,
+            p.nickname, s.email
+       FROM insights i
+       LEFT JOIN subscriber_profile p ON p.subscriber_id = i.subscriber_id
+       LEFT JOIN subscribers s ON s.id = i.subscriber_id
+       ${where}
+      ORDER BY i.created_at DESC LIMIT 300`).all();
+  const n = await env.DB.prepare(
+    "SELECT COUNT(*) c, SUM(status='public') pub, SUM(status='hidden') hid FROM insights WHERE status<>'removed'").first();
+
+  const tab = (k, t) => `<a class="btn small ${only === k ? '' : 'ghost'}" href="/admin/insights${k ? '?status=' + k : ''}">${t}</a>`;
+  const body = `<h1>인사이트</h1>
+  <p class="lead">독자가 글 아래에 남긴 기록이에요. 공개 ${n?.pub || 0}건 · 내린 것 ${n?.hid || 0}건.</p>
+  <div class="row" style="border:0;padding:0;margin-bottom:12px">${tab('', '전체')}${tab('public', '공개')}${tab('hidden', '내린 것')}</div>
+  <table><thead><tr><th>편</th><th>별명</th><th>내용</th><th>상태</th><th>남긴 때</th><th></th></tr></thead><tbody>
+  ${(rows || []).map(r => `<tr>
+    <td class="num"><a href="${esc(env.SITE)}/insight-vol-${String(r.vol).padStart(2, '0')}.html#insight">${r.vol}</a></td>
+    <td>${esc(r.nickname || '-')}<div class="ua">${r.subscriber_id ? `<a href="/admin/subscribers/${esc(r.subscriber_id)}">${esc(r.email || r.subscriber_id.slice(0, 8))}</a>` : ''}</div></td>
+    <td style="max-width:420px;white-space:normal;word-break:keep-all">${esc(r.body)}</td>
+    <td>${r.status === 'public' ? '<span class="ok">공개</span>' : '<span class="fail">내림</span>'}</td>
+    <td>${kst(r.created_at)}${r.updated_at && r.updated_at !== r.created_at ? '<div class="ua">고침</div>' : ''}</td>
+    <td><form method="post" action="/admin/insights/${esc(r.id)}/action"><input type="hidden" name="_csrf" value="${A.csrf}">
+      <button class="btn small ghost" name="do" value="${r.status === 'public' ? 'hide' : 'show'}">${r.status === 'public' ? '내리기' : '되살리기'}</button>
+    </form></td></tr>`).join('') || '<tr><td colspan="6" class="empty">아직 남긴 기록이 없어요.</td></tr>'}
+  </tbody></table>`;
+  return page('인사이트', body, A);
+}
+
+async function insightAction(A, id) {
+  const d = A.form.get('do');
+  const st = d === 'hide' ? 'hidden' : d === 'show' ? 'public' : null;
+  if (!st) return redirect(`${A.env.SELF}/admin/insights`);
+  await A.env.DB.prepare("UPDATE insights SET status=?, updated_at=datetime('now') WHERE id=?").bind(st, id).run();
+  track(A.env, A.ctx, A.request, 'admin_action', null, { insight: id, to: st });
+  return redirect(`${A.env.SELF}/admin/insights`);
+}
+
 async function access(A) {
   const { env, url } = A;
   const q = k => url.searchParams.get(k) || '';
@@ -515,7 +561,7 @@ function pager(url, pg, total, size) {
 
 function page(title, body, A, status = 200) {
   const nav = A ? `<nav class="top"><a class="brand" href="/admin">PLI · 알림 관리</a>
-    ${[['/admin', '개요'], ['/admin/subscribers', '신청자'], ['/admin/sends', '발송'], ['/admin/access', '접속'], ['/admin/settings', '설정']].map(([h, t]) => `<a href="${h}" class="${A.url.pathname === h || (h !== '/admin' && A.url.pathname.startsWith(h)) ? 'on' : ''}">${t}</a>`).join('')}
+    ${[['/admin', '개요'], ['/admin/subscribers', '신청자'], ['/admin/sends', '발송'], ['/admin/insights', '인사이트'], ['/admin/access', '접속'], ['/admin/settings', '설정']].map(([h, t]) => `<a href="${h}" class="${A.url.pathname === h || (h !== '/admin' && A.url.pathname.startsWith(h)) ? 'on' : ''}">${t}</a>`).join('')}
     <form method="post" action="/admin/logout" class="logout"><input type="hidden" name="_csrf" value="${A.csrf}"><button class="lnk">로그아웃</button></form></nav>` : '<div class="brand solo">PLI · 알림 관리</div>';
   return html(`<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
 <meta name="color-scheme" content="light dark"><title>${esc(title)} · PLI 알림 관리</title>
