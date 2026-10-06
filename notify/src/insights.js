@@ -180,3 +180,39 @@ export async function purgeInsights(env, id) {
   await env.DB.prepare('DELETE FROM insights WHERE subscriber_id = ?').bind(id).run();
   await env.DB.prepare('DELETE FROM subscriber_profile WHERE subscriber_id = ?').bind(id).run();
 }
+
+// 홈이 읽는 최근 기록. 편 제목을 함께 실어 보내 홈이 따로 찾지 않아도 되게 한다.
+export async function listRecent(url, env, loadVolumes) {
+  const cors = { 'access-control-allow-origin': env.SITE || '*' };
+  const days = Math.min(Math.max(Number(url.searchParams.get('days')) || 7, 1), 90);
+  const limit = Math.min(Math.max(Number(url.searchParams.get('limit')) || 5, 1), 20);
+
+  const { results } = await env.DB.prepare(
+    `SELECT i.vol, i.body, i.created_at, p.nickname
+       FROM insights i LEFT JOIN subscriber_profile p ON p.subscriber_id = i.subscriber_id
+      WHERE i.status = 'public' AND i.created_at > datetime('now', ?)
+      ORDER BY i.created_at DESC LIMIT ?`
+  ).bind(`-${days} days`, limit).all();
+
+  const rows = results || [];
+  let titles = {};
+  if (rows.length) {
+    try { (await loadVolumes(env)).forEach(v => { titles[Number(v.vol)] = v; }); } catch {}
+  }
+
+  const items = rows.map(r => {
+    const v = titles[Number(r.vol)];
+    return {
+      nick: r.nickname || '독자',
+      body: r.body,
+      at: (r.created_at || '').slice(0, 10),
+      vol: r.vol,
+      title: v ? v.title : null,
+      file: v ? v.file : null,
+    };
+  });
+
+  return new Response(JSON.stringify({ ok: true, days, count: items.length, items }), {
+    headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'public, max-age=60', ...cors },
+  });
+}

@@ -234,6 +234,19 @@
   :root:not([data-theme]) .thm .i-auto{display:block}
   :root[data-theme="light"] .thm .i-light{display:block}
   :root[data-theme="dark"] .thm .i-dark{display:block}
+  
+  /* ── 이번 주 독자들의 기록 ── */
+  .rins{display:grid;gap:14px}
+  @media(min-width:760px){.rins{grid-template-columns:1fr 1fr}}
+  .rins-card{border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;
+    background:var(--surface);display:flex;flex-direction:column;gap:8px}
+  .rins-who{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--muted);
+    display:flex;gap:10px;flex-wrap:wrap;align-items:baseline}
+  .rins-who b{color:var(--ink);font-weight:700;letter-spacing:.04em}
+  .rins-body{font-family:var(--serif);font-size:15.5px;line-height:1.8;word-break:keep-all;white-space:pre-wrap}
+  .rins-from{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:auto}
+  .rins-from a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+  .rins-from a:hover{border-color:var(--ink)}
   </style>
 </head>
 <body>
@@ -309,6 +322,17 @@
         <span class="btn ghost">이번 주 통찰 읽기 →</span>
       </div>
     </a>
+  </div>
+</section>
+
+<!-- READER INSIGHTS -->
+<section class="sec" id="reader" hidden>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-lab"><b>Reader Insights</b></div>
+      <div class="kick">이번 주, 독자들이 글 아래에 남긴 기록</div>
+    </div>
+    <div class="rins" id="rinsList"></div>
   </div>
 </section>
 
@@ -994,6 +1018,32 @@
     paint();
   });
   paint();
+})();
+</script>
+<script>
+/* 이번 주 독자들의 기록 — 최근 7일 안의 기록만, 없으면 섹션째 숨긴다 */
+(function(){
+  var sec=document.getElementById('reader'); if(!sec) return;
+  var list=document.getElementById('rinsList');
+  var esc=function(x){ return String(x==null?'':x).replace(/[&<>"]/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  fetch('https://notify.projectleadership.cc/insights/recent?days=7&limit=6')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(!d||!d.ok||!d.items||!d.items.length) return;
+      list.innerHTML=d.items.map(function(it){
+        var nn=String(it.vol).padStart(2,'0');
+        var href=it.file?it.file+'#insight':null;
+        var name=it.title?('Vol. '+nn+' · '+esc(it.title)):('Vol. '+nn);
+        return '<div class="rins-card">'+
+          '<div class="rins-who"><b>'+esc(it.nick)+'</b><span>'+esc(it.at)+'</span></div>'+
+          '<div class="rins-body">'+esc(it.body)+'</div>'+
+          '<div class="rins-from">'+(href?'<a href="'+esc(href)+'">'+name+'</a>':name)+'</div>'+
+        '</div>';
+      }).join('');
+      sec.hidden=false;
+    })
+    .catch(function(){});
 })();
 </script>
 </body>
