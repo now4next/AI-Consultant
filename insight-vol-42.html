@@ -1415,7 +1415,7 @@
       body=document.getElementById('insBody'), cnt=document.getElementById('insCnt'),
       msg=document.getElementById('insMsg'), save=document.getElementById('insSave'),
       del=document.getElementById('insDel');
-  var canWrite=false, hasItems=false;
+  var canWrite=false, hasItems=!!list.querySelector('.ins-card');   /* 발행 때 구워 둔 기록 */
 
   function store(v){ try{ v?localStorage.setItem(KEY,v):localStorage.removeItem(KEY); }catch(e){} }
   function token(){ try{ return localStorage.getItem(KEY); }catch(e){ return null; } }
@@ -1450,7 +1450,7 @@
     var u=API+'/insights?vol='+VOL+(fresh?'&_='+Date.now():'');
     return fetch(u,fresh?{cache:'no-store'}:undefined).then(function(r){ return r.json(); })
       .then(function(d){ if(d&&d.ok) draw(d.items); })
-      .catch(function(){ draw([]); });
+      .catch(function(){ layout(); });   /* 구워 둔 내용을 지우지 않는다 */
   }
 
   function count(){ cnt.textContent=(body.value||'').trim().length+' / 400'; }

@@ -33,6 +33,7 @@ def _load(mod, path):
 gen_cover = _load("gen_cover", os.path.join(ROOT, "scripts", "gen_cover.py"))
 add_listen = _load("add_listen", os.path.join(ROOT, "scripts", "add_listen.py"))
 gen_og = _load("gen_og", os.path.join(ROOT, "scripts", "gen_og.py"))
+bake_insights = _load("bake_insights", os.path.join(ROOT, "scripts", "bake_insights.py"))
 
 
 # ---------------------------------------------------------------- helpers
@@ -443,7 +444,8 @@ def main():
     update_registry(spec)
     touched = refresh_footer_index(reg_load())
     gen_og.build_one(n)
-    print(f"wired: prev nav · home · redirect · README · registry · footer index ({touched} pages) · og image+meta")
+    baked = bake_insights.bake()
+    print(f"wired: prev nav · home · redirect · README · registry · footer index ({touched} pages) · og image+meta · reader insights ({baked} pages)")
     print("next:  python scripts/lint_volume.py")
 
 

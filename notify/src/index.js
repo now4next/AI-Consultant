@@ -25,7 +25,7 @@
 
 import { DAYS, CATS, SLOTS, rand, makeToken, readToken, encrypt, decrypt, esc, json, html, log, track } from './lib.js';
 import { adminRoute, recordCron, maybePrune } from './admin.js';
-import { listInsights, saveInsight, deleteInsight, myInsight, purgeInsights, makeWriteToken, listRecent } from './insights.js';
+import { listInsights, saveInsight, deleteInsight, myInsight, purgeInsights, makeWriteToken, listRecent, listAll } from './insights.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -62,6 +62,7 @@ async function route(request, env, ctx) {
   if (p === '/insights' && m === 'DELETE') return deleteInsight(request, url, env, ctx);
   if (p === '/insights/mine' && m === 'GET') return myInsight(url, env);
   if (p === '/insights/recent' && m === 'GET') return listRecent(url, env, loadVolumes);
+  if (p === '/insights/all' && m === 'GET') return listAll(url, env);
   if (p === '/insights/link' && m === 'POST') return insightLink(request, env, ctx);
 
   // the site probes this before showing the "카카오톡으로 받기" button, so allow cross-origin reads

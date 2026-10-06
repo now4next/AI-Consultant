@@ -216,3 +216,35 @@ export async function listRecent(url, env, loadVolumes) {
     headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'public, max-age=60', ...cors },
   });
 }
+
+// 발행 스크립트가 한 번에 받아 가는 전체 목록. 편별로 묶어 돌려준다.
+export async function listAll(url, env) {
+  const cors = { 'access-control-allow-origin': env.SITE || '*' };
+  const per = Math.min(Math.max(Number(url.searchParams.get('per')) || 50, 1), 200);
+
+  const { results } = await env.DB.prepare(
+    `SELECT i.vol, i.body, i.created_at, i.updated_at, p.nickname
+       FROM insights i LEFT JOIN subscriber_profile p ON p.subscriber_id = i.subscriber_id
+      WHERE i.status = 'public'
+      ORDER BY i.vol ASC, i.created_at ASC
+      LIMIT 5000`
+  ).all();
+
+  const vols = {};
+  for (const r of results || []) {
+    const k = String(r.vol);
+    if (!vols[k]) vols[k] = [];
+    if (vols[k].length >= per) continue;
+    vols[k].push({
+      nick: r.nickname || '독자',
+      body: r.body,
+      at: (r.created_at || '').slice(0, 10),
+      edited: !!(r.updated_at && r.created_at && r.updated_at !== r.created_at),
+    });
+  }
+
+  const total = Object.values(vols).reduce((n, a) => n + a.length, 0);
+  return new Response(JSON.stringify({ ok: true, total, vols }), {
+    headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'public, max-age=60', ...cors },
+  });
+}
