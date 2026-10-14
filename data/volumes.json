@@ -1718,6 +1718,29 @@
         "sub": "좁게 잡은 구간이<br>가장 끈질기다",
         "src": "원전 · Moore & Healy, Psychological Review 115-2(2008)"
       }
+    },
+    {
+      "vol": 80,
+      "file": "insight-vol-80.html",
+      "dir": "vol-80",
+      "title": "절반은 쓰이지 않았다",
+      "sub": "상사가 끌어내는 역량이 절반에 못 미친다는 조사가 있다. 회상에 기댄 숫자지만, 같은 질문을 570만 건의 작업 기록으로 다시 물은 연구가 따로 있다.",
+      "eyebrow": "Vol. 80 · The Boss Effect",
+      "source": "Liz Wiseman & Greg McKeown, Multipliers: How the Best Leaders Make Everyone Smarter(2010 · 개정판 2017) · Edward P. Lazear, Kathryn L. Shaw & Christopher T. Stanton, The Value of Bosses(Journal of Labor Economics 33-4, 2015, 823–861)",
+      "cat": "성장",
+      "tag": "#성장 · The Boss Effect",
+      "readTime": "11분",
+      "desc": "상사가 끌어내는 역량이 절반에 못 미친다는 조사가 있다. 같은 질문을 570만 건으로 다시 물은 답은 가르치는 일을 가리켰다.",
+      "tags": "#역량가동률 #상사효과 #가르치기",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#23282b",
+        "c2": "#0e1112",
+        "accent": "#cfd8c4",
+        "motif": "drawn",
+        "sub": "사 둔 역량과<br>쓰이는 역량",
+        "src": "원전 · Wiseman(2010) · Lazear 외, JOLE 33-4(2015)"
+      }
     }
   ]
 }

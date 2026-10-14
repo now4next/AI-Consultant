@@ -90,6 +90,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-77.html](insight-vol-77.html) — "빼는 쪽이 떠오르지 않는다" 리더십 인사이트 Vol. 77 (Adams, Converse, Hales & Klotz, People Systematically Overlook Subtractive Changes(Nature 592, 2021, 258–261)) · <https://projectleadership.cc/insight-vol-77.html>
 - [insight-vol-78.html](insight-vol-78.html) — "한 시간을 덜 잤다" 리더십 인사이트 Vol. 78 (Barnes & Wagner, Changing to Daylight Saving Time Cuts into Sleep and Increases Workplace Injuries(Journal of Applied Psychology, 2009) · Barnes, Lucianetti, Bhave & Christian, AMJ 58-5(2015)) · <https://projectleadership.cc/insight-vol-78.html>
 - [insight-vol-79.html](insight-vol-79.html) — "과신은 하나가 아니다" 리더십 인사이트 Vol. 79 (Don A. Moore & Paul J. Healy, The Trouble with Overconfidence(Psychological Review 115-2, 2008, 502–517)) · <https://projectleadership.cc/insight-vol-79.html>
+- [insight-vol-80.html](insight-vol-80.html) — "절반은 쓰이지 않았다" 리더십 인사이트 Vol. 80 (Liz Wiseman & Greg McKeown, Multipliers: How the Best Leaders Make Everyone Smarter(2010 · 개정판 2017) · Edward P. Lazear, Kathryn L. Shaw & Christopher T. Stanton, The Value of Bosses(Journal of Labor Economics 33-4, 2015, 823–861)) · <https://projectleadership.cc/insight-vol-80.html>
 
 ### 새 볼륨 발행 워크플로우
 

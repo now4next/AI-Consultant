@@ -1302,7 +1302,29 @@ def motif_overprecise(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "ties": motif_ties, "pump": motif_pump, "frontdoor": motif_frontdoor, "echo": motif_echo, "mismatch": motif_mismatch, "reorder": motif_reorder, "podium": motif_podium, "fattail": motif_fattail, "retain": motif_retain, "tipping": motif_tipping, "untallied": motif_untallied, "twopaths": motif_twopaths, "promote": motif_promote, "smoothed": motif_smoothed, "addbias": motif_addbias, "losthour": motif_losthour, "overprecise": motif_overprecise, "none": lambda accent=None: ""}
+def motif_drawn(accent="#d9c48f"):
+    """Installed capability as an outline, the drawn share as fill. One team gets most of it."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="{accent}" stroke-width="1.2" opacity=".26">
+        <rect x="23" y="32" width="12" height="60" rx="1.5"/>
+        <rect x="45" y="32" width="12" height="60" rx="1.5"/>
+        <rect x="67" y="32" width="12" height="60" rx="1.5"/>
+        <rect x="89" y="32" width="12" height="60" rx="1.5"/>
+      </g>
+      <g fill="{accent}" stroke="none" opacity=".9">
+        <rect x="23" y="64" width="12" height="28" rx="1.5"/>
+        <rect x="45" y="66" width="12" height="26" rx="1.5"/>
+        <rect x="67" y="61" width="12" height="31" rx="1.5"/>
+        <rect x="89" y="40" width="12" height="52" rx="1.5"/>
+      </g>
+      <path d="M14 32 L106 32" fill="none" stroke="{accent}" stroke-width="1.1"
+            opacity=".5" stroke-dasharray="3 3"/>
+      <path d="M14 92 L106 92" fill="none" stroke="{accent}" stroke-width="1.3"
+            opacity=".75" stroke-linecap="round"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "ties": motif_ties, "pump": motif_pump, "frontdoor": motif_frontdoor, "echo": motif_echo, "mismatch": motif_mismatch, "reorder": motif_reorder, "podium": motif_podium, "fattail": motif_fattail, "retain": motif_retain, "tipping": motif_tipping, "untallied": motif_untallied, "twopaths": motif_twopaths, "promote": motif_promote, "smoothed": motif_smoothed, "addbias": motif_addbias, "losthour": motif_losthour, "overprecise": motif_overprecise, "drawn": motif_drawn, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
