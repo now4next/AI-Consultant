@@ -127,6 +127,24 @@ def check(path, reg_by_file):
         if reg["vol"] > 1 and want not in head and want not in s[: s.find("</header>") + 1]:
             warns.append(f"masthead/title does not show {want}")
 
+    # ---- the category agrees with the registry
+    # It lives in four places per page. A bulk retag that misses one leaves the page
+    # looking fine while the hero takes the wrong colour, so check them against the registry.
+    if reg:
+        cat = reg["cat"]
+        m = re.search(r'<section class="hero"[^>]*\sdata-cat="([^"]*)"', s)
+        if not m:
+            warns.append("hero has no data-cat")
+        elif m.group(1) != cat:
+            errors.append(f'hero data-cat is "{m.group(1)}", registry says "{cat}"')
+        m = re.search(r'<span class="r">([^<·]+?)\s*·', s)
+        if m and m.group(1).strip() != cat:
+            errors.append(f'hero label says "{m.group(1).strip()}", registry says "{cat}"')
+        if not re.search(r'\.hero\[data-cat="%s"\]' % re.escape(cat), s):
+            errors.append(f'no colour rule for "{cat}"')
+        if not reg["tag"].startswith("#" + cat + " "):
+            errors.append(f'registry tag "{reg["tag"]}" does not start with #{cat}')
+
     # ---- cover present (from vol.06 on we always ship one)
     if reg and reg["vol"] >= 6:
         if not re.search(r'class="(cover-bleed|issue-cover|gcover)"', s):
