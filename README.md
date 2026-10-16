@@ -101,6 +101,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-88.html](insight-vol-88.html) — "다음에도 당신과 하겠다고 했다" 리더십 인사이트 Vol. 88 (Charlotte H. Townsend, Laura J. Kray & Solène Delecourt, People prefer to negotiate with women, even when outcomes are identical and gender is unknown(Proceedings of the National Academy of Sciences 123, 2026 · DOI 10.1073/pnas.2523202123)) · <https://projectleadership.cc/insight-vol-88.html>
 - [insight-vol-89.html](insight-vol-89.html) — "열어 보지 않아도 남아 있었다" 리더십 인사이트 Vol. 89 (William J. Becker, Liuba Y. Belkin, Samantha A. Conroy & Sarah Tuskey, Killing Me Softly: Organizational E-mail Monitoring Expectations' Impact on Employee and Significant Other Well-Being(Journal of Management 47-4, 2021, 1024–1052 · 저자 제출본 원문 확인)) · <https://projectleadership.cc/insight-vol-89.html>
 - [insight-vol-90.html](insight-vol-90.html) — "도구는 같았고 예시만 달랐다" 리더십 인사이트 Vol. 90 (Hyunjin Kim, Dahyeon Kim & Rembrand Koning, Mapping AI into Production: A Field Experiment on Firm Performance(INSEAD Working Paper 2026/20/STR, 2026-03-30 · SSRN 6513481). 결과 수치는 Harvard Business Review 2026년 11·12월호 17–19쪽 보도 기준) · <https://projectleadership.cc/insight-vol-90.html>
+- [insight-vol-91.html](insight-vol-91.html) — "말하지 않으면 각자 답한다" 리더십 인사이트 Vol. 91 (Das Narayandas, Why Even Your Best Employees Override AI Systems That Work(Harvard Business Review, November–December 2026, 42–49). Vol. 85의 후속으로, 같은 기사의 후반부를 다룬다) · <https://projectleadership.cc/insight-vol-91.html>
 
 ### 새 볼륨 발행 워크플로우
 
