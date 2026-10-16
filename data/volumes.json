@@ -1948,6 +1948,29 @@
         "sub": "열지 않은 봉투에서<br>나온 줄",
         "src": "원전 · Becker 외, Journal of Management 47-4(2021)"
       }
+    },
+    {
+      "vol": 90,
+      "file": "insight-vol-90.html",
+      "dir": "vol-90",
+      "title": "도구는 같았고 예시만 달랐다",
+      "sub": "515개 기업에 똑같이 도구와 교육과 멘토링을 주고, 절반에게만 남이 일을 다시 짠 사례를 보여 줬다. 그쪽이 매출 두 배에 가까웠다.",
+      "eyebrow": "Vol. 90 · The Mapping Problem",
+      "source": "Hyunjin Kim, Dahyeon Kim & Rembrand Koning, Mapping AI into Production: A Field Experiment on Firm Performance(INSEAD Working Paper 2026/20/STR, 2026-03-30 · SSRN 6513481). 결과 수치는 Harvard Business Review 2026년 11·12월호 17–19쪽 보도 기준",
+      "cat": "전략",
+      "tag": "#전략 · The Mapping Problem",
+      "readTime": "11분",
+      "desc": "같은 도구를 주고 남이 다시 짠 사례만 더 보여 줬더니 매출이 두 배 가까이 갈렸다. 막고 있던 것은 역량이 아니었다.",
+      "tags": "#지도문제 #병목 #업무재설계",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#202a26",
+        "c2": "#0c1210",
+        "accent": "#b9d9c4",
+        "motif": "constraint",
+        "sub": "좁은 칸을 넓히면<br>좁은 자리가 옮겨 간다",
+        "src": "원전 · Kim, Kim & Koning, INSEAD WP(2026)"
+      }
     }
   ]
 }

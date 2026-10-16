@@ -1481,7 +1481,30 @@ def motif_leash(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "ties": motif_ties, "pump": motif_pump, "frontdoor": motif_frontdoor, "echo": motif_echo, "mismatch": motif_mismatch, "reorder": motif_reorder, "podium": motif_podium, "fattail": motif_fattail, "retain": motif_retain, "tipping": motif_tipping, "untallied": motif_untallied, "twopaths": motif_twopaths, "promote": motif_promote, "smoothed": motif_smoothed, "addbias": motif_addbias, "losthour": motif_losthour, "overprecise": motif_overprecise, "drawn": motif_drawn, "sidedoor": motif_sidedoor, "fitgap": motif_fitgap, "raisedbar": motif_raisedbar, "mic": motif_mic, "override": motif_override, "widen": motif_widen, "earlyscale": motif_earlyscale, "repeat": motif_repeat, "leash": motif_leash, "none": lambda accent=None: ""}
+def motif_constraint(accent="#d9c48f"):
+    """A chain with one narrow link; below it, that link is wide and the narrow one has moved downstream."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="{accent}" stroke-width="1.5" opacity=".9">
+        <rect x="18" y="38" width="20" height="14" rx="1.5"/>
+        <rect x="42" y="42" width="20" height="6" rx="1.5"/>
+        <rect x="66" y="38" width="20" height="14" rx="1.5"/>
+        <rect x="90" y="38" width="14" height="14" rx="1.5"/>
+      </g>
+      <g fill="none" stroke="{accent}" stroke-width="1.4" opacity=".45">
+        <rect x="18" y="72" width="20" height="14" rx="1.5"/>
+        <rect x="42" y="72" width="20" height="14" rx="1.5"/>
+        <rect x="66" y="72" width="20" height="14" rx="1.5"/>
+      </g>
+      <rect x="90" y="76" width="14" height="6" rx="1.5" fill="none"
+            stroke="{accent}" stroke-width="1.6" opacity=".95"/>
+      <g fill="none" stroke="{accent}" stroke-width="1.3" opacity=".6" stroke-linecap="round"
+         stroke-linejoin="round">
+        <path d="M52 56 L52 66"/><path d="M48 62 L52 66 L56 62"/>
+      </g>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "ties": motif_ties, "pump": motif_pump, "frontdoor": motif_frontdoor, "echo": motif_echo, "mismatch": motif_mismatch, "reorder": motif_reorder, "podium": motif_podium, "fattail": motif_fattail, "retain": motif_retain, "tipping": motif_tipping, "untallied": motif_untallied, "twopaths": motif_twopaths, "promote": motif_promote, "smoothed": motif_smoothed, "addbias": motif_addbias, "losthour": motif_losthour, "overprecise": motif_overprecise, "drawn": motif_drawn, "sidedoor": motif_sidedoor, "fitgap": motif_fitgap, "raisedbar": motif_raisedbar, "mic": motif_mic, "override": motif_override, "widen": motif_widen, "earlyscale": motif_earlyscale, "repeat": motif_repeat, "leash": motif_leash, "constraint": motif_constraint, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
