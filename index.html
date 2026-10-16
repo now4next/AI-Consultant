@@ -212,14 +212,14 @@
   :root[data-theme="dark"] .mascot img{filter:drop-shadow(0 14px 30px rgba(0,0,0,.7))}
   /* dark:end */
   /* cat:start */
-  :root{--c-strategy:#1d4ed8;--c-people:#be123c;--c-judgment:#6d28d9;--c-duty:#b45309;--c-growth:#15803d;--c-reflect:#0f766e;--c-history:#78716c;--c-culture:#c026d3;--c-eval:#b45309;--c-ops:#0ea5e9;--c-balance:#06b6d4;--c-skill:#65a30d}
+  :root{--c-strategy:#1d4ed8;--c-people:#be123c;--c-judgment:#6d28d9;--c-growth:#15803d;--c-reflect:#0f766e;--c-history:#78716c}
   @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){--c-strategy:#60a5fa;--c-people:#fb7185;--c-judgment:#a78bfa;--c-duty:#fbbf24;--c-growth:#4ade80;--c-reflect:#2dd4bf;--c-history:#c9c2bb;--c-culture:#e879f9;--c-eval:#fbbf24;--c-ops:#7dd3fc;--c-balance:#67e8f9;--c-skill:#bef264}
+    :root:not([data-theme="light"]){--c-strategy:#60a5fa;--c-people:#fb7185;--c-judgment:#a78bfa;--c-growth:#4ade80;--c-reflect:#2dd4bf;--c-history:#c9c2bb}
   }
-:root[data-theme="dark"]{--c-strategy:#60a5fa;--c-people:#fb7185;--c-judgment:#a78bfa;--c-duty:#fbbf24;--c-growth:#4ade80;--c-reflect:#2dd4bf;--c-history:#c9c2bb;--c-culture:#e879f9;--c-eval:#fbbf24;--c-ops:#7dd3fc;--c-balance:#67e8f9;--c-skill:#bef264}
+:root[data-theme="dark"]{--c-strategy:#60a5fa;--c-people:#fb7185;--c-judgment:#a78bfa;--c-growth:#4ade80;--c-reflect:#2dd4bf;--c-history:#c9c2bb}
   [data-cat="전략"],[data-f="전략"]{--cc:var(--c-strategy)} [data-cat="사람"],[data-f="사람"]{--cc:var(--c-people)}
   [data-cat="판단"],[data-f="판단"]{--cc:var(--c-judgment)}
-  [data-cat="성장"],[data-f="성장"]{--cc:var(--c-growth)} [data-cat="성찰"],[data-f="성찰"]{--cc:var(--c-reflect)} [data-cat="역사"],[data-f="역사"]{--cc:var(--c-history)} [data-cat="평가"],[data-f="평가"]{--cc:var(--c-eval)}
+  [data-cat="성장"],[data-f="성장"]{--cc:var(--c-growth)} [data-cat="성찰"],[data-f="성찰"]{--cc:var(--c-reflect)} [data-cat="역사"],[data-f="역사"]{--cc:var(--c-history)}
   .chip::before,.card .tag::before,.spot .no::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--cc);margin-right:7px;vertical-align:1px}
   .chip[data-f="all"]::before{display:none}
   .chip.on::before{box-shadow:0 0 0 2px rgba(255,255,255,.35)}
@@ -277,7 +277,7 @@
       <div class="sec-lab"><b>Weekly Insight</b></div>
       <div class="kick">매주 금요일, <strong>플리</strong>가 고른 한 편<img class="owl-mini" src="assets/pli-owl.png" alt="" width="28" height="28"></div>
     </div>
-    <a class="spot" data-cat="평가" href="insight-vol-88.html">
+    <a class="spot" data-cat="판단" href="insight-vol-88.html">
       <div class="cover">
         <figure class="gcover" style="--c1:#262a22;--c2:#0f120c;--gt:11.5cqw" role="img" aria-label="다음에도 당신과 하겠다고 했다 커버">
   <span class="g-num">88</span>
@@ -348,7 +348,6 @@
       <button class="chip" data-f="전략">전략</button>
       <button class="chip" data-f="사람">사람</button>
       <button class="chip" data-f="판단">판단</button>
-      <button class="chip" data-f="평가">평가</button>
       <button class="chip" data-f="성장">성장</button>
       <button class="chip" data-f="성찰">성찰</button>
       <button class="chip" data-f="역사">역사</button>
@@ -429,11 +428,11 @@
           <p>숙련자는 초심자가 걸리는 시간을 과소평가하고, 그 편향은 알려 줘도 고쳐지지 않았다.</p>
           <div class="foot"><span class="tag">#성장 · Curse of Expertise</span><span class="rt">⏱ 9분</span></div></div>
       </a>
-      <a class="card" data-cat="평가" data-kw="#승진기준 #피터의원리 #관리자선발" href="insight-vol-75.html">
+      <a class="card" data-cat="판단" data-kw="#승진기준 #피터의원리 #관리자선발" href="insight-vol-75.html">
         <div class="thumb ph" data-n="75" style="--c1:#262033;--c2:#100d16"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <line x1="12" y1="96" x2="108" y2="96" stroke="#d9c48f" stroke-width="1.3" opacity=".4" stroke-linecap="round"/> <g fill="#d9c48f" stroke="none"> <rect x="18" y="74" width="9" height="22" rx="2" opacity=".4"/><rect x="31" y="62" width="9" height="34" rx="2" opacity=".4"/><rect x="44" y="44" width="9" height="52" rx="2" opacity=".9"/><rect x="57" y="68" width="9" height="28" rx="2" opacity=".4"/><rect x="70" y="78" width="9" height="18" rx="2" opacity=".4"/> </g> <line x1="86" y1="52" x2="108" y2="52" stroke="#d9c48f" stroke-width="1.3" opacity=".45" stroke-linecap="round"/> <rect x="93" y="41" width="9" height="11" rx="2" fill="#d9c48f" opacity=".9"/> <g fill="none" stroke="#d9c48f" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity=".7"> <path d="M53 38 C 66 24, 80 24, 95 32" stroke-dasharray="4 4"/> <path d="M91 27 L96 33 L89 35"/> </g> </svg></span><span class="kw">잘하던 사람을 올렸다</span><span class="src">원전 · Benson, Li & Shue, QJE 134-4(2019)</span></div>
         <div class="body"><div class="no">Vol. 75</div><h3>잘하던 사람을 올렸다</h3>
           <p>승진은 상이면서 배치다. 두 일이 같은 기준을 쓰지 않는데 제도는 하나뿐이다.</p>
-          <div class="foot"><span class="tag">#평가 · Promotion</span><span class="rt">⏱ 9분</span></div></div>
+          <div class="foot"><span class="tag">#판단 · Promotion</span><span class="rt">⏱ 9분</span></div></div>
       </a>
       <a class="card" data-cat="성장" data-kw="#외부영입 #내부승진 #경력설계" href="insight-vol-74.html">
         <div class="thumb ph" data-n="74" style="--c1:#1e2a21;--c2:#0a110b"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <line x1="14" y1="100" x2="110" y2="100" stroke="#d9c48f" stroke-width="1.3" opacity=".4" stroke-linecap="round"/> <path d="M22 38 L104 30" fill="none" stroke="#d9c48f" stroke-width="2" stroke-linecap="round"/> <path d="M22 78 L104 56" fill="none" stroke="#d9c48f" stroke-width="2" stroke-linecap="round" opacity=".55"/> <circle cx="22" cy="38" r="4" fill="#d9c48f" stroke="none"/> <circle cx="22" cy="78" r="4" fill="#d9c48f" stroke="none" opacity=".55"/> <g stroke="#d9c48f" stroke-width="1.3" fill="none" opacity=".6" stroke-linecap="round"> <path d="M92 32 L92 54" stroke-dasharray="3 4"/> <path d="M88 36 L92 32 L96 36"/> <path d="M88 50 L92 54 L96 50"/> </g> </svg></span><span class="kw">더 주고 덜 받는다</span><span class="src">원전 · Matthew Bidwell, ASQ 56-3(2011)</span></div>
@@ -441,11 +440,11 @@
           <p>밖에서 온 사람에게 18% 더 주고 첫 2년은 덜 받는다. 그리고 보수는 끝내 수렴하지 않는다.</p>
           <div class="foot"><span class="tag">#성장 · Hire or Promote</span><span class="rt">⏱ 9분</span></div></div>
       </a>
-      <a class="card" data-cat="평가" data-kw="#비승진과제 #보이지않는일 #배분설계" href="insight-vol-73.html">
+      <a class="card" data-cat="판단" data-kw="#비승진과제 #보이지않는일 #배분설계" href="insight-vol-73.html">
         <div class="thumb ph" data-n="73" style="--c1:#26222c;--c2:#100e13"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <line x1="78" y1="16" x2="78" y2="104" stroke="#d9c48f" stroke-width="1.2" opacity=".25"/> <rect x="18" y="23" width="54" height="6" rx="3" fill="#d9c48f" opacity=".85"/><path d="M84 26 l4 4 l8 -9" fill="none" stroke="#d9c48f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="18" y="37" width="54" height="6" rx="3" fill="#d9c48f" opacity=".85"/><path d="M84 40 l4 4 l8 -9" fill="none" stroke="#d9c48f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="18" y="51" width="54" height="6" rx="3" fill="#d9c48f" opacity=".38"/><path d="M84 54 l12 0" fill="none" stroke="#d9c48f" stroke-width="1.4" stroke-linecap="round" opacity=".22" stroke-dasharray="2 4"/><rect x="18" y="65" width="54" height="6" rx="3" fill="#d9c48f" opacity=".85"/><path d="M84 68 l4 4 l8 -9" fill="none" stroke="#d9c48f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="18" y="79" width="54" height="6" rx="3" fill="#d9c48f" opacity=".38"/><path d="M84 82 l12 0" fill="none" stroke="#d9c48f" stroke-width="1.4" stroke-linecap="round" opacity=".22" stroke-dasharray="2 4"/><rect x="18" y="93" width="54" height="6" rx="3" fill="#d9c48f" opacity=".85"/><path d="M84 96 l4 4 l8 -9" fill="none" stroke="#d9c48f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/> </svg></span><span class="kw">누가 하겠지</span><span class="src">원전 · Babcock 외, AER 107-3(2017)</span></div>
         <div class="body"><div class="no">Vol. 73</div><h3>누가 하겠지</h3>
           <p>평가에 안 잡히는 일이 누구에게 가는지는 선호가 정하지 않는다. 예상이 정하고, 예상은 바뀐다.</p>
-          <div class="foot"><span class="tag">#평가 · Invisible Work</span><span class="rt">⏱ 9분</span></div></div>
+          <div class="foot"><span class="tag">#판단 · Invisible Work</span><span class="rt">⏱ 9분</span></div></div>
       </a>
       <a class="card" data-cat="사람" data-kw="#임계점 #규범변화 #문화전환" href="insight-vol-72.html">
         <div class="thumb ph" data-n="72" style="--c1:#2a1f2c;--c2:#110b13"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <g fill="#d9c48f" stroke="none"> <circle cx="12.0" cy="40" r="2.6" opacity="1"/><circle cx="17.1" cy="40" r="2.6" opacity="1"/><circle cx="22.2" cy="40" r="2.6" opacity="1"/><circle cx="27.3" cy="40" r="2.6" opacity="1"/><circle cx="32.4" cy="40" r="2.6" opacity=".72"/><circle cx="37.5" cy="40" r="2.2" opacity=".2"/><circle cx="42.6" cy="40" r="2.2" opacity=".2"/><circle cx="47.7" cy="40" r="2.2" opacity=".2"/><circle cx="52.8" cy="40" r="2.2" opacity=".2"/><circle cx="57.9" cy="40" r="2.2" opacity=".2"/><circle cx="63.0" cy="40" r="2.2" opacity=".2"/><circle cx="68.1" cy="40" r="2.2" opacity=".2"/><circle cx="73.2" cy="40" r="2.2" opacity=".2"/><circle cx="78.3" cy="40" r="2.2" opacity=".2"/><circle cx="83.4" cy="40" r="2.2" opacity=".2"/><circle cx="88.5" cy="40" r="2.2" opacity=".2"/><circle cx="93.6" cy="40" r="2.2" opacity=".2"/><circle cx="98.7" cy="40" r="2.2" opacity=".2"/><circle cx="103.8" cy="40" r="2.2" opacity=".2"/><circle cx="108.9" cy="40" r="2.2" opacity=".2"/> </g> <g fill="#d9c48f" stroke="none"> <circle cx="12.0" cy="80" r="2.6" opacity="1"/><circle cx="17.1" cy="80" r="2.6" opacity="1"/><circle cx="22.2" cy="80" r="2.6" opacity="1"/><circle cx="27.3" cy="80" r="2.6" opacity="1"/><circle cx="32.4" cy="80" r="2.6" opacity="1"/><circle cx="37.5" cy="80" r="2.6" opacity=".72"/><circle cx="42.6" cy="80" r="2.6" opacity=".72"/><circle cx="47.7" cy="80" r="2.6" opacity=".72"/><circle cx="52.8" cy="80" r="2.6" opacity=".72"/><circle cx="57.9" cy="80" r="2.6" opacity=".72"/><circle cx="63.0" cy="80" r="2.6" opacity=".72"/><circle cx="68.1" cy="80" r="2.6" opacity=".72"/><circle cx="73.2" cy="80" r="2.6" opacity=".72"/><circle cx="78.3" cy="80" r="2.6" opacity=".72"/><circle cx="83.4" cy="80" r="2.6" opacity=".72"/><circle cx="88.5" cy="80" r="2.6" opacity=".72"/><circle cx="93.6" cy="80" r="2.6" opacity=".72"/><circle cx="98.7" cy="80" r="2.6" opacity=".72"/><circle cx="103.8" cy="80" r="2.6" opacity=".72"/><circle cx="108.9" cy="80" r="2.6" opacity=".72"/> </g> <line x1="10" y1="60" x2="110" y2="60" stroke="#d9c48f" stroke-width="1.3" opacity=".4" stroke-dasharray="4 5"/> <g fill="none" stroke="#d9c48f" stroke-width="1.4" stroke-linecap="round" opacity=".75"> <path d="M34 50 L34 70"/> <path d="M30 66 L34 70 L38 66"/> </g> </svg></span><span class="kw">전원을 설득하지 않는다</span><span class="src">원전 · Centola 외, Science 360-6393(2018)</span></div>
@@ -471,11 +470,11 @@
           <p>재능을 타고나는 것으로 보는 조직에서는 증명이 일이 된다. 협업과 혁신과 정직이 함께 줄어든다.</p>
           <div class="foot"><span class="tag">#성장 · Mindset</span><span class="rt">⏱ 9분</span></div></div>
       </a>
-      <a class="card" data-cat="평가" data-kw="#선발타당도 #구조화면접 #채용기준" href="insight-vol-68.html">
+      <a class="card" data-cat="판단" data-kw="#선발타당도 #구조화면접 #채용기준" href="insight-vol-68.html">
         <div class="thumb ph" data-n="68" style="--c1:#222a3a;--c2:#0b0e16"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <g fill="none" stroke="#d9c48f" stroke-width="1.3" opacity=".42" stroke-linecap="round"> <path d="M52 27 C 60 27, 60 71, 64 71"/><path d="M44 49 C 60 49, 60 27, 72 27"/><path d="M38 71 C 60 71, 60 49, 78 49"/><path d="M32 93 C 60 93, 60 93, 84 93"/> </g> <g fill="#d9c48f" stroke="none" opacity=".42"> <rect x="10" y="24" width="38" height="6" rx="3"/><rect x="10" y="46" width="30" height="6" rx="3"/><rect x="10" y="68" width="24" height="6" rx="3"/><rect x="10" y="90" width="18" height="6" rx="3"/> </g> <g fill="#d9c48f" stroke="none"> <rect x="80" y="24" width="30" height="6" rx="3"/><rect x="86" y="46" width="24" height="6" rx="3"/><rect x="72" y="68" width="38" height="6" rx="3"/><rect x="92" y="90" width="18" height="6" rx="3"/> </g> </svg></span><span class="kw">기본값이 바뀌었다</span><span class="src">Sackett, Zhang, Berry & Lievens, Revisiting Meta-analytic Estimates of Validity in Personnel Selection(JAP, 2022) · 같은 저자, Industrial and Organizational Psychology(2023)</span></div>
         <div class="body"><div class="no">Vol. 68</div><h3>기본값이 바뀌었다</h3>
           <p>선발 도구의 예측력 순서가 2022년에 바뀌었다. 1등은 구조화 면접이고 경력 연수는 .07이다.</p>
-          <div class="foot"><span class="tag">#평가 · Selection</span><span class="rt">⏱ 9분</span></div></div>
+          <div class="foot"><span class="tag">#판단 · Selection</span><span class="rt">⏱ 9분</span></div></div>
       </a>
       <a class="card" data-cat="성찰" data-kw="#번아웃 #여섯자리 #일의구조" href="insight-vol-67.html">
         <div class="thumb ph" data-n="67" style="--c1:#17282a;--c2:#081012"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <g fill="none" stroke="#d9c48f" stroke-width="1.3" opacity=".3" stroke-dasharray="3 5" stroke-linecap="round"> <path d="M35 52.8 L85 52.8"/><path d="M35 81.6 L85 81.6"/> </g> <g fill="#d9c48f" stroke="none" opacity=".9"> <circle cx="52" cy="24.0" r="3.4"/><circle cx="68" cy="24.0" r="3.4"/><circle cx="52" cy="38.4" r="3.4"/><circle cx="68" cy="38.4" r="3.4"/><circle cx="30" cy="52.8" r="3.4"/><circle cx="90" cy="52.8" r="3.4"/><circle cx="52" cy="67.2" r="3.4"/><circle cx="68" cy="67.2" r="3.4"/><circle cx="30" cy="81.6" r="3.4"/><circle cx="90" cy="81.6" r="3.4"/><circle cx="52" cy="96.0" r="3.4"/><circle cx="68" cy="96.0" r="3.4"/> </g> <line x1="60" y1="14" x2="60" y2="106" stroke="#d9c48f" stroke-width="1.2" opacity=".22"/> </svg></span><span class="kw">사람을 고치려 했다</span><span class="src">Maslach & Leiter, Understanding the Burnout Experience(World Psychiatry, 2016) · Leiter & Maslach, Areas of Worklife · WHO ICD-11(2019)</span></div>
@@ -537,11 +536,11 @@
           <p>최악의 공장이 같은 사람들로 최고가 됐다. 바뀐 것은 사람이 아닌 구조, 곧 멈출 수 있게 만든 설계였다.</p>
           <div class="foot"><span class="tag">#역사 · NUMMI</span><span class="rt">⏱ 9분</span></div></div>
       </a>
-      <a class="card" data-cat="평가" data-kw="#굿하트의법칙 #성과지표 #AI사용률" href="insight-vol-57.html">
+      <a class="card" data-cat="판단" data-kw="#굿하트의법칙 #성과지표 #AI사용률" href="insight-vol-57.html">
         <div class="thumb ph" data-n="57" style="--c1:#202440;--c2:#0b0d18"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <line x1="10" y1="104" x2="110" y2="104" stroke="#d9c48f" stroke-width="1.6" opacity=".35"/> <g fill="none" stroke="#d9c48f" stroke-linecap="round" stroke-linejoin="round"> <path d="M18 56 Q60 86 102 56" stroke-width="2.6"/> <g stroke-width="1.7" opacity=".7"> <line x1="30" y1="63" x2="30" y2="70"/> <line x1="45" y1="70" x2="45" y2="77"/> <line x1="60" y1="72" x2="60" y2="79"/> <line x1="75" y1="70" x2="75" y2="77"/> <line x1="90" y1="63" x2="90" y2="70"/> </g> <g stroke-dasharray="4 5" opacity=".3" stroke-width="1.4"> <line x1="18" y1="56" x2="102" y2="56"/> </g> <line x1="60" y1="22" x2="60" y2="44" stroke-width="2.3"/> <path d="M54 38 L60 45 L66 38" stroke-width="2.3"/> </g> </svg></span><span class="kw">재는 순간 망가진다</span><span class="src">굿하트의 법칙 · Reif 외(PNAS 2025) · 기업 사례(2025–2026)</span></div>
         <div class="body"><div class="no">Vol. 57</div><h3>재는 순간 망가진다</h3>
           <p>AI 사용률을 평가에 넣는 순간 그 숫자는 실력을 재지 못한다. 쓰라고 하면서 쓴 티를 내면 깎는 조직에서는 숨기는 법만 는다.</p>
-          <div class="foot"><span class="tag">#평가 · Goodhart</span><span class="rt">⏱ 9분</span></div></div>
+          <div class="foot"><span class="tag">#판단 · Goodhart</span><span class="rt">⏱ 9분</span></div></div>
       </a>
       <a class="card" data-cat="판단" data-kw="#기준선 #인간AI협업 #메타분석" href="insight-vol-56.html">
         <div class="thumb ph" data-n="56" style="--c1:#1a222c;--c2:#090d12"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <line x1="10" y1="102" x2="110" y2="102" stroke="#d9c48f" stroke-width="1.6" opacity=".35"/> <g fill="none" stroke="#d9c48f" stroke-linecap="round"> <rect x="50" y="46" width="20" height="50" rx="4" stroke-width="2.3"/> <g stroke-dasharray="5 5" opacity=".55" stroke-width="1.7"> <line x1="16" y1="72" x2="104" y2="72"/> </g> <line x1="16" y1="30" x2="104" y2="30" stroke-width="2.1" opacity=".85"/> <path d="M26 64 L26 56 M22 60 L26 56 L30 60" stroke-width="1.7" opacity=".6"/> <path d="M94 38 L94 46 M90 42 L94 46 L98 42" stroke-width="1.7" opacity=".6"/> </g> <g fill="#d9c48f" stroke="none" opacity=".75"> <circle cx="60" cy="46" r="2.6"/> </g> </svg></span><span class="kw">무엇과 비교했는가</span><span class="src">Vaccaro, Almaatouq & Malone, Nature Human Behaviour 8(2024) 2293–2303</span></div>
@@ -555,11 +554,11 @@
           <p>AI를 쓴 한 사람이 2인 팀만큼 해냈다. 그래도 상위 10%는 팀에서만 나왔다. 팀을 꾸리는 기준이 바뀐다.</p>
           <div class="foot"><span class="tag">#사람 · Cybernetic Teammate</span><span class="rt">⏱ 9분</span></div></div>
       </a>
-      <a class="card" data-cat="평가" data-kw="#의도적연습 #경력평가 #만시간의법칙" href="insight-vol-54.html">
+      <a class="card" data-cat="판단" data-kw="#의도적연습 #경력평가 #만시간의법칙" href="insight-vol-54.html">
         <div class="thumb ph" data-n="54" style="--c1:#1f2333;--c2:#0b0d15"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <g fill="none" stroke="#d9c48f" stroke-linecap="round"> <g opacity=".33" stroke-width="1.5"> <line x1="14" y1="38" x2="106" y2="38"/> <line x1="14" y1="52" x2="106" y2="52"/> <line x1="14" y1="66" x2="106" y2="66"/> <line x1="14" y1="80" x2="106" y2="80"/> <line x1="14" y1="94" x2="106" y2="94"/> </g> <g opacity=".5" stroke-width="1.6"> <line x1="24" y1="26" x2="24" y2="38"/> <line x1="31" y1="26" x2="31" y2="38"/> <line x1="38" y1="26" x2="38" y2="38"/> <line x1="45" y1="26" x2="45" y2="38"/> <line x1="52" y1="26" x2="52" y2="38"/> </g> <line x1="82" y1="24" x2="82" y2="92" stroke-width="2.6"/> <path d="M77 86 L82 93 L87 86" stroke-width="2.2" stroke-linejoin="round"/> </g> <g fill="#d9c48f" stroke="none"> <circle cx="82" cy="38" r="2.4"/><circle cx="82" cy="52" r="2.4"/> <circle cx="82" cy="66" r="2.4"/><circle cx="82" cy="80" r="2.4"/> </g> </svg></span><span class="kw">오래 했다는 말</span><span class="src">Ericsson 외(1993) · Macnamara 외(2014) 메타분석</span></div>
         <div class="body"><div class="no">Vol. 54</div><h3>오래 했다는 말</h3>
           <p>1만 시간은 문턱이 아니라 평균이었다. 경력 연수가 실력을 설명하는 정도는 분야마다 다르고, 우리 분야에서는 가장 약하다.</p>
-          <div class="foot"><span class="tag">#평가 · Deliberate Practice</span><span class="rt">⏱ 9분</span></div></div>
+          <div class="foot"><span class="tag">#판단 · Deliberate Practice</span><span class="rt">⏱ 9분</span></div></div>
       </a>
       <a class="card" data-cat="역사" data-kw="#섀클턴 #목표재정의 #프로젝트리더십" href="insight-vol-53.html">
         <div class="thumb ph" data-n="53" style="--c1:#16242e;--c2:#080e13"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <line x1="8" y1="104" x2="112" y2="104" stroke="#d9c48f" stroke-width="1.6" opacity=".35"/> <g fill="none" stroke="#d9c48f" stroke-linecap="round" stroke-linejoin="round"> <path d="M68 16 L72 26 L66 34 L72 44 L66 54 L72 64 L66 74 L70 84" stroke-width="1.8" opacity=".5"/> <g stroke-dasharray="4 5" opacity=".45" stroke-width="1.7"> <path d="M22 50 L62 50"/> </g> <path d="M60 44 L68 50 L60 56" stroke-width="1.9" opacity=".75"/> <path d="M64 46 L74 56 M74 46 L64 56" stroke-width="2.1" opacity=".8"/> <path d="M58 52 C46 56 36 68 34 82" stroke-width="2.2"/> <path d="M29 76 L34 84 L40 78" stroke-width="2"/> <circle cx="22" cy="50" r="2.6" fill="#d9c48f" stroke="none"/> <circle cx="34" cy="86" r="2.6" fill="#d9c48f" stroke="none"/> </g> </svg></span><span class="kw">목표를 바꾼 날</span><span class="src">제국 남극 횡단 탐험(1914–1917) · 로스해 지원대 기록</span></div>
@@ -573,11 +572,11 @@
           <p>직원들은 이미 쓰고 있다. 금지가 없애는 것은 사용이 아니라 기록이고, 기록이 없으면 책임도 없다.</p>
           <div class="foot"><span class="tag">#판단 · Shadow AI</span><span class="rt">⏱ 8분</span></div></div>
       </a>
-      <a class="card" data-cat="평가" data-kw="#노이즈 #의사결정 #결정위생" href="insight-vol-51.html">
+      <a class="card" data-cat="판단" data-kw="#노이즈 #의사결정 #결정위생" href="insight-vol-51.html">
         <div class="thumb ph" data-n="51" style="--c1:#1c242e;--c2:#0b0e13"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <line x1="8" y1="104" x2="112" y2="104" stroke="#d9c48f" stroke-width="1.6" opacity=".35"/> <g fill="none" stroke="#d9c48f" stroke-linecap="round"> <circle cx="58" cy="56" r="34" stroke-width="1.4" opacity=".35"/> <circle cx="58" cy="56" r="21" stroke-width="1.4" opacity=".5"/> <circle cx="58" cy="56" r="8" stroke-width="1.8" opacity=".8"/> <line x1="58" y1="14" x2="58" y2="24" stroke-width="1.3" opacity=".4"/> <line x1="58" y1="88" x2="58" y2="98" stroke-width="1.3" opacity=".4"/> <line x1="16" y1="56" x2="26" y2="56" stroke-width="1.3" opacity=".4"/> <line x1="90" y1="56" x2="100" y2="56" stroke-width="1.3" opacity=".4"/> <g stroke-width="2.1"> <path d="M34 34 L42 42 M42 34 L34 42"/> <path d="M74 30 L82 38 M82 30 L74 38"/> <path d="M28 70 L36 78 M36 70 L28 78"/> <path d="M80 66 L88 74 M88 66 L80 74"/> <path d="M54 80 L62 88 M62 80 L54 88"/> </g> </g> </svg></span><span class="kw">두 번 묻지 않는다</span><span class="src">Kahneman 외, Noise(2021) · 제2연방항소법원 양형 실험(1974)</span></div>
         <div class="body"><div class="no">Vol. 51</div><h3>두 번 묻지 않는다</h3>
           <p>같은 사안을 두 사람에게 주면 답이 갈린다. 조직이 그 사실을 모르는 이유는 두 번 묻지 않기 때문이다.</p>
-          <div class="foot"><span class="tag">#평가 · Noise</span><span class="rt">⏱ 9분</span></div></div>
+          <div class="foot"><span class="tag">#판단 · Noise</span><span class="rt">⏱ 9분</span></div></div>
       </a>
       <a class="card" data-cat="성찰" data-kw="#인지적오프로딩 #비판적사고 #자동화의역설" href="insight-vol-50.html">
         <div class="thumb ph" data-n="50" style="--c1:#1d2340;--c2:#0a0d1c"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <line x1="8" y1="100" x2="112" y2="100" stroke="#d9c48f" stroke-width="1.6" opacity=".35"/> <g fill="none" stroke="#d9c48f" stroke-linecap="round" stroke-linejoin="round"> <path d="M22 44 L42 30 M22 44 L36 62 M42 30 L36 62 M36 62 L24 80 M42 30 L56 48 M36 62 L56 48 M24 80 L36 62" stroke-width="1.7"/> <g stroke-dasharray="3 6" opacity=".4" stroke-width="1.4"> <path d="M80 36 L98 50 M80 36 L84 64 M98 50 L84 64 M84 64 L98 82"/> </g> <path d="M58 50 C66 52 70 54 75 58" stroke-width="1.6" opacity=".7"/> <path d="M75 58 L68.5 57.5 M75 58 L72.5 52" stroke-width="1.6" opacity=".7"/> </g> <g fill="#d9c48f" stroke="none"> <circle cx="22" cy="44" r="2.6"/><circle cx="42" cy="30" r="2.6"/><circle cx="36" cy="62" r="2.6"/> <circle cx="24" cy="80" r="2.6"/><circle cx="56" cy="48" r="2.6"/> </g> <g fill="none" stroke="#d9c48f" stroke-width="1.3" opacity=".45"> <circle cx="80" cy="36" r="2.6"/><circle cx="98" cy="50" r="2.6"/><circle cx="84" cy="64" r="2.6"/><circle cx="98" cy="82" r="2.6"/> </g> </svg></span><span class="kw">믿을수록 덜 따진다</span><span class="src">Lee 외(CHI 2025) · Bainbridge(1983) · MIT 미디어랩(2025)</span></div>
@@ -801,11 +800,11 @@
           <p>코칭은 통째로 자동화되지 않는다. 과업마다 AI와 사람의 몫을 나누어 설계하는 일.</p>
           <div class="foot"><span class="tag">#성장 · Terblanche·ICF</span><span class="rt">⏱ 6분</span></div></div>
       </a>
-      <a class="card" data-cat="평가" data-kw="#실패 #Edmondson #MIT" href="insight-vol-13.html">
+      <a class="card" data-cat="판단" data-kw="#실패 #Edmondson #MIT" href="insight-vol-13.html">
         <div class="thumb ph" data-n="13" style="--c1:#2b2119;--c2:#120d09"><span class="motif"><svg viewBox="0 0 132 92" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <g stroke="#d9c48f" stroke-width="2.6" fill="none" stroke-linecap="round" opacity=".3"> <circle cx="22" cy="44" r="18"/> <path d="M14 36 L30 52 M30 36 L14 52"/> <circle cx="66" cy="44" r="18"/> <path d="M56 50 C62 34 70 56 76 40"/> <path d="M56 40 C63 52 69 32 76 48"/> </g> <g stroke="#d9c48f" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"> <circle cx="110" cy="44" r="18"/> <path d="M110 54 L110 34"/> <path d="M103 41 L110 34 L117 41"/> </g> <circle cx="110" cy="44" r="26" stroke="#d9c48f" stroke-width="1" fill="none" opacity=".28"/> </svg></span><span class="kw">좋은 실패</span><span class="src">Amy C. Edmondson · Harvard Business School, 2023</span></div>
         <div class="body"><div class="no">Vol. 13</div><h3>좋은 실패</h3>
           <p>모든 실패가 배움은 아니다. 기본적·복합적·지적 실패를 가려내는 일.</p>
-          <div class="foot"><span class="tag">#평가 · Edmondson</span><span class="rt">⏱ 5분</span></div></div>
+          <div class="foot"><span class="tag">#판단 · Edmondson</span><span class="rt">⏱ 5분</span></div></div>
       </a>
       <a class="card" data-cat="사람" data-kw="#심리적안전감 #INSEAD #코칭연구" href="insight-vol-12.html">
         <div class="thumb ph" data-n="12" style="--c1:#1b2a2e;--c2:#0a1113"><span class="motif"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"> <g stroke="#d9c48f" stroke-width="3" fill="none" stroke-linecap="round"> <path d="M40 18 C16 40 16 80 40 102"/> <path d="M80 18 C104 40 104 80 80 102"/> </g> <circle cx="60" cy="60" r="7" fill="#d9c48f"/> <circle cx="60" cy="60" r="17" stroke="#d9c48f" stroke-width="1.4" fill="none" opacity=".45"/> <circle cx="60" cy="60" r="27" stroke="#d9c48f" stroke-width="1" fill="none" opacity=".22"/> </svg></span><span class="kw">곁에 있다는 것</span><span class="src">Graham Ward · INSEAD Knowledge, 2025</span></div>
