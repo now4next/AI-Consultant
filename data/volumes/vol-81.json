@@ -1,0 +1,53 @@
+{
+  "vol": 81,
+  "title": "덜 받을 만하다고 보았다",
+  "sub": "추천으로 들어온 동료를 사람들은 자격이 덜하다고 본다. 성과가 높아도 그 판단은 남았고, 남은 판단은 도움을 끊는 쪽으로 움직였다.",
+  "eyebrow": "Vol. 81 · The Referral Penalty",
+  "kicker": "Tomova Shakur & Derfler-Rozin · Journal of Applied Psychology(2026)",
+  "koLead": "어떤 문으로<br>들어왔는지를<br><em>사람들은 기억한다</em>",
+  "koSub": "추천 채용은 빠르고 싸다. 그 비용은 뽑은 조직이 치르지 않는다. 들어온 사람이 치른다. 채용에 관여하지도 않은 동료들이 그를 덜 받을 만한 사람으로 보고, 그만큼 덜 돕는다.",
+  "deck": "추천은 가장 널리 쓰이는 채용 경로다. 이 연구가 보는 것은 뽑힌 뒤에 벌어지는 일이다. 기존 직원들은 추천으로 들어온 동료를 자격이 덜하다고 보고, <em>그 어긋남을 자기 손으로 맞추려 든다.</em>",
+  "pillars": [
+    [
+      "What Incumbents See",
+      "남아 있던 사람들이 본 것"
+    ],
+    [
+      "Restoring the Balance",
+      "균형을 되돌리는 행동"
+    ],
+    [
+      "Performance Doesn't Clear It",
+      "성과로 지워지지 않는다"
+    ]
+  ],
+  "sourceTitle": "The Door You Came Through",
+  "source": "Teodora K. Tomova Shakur & Rellie Derfler-Rozin, The Referral Penalty: Decreased Perceptions of Merit Undermine Helping Behavior Toward Referred Employees(Journal of Applied Psychology 111-7, 2026, 882–900)",
+  "cover": {
+    "kind": "gcover",
+    "c1": "#2a2422",
+    "c2": "#110e0d",
+    "accent": "#e0c9a6",
+    "motif": "sidedoor",
+    "sub": "들어온 문과<br>뒤에 오는 손길",
+    "src": "원전 · Tomova Shakur & Derfler-Rozin, JAP 111-7(2026)"
+  },
+  "takeaway": {
+    "h3": "추천은 채용에서 끝나지 않고<br><em>입사 뒤까지 따라간다</em>",
+    "p1": "저자들이 본 것은 뽑는 쪽이 아니다. 이미 안에 있던 사람들이다. 채용에 아무 역할도 하지 않은 직원들이 추천으로 들어온 동료를 자격이 덜한 사람으로 본다. 인맥이 자격을 대신했다고 읽기 때문이다.",
+    "p2": "형평 이론이 그다음을 설명한다. 투입이 산출에 못 미친다고 보이면 사람은 그 어긋남을 맞추려 든다. 정보를 덜 나누고, 공을 덜 돌리고, 실수를 더 알린다. 추천 입사자가 높은 성과를 내는 조건에서도 그 귀인은 남았다.",
+    "sig": "Journal of Applied Psychology · 2026"
+  },
+  "home": {
+    "tldr": [
+      "추천으로 들어온 동료는 성과가 비슷해도 자격이 덜하다고 평가됐다. 그렇게 본 사람들은 채용에 관여하지 않은 기존 직원들이다.",
+      "기제는 형평 회복이다. 실력이라는 투입이 그 자리라는 산출에 못 미친다고 보이면, 사람은 돕는 행동을 줄이고 깎는 행동을 늘려 균형을 맞추려 한다.",
+      "추천 입사자가 모든 자격을 갖추고 같은 검증을 거쳤으며 평균 이상의 성과를 낸다고 명시해도 그 판단은 사라지지 않았다. 성과로 지워지지 않는다."
+    ],
+    "readTime": "10분",
+    "tags": "#추천채용 #형평이론 #조직사회화",
+    "cat": "문화",
+    "tag": "#문화 · The Referral Penalty",
+    "desc": "추천으로 들어온 사람은 덜 받을 만하다고 평가되고, 그만큼 덜 도움받는다. 성과가 높아도 그 판단은 남았다."
+  }
+}

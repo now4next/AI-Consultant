@@ -1324,7 +1324,147 @@ def motif_drawn(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "ties": motif_ties, "pump": motif_pump, "frontdoor": motif_frontdoor, "echo": motif_echo, "mismatch": motif_mismatch, "reorder": motif_reorder, "podium": motif_podium, "fattail": motif_fattail, "retain": motif_retain, "tipping": motif_tipping, "untallied": motif_untallied, "twopaths": motif_twopaths, "promote": motif_promote, "smoothed": motif_smoothed, "addbias": motif_addbias, "losthour": motif_losthour, "overprecise": motif_overprecise, "drawn": motif_drawn, "none": lambda accent=None: ""}
+def motif_sidedoor(accent="#d9c48f"):
+    """Two entrances, and the help that waits beyond each one."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="{accent}" stroke-width="1.3" opacity=".3">
+        <path d="M30 40 L30 86 L54 86 L54 40 Z"/>
+      </g>
+      <g fill="none" stroke="{accent}" stroke-width="1.5" opacity=".9" stroke-linecap="round">
+        <path d="M78 52 L78 86 L98 86 L98 52 Z"/>
+        <path d="M66 69 L76 69"/><path d="M72 65 L76 69 L72 73"/>
+      </g>
+      <g fill="none" stroke="{accent}" stroke-width="2" opacity=".85" stroke-linecap="round">
+        <path d="M30 96 L54 96"/>
+      </g>
+      <g fill="none" stroke="{accent}" stroke-width="2" opacity=".45" stroke-linecap="round" stroke-dasharray="2 4">
+        <path d="M78 96 L87 96"/>
+      </g>
+    </svg>'''
+
+
+def motif_fitgap(accent="#d9c48f"):
+    """The same piece, fitting one frame and not the other."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="{accent}" stroke-width="1.5" opacity=".9" stroke-linejoin="round">
+        <path d="M24 46 L48 46 L48 74 L24 74 Z"/>
+        <path d="M30 52 L42 52 L42 68 L30 68 Z" opacity=".55"/>
+      </g>
+      <g fill="none" stroke="{accent}" stroke-width="1.5" opacity=".45" stroke-linejoin="round">
+        <path d="M72 46 L96 46 L96 74 L72 74 Z"/>
+      </g>
+      <g fill="{accent}" stroke="none" opacity=".9">
+        <rect x="78" y="56" width="12" height="16" rx="1.5"/>
+      </g>
+      <path d="M78 52 L90 52" fill="none" stroke="{accent}" stroke-width="1.4"
+            opacity=".5" stroke-dasharray="2 3"/>
+      <path d="M36 88 L36 96" fill="none" stroke="{accent}" stroke-width="1.4" opacity=".7" stroke-linecap="round"/>
+      <path d="M84 88 L84 96" fill="none" stroke="{accent}" stroke-width="1.4" opacity=".35" stroke-linecap="round"/>
+    </svg>'''
+
+
+def motif_raisedbar(accent="#d9c48f"):
+    """The same crossbar, hung higher on one side."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="{accent}" stroke-width="1.2" opacity=".28">
+        <path d="M28 92 L28 44"/><path d="M58 92 L58 44"/>
+        <path d="M70 92 L70 44"/><path d="M100 92 L100 44"/>
+        <path d="M18 92 L108 92"/>
+      </g>
+      <path d="M28 72 L58 72" fill="none" stroke="{accent}" stroke-width="2.3"
+            opacity=".9" stroke-linecap="round"/>
+      <path d="M70 52 L100 52" fill="none" stroke="{accent}" stroke-width="2.3"
+            opacity=".9" stroke-linecap="round"/>
+      <g fill="none" stroke="{accent}" stroke-width="1.4" opacity=".7" stroke-linecap="round">
+        <path d="M85 40 L85 30"/><path d="M81 34 L85 30 L89 34"/>
+      </g>
+    </svg>'''
+
+
+def motif_mic(accent="#d9c48f"):
+    """Lines gathering on one person, then handed across."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="38" cy="62" r="7" fill="none" stroke="{accent}" stroke-width="1.6" opacity=".9"/>
+      <circle cx="82" cy="62" r="7" fill="none" stroke="{accent}" stroke-width="1.6" opacity=".9"/>
+      <g fill="none" stroke="{accent}" stroke-width="1.3" opacity=".35" stroke-linecap="round">
+        <path d="M22 40 L34 56"/><path d="M38 34 L38 53"/><path d="M54 40 L42 56"/>
+      </g>
+      <path d="M47 58 Q60 44 73 58" fill="none" stroke="{accent}" stroke-width="1.8"
+            opacity=".95" stroke-linecap="round"/>
+      <path d="M69 54 L73 58 L69 62" fill="none" stroke="{accent}" stroke-width="1.8"
+            opacity=".95" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M26 88 L94 88" fill="none" stroke="{accent}" stroke-width="1.2" opacity=".3"/>
+    </svg>'''
+
+
+def motif_override(accent="#d9c48f"):
+    """The machine's line, crossed and sent elsewhere."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="22" y="52" width="24" height="20" rx="2" fill="none"
+            stroke="{accent}" stroke-width="1.5" opacity=".9"/>
+      <path d="M46 62 L86 62" fill="none" stroke="{accent}" stroke-width="1.5"
+            opacity=".35" stroke-dasharray="3 3"/>
+      <circle cx="90" cy="62" r="3.2" fill="{accent}" stroke="none" opacity=".35"/>
+      <path d="M62 62 L86 40" fill="none" stroke="{accent}" stroke-width="2"
+            opacity=".95" stroke-linecap="round"/>
+      <path d="M80 40 L86 40 L86 46" fill="none" stroke="{accent}" stroke-width="2"
+            opacity=".95" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M56 78 L68 90" fill="none" stroke="{accent}" stroke-width="1.5" opacity=".6" stroke-linecap="round"/>
+      <path d="M68 78 L56 90" fill="none" stroke="{accent}" stroke-width="1.5" opacity=".6" stroke-linecap="round"/>
+    </svg>'''
+
+
+def motif_widen(accent="#d9c48f"):
+    """A narrow fan opening into a wide one."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="{accent}" stroke-width="1.5" opacity=".85" stroke-linecap="round">
+        <path d="M34 60 L58 52"/><path d="M34 60 L58 68"/>
+      </g>
+      <circle cx="32" cy="60" r="3" fill="{accent}" stroke="none" opacity=".9"/>
+      <g fill="none" stroke="{accent}" stroke-width="1.5" opacity=".9" stroke-linecap="round">
+        <path d="M72 60 L104 32"/><path d="M72 60 L104 48"/>
+        <path d="M72 60 L104 72"/><path d="M72 60 L104 88"/>
+      </g>
+      <circle cx="70" cy="60" r="3" fill="{accent}" stroke="none" opacity=".9"/>
+      <path d="M58 60 L68 60" fill="none" stroke="{accent}" stroke-width="1.3"
+            opacity=".45" stroke-dasharray="2 3"/>
+    </svg>'''
+
+
+def motif_earlyscale(accent="#d9c48f"):
+    """A curve that rises early and breaks, beside one that starts late and holds."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M20 88 Q34 46 48 36" fill="none" stroke="{accent}"
+            stroke-width="1.8" opacity=".85" stroke-linecap="round"/>
+      <g fill="none" stroke="{accent}" stroke-width="1.6" opacity=".9" stroke-linecap="round">
+        <path d="M44 30 L54 42"/><path d="M54 30 L44 42"/>
+      </g>
+      <path d="M20 88 L56 84 Q84 80 102 38" fill="none" stroke="{accent}"
+            stroke-width="2.1" opacity=".55" stroke-linecap="round"/>
+      <circle cx="56" cy="84" r="2.8" fill="{accent}" stroke="none" opacity=".8"/>
+      <path d="M16 92 L108 92" fill="none" stroke="{accent}" stroke-width="1.2" opacity=".3"/>
+    </svg>'''
+
+
+def motif_repeat(accent="#d9c48f"):
+    """One large circle, and a chain of smaller ones that keep coming."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="38" cy="62" r="15" fill="none" stroke="{accent}"
+            stroke-width="1.9" opacity=".9"/>
+      <g fill="none" stroke="{accent}" stroke-width="1.5" opacity=".85">
+        <circle cx="72" cy="62" r="6"/><circle cx="88" cy="62" r="6"/><circle cx="104" cy="62" r="6"/>
+      </g>
+      <g fill="none" stroke="{accent}" stroke-width="1.2" opacity=".45" stroke-linecap="round">
+        <path d="M78 62 L82 62"/><path d="M94 62 L98 62"/>
+      </g>
+      <path d="M56 62 L64 62" fill="none" stroke="{accent}" stroke-width="1.3"
+            opacity=".4" stroke-dasharray="2 3"/>
+      <path d="M23 86 L53 86" fill="none" stroke="{accent}" stroke-width="1.2" opacity=".3"/>
+      <path d="M66 86 L110 86" fill="none" stroke="{accent}" stroke-width="1.2" opacity=".3"/>
+    </svg>'''
+
+
+MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "ties": motif_ties, "pump": motif_pump, "frontdoor": motif_frontdoor, "echo": motif_echo, "mismatch": motif_mismatch, "reorder": motif_reorder, "podium": motif_podium, "fattail": motif_fattail, "retain": motif_retain, "tipping": motif_tipping, "untallied": motif_untallied, "twopaths": motif_twopaths, "promote": motif_promote, "smoothed": motif_smoothed, "addbias": motif_addbias, "losthour": motif_losthour, "overprecise": motif_overprecise, "drawn": motif_drawn, "sidedoor": motif_sidedoor, "fitgap": motif_fitgap, "raisedbar": motif_raisedbar, "mic": motif_mic, "override": motif_override, "widen": motif_widen, "earlyscale": motif_earlyscale, "repeat": motif_repeat, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [
