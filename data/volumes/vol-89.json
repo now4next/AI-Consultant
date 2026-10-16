@@ -1,0 +1,53 @@
+{
+  "vol": 89,
+  "title": "열어 보지 않아도 남아 있었다",
+  "sub": "퇴근 후 메일에 실제로 쓴 시간을 통제했는데도 불안과 건강 악화가 나타났다. 사람을 깎은 것은 처리한 메일이 아니라 확인해야 한다는 기대였다.",
+  "eyebrow": "Vol. 89 · The Expectation, Not the Hours",
+  "kicker": "Becker, Belkin, Conroy & Tuskey · Journal of Management(2021)",
+  "koLead": "한 통도 열지 않은<br>저녁에도<br><em>일은 켜져 있었다</em>",
+  "koSub": "메일을 몇 분 봤는지를 계산에서 빼도 효과가 남았다. 저녁을 깎은 것은 들어온 일이 아니라, 들어올지 모른다는 상태다. 그리고 그 상태는 회사 문을 넘어 집까지 건너갔다.",
+  "deck": "연구진은 퇴근 후 메일에 쓴 시간을 통제 변수로 넣었다. 그러고도 기대의 효과가 남았다. 더 눈에 걸리는 것은 그다음이다. <em>그 영향이 배우자와 동반자의 건강과 관계 만족으로 건너갔다.</em>",
+  "pillars": [
+    [
+      "The Expectation Itself",
+      "기대 그 자체"
+    ],
+    [
+      "It Crosses the Door",
+      "문밖으로 건너간다"
+    ],
+    [
+      "Who Can Move It",
+      "움직일 수 있는 사람"
+    ]
+  ],
+  "sourceTitle": "Nothing Arrived",
+  "source": "William J. Becker, Liuba Y. Belkin, Samantha A. Conroy & Sarah Tuskey, Killing Me Softly: Organizational E-mail Monitoring Expectations' Impact on Employee and Significant Other Well-Being(Journal of Management 47-4, 2021, 1024–1052 · 저자 제출본 원문 확인)",
+  "cover": {
+    "kind": "gcover",
+    "c1": "#1e222b",
+    "c2": "#0b0d12",
+    "accent": "#bcc6dd",
+    "motif": "leash",
+    "sub": "열지 않은 봉투에서<br>나온 줄",
+    "src": "원전 · Becker 외, Journal of Management 47-4(2021)"
+  },
+  "takeaway": {
+    "h3": "값을 치른 것은 받은 메일이 아니라<br><em>기다리는 상태였다</em>",
+    "p1": "연구진은 퇴근 후 메일을 확인해야 한다는 조직의 기대를 하나의 직무 스트레스원으로 놓고 쟀다. 경험표집으로 추적한 108명에게서 그 기대는 불안을 키웠고 건강과 관계 갈등으로 이어졌다. 138쌍의 부부·동반자 자료가 같은 경로를 다시 보여 줬다.",
+    "p2": "이 연구가 공들인 자리는 통제다. 퇴근 후 메일에 실제로 쓴 시간을 모형에 넣어 두고도 기대의 효과가 남았다. 저자들의 표현으로 이것은 실제 업무량과 처리 시간을 넘어서는 별개의 스트레스원이다. 기제는 주의를 두 곳에 걸쳐 놓아야 하는 자원 배분 갈등이다.",
+    "sig": "Journal of Management · 2021"
+  },
+  "home": {
+    "tldr": [
+      "퇴근 후 메일 확인에 실제로 쓴 시간을 통제 변수로 넣고도 조직의 기대가 불안과 건강 악화를 설명했다. 저자들은 이것을 실제 업무량과 처리 시간을 넘어서는 별개의 스트레스원이라고 적는다.",
+      "경험표집 108명에서 개인 내 효과를 확인했고, 부부·동반자 138쌍에서 그 영향이 상대의 건강과 관계 만족으로 건너가는 것까지 확인했다. 회사와 계약한 적 없는 사람에게 비용이 간다.",
+      "기제는 자원 배분 갈등이다. 올지 모르는 것을 위해 주의 한 몫을 떼어 두면 저녁은 쉬는 시간이기를 그만둔다. 그래서 한 통도 열지 않은 날에도 효과가 남는다."
+    ],
+    "readTime": "11분",
+    "tags": "#퇴근후메일 #회복 #경계설정",
+    "cat": "성찰",
+    "tag": "#성찰 · Always-On Expectations",
+    "desc": "메일에 쓴 시간을 빼고도 효과가 남았다. 저녁을 깎은 것은 들어온 일이 아니라 들어올지 모른다는 상태였다."
+  }
+}

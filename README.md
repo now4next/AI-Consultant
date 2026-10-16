@@ -99,6 +99,7 @@ GitHub Pages로 배포됩니다: <https://now4next.github.io/AI-Consultant/>
 - [insight-vol-86.html](insight-vol-86.html) — "하지 않던 일을 하기 시작했다" 리더십 인사이트 Vol. 86 (Jeremy Yang, Kate Zyskowski, Noah Yonack & Jerry Ma, How AI Agents Reshape Knowledge Work: Autonomy, Efficiency, and Scope(arXiv:2606.07489, 2026 · 학술지 게재 전 프리프린트)) · <https://projectleadership.cc/insight-vol-86.html>
 - [insight-vol-87.html](insight-vol-87.html) — "키우고 나면 고쳐지지 않는다" 리더십 인사이트 Vol. 87 (Benjamin Hallen, Ron Tidhar & Kathleen Eisenhardt, The Risks of Scaling Too Fast(Harvard Business Review, November–December 2026, 90–101)) · <https://projectleadership.cc/insight-vol-87.html>
 - [insight-vol-88.html](insight-vol-88.html) — "다음에도 당신과 하겠다고 했다" 리더십 인사이트 Vol. 88 (Charlotte H. Townsend, Laura J. Kray & Solène Delecourt, People prefer to negotiate with women, even when outcomes are identical and gender is unknown(Proceedings of the National Academy of Sciences 123, 2026 · DOI 10.1073/pnas.2523202123)) · <https://projectleadership.cc/insight-vol-88.html>
+- [insight-vol-89.html](insight-vol-89.html) — "열어 보지 않아도 남아 있었다" 리더십 인사이트 Vol. 89 (William J. Becker, Liuba Y. Belkin, Samantha A. Conroy & Sarah Tuskey, Killing Me Softly: Organizational E-mail Monitoring Expectations' Impact on Employee and Significant Other Well-Being(Journal of Management 47-4, 2021, 1024–1052 · 저자 제출본 원문 확인)) · <https://projectleadership.cc/insight-vol-89.html>
 
 ### 새 볼륨 발행 워크플로우
 

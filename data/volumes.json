@@ -1925,6 +1925,29 @@
         "sub": "한 건의 크기와<br>이어지는 건의 수",
         "src": "원전 · Townsend, Kray & Delecourt, PNAS 123(2026)"
       }
+    },
+    {
+      "vol": 89,
+      "file": "insight-vol-89.html",
+      "dir": "vol-89",
+      "title": "열어 보지 않아도 남아 있었다",
+      "sub": "퇴근 후 메일에 실제로 쓴 시간을 통제했는데도 불안과 건강 악화가 나타났다. 사람을 깎은 것은 처리한 메일이 아니라 확인해야 한다는 기대였다.",
+      "eyebrow": "Vol. 89 · The Expectation, Not the Hours",
+      "source": "William J. Becker, Liuba Y. Belkin, Samantha A. Conroy & Sarah Tuskey, Killing Me Softly: Organizational E-mail Monitoring Expectations' Impact on Employee and Significant Other Well-Being(Journal of Management 47-4, 2021, 1024–1052 · 저자 제출본 원문 확인)",
+      "cat": "성찰",
+      "tag": "#성찰 · Always-On Expectations",
+      "readTime": "11분",
+      "desc": "메일에 쓴 시간을 빼고도 효과가 남았다. 저녁을 깎은 것은 들어온 일이 아니라 들어올지 모른다는 상태였다.",
+      "tags": "#퇴근후메일 #회복 #경계설정",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1e222b",
+        "c2": "#0b0d12",
+        "accent": "#bcc6dd",
+        "motif": "leash",
+        "sub": "열지 않은 봉투에서<br>나온 줄",
+        "src": "원전 · Becker 외, Journal of Management 47-4(2021)"
+      }
     }
   ]
 }
