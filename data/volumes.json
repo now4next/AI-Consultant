@@ -1994,6 +1994,29 @@
         "sub": "문 앞의 네 줄과<br>문 너머의 네 갈래",
         "src": "원전 · Narayandas, HBR 2026년 11·12월호"
       }
+    },
+    {
+      "vol": 92,
+      "file": "insight-vol-92.html",
+      "dir": "vol-92",
+      "title": "전쟁이 끝나도 돌아가지 않았다",
+      "sub": "눈앞의 적을 이기려고 더 센 힘을 불러들인다. 그 전쟁은 대개 이긴다. 문제는 그다음이고, 마키아벨리는 1513년에 이미 그 값을 계산해 두었다.",
+      "eyebrow": "Vol. 92 · The Auxiliary Problem",
+      "source": "Niccolò Machiavelli, Il Principe(1513) 제13장 · John H. Herz, Idealist Internationalism and the Security Dilemma(World Politics 2, 1950) · Robert Jervis, Cooperation Under the Security Dilemma(World Politics 30-2, 1978, 167–214) · Gretzinger 외, The Anglo-Saxon migration and the formation of the early English gene pool(Nature, 2022)",
+      "cat": "역사",
+      "tag": "#역사 · The Auxiliary Problem",
+      "readTime": "12분",
+      "desc": "눈앞의 적을 이기려고 부른 힘은 그 전쟁이 끝나도 돌아가지 않는다. 마키아벨리가 1513년에 적어 둔 계산이다.",
+      "tags": "#원군 #안보딜레마 #의존",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#2b2622",
+        "c2": "#120f0c",
+        "accent": "#d8c3a0",
+        "motif": "summoned",
+        "sub": "열어 준 문과<br>남아 있는 것",
+        "src": "원전 · Machiavelli(1513) · Herz(1950) · Jervis(1978)"
+      }
     }
   ]
 }
