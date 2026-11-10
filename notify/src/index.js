@@ -26,6 +26,7 @@
 import { DAYS, CATS, SLOTS, rand, makeToken, readToken, encrypt, decrypt, esc, json, html, log, track } from './lib.js';
 import { adminRoute, recordCron, maybePrune } from './admin.js';
 import { listInsights, saveInsight, deleteInsight, myInsight, purgeInsights, makeWriteToken, listRecent, listAll } from './insights.js';
+import { getFeedback, postFeedback, allFeedback } from './feedback.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -50,6 +51,9 @@ async function route(request, env, ctx) {
   const p = url.pathname, m = request.method;
 
   // 정적 사이트가 /insights 로 JSON POST 를 보내므로 사전요청을 받아 준다
+  if (m === 'OPTIONS' && p.startsWith('/feedback')) return new Response(null, { status: 204, headers: {
+    'access-control-allow-origin': env.SITE || '*', 'access-control-allow-methods': 'GET,POST,OPTIONS',
+    'access-control-allow-headers': 'content-type', 'access-control-max-age': '86400' } });
   if (m === 'OPTIONS' && p.startsWith('/insights')) return new Response(null, { status: 204, headers: {
     'access-control-allow-origin': env.SITE || '*',
     'access-control-allow-methods': 'GET,POST,DELETE,OPTIONS',
@@ -63,6 +67,10 @@ async function route(request, env, ctx) {
   if (p === '/insights/mine' && m === 'GET') return myInsight(url, env);
   if (p === '/insights/recent' && m === 'GET') return listRecent(url, env, loadVolumes);
   if (p === '/insights/all' && m === 'GET') return listAll(url, env);
+  if (p === '/feedback' && m === 'GET') return getFeedback(url, env);
+  if (p === '/feedback' && m === 'POST') return postFeedback(request, env);
+  if (p === '/feedback/all' && m === 'GET') return allFeedback(env);
+  if (p === '/hit' && (m === 'GET' || m === 'POST')) return hit(request, url, env, ctx);
   if (p === '/insights/link' && m === 'POST') return insightLink(request, env, ctx);
 
   // the site probes this before showing the "카카오톡으로 받기" button, so allow cross-origin reads
@@ -164,13 +172,29 @@ async function diag(env, id) {
   return out;
 }
 
+// ───────────────────────────────────────────── page view beacon
+// 정적 사이트(GitHub Pages)에는 로그가 없다. 한 줄짜리 신호만 받아 access_log 에 남긴다.
+// 쿠키를 쓰지 않고, IP 는 track() 이 해시로만 저장한다.
+function hit(request, url, env, ctx) {
+  const page = (url.searchParams.get('p') || '').slice(0, 120);
+  const from = (url.searchParams.get('r') || '').slice(0, 80);   // 들어온 경로의 호스트만
+  track(env, ctx, request, 'page_view', null, { page, from });
+  // 1x1 투명 GIF. 어떤 환경에서도 막히지 않는 가장 단순한 응답이다.
+  const gif = Uint8Array.from(atob('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'), c => c.charCodeAt(0));
+  return new Response(gif, { headers: {
+    'content-type': 'image/gif', 'cache-control': 'no-store, no-cache, must-revalidate',
+    'access-control-allow-origin': env.SITE || '*' } });
+}
+
 // ───────────────────────────────────────────── email sign-up
 async function emailStart(request, env, ctx) {
   const ct = request.headers.get('content-type') || '';
-  let email = '';
-  if (ct.includes('application/json')) email = (await request.json().catch(() => ({}))).email;
-  else email = (await request.formData().catch(() => new FormData())).get('email');
+  let email = '', from = '';
+  if (ct.includes('application/json')) { const j = await request.json().catch(() => ({})); email = j.email; from = j.from; }
+  else { const f = await request.formData().catch(() => new FormData()); email = f.get('email'); from = f.get('from'); }
   email = String(email || '').trim().toLowerCase();
+  // 어느 자리에서 눌렀는지 남긴다. 화면을 고치기 전에 어디가 비어 있는지 알아야 한다.
+  from = String(from || '').slice(0, 24).replace(/[^a-z0-9_-]/gi, '');
 
   const wantsJson = (request.headers.get('accept') || '').includes('application/json');
   const cors = { 'access-control-allow-origin': env.SITE };
@@ -187,7 +211,7 @@ async function emailStart(request, env, ctx) {
     await env.DB.prepare("INSERT INTO subscribers (id, channel, email) VALUES (?, 'email', ?)").bind(sub.id, email).run();
   }
   const t = await makeToken(env, { id: sub.id });
-  track(env, ctx, request, 'email_start', sub.id, { existing: sub.status !== 'pending' });
+  track(env, ctx, request, 'email_start', sub.id, { existing: sub.status !== 'pending', from: from || 'direct' });
 
   // already set up → don't hand the manage page to whoever typed the address; mail the link to the mailbox owner instead
   if (sub.status !== 'pending') {

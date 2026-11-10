@@ -84,6 +84,24 @@ THEME_BTN = ('<button class="thm" id="thm" type="button" aria-label="테마 바�
 
 
 # 독자 인사이트 영역. 스타일과 스크립트는 직전 편 셸에서 복사된다.
+CONV_SEC = """
+<div class="fb" id="fb">
+  <div class="fb-q">이번 편이 도움이 되었나요? 한 번만 누르면 됩니다.</div>
+  <div class="fb-row">
+    <button class="fb-b" type="button" data-v="helpful" aria-pressed="false">도움이 됐어요</button>
+    <button class="fb-b" type="button" data-v="meh" aria-pressed="false">아쉬웠어요</button>
+  </div>
+</div>
+
+<div class="endsub">
+  <div class="lab">Weekly</div>
+  <h4>이런 편을 매주 한 통씩 받아 보시겠어요?</h4>
+  <div class="days"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span class="on">금</span><span>토</span></div>
+  <p>원하는 요일과 시간에, 아직 읽지 않은 편을 한 편씩 보내 드립니다. 회원가입은 없고, 그만 받기는 메일 아래 한 줄입니다.</p>
+  <a class="go" href="https://projectleadership.cc/subscribe.html?from=article">받아 보기</a>
+</div>
+"""
+
 INSIGHTS_SEC = """<section class="insights" id="insight" data-vol="{n}">
   <div id="insHead" hidden>
     <div class="lab">Reader Insights</div>
@@ -234,6 +252,7 @@ def render_page(spec, body, prev, prev2, shell_src):
   </div>
 </div>
 
+{CONV_SEC}
 {INSIGHTS_SEC.format(n=n)}
 
 {related_html(n, body)}

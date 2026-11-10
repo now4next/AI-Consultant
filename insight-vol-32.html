@@ -769,7 +769,43 @@
   .ins-cta{font-family:var(--serif);font-size:15px;line-height:1.75;color:var(--muted);
     padding:14px 0 2px;word-break:keep-all}
   .ins-cta a{color:var(--ink)}
-  </style>
+  
+  /* conv:start */
+  .fb{max-width:var(--measure);margin:34px auto 0;padding:20px 22px;border:1px solid rgba(var(--ink-rgb),.14);
+    border-radius:var(--radius);background:rgba(var(--ink-rgb),.02);text-align:center}
+  .fb-q{font-family:var(--sans);font-size:14.5px;color:var(--muted);margin-bottom:12px}
+  .fb-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .fb-b{font-family:var(--sans);font-size:14px;padding:9px 18px;border-radius:999px;cursor:pointer;
+    border:1px solid rgba(var(--ink-rgb),.2);background:var(--paper);color:var(--ink);transition:border-color .15s,background .15s}
+  .fb-b:hover{border-color:var(--accent)}
+  .fb-b[aria-pressed="true"]{border-color:var(--accent);background:rgba(var(--accent-rgb),.08);font-weight:700}
+  .fb-done{font-family:var(--sans);font-size:14px;color:var(--muted)}
+
+  .endsub{max-width:var(--measure);margin:34px auto 0;padding:26px 24px;border-radius:var(--radius);
+    border:1px solid rgba(var(--accent-rgb),.28);background:rgba(var(--accent-rgb),.05)}
+  .endsub .lab{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:8px}
+  .endsub h4{font-family:var(--serif);font-size:20px;line-height:1.5;margin:0 0 8px;word-break:keep-all}
+  .endsub p{font-family:var(--sans);font-size:14.5px;line-height:1.75;color:var(--muted);margin:0 0 16px;word-break:keep-all}
+  .endsub .go{display:inline-block;font-family:var(--sans);font-size:14.5px;font-weight:700;
+    padding:11px 22px;border-radius:999px;background:var(--accent);color:var(--paper);text-decoration:none}
+  .endsub .go:hover{opacity:.9}
+  .endsub .days{display:flex;gap:5px;margin:0 0 14px;flex-wrap:wrap}
+  .endsub .days span{font-family:var(--mono);font-size:11px;width:22px;height:22px;line-height:22px;text-align:center;
+    border-radius:50%;border:1px solid rgba(var(--ink-rgb),.16);color:var(--muted)}
+  .endsub .days span.on{border-color:var(--accent);background:var(--accent);color:var(--paper);font-weight:700}
+
+  .mbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:12px;align-items:center;
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:var(--paper);
+    border-top:1px solid rgba(var(--ink-rgb),.14);box-shadow:0 -6px 20px rgba(0,0,0,.07)}
+  .mbar .t{flex:1;font-family:var(--sans);font-size:13px;line-height:1.45;color:var(--ink);word-break:keep-all}
+  .mbar .t b{color:var(--accent)}
+  .mbar .go{font-family:var(--sans);font-size:13.5px;font-weight:700;white-space:nowrap;
+    padding:9px 16px;border-radius:999px;background:var(--accent);color:var(--paper);text-decoration:none}
+  .mbar .x{border:0;background:none;color:var(--muted);font-size:18px;line-height:1;cursor:pointer;padding:4px 2px}
+  @media (max-width:760px){ .mbar.show{display:flex} body.has-mbar{padding-bottom:72px} }
+  /* conv:end */
+</style>
 </head>
 <body id="top">
 <div class="prog"><div class="bar" id="progBar32"></div></div>
@@ -1000,6 +1036,23 @@
     <span>Dell'Acqua & Mollick · '23</span>
     <b>— Leadership Insight</b>
   </div>
+</div>
+
+
+<div class="fb" id="fb">
+  <div class="fb-q">이번 편이 도움이 되었나요? 한 번만 누르면 됩니다.</div>
+  <div class="fb-row">
+    <button class="fb-b" type="button" data-v="helpful" aria-pressed="false">도움이 됐어요</button>
+    <button class="fb-b" type="button" data-v="meh" aria-pressed="false">아쉬웠어요</button>
+  </div>
+</div>
+
+<div class="endsub">
+  <div class="lab">Weekly</div>
+  <h4>이런 편을 매주 한 통씩 받아 보시겠어요?</h4>
+  <div class="days"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span class="on">금</span><span>토</span></div>
+  <p>원하는 요일과 시간에, 아직 읽지 않은 편을 한 편씩 보내 드립니다. 회원가입은 없고, 그만 받기는 메일 아래 한 줄입니다.</p>
+  <a class="go" href="https://projectleadership.cc/subscribe.html?from=article">받아 보기</a>
 </div>
 
 <section class="insights" id="insight" data-vol="32">
@@ -1533,6 +1586,68 @@
       .catch(function(){ say('연결하지 못했어요.',1); });
   });
 })();
+</script>
+<div class="mbar" id="mbar">
+  <div class="t">매주 금요일 한 편. <b>원문을 확인해서</b> 씁니다.</div>
+  <a class="go" href="https://projectleadership.cc/subscribe.html?from=mbar">받아 보기</a>
+  <button class="x" type="button" aria-label="닫기">&times;</button>
+</div>
+<script>
+/* conv:start */
+(function(){
+  var API='https://notify.projectleadership.cc';
+  var sec=document.getElementById('insight');
+  var VOL=sec?sec.dataset.vol:null;
+
+  /* 1탭 피드백 — 이름도 이메일도 받지 않는다 */
+  var fb=document.getElementById('fb');
+  if(fb&&VOL){
+    var row=fb.querySelector('.fb-row');
+    var btns=[].slice.call(fb.querySelectorAll('.fb-b'));
+    var KEY='pli-fb-'+VOL;
+    try{ var was=localStorage.getItem(KEY); if(was) mark(was); }catch(e){}
+    function mark(v){ btns.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.v===v)); }); }
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        var v=b.dataset.v; mark(v);
+        try{ localStorage.setItem(KEY,v); }catch(e){}
+        fetch(API+'/feedback',{method:'POST',headers:{'content-type':'application/json'},
+          body:JSON.stringify({vol:Number(VOL),verdict:v})})
+          .then(function(r){return r.json();})
+          .then(function(){ row.insertAdjacentHTML('afterend','<div class="fb-done" style="margin-top:10px">고맙습니다. 다음 편에 반영할게요.</div>'); })
+          .catch(function(){});
+      });
+    });
+  }
+
+  /* 모바일 하단 바 — 30% 넘게 읽으면 올라오고, 닫으면 그 편에서는 다시 안 뜬다 */
+  var bar=document.getElementById('mbar');
+  if(bar){
+    var closed=false;
+    try{ closed=sessionStorage.getItem('pli-mbar')==='off'; }catch(e){}
+    var x=bar.querySelector('.x');
+    if(x) x.addEventListener('click',function(){
+      closed=true; bar.classList.remove('show'); document.body.classList.remove('has-mbar');
+      try{ sessionStorage.setItem('pli-mbar','off'); }catch(e){}
+    });
+    var onScroll=function(){
+      if(closed) return;
+      var h=document.documentElement.scrollHeight-innerHeight;
+      var p=h>0?scrollY/h:0;
+      if(p>0.3){ bar.classList.add('show'); document.body.classList.add('has-mbar'); }
+      else { bar.classList.remove('show'); document.body.classList.remove('has-mbar'); }
+    };
+    addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  }
+
+  /* 방문 신호 — 쿠키 없음, 외부 서비스 없음 */
+  try{
+    var r=document.referrer?new URL(document.referrer).host:'';
+    if(r===location.host) r='';
+    new Image().src=API+'/hit?p='+encodeURIComponent(location.pathname)+'&r='+encodeURIComponent(r)+'&_='+Date.now();
+  }catch(e){}
+})();
+/* conv:end */
 </script>
 </body>
 </html>

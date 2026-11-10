@@ -247,6 +247,29 @@
   .rins-from{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:auto}
   .rins-from a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
   .rins-from a:hover{border-color:var(--ink)}
+  
+  /* catnav:start */
+  .top .row{height:58px}
+  .catnav{border-top:1px solid var(--line);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .catnav::-webkit-scrollbar{display:none}
+  .catnav .in{display:flex;gap:4px;padding:7px 0;min-width:max-content}
+  .catnav a{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--muted);
+    padding:5px 11px;border-radius:999px;text-decoration:none;white-space:nowrap}
+  .catnav a:hover{color:var(--ink);background:var(--surface)}
+  .catnav a.all{color:var(--ink);font-weight:700}
+
+  .mbar{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;gap:12px;align-items:center;
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:var(--bg);
+    border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(0,0,0,.08)}
+  .mbar .t{flex:1;font-family:var(--sans);font-size:13px;line-height:1.45;color:var(--ink)}
+  .mbar .t b{font-weight:700}
+  .mbar .go{font-family:var(--sans);font-size:13.5px;font-weight:700;white-space:nowrap;text-decoration:none;
+    padding:9px 16px;border-radius:999px;background:var(--dark);color:#fff}
+  :root[data-theme="dark"] .mbar .go,
+  :root:not([data-theme="light"]) .mbar .go{background:#f2f2f2;color:#0f0f0f}
+  .mbar .x{border:0;background:none;color:var(--muted);font-size:18px;line-height:1;cursor:pointer;padding:4px 2px}
+  @media (max-width:760px){ .mbar.show{display:flex} body.has-mbar{padding-bottom:72px} }
+  /* catnav:end */
   </style>
 </head>
 <body>
@@ -264,10 +287,19 @@
     <nav class="nav">
       <a href="#latest">Weekly</a>
       <a href="#archive">아카이브</a>
-      <a href="#subscribe" class="btn">알림 받기</a>
+      <a href="/subscribe.html?from=nav" class="btn">받아 보기</a>
           <button class="thm" id="thm" type="button" aria-label="테마 바꾸기" title="테마: 자동"><svg class="i-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.2"/><path d="M12 3.8a8.2 8.2 0 0 1 0 16.4z" fill="currentColor" stroke="none"/></svg><svg class="i-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.3M12 19.1v2.3M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.6 12h2.3M19.1 12h2.3M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg><svg class="i-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 14.6A8.3 8.3 0 0 1 9.4 3.8a8.4 8.4 0 1 0 10.8 10.8z"/></svg></button>
     </nav>
   </div>
+  <div class="catnav"><div class="wrap"><div class="in">
+    <a class="all" href="/#archive">전체</a>
+    <a href="/?cat=전략#archive">전략</a>
+    <a href="/?cat=사람#archive">사람</a>
+    <a href="/?cat=판단#archive">판단</a>
+    <a href="/?cat=성장#archive">성장</a>
+    <a href="/?cat=성찰#archive">성찰</a>
+    <a href="/?cat=역사#archive">역사</a>
+  </div></div></div>
 </header>
 
 <!-- WEEKLY INSIGHT (top) -->
@@ -933,7 +965,7 @@
     <div class="f-row">
       <a href="#latest">Weekly</a>
       <a href="#archive">아카이브</a>
-      <a href="#subscribe">구독</a>
+      <a href="/subscribe.html?from=footer">구독</a>
     </div>
     <div class="cr"><span>© 2026 Project Leadership Insight · 부엉이 <strong>플리</strong>와 <strong>플리더</strong>들 · projectleadership.cc</span>
       <a class="admin" href="https://notify.projectleadership.cc/admin/login" rel="nofollow noopener" aria-label="관리자 페이지" title="관리자"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></a></div>
@@ -1112,6 +1144,42 @@
     })
     .catch(function(){});
 })();
+</script>
+<div class="mbar" id="mbar">
+  <div class="t"><b>매주 한 편</b>, 원문을 확인해서 씁니다.</div>
+  <a class="go" href="/subscribe.html?from=mbar">받아 보기</a>
+  <button class="x" type="button" aria-label="닫기">&times;</button>
+</div>
+<script>
+/* catnav:start */
+(function(){
+  /* 모바일 하단 바 — 조금 내려가면 올라오고, 닫으면 이번 방문에는 다시 안 뜬다 */
+  var bar=document.getElementById('mbar');
+  if(bar){
+    var closed=false; try{ closed=sessionStorage.getItem('pli-mbar')==='off'; }catch(e){}
+    var x=bar.querySelector('.x');
+    if(x) x.addEventListener('click',function(){
+      closed=true; bar.classList.remove('show'); document.body.classList.remove('has-mbar');
+      try{ sessionStorage.setItem('pli-mbar','off'); }catch(e){}
+    });
+    var on=function(){
+      if(closed) return;
+      var h=document.documentElement.scrollHeight-innerHeight, pct=h>0?scrollY/h:0;
+      if(pct>0.12){ bar.classList.add('show'); document.body.classList.add('has-mbar'); }
+      else { bar.classList.remove('show'); document.body.classList.remove('has-mbar'); }
+    };
+    addEventListener('scroll',on,{passive:true}); on();
+  }
+
+  /* 방문 신호 — 쿠키 없음, 외부 서비스 없음 */
+  try{
+    var r=document.referrer?new URL(document.referrer).host:'';
+    if(r===location.host) r='';
+    new Image().src='https://notify.projectleadership.cc/hit?p='+encodeURIComponent(location.pathname+location.search)
+      +'&r='+encodeURIComponent(r)+'&_='+Date.now();
+  }catch(e){}
+})();
+/* catnav:end */
 </script>
 </body>
 </html>
