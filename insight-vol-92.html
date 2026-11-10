@@ -805,6 +805,22 @@
   .mbar .x{border:0;background:none;color:var(--muted);font-size:18px;line-height:1;cursor:pointer;padding:4px 2px}
   @media (max-width:760px){ .mbar.show{display:flex} body.has-mbar{padding-bottom:72px} }
   /* conv:end */
+
+  /* qbox:start */
+  .qbox{max-width:var(--measure);margin:26px auto 0;padding:18px 22px 16px;
+    border-left:2px solid var(--accent);background:rgba(var(--accent-rgb),.045);border-radius:0 var(--radius) var(--radius) 0}
+  .qbox .lab{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:10px}
+  .qbox ol{margin:0;padding:0;list-style:none;counter-reset:q}
+  .qbox li{counter-increment:q;margin:0 0 7px;display:flex;gap:10px;align-items:baseline}
+  .qbox li:last-child{margin-bottom:0}
+  .qbox li::before{content:counter(q);font-family:var(--mono);font-size:11px;color:var(--accent);
+    flex:0 0 auto;padding-top:2px}
+  .qbox button{font-family:var(--serif);font-size:16px;line-height:1.65;text-align:left;
+    border:0;background:none;padding:0;color:var(--ink);cursor:pointer;word-break:keep-all;
+    border-bottom:1px solid transparent}
+  .qbox button:hover{border-bottom-color:rgba(var(--ink-rgb),.3)}
+  /* qbox:end */
 </style>
 </head>
 <body id="top">
@@ -897,6 +913,15 @@
 </figure>
 </div>
 
+<div class="qbox">
+  <div class="lab">이 글이 답하는 질문</div>
+  <ol>
+    <li><button type="button">이긴 쪽이 왜 자리를 잃었나</button></li>
+    <li><button type="button">왜 잘 싸우는 쪽이 더 위험한가</button></li>
+    <li><button type="button">지금 그 속도는 누가 정하고 있나</button></li>
+  </ol>
+</div>
+
 <div class="termdef">
   <div class="td-lab">용어 · 이 글에서의 정의</div>
   <div class="td-word">원군 <span class="en">Auxiliaries</span></div>
@@ -906,7 +931,7 @@
 <div class="prose">
 
 <!-- Section I -->
-<h2><span class="num">Section Ⅰ · He Won the War</span>그는 이겼다</h2>
+<h2><span class="num">Section Ⅰ · He Won the War</span>이긴 쪽이 왜 자리를 잃었나</h2>
 <h3>요청한 것을 전부 얻고<br>자리를 잃었다</h3>
 
 <p class="lede dropcap">14세기 중반 비잔티움은 내전 중이었다. 요한 6세 칸타쿠지노스에게는 상대를 꺾을 병력이 모자랐고 시간은 그의 편이 아니었다. 그래서 그는 바다 건너의 힘을 빌리기로 한다. 딸 테오도라를 오스만의 지배자 오르한에게 시집보냈고, 그 혼인을 묶어 기병을 얻었다.</p>
@@ -932,7 +957,7 @@
 
 <!-- Section II -->
 <div class="prose">
-<h2><span class="num">Section Ⅱ · Dangerous Because Good</span>용맹해서 위험하다</h2>
+<h2><span class="num">Section Ⅱ · Dangerous Because Good</span>왜 잘 싸우는 쪽이 더 위험한가</h2>
 <h3>겁이 많아서 위험한 쪽과<br>잘 싸워서 위험한 쪽</h3>
 
 <p>1513년, 마키아벨리는 『군주론』 제13장에 이 사례를 적어 둔다. 콘스탄티노플 황제가 이웃과 맞서려고 투르크 병력 1만을 그리스로 불러들였고, 전쟁이 끝나자 그들이 돌아가려 하지 않았다는 것이다.</p>
@@ -993,7 +1018,7 @@
 
 <!-- Section III -->
 <div class="prose">
-<h2><span class="num">Section Ⅲ · Who Sets the Pace</span>누가 속도를 정하는가</h2>
+<h2><span class="num">Section Ⅲ · Who Sets the Pace</span>지금 그 속도는 누가 정하고 있나</h2>
 <h3>내 안전을 위한 조치가<br>나를 덜 안전하게 만든다</h3>
 
 <p>이 구조에 이름이 붙은 것은 20세기 중반이다. 1950년 존 헤르츠가 <strong>안보 딜레마</strong>라는 말을 썼고, 로버트 저비스가 1978년에 그 개념을 본격적으로 전개했다.</p>
@@ -1697,6 +1722,18 @@
   }catch(e){}
 })();
 /* conv:end */
+</script>
+<script>
+/* qbox:start */
+(function(){
+  var box=document.querySelector('.qbox'); if(!box) return;
+  var hs=[].slice.call(document.querySelectorAll('.article h2'));
+  [].slice.call(box.querySelectorAll('button')).forEach(function(b,i){
+    if(!hs[i]){ b.disabled=true; return; }
+    b.addEventListener('click',function(){ hs[i].scrollIntoView({behavior:'smooth',block:'start'}); });
+  });
+})();
+/* qbox:end */
 </script>
 </body>
 </html>

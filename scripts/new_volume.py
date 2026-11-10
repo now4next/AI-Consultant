@@ -16,7 +16,7 @@ Usage:
     python scripts/new_volume.py 12
     python scripts/new_volume.py 12 --dry-run     # build the page only, touch nothing else
 """
-import os, re, sys, json, glob, shutil, importlib.util
+import os, re, sys, json, html, glob, shutil, importlib.util
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SPEC_DIR = os.path.join(ROOT, "data", "volumes")
@@ -37,6 +37,24 @@ bake_insights = _load("bake_insights", os.path.join(ROOT, "scripts", "bake_insig
 
 
 # ---------------------------------------------------------------- helpers
+def qbox_html(spec):
+    """'이 글이 답하는 질문' 상자. 질문 셋은 섹션 셋과 1:1 로 맞춘다."""
+    qs = spec.get("questions") or []
+    if not qs:
+        return ""
+    lis = "\n".join(
+        '    <li><button type="button">%s</button></li>' % html.escape(q) for q in qs
+    )
+    return (
+        '<div class="qbox">\n'
+        '  <div class="lab">이 글이 답하는 질문</div>\n'
+        '  <ol>\n'
+        + lis + '\n'
+        '  </ol>\n'
+        '</div>\n'
+    )
+
+
 def reg_load():
     return json.load(open(REG_PATH, encoding="utf-8"))
 
@@ -233,6 +251,7 @@ def render_page(spec, body, prev, prev2, shell_src):
 
 {render_cover(spec)}
 
+{qbox_html(spec)}
 {body.strip()}
 
 </article>
@@ -419,6 +438,7 @@ def update_registry(spec):
         "source": spec["source"], "cat": spec["home"]["cat"], "tag": spec["home"]["tag"],
         "readTime": spec["home"]["readTime"], "desc": spec["home"]["desc"],
         "tags": spec["home"].get("tags", ""), "cover": spec["cover"],
+        **({"questions": spec["questions"]} if spec.get("questions") else {}),
     })
     json.dump(reg, open(REG_PATH, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 
