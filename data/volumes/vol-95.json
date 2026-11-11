@@ -1,0 +1,49 @@
+{
+  "vol": 95,
+  "title": "오후라서가 아니었다",
+  "sub": "중요한 결정은 오전에 하라는 조언에는 출처가 있다. 그 출처를 더 나은 자로 다시 재자 차이가 사라졌다.",
+  "eyebrow": "Vol. 95 · What Did Not Replicate",
+  "kicker": "Andersson·Lindberg·Tinghög·Persson · Communications Psychology, 2025",
+  "koLead": "같은 시각에<br>피로만 다른 두 집단은<br><em>같은 판단을 했다</em>",
+  "koSub": "스웨덴 전국 전화 상담의 판단 23만 1,076건을 사전등록 설계로 분석했다. 교대가 겹치는 시간대에 오전조와 오후조를 견주고, 휴식 직전과 직후를 견줬다. 모든 주 검정이 차이가 없다는 쪽을 지지했다.",
+  "deck": "이 연구가 쓰지 않은 자가 하나 있다. <em>시간대</em>다. 늦은 시각일수록 걸려 오는 전화의 성격이 달라지기 때문인데, 기존 연구 대부분이 피로를 재는 데 쓰던 자가 바로 그것이었다.",
+  "pillars": [
+    ["The Belief", "믿어 온 것"],
+    ["The Better Ruler", "더 나은 자"],
+    ["What Is Left", "남는 것"]
+  ],
+  "sourceTitle": "The Ruler, Not the Finding",
+  "source": "David Andersson·Mattias Lindberg·Gustav Tinghög·Emil Persson, No evidence for decision fatigue using large-scale field data from healthcare(Communications Psychology 3:33, 2025, Registered Report)",
+  "cover": {
+    "kind": "gcover",
+    "c1": "#242031",
+    "c2": "#0e0c14",
+    "accent": "#cbb892",
+    "motif": "flatline",
+    "sub": "기울어질 줄 알았던 선이<br>기울지 않았다",
+    "src": "원전 · Communications Psychology(2025)"
+  },
+  "takeaway": {
+    "h3": "이 연구가 남긴 것은<br><em>결론보다 자에 가깝다</em>",
+    "p1": "시간대는 피로를 재는 자처럼 보인다. 늦은 시각일수록 사람은 지쳐 있으니 그럴듯하다. 문제는 하루가 가는 동안 피로만 쌓이지 않는다는 데 있다. 이 상담 창구에서는 최고 긴급도 전화의 비율이 오전 14.8%에서 야간 21.1%로 올랐다. 늦은 시각의 판단이 달랐다면 지친 사람 때문인지 달라진 전화 때문인지 가를 수 없다.",
+    "p2": "조직이 쓰는 지표 상당수가 같은 모양이다. 야근 시간을 몰입의 자로, 회의 수를 협업의 자로 쓴다. 이 연구가 한 일은 같은 시각에 피로만 다른 두 집단을 찾아낸 것이고, 그 수는 사무실에서도 쓸 수 있다.",
+    "sig": "Communications Psychology · 2025"
+  },
+  "home": {
+    "tldr": [
+      "스웨덴 전국 전화 상담 창구에서 전문간호사 174명이 내린 판단 23만 1,076건을 사전등록 보고서로 분석했다. 모든 주 검정에서 베이즈 인자가 22를 넘어, 자료는 차이가 없다는 쪽을 적극적으로 지지했다.",
+      "피로를 시간대로 재지 않은 것이 설계의 핵심이다. 대신 교대가 겹치는 시간대에 오전조와 오후조를 견주고, 휴식 직전과 직후를 견줬다. 같은 시각이므로 들어오는 전화의 분포가 같다.",
+      "저자들은 더 약하거나 맥락에 특정된 판본까지 배제하지는 않는다고 적었다. 다투는 대상은 피로의 경험이 아니라 피로가 판단의 내용을 바꾼다는 주장이다."
+    ],
+    "readTime": "9분",
+    "tags": "#결정피로 #대리지표 #사전등록",
+    "cat": "성찰",
+    "tag": "#성찰 · What Did Not Replicate",
+    "desc": "중요한 결정은 오전에 하라는 조언의 근거를 더 나은 자로 다시 쟀더니 차이가 사라졌다."
+  },
+  "questions": [
+    "우리는 무엇을 믿고 있었나",
+    "이 연구는 무엇을 다르게 쟀나",
+    "그러면 무엇이 남나"
+  ]
+}

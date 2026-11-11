@@ -1537,7 +1537,90 @@ def motif_summoned(accent="#d9c48f"):
     </svg>'''
 
 
-MOTIFS = {"broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "ties": motif_ties, "pump": motif_pump, "frontdoor": motif_frontdoor, "echo": motif_echo, "mismatch": motif_mismatch, "reorder": motif_reorder, "podium": motif_podium, "fattail": motif_fattail, "retain": motif_retain, "tipping": motif_tipping, "untallied": motif_untallied, "twopaths": motif_twopaths, "promote": motif_promote, "smoothed": motif_smoothed, "addbias": motif_addbias, "losthour": motif_losthour, "overprecise": motif_overprecise, "drawn": motif_drawn, "sidedoor": motif_sidedoor, "fitgap": motif_fitgap, "raisedbar": motif_raisedbar, "mic": motif_mic, "override": motif_override, "widen": motif_widen, "earlyscale": motif_earlyscale, "repeat": motif_repeat, "leash": motif_leash, "constraint": motif_constraint, "fourgates": motif_fourgates, "summoned": motif_summoned, "none": lambda accent=None: ""}
+def motif_trajectory(accent="#d9c48f"):
+    """What a newcomer sees is the end point; the climb that led there is dashed out."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M16 100 L108 100" fill="none" stroke="{accent}" stroke-width="1.1" opacity=".22"/>
+      <path d="M20 100 L20 30" fill="none" stroke="{accent}" stroke-width="1.1" opacity=".22"/>
+      <path d="M24 90 C48 88, 70 70, 94 36" fill="none" stroke="{accent}" stroke-width="1.8"
+            opacity=".5" stroke-dasharray="3 5" stroke-linecap="round"/>
+      <path d="M74 36 L108 36" fill="none" stroke="{accent}" stroke-width="1.3"
+            opacity=".4" stroke-linecap="round"/>
+      <circle cx="94" cy="36" r="5.2" fill="{accent}" opacity=".95"/>
+      <circle cx="24" cy="90" r="3.4" fill="none" stroke="{accent}" stroke-width="1.6" opacity=".8"/>
+    </svg>'''
+
+
+def motif_twoways(accent="#d9c48f"):
+    """One act of disclosure, two opposite directions depending on who can see."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M22 60 L52 60" fill="none" stroke="{accent}" stroke-width="1.3" opacity=".4"
+            stroke-linecap="round"/>
+      <circle cx="58" cy="60" r="6" fill="none" stroke="{accent}" stroke-width="2" opacity=".95"/>
+      <g fill="none" stroke="{accent}" stroke-width="1.8" opacity=".85" stroke-linecap="round"
+         stroke-linejoin="round">
+        <path d="M66 54 L98 32"/><path d="M98 32 L88 32"/><path d="M98 32 L98 42"/>
+      </g>
+      <g fill="none" stroke="{accent}" stroke-width="1.8" opacity=".5" stroke-linecap="round"
+         stroke-linejoin="round">
+        <path d="M66 66 L98 88"/><path d="M98 88 L88 88"/><path d="M98 88 L98 78"/>
+      </g>
+    </svg>'''
+
+
+def motif_flatline(accent="#d9c48f"):
+    """The day arcs over; the expected decline is dashed, what was measured stays flat."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M18 92 A 42 42 0 0 1 102 92" fill="none" stroke="{accent}" stroke-width="1.1"
+            opacity=".22"/>
+      <path d="M22 46 L100 86" fill="none" stroke="{accent}" stroke-width="1.5" opacity=".42"
+            stroke-dasharray="4 5" stroke-linecap="round"/>
+      <path d="M22 64 L100 64" fill="none" stroke="{accent}" stroke-width="2.3" opacity=".95"
+            stroke-linecap="round"/>
+      <circle cx="22" cy="64" r="3.2" fill="{accent}" opacity=".9"/>
+      <circle cx="100" cy="64" r="3.2" fill="{accent}" opacity=".9"/>
+    </svg>'''
+
+
+def motif_cadence(accent="#d9c48f"):
+    """Stacked circling gives way to one even beat."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="{accent}" stroke-width="1.2" opacity=".25">
+        <ellipse cx="38" cy="36" rx="18" ry="6"/><ellipse cx="38" cy="48" rx="18" ry="6"/>
+        <ellipse cx="38" cy="60" rx="18" ry="6"/>
+      </g>
+      <path d="M22 26 L56 70" fill="none" stroke="{accent}" stroke-width="1.5" opacity=".55"
+            stroke-linecap="round"/>
+      <path d="M16 92 L108 92" fill="none" stroke="{accent}" stroke-width="1.2" opacity=".35"/>
+      <g fill="none" stroke="{accent}" stroke-width="2" opacity=".95" stroke-linecap="round">
+        <path d="M24 84 L24 100"/><path d="M38 84 L38 100"/><path d="M52 84 L52 100"/>
+        <path d="M66 84 L66 100"/><path d="M80 84 L80 100"/><path d="M94 84 L94 100"/>
+      </g>
+    </svg>'''
+
+
+def motif_onegate(accent="#d9c48f"):
+    """Every path runs through the same gate, so one rejection is every rejection."""
+    return f'''<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="{accent}" stroke-width="1.3" opacity=".45" stroke-linecap="round">
+        <path d="M18 30 L58 56"/><path d="M18 48 L58 58"/><path d="M18 72 L58 62"/>
+        <path d="M18 90 L58 64"/>
+      </g>
+      <g fill="none" stroke="{accent}" stroke-width="2.2" opacity=".95" stroke-linecap="round">
+        <path d="M64 38 L64 54"/><path d="M64 66 L64 82"/>
+      </g>
+      <g fill="none" stroke="{accent}" stroke-width="1.3" opacity=".3" stroke-linecap="round">
+        <path d="M70 60 L102 36"/><path d="M70 60 L102 60"/><path d="M70 60 L102 84"/>
+      </g>
+      <path d="M58 60 L40 60" fill="none" stroke="{accent}" stroke-width="1.6" opacity=".7"
+            stroke-dasharray="3 3" stroke-linecap="round"/>
+      <circle cx="34" cy="60" r="4" fill="none" stroke="{accent}" stroke-width="1.7" opacity=".85"/>
+    </svg>'''
+
+
+MOTIFS = {"trajectory": motif_trajectory, "twoways": motif_twoways, "flatline": motif_flatline,
+          "cadence": motif_cadence, "onegate": motif_onegate,
+          "broken-ladder": motif_broken_ladder, "between": motif_between, "three-failures": motif_three_failures, "trellis": motif_trellis, "rewire": motif_rewire, "progress": motif_progress, "doors": motif_doors, "rethink": motif_rethink, "catchup": motif_catchup, "fork": motif_fork, "sensemaking": motif_sensemaking, "converge": motif_converge, "hourglass": motif_hourglass, "candor": motif_candor, "practice": motif_practice, "gap": motif_gap, "focus": motif_focus, "hierarchy": motif_hierarchy, "splitspeed": motif_splitspeed, "oneonone": motif_oneonone, "watch": motif_watch, "jagged": motif_jagged, "unplug": motif_unplug, "blueprint": motif_blueprint, "comfort": motif_comfort, "upflow": motif_upflow, "scale": motif_scale, "disclose": motif_disclose, "debt": motif_debt, "pulley": motif_pulley, "stamp": motif_stamp, "partition": motif_partition, "source": motif_source, "vasa": motif_vasa, "hangul": motif_hangul, "canal": motif_canal, "outsight": motif_outsight, "inquiry": motif_inquiry, "gate": motif_gate, "offload": motif_offload, "scatter": motif_scatter, "shadow": motif_shadow, "course": motif_course, "strata": motif_strata, "pair": motif_pair, "baseline": motif_baseline, "bend": motif_bend, "cord": motif_cord, "span": motif_span, "packed": motif_packed, "amp": motif_amp, "jcurve": motif_jcurve, "ties": motif_ties, "pump": motif_pump, "frontdoor": motif_frontdoor, "echo": motif_echo, "mismatch": motif_mismatch, "reorder": motif_reorder, "podium": motif_podium, "fattail": motif_fattail, "retain": motif_retain, "tipping": motif_tipping, "untallied": motif_untallied, "twopaths": motif_twopaths, "promote": motif_promote, "smoothed": motif_smoothed, "addbias": motif_addbias, "losthour": motif_losthour, "overprecise": motif_overprecise, "drawn": motif_drawn, "sidedoor": motif_sidedoor, "fitgap": motif_fitgap, "raisedbar": motif_raisedbar, "mic": motif_mic, "override": motif_override, "widen": motif_widen, "earlyscale": motif_earlyscale, "repeat": motif_repeat, "leash": motif_leash, "constraint": motif_constraint, "fourgates": motif_fourgates, "summoned": motif_summoned, "none": lambda accent=None: ""}
 
 # ---- per-volume metadata ----
 VOLUMES = [

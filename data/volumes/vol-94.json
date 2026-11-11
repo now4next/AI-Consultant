@@ -1,0 +1,49 @@
+{
+  "vol": 94,
+  "title": "같은 공개가 반대로 갔다",
+  "sub": "공고에 급여를 적게 하자 임금이 올랐다. 동료끼리 서로의 임금을 알게 하자 임금이 내렸다. 두 조치 모두 투명성이라고 불린다.",
+  "eyebrow": "Vol. 94 · Three Kinds of Transparency",
+  "kicker": "Arnold·Quach·Taska(NBER, 2025) · Cullen & Pakzad-Hurson(Econometrica, 2023)",
+  "koLead": "공고에 적자<br>임금이 올랐고<br><em>옆자리를 알자 내렸다</em>",
+  "koSub": "콜로라도가 2021년 1월 공고에 급여를 적게 하자 급여가 적힌 공고의 비율이 35%에서 70%로 올랐고 임금은 1.3~3.6% 올랐다. 동료와 임금을 이야기할 권리를 보호한 주들에서는 평균임금이 약 2% 내렸다.",
+  "deck": "두 연구는 서로를 알고 있다. 뒤에 나온 쪽이 자기 결과를 앞 연구와 <em>정반대</em>라고 적어 두었다. 모순은 없다. 하나의 낱말이 서로 다른 세 가지 조치를 덮고 있을 뿐이다.",
+  "pillars": [
+    ["Posted Pay", "공고에 적는다"],
+    ["Pay Next Door", "옆자리를 안다"],
+    ["Which One You Mean", "어느 쪽을 말하는가"]
+  ],
+  "sourceTitle": "Where You Cut the Window",
+  "source": "David Arnold·Simon Quach·Bledi Taska, The Impact of Pay Transparency in Job Postings on the Labor Market(NBER Working Paper 34480, 2025) · Zoë B. Cullen & Bobak Pakzad-Hurson, Equilibrium Effects of Pay Transparency(Econometrica 91-3, 2023, 765–802) · Zoë B. Cullen, Is Pay Transparency Good?(2024 리뷰)",
+  "cover": {
+    "kind": "gcover",
+    "c1": "#1d2436",
+    "c2": "#0a0d14",
+    "accent": "#c8b48a",
+    "motif": "twoways",
+    "sub": "같은 낱말이<br>덮고 있는 세 가지",
+    "src": "원전 · NBER w34480 · Econometrica(2023)"
+  },
+  "takeaway": {
+    "h3": "투명성은 선택지가 아니라<br><em>좌표에 가깝다</em>",
+    "p1": "임금을 공개하자는 제안이 회의실에 올라오면 찬성과 반대로 갈린다. 그 자리에서 빠지는 질문이 하나 있다. 어디에 창을 내자는 이야기인가. 밖을 향해 내면 우리 임금이 시장과 견주어지고, 안을 향해 내면 협상의 구조가 바뀐다. 두 창은 반대 방향으로 작동한다.",
+    "p2": "임금 격차를 줄이는 것이 목표라면 동료 간 공개는 실제로 효과가 있다. 다만 아래를 올려서 줄지 않고 위를 눌러서 준다. 그 방향을 알고 고르는 일과 모르고 고르는 일은 같은 결정이 아니다.",
+    "sig": "Econometrica · NBER · 2023–2025"
+  },
+  "home": {
+    "tldr": [
+      "공고에 급여를 적게 한 주 법들을 세 자료로 분석했더니 급여가 적힌 공고 비율이 35%에서 70%로 올랐고 임금은 1.3~3.6% 올랐다. 고용, 공고 수, 요구 학력과 기술에는 영향이 없었다.",
+      "같은 기간 동료끼리 임금을 이야기할 권리를 보호한 주들에서는 평균임금이 약 2% 내렸다. 고용주가 한 사람에게 높은 임금을 주면 줄줄이 재협상이 따라오기 때문에, 처음부터 주지 않는 쪽이 신뢰 가능해진다.",
+      "Cullen의 2024년 리뷰는 투명성을 수평(동료), 수직(상사), 기업 간(공고) 셋으로 가른다. 임금의 부호를 바꾸는 것은 공개의 양이 아니라 누구에게 보이게 하느냐다."
+    ],
+    "readTime": "10분",
+    "tags": "#임금공개 #교섭력 #제도설계",
+    "cat": "전략",
+    "tag": "#전략 · Three Kinds of Transparency",
+    "desc": "공고에 적자 임금이 올랐고, 동료끼리 알게 하자 내렸다. 둘 다 투명성이라 불린다."
+  },
+  "questions": [
+    "공고에 적게 하면 임금은 어떻게 되나",
+    "왜 안에서 알면 내려가나",
+    "우리는 어느 쪽을 말하고 있나"
+  ]
+}

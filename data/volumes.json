@@ -2502,6 +2502,146 @@
         "왜 잘 싸우는 쪽이 더 위험한가",
         "지금 그 속도는 누가 정하고 있나"
       ]
+    },
+    {
+      "vol": 93,
+      "file": "insight-vol-93.html",
+      "dir": "vol-93",
+      "title": "선배에게도 처음이 있었다",
+      "sub": "신입은 선배의 지금을 본다. 선배의 그때는 회사만 가지고 있다. 160개 매장에서 그 기록을 신입에게 보내자 이탈이 줄었다.",
+      "eyebrow": "Vol. 93 · The Path You Cannot See",
+      "source": "Hugh Xiaolong Wu & Yucheng Liang, Social comparison and the value of performance trajectory information: A field experiment in the workplace(Strategic Management Journal, 2026, DOI 10.1002/smj.70081)",
+      "cat": "성장",
+      "tag": "#성장 · The Path You Cannot See",
+      "readTime": "10분",
+      "desc": "신입은 선배의 지금을 본다. 선배의 그때를 보여 주자 이탈이 11~12% 줄었다.",
+      "tags": "#사회비교 #이탈 #온보딩",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1b2a24",
+        "c2": "#0a110e",
+        "accent": "#cdbb8c",
+        "motif": "trajectory",
+        "sub": "지금은 보이고<br>그때는 보이지 않는다",
+        "src": "원전 · Wu & Liang(SMJ 2026)"
+      },
+      "questions": [
+        "신입은 선배의 무엇을 보고 있나",
+        "왜 궤적만 효과가 있었나",
+        "우리는 무엇을 보여 줘야 하나"
+      ]
+    },
+    {
+      "vol": 94,
+      "file": "insight-vol-94.html",
+      "dir": "vol-94",
+      "title": "같은 공개가 반대로 갔다",
+      "sub": "공고에 급여를 적게 하자 임금이 올랐다. 동료끼리 서로의 임금을 알게 하자 임금이 내렸다. 두 조치 모두 투명성이라고 불린다.",
+      "eyebrow": "Vol. 94 · Three Kinds of Transparency",
+      "source": "David Arnold·Simon Quach·Bledi Taska, The Impact of Pay Transparency in Job Postings on the Labor Market(NBER Working Paper 34480, 2025) · Zoë B. Cullen & Bobak Pakzad-Hurson, Equilibrium Effects of Pay Transparency(Econometrica 91-3, 2023, 765–802) · Zoë B. Cullen, Is Pay Transparency Good?(2024 리뷰)",
+      "cat": "전략",
+      "tag": "#전략 · Three Kinds of Transparency",
+      "readTime": "10분",
+      "desc": "공고에 적자 임금이 올랐고, 동료끼리 알게 하자 내렸다. 둘 다 투명성이라 불린다.",
+      "tags": "#임금공개 #교섭력 #제도설계",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1d2436",
+        "c2": "#0a0d14",
+        "accent": "#c8b48a",
+        "motif": "twoways",
+        "sub": "같은 낱말이<br>덮고 있는 세 가지",
+        "src": "원전 · NBER w34480 · Econometrica(2023)"
+      },
+      "questions": [
+        "공고에 적게 하면 임금은 어떻게 되나",
+        "왜 안에서 알면 내려가나",
+        "우리는 어느 쪽을 말하고 있나"
+      ]
+    },
+    {
+      "vol": 95,
+      "file": "insight-vol-95.html",
+      "dir": "vol-95",
+      "title": "오후라서가 아니었다",
+      "sub": "중요한 결정은 오전에 하라는 조언에는 출처가 있다. 그 출처를 더 나은 자로 다시 재자 차이가 사라졌다.",
+      "eyebrow": "Vol. 95 · What Did Not Replicate",
+      "source": "David Andersson·Mattias Lindberg·Gustav Tinghög·Emil Persson, No evidence for decision fatigue using large-scale field data from healthcare(Communications Psychology 3:33, 2025, Registered Report)",
+      "cat": "성찰",
+      "tag": "#성찰 · What Did Not Replicate",
+      "readTime": "9분",
+      "desc": "중요한 결정은 오전에 하라는 조언의 근거를 더 나은 자로 다시 쟀더니 차이가 사라졌다.",
+      "tags": "#결정피로 #대리지표 #사전등록",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#242031",
+        "c2": "#0e0c14",
+        "accent": "#cbb892",
+        "motif": "flatline",
+        "sub": "기울어질 줄 알았던 선이<br>기울지 않았다",
+        "src": "원전 · Communications Psychology(2025)"
+      },
+      "questions": [
+        "우리는 무엇을 믿고 있었나",
+        "이 연구는 무엇을 다르게 쟀나",
+        "그러면 무엇이 남나"
+      ]
+    },
+    {
+      "vol": 96,
+      "file": "insight-vol-96.html",
+      "dir": "vol-96",
+      "title": "영웅을 금지했다",
+      "sub": "사고가 잇따르던 하늘에서 공수 사령관이 내린 첫 명령은 전부 기지로 돌아가라는 것이었다. 그날의 처리량은 0이 됐고, 그는 뒷날 공수의 진짜 성공이 그날에서 시작됐다고 적었다.",
+      "eyebrow": "Vol. 96 · Drops of Water on Stone",
+      "source": "William H. Tunner, Over the Hump(Duell, Sloan and Pearce, 1964 · Air Force History and Museums Program 1998년 복간본) 제5장 The Berlin Airlift",
+      "cat": "역사",
+      "tag": "#역사 · Drops of Water on Stone",
+      "readTime": "11분",
+      "desc": "사고가 잇따르던 하늘에서 사령관이 내린 첫 명령은 전부 돌아가라는 것이었다.",
+      "tags": "#표준화 #흐름 #재량",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#232a2e",
+        "c2": "#0c1012",
+        "accent": "#cfc0a2",
+        "motif": "cadence",
+        "sub": "쌓아 올린 대기 행렬과<br>고른 박자",
+        "src": "원전 · Tunner, Over the Hump(1964)"
+      },
+      "questions": [
+        "그날 하늘에서 무슨 일이 있었나",
+        "그는 무엇을 먼저 했나",
+        "무엇이 처리량을 만들었나"
+      ]
+    },
+    {
+      "vol": 97,
+      "file": "insight-vol-97.html",
+      "dir": "vol-97",
+      "title": "떨어진 곳에서 또 떨어졌다",
+      "sub": "열 곳에 지원한 사람 중 4%가 열 곳 모두에서 탈락 권고를 받았다. 우연이 만들 수 있는 비율보다 높았고, 사람이 뽑던 시장에서는 보이지 않던 모양이다.",
+      "eyebrow": "Vol. 97 · Algorithmic Monoculture",
+      "source": "Rishi Bommasani·Sarah H. Bana·Kathleen A. Creel·Dan Jurafsky·Percy Liang, Algorithmic Monocultures in Hiring(FAccT 2026, arXiv:2605.27371) · Kline·Rose·Walters(2022) · Fuller 외(2021)",
+      "cat": "전략",
+      "tag": "#전략 · Algorithmic Monoculture",
+      "readTime": "11분",
+      "desc": "열 곳에 지원한 사람의 4%가 전부에서 탈락 권고를 받았다. 합계로 본 감사에서는 보이지 않았다.",
+      "tags": "#단일재배 #선별 #공정성감사",
+      "cover": {
+        "kind": "gcover",
+        "c1": "#1e2a30",
+        "c2": "#0a1014",
+        "accent": "#c6b48c",
+        "motif": "onegate",
+        "sub": "여러 갈래가<br>하나의 문으로 모인다",
+        "src": "원전 · Bommasani 외(FAccT 2026)"
+      },
+      "questions": [
+        "왜 같은 사람이 계속 떨어지나",
+        "왜 감사에서는 보이지 않았나",
+        "우리가 쥔 것은 무엇인가"
+      ]
     }
   ]
 }
