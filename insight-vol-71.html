@@ -914,6 +914,15 @@
 </figure>
 </div>
 
+<div class="qbox">
+  <div class="lab">이 글이 답하는 질문</div>
+  <ol>
+    <li><button type="button">재택을 어떻게 실험했나</button></li>
+    <li><button type="button">무엇이 달라졌고 무엇은 그대로였나</button></li>
+    <li><button type="button">왜 정하는 사람이 가장 반대하나</button></li>
+  </ol>
+</div>
+
 <div class="termdef">
   <div class="td-lab">용어 · 이 글에서의 정의</div>
   <div class="td-word">무작위 대조 실험 <span class="en">Randomized Controlled Trial</span></div>
@@ -1695,11 +1704,14 @@
   var box=document.querySelector('.qbox'); if(!box) return;
   var hs=[].slice.call(document.querySelectorAll('.article h2'));
   [].slice.call(box.querySelectorAll('button')).forEach(function(b,i){
-    if(!hs[i]){ b.disabled=true; return; }
-    b.addEventListener('click',function(){ hs[i].scrollIntoView({behavior:'smooth',block:'start'}); });
+    /* 섹션이 셋이 아닌 편은 data-sec 로 어느 섹션이 답하는지 적어 둔다(1부터) */
+    var j=b.getAttribute('data-sec')?(+b.getAttribute('data-sec')-1):i, h=hs[j];
+    if(!h){ b.disabled=true; return; }
+    b.addEventListener('click',function(){ h.scrollIntoView({behavior:'smooth',block:'start'}); });
   });
 })();
 /* qbox:end */
 </script>
+
 </body>
 </html>

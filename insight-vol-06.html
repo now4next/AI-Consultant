@@ -860,6 +860,15 @@
   <figcaption class="cap">이번 호 커버 · Insight Vol. 06</figcaption>
 </figure>
 
+<div class="qbox">
+  <div class="lab">이 글이 답하는 질문</div>
+  <ol>
+    <li><button type="button" data-sec="1">사람이 합리적이라는 전제는 어디서 깨지나</button></li>
+    <li><button type="button" data-sec="3">조직의 오판은 어떤 편향에서 오나</button></li>
+    <li><button type="button" data-sec="4">의지 대신 무엇으로 다스리나</button></li>
+  </ol>
+</div>
+
 <div class="prose">
 
 <!-- Section I -->
@@ -1636,11 +1645,14 @@
   var box=document.querySelector('.qbox'); if(!box) return;
   var hs=[].slice.call(document.querySelectorAll('.article h2'));
   [].slice.call(box.querySelectorAll('button')).forEach(function(b,i){
-    if(!hs[i]){ b.disabled=true; return; }
-    b.addEventListener('click',function(){ hs[i].scrollIntoView({behavior:'smooth',block:'start'}); });
+    /* 섹션이 셋이 아닌 편은 data-sec 로 어느 섹션이 답하는지 적어 둔다(1부터) */
+    var j=b.getAttribute('data-sec')?(+b.getAttribute('data-sec')-1):i, h=hs[j];
+    if(!h){ b.disabled=true; return; }
+    b.addEventListener('click',function(){ h.scrollIntoView({behavior:'smooth',block:'start'}); });
   });
 })();
 /* qbox:end */
 </script>
+
 </body>
 </html>

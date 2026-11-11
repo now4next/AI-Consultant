@@ -878,6 +878,15 @@
   <img src="assets/vol10-cover.png" alt="Leadership Insight Vol. 10 커버 — 무엇이든 진짜처럼 보이는 시대, 화폐는 신뢰다" width="948" height="1659" loading="lazy">
 </figure>
 
+<div class="qbox">
+  <div class="lab">이 글이 답하는 질문</div>
+  <ol>
+    <li><button type="button">왜 지금 신뢰가 화폐가 되나</button></li>
+    <li><button type="button">신뢰는 무엇으로 이루어져 있나</button></li>
+    <li><button type="button">AI 결정이 왜 신뢰 결정인가</button></li>
+  </ol>
+</div>
+
 <div class="termdef">
   <div class="td-lab">용어 · 이 글에서의 정의</div>
   <div class="td-word">신뢰 <span class="en">Trust</span></div>
@@ -1658,11 +1667,14 @@
   var box=document.querySelector('.qbox'); if(!box) return;
   var hs=[].slice.call(document.querySelectorAll('.article h2'));
   [].slice.call(box.querySelectorAll('button')).forEach(function(b,i){
-    if(!hs[i]){ b.disabled=true; return; }
-    b.addEventListener('click',function(){ hs[i].scrollIntoView({behavior:'smooth',block:'start'}); });
+    /* 섹션이 셋이 아닌 편은 data-sec 로 어느 섹션이 답하는지 적어 둔다(1부터) */
+    var j=b.getAttribute('data-sec')?(+b.getAttribute('data-sec')-1):i, h=hs[j];
+    if(!h){ b.disabled=true; return; }
+    b.addEventListener('click',function(){ h.scrollIntoView({behavior:'smooth',block:'start'}); });
   });
 })();
 /* qbox:end */
 </script>
+
 </body>
 </html>

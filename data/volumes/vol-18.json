@@ -7,7 +7,20 @@
   "koLead": "답을 내는 힘보다<br>고쳐 생각하는<br><em>힘</em>",
   "koSub": "확신이 싸진 시대, 리더의 근육은 답을 내는 힘보다 그 답을 다시 여는 힘이다.",
   "deck": "AI는 무엇을 물어도 매끄럽고 자신 있게 답한다. 확신이 이토록 싸진 적이 없다. 그럴수록 귀해지는 것은 답을 내는 힘보다 그 확신을 다시 여는 힘이다. 자기 생각을 결론이 아닌 <em>가설</em>로 쥐는 근육이다.",
-  "pillars": [["Cheap Certainty", "싸진 확신"], ["Four Modes", "설교자와 과학자"], ["The Loop", "고쳐 생각을 설계하기"]],
+  "pillars": [
+    [
+      "Cheap Certainty",
+      "싸진 확신"
+    ],
+    [
+      "Four Modes",
+      "설교자와 과학자"
+    ],
+    [
+      "The Loop",
+      "고쳐 생각을 설계하기"
+    ]
+  ],
   "sourceTitle": "Think Again: The Power of Knowing What You Don't Know",
   "source": "Adam Grant · Philip Tetlock · 2015–2021",
   "cover": {
@@ -35,5 +48,10 @@
     "cat": "성찰",
     "tag": "#성찰 · Grant·Tetlock",
     "desc": "AI가 확신을 값싸게 내주는 시대, 리더의 근육은 답을 내는 힘보다 고쳐 생각하는 힘."
-  }
+  },
+  "questions": [
+    "확신이 싸지면 무엇이 어려워지나",
+    "우리는 왜 방어하는 자리에 서나",
+    "고쳐 생각하기를 어떻게 설계하나"
+  ]
 }

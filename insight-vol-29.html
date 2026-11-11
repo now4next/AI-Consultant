@@ -912,6 +912,15 @@
 </figure>
 </div>
 
+<div class="qbox">
+  <div class="lab">이 글이 답하는 질문</div>
+  <ol>
+    <li><button type="button">빨리빨리는 무엇을 만들었나</button></li>
+    <li><button type="button">같은 속도가 무엇을 무너뜨렸나</button></li>
+    <li><button type="button">속도를 어떻게 가르나</button></li>
+  </ol>
+</div>
+
 <div class="termdef">
   <div class="td-lab">용어 · 이 글에서의 정의</div>
   <div class="td-word">빨리빨리 <span class="en">Ppalli-Ppalli</span></div>
@@ -1675,11 +1684,14 @@
   var box=document.querySelector('.qbox'); if(!box) return;
   var hs=[].slice.call(document.querySelectorAll('.article h2'));
   [].slice.call(box.querySelectorAll('button')).forEach(function(b,i){
-    if(!hs[i]){ b.disabled=true; return; }
-    b.addEventListener('click',function(){ hs[i].scrollIntoView({behavior:'smooth',block:'start'}); });
+    /* 섹션이 셋이 아닌 편은 data-sec 로 어느 섹션이 답하는지 적어 둔다(1부터) */
+    var j=b.getAttribute('data-sec')?(+b.getAttribute('data-sec')-1):i, h=hs[j];
+    if(!h){ b.disabled=true; return; }
+    b.addEventListener('click',function(){ h.scrollIntoView({behavior:'smooth',block:'start'}); });
   });
 })();
 /* qbox:end */
 </script>
+
 </body>
 </html>

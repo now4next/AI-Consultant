@@ -145,6 +145,29 @@ def check(path, reg_by_file):
         if not reg["tag"].startswith("#" + cat + " "):
             errors.append(f'registry tag "{reg["tag"]}" does not start with #{cat}')
 
+    # ---- the question box agrees with the registry, and every question has a section
+    # A question that scrolls nowhere is worse than no question, so check the targets.
+    if reg:
+        qs = reg.get("questions") or []
+        box = re.search(r'<div class="qbox">(.*?)\n</div>', s, re.S)
+        if qs and not box:
+            errors.append("registry has questions but the page has no qbox")
+        elif box and not qs:
+            errors.append("page has a qbox but the registry has no questions")
+        elif qs and box:
+            btns = re.findall(r'<button type="button"([^>]*)>(.*?)</button>', box.group(1), re.S)
+            if len(btns) != len(qs):
+                errors.append(f"qbox has {len(btns)} question(s), registry has {len(qs)}")
+            n_sec = len(re.findall(r"<h2", s[s.find('<article class="article">'):]))
+            for i, (attrs, text) in enumerate(btns):
+                if i < len(qs) and html.unescape(text.strip()) != qs[i]:
+                    errors.append(f"question {i + 1} does not match the registry")
+                m = re.search(r'data-sec="(\d+)"', attrs)
+                target = int(m.group(1)) if m else i + 1
+                if target > n_sec:
+                    errors.append(
+                        f"question {i + 1} points at section {target}, the page has {n_sec}")
+
     # ---- cover present (from vol.06 on we always ship one)
     if reg and reg["vol"] >= 6:
         if not re.search(r'class="(cover-bleed|issue-cover|gcover)"', s):

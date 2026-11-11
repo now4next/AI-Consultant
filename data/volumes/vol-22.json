@@ -7,7 +7,20 @@
   "koLead": "저마다 나아지는데<br>모두<br><em>비슷해진다</em>",
   "koSub": "AI는 각자의 창의성을 높이지만 집단의 다양성은 줄인다. 리더가 지킬 것은 바깥값이다.",
   "deck": "AI는 창의성을 도와준다. 그런데 방향이 묘하다. 저마다의 아이디어는 좋아지는데, 모두의 아이디어가 서로 닮아 간다. 리더가 지켜야 할 것은 평균이 아니라 <em>바깥값</em>이다.",
-  "pillars": [["The Paradox", "각자 나아지는데"], ["Pull to the Mean", "평균의 인력"], ["Divergence", "다양성을 지키는 설계"]],
+  "pillars": [
+    [
+      "The Paradox",
+      "각자 나아지는데"
+    ],
+    [
+      "Pull to the Mean",
+      "평균의 인력"
+    ],
+    [
+      "Divergence",
+      "다양성을 지키는 설계"
+    ]
+  ],
   "sourceTitle": "Generative AI Enhances Individual Creativity but Reduces the Collective Diversity of Novel Content",
   "source": "Doshi & Hauser · Meincke et al. · 2024–2025",
   "cover": {
@@ -35,5 +48,10 @@
     "cat": "성찰",
     "tag": "#성찰 · Doshi·Hauser",
     "desc": "AI는 개인의 창의성을 높이지만 집단의 다양성은 줄인다. 리더가 지킬 것은 평균이 아니라 바깥값이다."
-  }
+  },
+  "questions": [
+    "각자 나아지는데 왜 집단은 비슷해지나",
+    "평균은 오르는데 무엇이 좁아지나",
+    "리더가 지켜야 할 것은 무엇인가"
+  ]
 }

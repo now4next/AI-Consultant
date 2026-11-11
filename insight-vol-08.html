@@ -861,6 +861,15 @@
   <img src="assets/vol08-cover.png" alt="Leadership Insight Vol. 08 커버 — AI엔 수백만을, 두뇌엔 얼마나? · AI 시대의 진짜 병목은 사람의 인지 역량이다" width="971" height="1619" loading="lazy">
 </figure>
 
+<div class="qbox">
+  <div class="lab">이 글이 답하는 질문</div>
+  <ol>
+    <li><button type="button">AI 시대의 진짜 병목은 어디인가</button></li>
+    <li><button type="button">두뇌에 투자한다는 것은 무엇을 하는 일인가</button></li>
+    <li><button type="button">그래서 무엇부터 해야 하나</button></li>
+  </ol>
+</div>
+
 <div class="prose">
 
 <!-- Section I -->
@@ -1737,11 +1746,14 @@
   var box=document.querySelector('.qbox'); if(!box) return;
   var hs=[].slice.call(document.querySelectorAll('.article h2'));
   [].slice.call(box.querySelectorAll('button')).forEach(function(b,i){
-    if(!hs[i]){ b.disabled=true; return; }
-    b.addEventListener('click',function(){ hs[i].scrollIntoView({behavior:'smooth',block:'start'}); });
+    /* 섹션이 셋이 아닌 편은 data-sec 로 어느 섹션이 답하는지 적어 둔다(1부터) */
+    var j=b.getAttribute('data-sec')?(+b.getAttribute('data-sec')-1):i, h=hs[j];
+    if(!h){ b.disabled=true; return; }
+    b.addEventListener('click',function(){ h.scrollIntoView({behavior:'smooth',block:'start'}); });
   });
 })();
 /* qbox:end */
 </script>
+
 </body>
 </html>

@@ -7,7 +7,20 @@
   "koLead": "이번에는<br>아래가<br><em>가르친다</em>",
   "koSub": "AI 앞에서 전문성의 기울기가 뒤집혔다. 위가 배우는 조직만 아래도 배운다.",
   "deck": "연차가 곧 전문성이던 시대에 배움은 위에서 아래로 흘렀다. 그런데 AI 앞에서 그 기울기가 뒤집혔다. 도구를 매일 쓰며 경계를 몸으로 아는 쪽은 대개 아래다. 배움이 <em>거꾸로</em> 흐르게 하는 일이 리더의 새 숙제다.",
-  "pillars": [["Flipped", "뒤집힌 기울기"], ["Upside Down", "거꾸로 흐르게 하려면"], ["The Design", "거꾸로 배우는 설계"]],
+  "pillars": [
+    [
+      "Flipped",
+      "뒤집힌 기울기"
+    ],
+    [
+      "Upside Down",
+      "거꾸로 흐르게 하려면"
+    ],
+    [
+      "The Design",
+      "거꾸로 배우는 설계"
+    ]
+  ],
   "sourceTitle": "Why Reverse Mentoring Works and How to Do It Right",
   "source": "Jack Welch · GE (1999) · Jordan & Sorell · HBR (2019)",
   "cover": {
@@ -35,5 +48,10 @@
     "cat": "성장",
     "tag": "#성장 · Welch·HBR",
     "desc": "AI 앞에서 전문성의 기울기가 뒤집혔다. 아래에서 위로 배움이 흐르게 하는 조직만 격차를 줄인다."
-  }
+  },
+  "questions": [
+    "연차와 전문성이 왜 어긋났나",
+    "배움이 거꾸로 흐르려면 무엇이 필요한가",
+    "선의 대신 무엇으로 세우나"
+  ]
 }

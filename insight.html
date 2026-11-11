@@ -987,7 +987,16 @@
 </section>
 
 <article class="article">
-  <div class="prose">
+  <div class="qbox">
+  <div class="lab">이 글이 답하는 질문</div>
+  <ol>
+    <li><button type="button" data-sec="1">지능을 계산으로만 보면 무엇이 빠지나</button></li>
+    <li><button type="button" data-sec="3">우리 조직은 어느 단계에서 생각하고 있나</button></li>
+    <li><button type="button" data-sec="4">리더가 바꿔야 할 은유는 무엇인가</button></li>
+  </ol>
+</div>
+
+<div class="prose">
 
     <p class="lede">
       오늘날 우리는 인공지능이 인간의 사고와 의사결정을 빠르게 대체해 가는 시대를 살고 있다. 그러나 Otto Scharmer는 말한다. 대부분의 리더가 <em>가장 중요한 질문 하나</em>를 놓치고 있다고.
@@ -1807,11 +1816,14 @@
   var box=document.querySelector('.qbox'); if(!box) return;
   var hs=[].slice.call(document.querySelectorAll('.article h2'));
   [].slice.call(box.querySelectorAll('button')).forEach(function(b,i){
-    if(!hs[i]){ b.disabled=true; return; }
-    b.addEventListener('click',function(){ hs[i].scrollIntoView({behavior:'smooth',block:'start'}); });
+    /* 섹션이 셋이 아닌 편은 data-sec 로 어느 섹션이 답하는지 적어 둔다(1부터) */
+    var j=b.getAttribute('data-sec')?(+b.getAttribute('data-sec')-1):i, h=hs[j];
+    if(!h){ b.disabled=true; return; }
+    b.addEventListener('click',function(){ h.scrollIntoView({behavior:'smooth',block:'start'}); });
   });
 })();
 /* qbox:end */
 </script>
+
 </body>
 </html>

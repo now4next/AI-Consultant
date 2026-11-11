@@ -46,8 +46,13 @@
     ],
     "readTime": "9분",
     "tags": "#조직네트워크 #현장실험 #지식공유",
-    "cat": "문화",
-    "tag": "#문화 · Organizational Networks",
+    "cat": "사람",
+    "tag": "#사람 · Organizational Networks",
     "desc": "AI를 쓰면 동료에게 덜 물을 것 같지만 실험 결과는 반대였다. 연결이 늘지 줄지는 도구보다 설계가 정한다."
-  }
+  },
+  "questions": [
+    "AI가 있으면 동료에게 덜 묻게 되나",
+    "실제로는 무슨 일이 일어났나",
+    "어떤 조건에서 그렇게 되나"
+  ]
 }

@@ -924,6 +924,15 @@
 </figure>
 </div>
 
+<div class="qbox">
+  <div class="lab">이 글이 답하는 질문</div>
+  <ol>
+    <li><button type="button">쓰는 곳은 많은데 왜 값이 안 남나</button></li>
+    <li><button type="button">얹는 것과 다시 짜는 것은 어떻게 다른가</button></li>
+    <li><button type="button">다시 짠다는 것은 무엇을 하는 일인가</button></li>
+  </ol>
+</div>
+
 <div class="termdef">
   <div class="td-lab">용어 · 이 글에서의 정의</div>
   <div class="td-word">에이전틱 조직 <span class="en">The Agentic Organization</span></div>
@@ -1694,11 +1703,14 @@
   var box=document.querySelector('.qbox'); if(!box) return;
   var hs=[].slice.call(document.querySelectorAll('.article h2'));
   [].slice.call(box.querySelectorAll('button')).forEach(function(b,i){
-    if(!hs[i]){ b.disabled=true; return; }
-    b.addEventListener('click',function(){ hs[i].scrollIntoView({behavior:'smooth',block:'start'}); });
+    /* 섹션이 셋이 아닌 편은 data-sec 로 어느 섹션이 답하는지 적어 둔다(1부터) */
+    var j=b.getAttribute('data-sec')?(+b.getAttribute('data-sec')-1):i, h=hs[j];
+    if(!h){ b.disabled=true; return; }
+    b.addEventListener('click',function(){ h.scrollIntoView({behavior:'smooth',block:'start'}); });
   });
 })();
 /* qbox:end */
 </script>
+
 </body>
 </html>

@@ -7,7 +7,20 @@
   "koLead": "무엇을 맡기고<br>무엇을<br><em>쥘</em> 것인가",
   "koSub": "코칭은 통째로 자동화되지 않는다. 과업마다 나누어 설계하는 일이다.",
   "deck": "AI가 코치를 대체할지 묻는 동안 정작 중요한 물음이 밀려났다. 코칭을 통째로 넘길 것인가가 아니라, 어떤 과업을 도구에 맡기고 어떤 순간에 사람이 반드시 필요한지 <em>나누는</em> 일이다.",
-  "pillars": [["Reframe", "질문을 바꾸기"], ["The Spectrum", "관여의 네 단계"], ["The Design", "과업별 설계"]],
+  "pillars": [
+    [
+      "Reframe",
+      "질문을 바꾸기"
+    ],
+    [
+      "The Spectrum",
+      "관여의 네 단계"
+    ],
+    [
+      "The Design",
+      "과업별 설계"
+    ]
+  ],
   "sourceTitle": "AI Coaching: Redefining People Development & Organizational Performance",
   "source": "Terblanche · ICF · Passmore et al. · 2022–2026",
   "cover": {
@@ -35,5 +48,10 @@
     "cat": "성장",
     "tag": "#성장 · Terblanche·ICF",
     "desc": "코칭은 통째로 자동화되지 않는다. 과업마다 AI와 사람의 몫을 나누어 설계하는 일."
-  }
+  },
+  "questions": [
+    "코칭은 AI가 대체하는가",
+    "같은 AI 코칭이 왜 다 다른가",
+    "무엇을 맡기고 무엇을 쥐나"
+  ]
 }

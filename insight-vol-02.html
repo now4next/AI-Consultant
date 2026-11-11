@@ -864,7 +864,16 @@
 </a>
 
 <article class="article">
-  <div class="prose">
+  <div class="qbox">
+  <div class="lab">이 글이 답하는 질문</div>
+  <ol>
+    <li><button type="button" data-sec="1">왜 내 맹점은 나에게만 안 보이나</button></li>
+    <li><button type="button" data-sec="2">강점은 어떻게 그림자가 되나</button></li>
+    <li><button type="button" data-sec="4">AI는 그 그림자를 어떻게 키우나</button></li>
+  </ol>
+</div>
+
+<div class="prose">
 
     <p class="lede">
       우리는 흔히 훌륭한 리더는 자신의 강점을 극대화해야 한다고 믿는다. 강력한 추진력과 빠른 결단, 높은 성취 지향 같은 것 말이다. 그러나 Vinita Bansal은 <em>매우 역설적인 질문</em>을 던진다.
@@ -1765,11 +1774,14 @@
   var box=document.querySelector('.qbox'); if(!box) return;
   var hs=[].slice.call(document.querySelectorAll('.article h2'));
   [].slice.call(box.querySelectorAll('button')).forEach(function(b,i){
-    if(!hs[i]){ b.disabled=true; return; }
-    b.addEventListener('click',function(){ hs[i].scrollIntoView({behavior:'smooth',block:'start'}); });
+    /* 섹션이 셋이 아닌 편은 data-sec 로 어느 섹션이 답하는지 적어 둔다(1부터) */
+    var j=b.getAttribute('data-sec')?(+b.getAttribute('data-sec')-1):i, h=hs[j];
+    if(!h){ b.disabled=true; return; }
+    b.addEventListener('click',function(){ h.scrollIntoView({behavior:'smooth',block:'start'}); });
   });
 })();
 /* qbox:end */
 </script>
+
 </body>
 </html>

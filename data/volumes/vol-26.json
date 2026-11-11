@@ -7,7 +7,20 @@
   "koLead": "결정은 맡겨도<br>책임은<br><em>떠넘길 수 없다</em>",
   "koSub": "AI에 일을 맡길 수는 있어도 책임은 넘어가지 않는다. 공백을 비워 두면 통제 없는 사람이 대신 뒤집어쓴다.",
   "deck": "Vol. 17에서 되돌릴 수 있는 결정은 AI에 맡겨도 된다고 했다. 그런데 넘긴 것은 일이지 책임이 아니다. 일이 넘어간 자리에서 <em>책임을 물을 대상이 흐려진다</em>. 그 공백은 저절로 메워지지 않는다.",
-  "pillars": [["The Gap Opens", "책임이 새는 자리"], ["Where Blame Lands", "책임은 어디로 떨어지나"], ["Closing the Gap", "공백을 메우는 설계"]],
+  "pillars": [
+    [
+      "The Gap Opens",
+      "책임이 새는 자리"
+    ],
+    [
+      "Where Blame Lands",
+      "책임은 어디로 떨어지나"
+    ],
+    [
+      "Closing the Gap",
+      "공백을 메우는 설계"
+    ]
+  ],
   "sourceTitle": "The Responsibility Gap · Moral Crumple Zones",
   "source": "Matthias (2004) · Elish (2019) · EU AI Act (2024)",
   "cover": {
@@ -35,5 +48,10 @@
     "cat": "판단",
     "tag": "#판단 · 책임·Elish",
     "desc": "AI에 결정은 맡겨도 책임은 떠넘길 수 없다. 공백은 통제 있는 자리에 붙들어 메운다."
-  }
+  },
+  "questions": [
+    "일을 맡기면 책임도 넘어가나",
+    "책임의 공백은 누구에게 떨어지나",
+    "그 공백을 어떻게 메우나"
+  ]
 }

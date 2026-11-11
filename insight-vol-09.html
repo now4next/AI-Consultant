@@ -878,6 +878,15 @@
   <img src="assets/vol09-cover.png" alt="Leadership Insight Vol. 09 커버 — AI가 실행을 삼킬 때, 값이 오르는 것은 분별(judgment)이다" width="1024" height="1536" loading="lazy">
 </figure>
 
+<div class="qbox">
+  <div class="lab">이 글이 답하는 질문</div>
+  <ol>
+    <li><button type="button">실행이 공짜가 되면 무엇이 사라지나</button></li>
+    <li><button type="button">전문성은 어디로 옮겨 가나</button></li>
+    <li><button type="button">도구가 강해질 때 사람의 몫은 무엇인가</button></li>
+  </ol>
+</div>
+
 <div class="termdef">
   <div class="td-lab">용어 · 이 글에서의 정의</div>
   <div class="td-word">분별 <span class="en">Judgment</span></div>
@@ -1698,11 +1707,14 @@
   var box=document.querySelector('.qbox'); if(!box) return;
   var hs=[].slice.call(document.querySelectorAll('.article h2'));
   [].slice.call(box.querySelectorAll('button')).forEach(function(b,i){
-    if(!hs[i]){ b.disabled=true; return; }
-    b.addEventListener('click',function(){ hs[i].scrollIntoView({behavior:'smooth',block:'start'}); });
+    /* 섹션이 셋이 아닌 편은 data-sec 로 어느 섹션이 답하는지 적어 둔다(1부터) */
+    var j=b.getAttribute('data-sec')?(+b.getAttribute('data-sec')-1):i, h=hs[j];
+    if(!h){ b.disabled=true; return; }
+    b.addEventListener('click',function(){ h.scrollIntoView({behavior:'smooth',block:'start'}); });
   });
 })();
 /* qbox:end */
 </script>
+
 </body>
 </html>

@@ -7,7 +7,20 @@
   "koLead": "경계 밖에서<br>AI는<br><em>더 틀린다</em>",
   "koSub": "AI의 능력은 울퉁불퉁하다. 리더의 분별은 언제 쓸지만큼, 어디서 끌지를 아는 데 있다.",
   "deck": "AI를 언제 쓸지는 많이 말한다. 정작 덜 말하는 것이 있다. 언제 쓰지 말아야 하는가이다. 하버드·BCG의 실험에서 AI는 경계 안 과업의 품질을 크게 올렸지만, 경계 밖에서는 쓴 사람을 <em>더 자주 틀리게</em> 만들었다. 리더가 아는 것은 끄는 자리다.",
-  "pillars": [["Outside", "경계 밖에서"], ["No-Go Zones", "끄는 자리"], ["The Off-Switch", "끄는 자리를 설계한다"]],
+  "pillars": [
+    [
+      "Outside",
+      "경계 밖에서"
+    ],
+    [
+      "No-Go Zones",
+      "끄는 자리"
+    ],
+    [
+      "The Off-Switch",
+      "끄는 자리를 설계한다"
+    ]
+  ],
   "sourceTitle": "Navigating the Jagged Technological Frontier",
   "source": "Dell'Acqua · Mollick et al. · Harvard/BCG, 2023",
   "cover": {
@@ -35,5 +48,10 @@
     "cat": "판단",
     "tag": "#판단 · Dell'Acqua·Mollick",
     "desc": "경계 밖에서 AI는 돕는 대신 더 틀리게 한다. 쓰는 법만큼, 안 쓰는 자리를 아는 것이 분별이다."
-  }
+  },
+  "questions": [
+    "경계 밖에서 AI는 어떻게 되나",
+    "경계가 안 보이면 무엇을 하나",
+    "끄는 자리를 어떻게 정하나"
+  ]
 }

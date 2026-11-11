@@ -7,7 +7,20 @@
   "koLead": "밝히면<br>신뢰를<br><em>잃는다</em>",
   "koSub": "그런데도 밝혀야 한다. 들키는 쪽이 더 크게 잃기 때문이다.",
   "deck": "AI를 썼다고 밝히는 쪽이 감춘 쪽보다 <em>덜</em> 신뢰받는다. 13개 실험이 일관되게 보인 결과다. 그렇다고 감추면, 나중에 들켰을 때 더 크게 잃는다. 리더가 놓인 자리는 이 둘 사이다.",
-  "pillars": [["The Penalty", "밝히면 잃는다"], ["Worse to Hide", "감추면 더 잃는다"], ["Disclose Well", "잘 밝히는 설계"]],
+  "pillars": [
+    [
+      "The Penalty",
+      "밝히면 잃는다"
+    ],
+    [
+      "Worse to Hide",
+      "감추면 더 잃는다"
+    ],
+    [
+      "Disclose Well",
+      "잘 밝히는 설계"
+    ]
+  ],
   "sourceTitle": "The Transparency Dilemma: How AI Disclosure Erodes Trust",
   "source": "Schilke & Reimann · OBHDP (2025) · EU AI Act",
   "cover": {
@@ -32,8 +45,13 @@
     ],
     "readTime": "6분",
     "tags": "#투명성 #신뢰 #AIAct",
-    "cat": "책임",
-    "tag": "#책임 · Schilke·EU AI Act",
+    "cat": "판단",
+    "tag": "#판단 · Schilke·EU AI Act",
     "desc": "AI를 썼다고 밝히면 신뢰가 줄어든다. 그런데도 밝혀야 하는 이유가 있다."
-  }
+  },
+  "questions": [
+    "AI를 썼다고 밝히면 무엇을 잃나",
+    "그런데도 왜 밝혀야 하나",
+    "어떻게 밝혀야 덜 잃나"
+  ]
 }

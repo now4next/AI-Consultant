@@ -17,7 +17,9 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REG_PATH = os.path.join(ROOT, "data", "volumes.json")
 
-BOX_RE = re.compile(r'<div class="qbox">.*?</div>\s*\n', re.S)
+# 안쪽에 <div class="lab"> 이 있으므로 첫 </div> 에서 멈추면 안 된다.
+# 상자의 끝은 줄머리에 혼자 선 </div> 다.
+BOX_RE = re.compile(r'<div class="qbox">.*?\n</div>\n+', re.S)
 
 
 def esc(v):
@@ -26,17 +28,18 @@ def esc(v):
              .replace(">", "&gt;").replace('"', "&quot;"))
 
 
-def box(questions):
-    lis = "\n".join(
-        '    <li><button type="button">%s</button></li>' % esc(q) for q in questions
-    )
+def box(questions, qsec=None):
+    rows = []
+    for i, q in enumerate(questions):
+        sec = ' data-sec="%d"' % qsec[i] if qsec and i < len(qsec) else ""
+        rows.append('    <li><button type="button"%s>%s</button></li>' % (sec, esc(q)))
     return ('<div class="qbox">\n'
             '  <div class="lab">이 글이 답하는 질문</div>\n'
             '  <ol>\n%s\n  </ol>\n'
-            '</div>\n\n' % lis)
+            '</div>\n\n' % "\n".join(rows))
 
 
-def render(s, questions):
+def render(s, questions, qsec=None):
     """페이지 문자열을 새로 만든다. 꽂을 자리가 없으면 None."""
     s = BOX_RE.sub("", s, count=1)          # 있던 상자는 걷어 내고 다시 넣는다
     if not questions:
@@ -44,7 +47,7 @@ def render(s, questions):
     # 용어 정의보다 앞에 둔다. 글에서 독자가 가장 먼저 만나는 자리다.
     for anchor in ('<div class="termdef">', '<div class="prose">'):
         if anchor in s:
-            return s.replace(anchor, box(questions) + anchor, 1)
+            return s.replace(anchor, box(questions, qsec) + anchor, 1)
     return None
 
 
@@ -65,7 +68,7 @@ def main():
             continue
         p = os.path.join(ROOT, v["file"])
         s0 = io.open(p, encoding="utf-8").read()
-        s = render(s0, qs)
+        s = render(s0, qs, v.get("qsec"))
         if s is None:
             print("  꽂을 자리를 못 찾음: %s" % v["file"])
             continue

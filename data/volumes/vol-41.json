@@ -7,7 +7,20 @@
   "koLead": "사람이 승인했다,<br>그러나<br><em>판단했는가</em>",
   "koSub": "인간 감독이 있다는 사실과 인간 통제가 작동한다는 사실은 다르다.",
   "deck": "AI를 들일 때 기업이 가장 자주 다는 안전장치는 \"최종 결정은 사람이 한다\"이다. 그런데 검토자에게 시간도, 근거도, 거부할 권한도 없다면 그 사람은 책임자가 아니라 <em>승인 버튼</em>이다. 기록에는 사람이 남고, 판단은 이미 기계가 했다.",
-  "pillars": [["The Irony", "승인은 남고 판단은 사라진다"], ["Not Less Trust", "덜 믿기가 답이 아니다"], ["Make It Real", "감독을 실질로 만드는 설계"]],
+  "pillars": [
+    [
+      "The Irony",
+      "승인은 남고 판단은 사라진다"
+    ],
+    [
+      "Not Less Trust",
+      "덜 믿기가 답이 아니다"
+    ],
+    [
+      "Make It Real",
+      "감독을 실질로 만드는 설계"
+    ]
+  ],
   "sourceTitle": "Ironies of Automation · The Impact of Generative AI on Critical Thinking",
   "source": "Bainbridge(1983) · Lee et al.(CHI 2025) · Schemmer et al.(IUI 2023)",
   "cover": {
@@ -32,8 +45,13 @@
     ],
     "readTime": "7분",
     "tags": "#인간감독 #적정의존 #자동화의아이러니",
-    "cat": "책임",
-    "tag": "#책임 · Bainbridge·Lee",
+    "cat": "판단",
+    "tag": "#판단 · Bainbridge·Lee",
     "desc": "최종 승인은 사람이 한다. 그런데 그 기록만 남고 판단은 이미 기계가 했을 수 있다."
-  }
+  },
+  "questions": [
+    "사람을 넣어 두면 안전해지나",
+    "덜 믿으면 해결되나",
+    "감독을 어떻게 실질로 만드나"
+  ]
 }

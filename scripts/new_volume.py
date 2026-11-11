@@ -42,8 +42,12 @@ def qbox_html(spec):
     qs = spec.get("questions") or []
     if not qs:
         return ""
+    # 섹션이 셋이 아닌 편은 qsec 으로 어느 섹션이 답하는지 적는다(1부터)
+    qsec = spec.get("qsec") or []
     lis = "\n".join(
-        '    <li><button type="button">%s</button></li>' % html.escape(q) for q in qs
+        '    <li><button type="button"%s>%s</button></li>' % (
+            ' data-sec="%d"' % qsec[i] if i < len(qsec) else "", html.escape(q))
+        for i, q in enumerate(qs)
     )
     return (
         '<div class="qbox">\n'
@@ -439,6 +443,7 @@ def update_registry(spec):
         "readTime": spec["home"]["readTime"], "desc": spec["home"]["desc"],
         "tags": spec["home"].get("tags", ""), "cover": spec["cover"],
         **({"questions": spec["questions"]} if spec.get("questions") else {}),
+        **({"qsec": spec["qsec"]} if spec.get("qsec") else {}),
     })
     json.dump(reg, open(REG_PATH, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 
